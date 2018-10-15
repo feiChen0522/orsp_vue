@@ -1,0 +1,32 @@
+.type-container{
+  width: 892px;
+  height: 523px;
+}
+.type-container>div{
+  height: 100%;
+}
+.type-container .type{
+  background-color: #ff5000;
+  height: 100%;
+}
+.type-container .detail-type{
+  background-color: #4fff41;
+  height: 100%;
+}
+.type-container .type>ul{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.type-container .type>ul>li{
+  width: 100%;
+  flex: 1;
+  background-color: #FFFFFF;
+  text-align: center;
+}
+.type-container .type>ul>li>p{
+  height: 100%;
+  line-height: 32px;
+
+}
+
