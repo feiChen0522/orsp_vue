@@ -8,6 +8,7 @@ import Regist from './components/Regist'
 import Nav from './components/Nav'
 import CenterNav from './components/CenterNav'
 import Main from './components/Main'
+import Header from './components/Header'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 Vue.config.productionTip = false;
 
@@ -17,6 +18,7 @@ Vue.component('Regist-div',Regist);
 Vue.component('nav-div',Nav);
 Vue.component('center-nav',CenterNav);
 Vue.component('main-nav',Main);
+Vue.component('header',Header);
 new Vue({
   el: '#app',
   router,

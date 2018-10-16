@@ -57,6 +57,7 @@ export default {
         //bind(this)可以不用
       }.bind(this))
     console.log(1111111)
+<<<<<<< HEAD
   },
   methods:{
     getThree:function (event) {
@@ -98,6 +99,8 @@ export default {
 
       }
     }
+=======
+>>>>>>> 66ef911b3f5e2c0ce871d13e4cb9f60a97173e95
   }
 }
 </script>
