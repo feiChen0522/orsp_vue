@@ -1,9 +1,10 @@
 .type-container{
-  width: 892px;
+
   height: 523px;
 }
 .type-container>div{
   height: 100%;
+  width: 805px;
 }
 .type-container .type{
   background-color: #ff5000;
@@ -14,6 +15,7 @@
   height: 100%;
   border: 2px solid #ffb5b0;
   overflow: hidden;
+  width: 669px;
 }
 .type-container .type>ul{
   display: flex;
@@ -56,5 +58,11 @@
 }
 .detail-type>ul>li>a>a:hover{
   color: red !important;
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 3.5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 
