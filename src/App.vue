@@ -2,9 +2,15 @@
   <div id="app" class="container-fluid">
     <!--<center-nav></center-nav>-->
     <!--<main-nav></main-nav>-->
+<<<<<<< HEAD
     <goods-div></goods-div>
     <!--<router-view></router-view>-->
 
+=======
+    <!--<goods-div></goods-div>-->
+    <goods-div></goods-div>
+    <!--<router-view></router-view>-->
+>>>>>>> f4a98e73678cd8d0566ca2537691be62343db6ef
   </div>
 </template>
 
