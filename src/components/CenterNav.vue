@@ -2,12 +2,12 @@
   <div class="center-div">
     <div class="so-box row">
         <ul class="type_li" >
-          <li class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="margin-left: 160px"><a href="#">商品分类</a></li>
-          <li class="col-lg-2 col-md-2 col-sm-2 col-xs-2"><a href="#">首页</a></li>
-          <li class="col-lg-2 col-md-2 col-sm-2 col-xs-2"><a href="download/index.html">orsp下载</a></li>
-          <li class="col-lg-2 col-md-2 col-sm-2 col-xs-2"><a href="#">精品推荐</a></li>
-          <li class="col-lg-2 col-md-2 col-sm-2 col-xs-2"><a href="download/upload.html">上传物品</a></li>
-          <li class="col-lg-2 col-md-2 col-sm-2 col-xs-2"><a href="search.html">交换物品</a></li>
+          <li class="col-lg-1 col-md-2 col-sm-2 col-xs-2" style="margin-left: 160px"><a href="#">商品分类</a></li>
+          <li class="col-lg-1 col-md-2 col-sm-2 col-xs-2"><a href="#">首页</a></li>
+          <li class="col-lg-1 col-md-2 col-sm-2 col-xs-2"><a href="download/index.html">orsp下载</a></li>
+          <li class="col-lg-1 col-md-2 col-sm-2 col-xs-2"><a href="#">精品推荐</a></li>
+          <li class="col-lg-1 col-md-2 col-sm-2 col-xs-2"><a href="download/upload.html">上传物品</a></li>
+          <li class="col-lg-1 col-md-2 col-sm-2 col-xs-2"><a href="search.html">交换物品</a></li>
         </ul>
 
     </div>
