@@ -1,8 +1,6 @@
 <template>
   <div class="hello">
-<<<<<<< HEAD
 
-=======
     <div class="container ">
       <div class="row goods">
         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" v-for="(i,index) of goods">
@@ -15,7 +13,6 @@
         </div>
       </div>
     </div>
->>>>>>> f4a98e73678cd8d0566ca2537691be62343db6ef
   </div>
 </template>
 
@@ -24,10 +21,9 @@ export default {
   name: 'Goods',
   data () {
     return {
-<<<<<<< HEAD
       show: true
     }
-=======
+
       img_list:[
         'goods1.jpg','goods2.jpg','goods3.jpg'
       ]
@@ -55,14 +51,12 @@ export default {
         }
         //bind(this)可以不用
       }.bind(this))
->>>>>>> f4a98e73678cd8d0566ca2537691be62343db6ef
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-<<<<<<< HEAD
 h1, h2 {
   font-weight: normal;
 }
@@ -88,8 +82,6 @@ a {
   transform: translateX(10px);
   opacity: 0;
 }
-=======
 @import "../../static/css/goods.css";
 @import "../../static/css/clear.css";
->>>>>>> f4a98e73678cd8d0566ca2537691be62343db6ef
 </style>
