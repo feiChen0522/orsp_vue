@@ -1,10 +1,11 @@
 <template>
   <div id="app" class="container-fluid">
-    <!--<center-nav></center-nav>-->
-    <!--<main-nav></main-nav>-->
-    <!--<goods-div></goods-div>-->
+    <header-top></header-top>
+    <center-nav></center-nav>
+    <main-nav></main-nav>
     <goods-div></goods-div>
-    <!--<router-view></router-view>-->
+    <goods-div></goods-div>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -21,7 +22,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 .container-fluid{
   padding-left: 0;

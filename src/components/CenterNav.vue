@@ -2,7 +2,7 @@
   <div class="center-div">
     <div class="so-box row">
         <ul class="type_li" >
-          <li class="col-lg-1" style="margin-left: 200px"><a href="#">商品分类</a></li>
+          <li class="col-lg-1 " style="margin-left: 200px"><a href="#">商品分类</a></li>
           <li class="col-lg-1"><a href="#">首页</a></li>
           <li class="col-lg-1"><a href="download/index.html">orsp下载</a></li>
           <li class="col-lg-1"><a href="#">精品推荐</a></li>
