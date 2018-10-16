@@ -2,14 +2,15 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-10 a1">
+        <div class="col-md-12">
+          <div class="col-md-3"><h3>收货地址薄</h3></div>
+          <div class="col-md-3"><button type="button" class="btn btn-default sp2">新增地址</button></div>
+        </div>
         <div class="col-md-10">
-          <div class="col-md-12 ">
-            <div class="col-md-3"><h3>收货地址薄</h3></div>
-            <div class="col-md-3"><button type="button" class="btn btn-default sp2">新增地址</button></div>
-          </div>
           <div class="col-md-12 a2"></div>
           <div class="col-md-11 a">
-            <div class="col-md-11"></div>
+            <div class="col-md-2 c"><span v-if="flag">曾用地址</span><span v-if="!flag">默认地址</span></div>
+            <div class="col-md-9"></div>
             <div class="col-md-1">
               <a href="" class="del1">删除</a>
             </div>
@@ -29,12 +30,8 @@
               <span class="col-md-2">手机号码:</span>
               <div class="col-md-8">13555555555</div>
             </div>
-            <div class="col-md-12 sp1">
-              <span class="col-md-2">配送方式:</span>
-              <div class="col-md-2">顺丰快递</div>
-            </div>
             <div class="col-md-12">
-              <div class="col-md-11 a11"><a href="" class="x3">设为默认地址</a></div>
+              <div class="col-md-11 a11"><a href="#" @click="onchange">设为默认地址</a></div>
               <div class="col-md-1 "><a href="" class="x1">编辑</a></div>
             </div>
           </div>
@@ -49,7 +46,14 @@
     name: 'Address',
     data() {
       return {
-        msg: 'Welcome to Your Vue.js App'
+        msg: 'Welcome to Your Vue.js App',
+        flag:true
+      }
+    },
+    methods: {
+      onchange:function () {
+        this.flag=false
+
       }
     }
   }
@@ -106,5 +110,13 @@
   a:hover{
     text-decoration: none;
   }
-
+  .c{
+    width: 100px;
+    height: 30px;
+    background-color: #ffaa45;
+    color: white;
+    line-height: 30px;
+    text-align: center;
+    margin-top: 5px;
+  }
 </style>
