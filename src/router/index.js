@@ -32,7 +32,6 @@ export default new Router({
       name: 'DetailPage',
       component: DetailPage
     },
-    ,
     {
       path: '/order',
       name: 'Order',
