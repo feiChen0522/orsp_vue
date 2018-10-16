@@ -1,3 +1,33 @@
+@media only screen and (min-width: 380px) and (max-width: 768px){
+  .container{
+    width: 100%!important;
+    margin: 0 auto;
+  }
+  .goods>div{
+    width: 80%!important;
+    height: 100%!important;
+    position: relative;
+    left: 10%;
+  }
+  .goods>div>div>img{
+    height: 100%;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .container{
+    width: 520px!important;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .container{
+    width: 790px!important;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .container{
+    width: 1130px!important;
+  }
+}
 a:hover{
   color: red!important;
 }
@@ -7,7 +37,7 @@ div[class*="col-"]{
   margin: 0 auto;
 }
 .goods>div{
-  width: 250px;
+  width: 260px;
   padding: 15px;
 }
 .goods>div>div{
