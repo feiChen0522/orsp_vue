@@ -1,18 +1,27 @@
 <template>
   <div class="type-container">
       <div class="row">
-        <div class="col-lg-3 type">
-          <ul class="row">
-            <li v-for="types of type_data" :data-id="types.id" :data-type-name="types.product_type" :key="types.id">
-              <p>
+        <div class="col-lg-2 type">
+          <ul class="row" @mouseover="getThree($event)">
+            <li v-for="(types,index) of type_data" :data-id="types.id" :data-flag="haveData" :index="index"  :data-type-name="types.product_type" :key="types.id">
+
                 <a v-for="t of types.category" href="" v-text="t.name" :data-id="t.id" :key="t.id"></a>
-                <i style="float: right;color: red;margin-right: 15px;"> > </i>
-              </p>
+                <i style="float: right;color: rgba(46,0,0,0.68);margin-right: 15px;"> > </i>
+
             </li>
           </ul>
         </div>
-        <div class="col-lg-9 detail-type" v-if="true"></div>
-        <div class="col-lg-9 detail-type" v-else></div>
+        <div class="col-lg-9 detail-type">
+            <ul v-for="(t,index) of typeThree">
+              <li v-show="index==current_index" v-for="tt of typeThree[current_index]">
+                <h1 v-text="tt.product_type" class=""></h1>
+                <a v-for="ttt of tt.category">
+                  <a href="" v-text="ttt.product_type"></a>
+                </a>
+              </li>
+            </ul>
+        </div>
+        <!--<div class="col-lg-9 detail-type"></div>-->
       </div>
   </div>
 </template>
@@ -22,8 +31,12 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
+      haveData:"false",
       type_count:10,
-      type_data:[]
+      type_data:[],
+      query_condition:'',
+      current_index:"",
+      typeThree:[]
     }
   },
   mounted:function () {
@@ -43,6 +56,46 @@ export default {
         }
         //bind(this)可以不用
       }.bind(this))
+  },
+  methods:{
+    getThree:function (event) {
+      let vm=this;
+      let e=event.target;
+      if (e.nodeName=="LI"){
+        this.query_condition=[];
+        this.current_index=parseInt(e.getAttribute('index'));
+        console.log("this.current_index", this.current_index);
+        // console.log(e.children);
+        for (let ele of e.children){
+          // console.log(ele);
+          if(ele.nodeName=="A"){
+            console.log(ele.getAttribute('data-id'));
+            this.query_condition.push(ele.getAttribute('data-id'))
+          }
+        }
+        this.query_condition=this.query_condition.join(',')
+        console.log(this.query_condition);
+        if (e.getAttribute('data-flag')=="false" || vm.typeThree[this.current_index]==undefined) {
+          axios.get('http://127.0.0.1:8000/resource/getgoodtypethree/'+this.query_condition)
+            .then(function (res) {
+              console.log(res.data);
+              vm.$set(vm.typeThree,this.current_index,res.data)
+              //控制台打印请求成功时返回的数据
+              //bind(this)可以不用
+            }.bind(this))
+            .catch(function (err) {
+              if (err.response) {
+                console.log(err.response)
+                //控制台打印错误返回的内容
+              }
+              //bind(this)可以不用
+            }.bind(this))
+        }
+
+        e.setAttribute('data-flag',"true")
+      }
+    }
+
   }
 }
 </script>
