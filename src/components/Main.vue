@@ -92,10 +92,11 @@ export default {
             }.bind(this))
         }
 
-        e.setAttribute('data-flag',"true")
+        e.setAttribute('data-flag',"true");
+        console.log(1)
+
       }
     }
-
   }
 }
 </script>
