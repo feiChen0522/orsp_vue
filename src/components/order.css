@@ -1,0 +1,150 @@
+ul,li{
+  list-style: none;
+}
+a{
+ color: black;
+}
+a:hover{
+  text-decoration: none;
+  color: black;
+}
+.a{
+  margin-top: 20px;
+  margin-bottom: 50px;
+  border-bottom: 2px solid #c30;
+}
+.b{
+  height: 100px;
+  overflow: hidden;
+}
+
+.c{
+  height: 120px;
+  width: 100px;
+}
+div{
+  text-align: left;
+}
+
+select {
+  width: 200px;
+  height: 35px;
+}
+.img01 {
+  width: 656px;
+  height: 32px;
+  background: url("../assets/images/flow_bg.png") 0px -32px;
+  background-repeat: no-repeat;
+  display: inline;
+  float: right;
+}
+.img01 li {
+  float: left;
+  width: 205px;
+  text-align: center;
+  line-height: 32px;
+  font-size: 13px;
+}
+
+.d{
+  position: relative;
+  right: 40px;
+  top: 40px;
+}
+.e{
+  margin-bottom: 30px;
+}
+.d01{
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.f1{
+  background: url(../assets/images/cart_001.gif);
+  background-repeat: no-repeat;
+}
+
+.cart_btn {
+}
+
+.cart_btn .checkout {
+  width: 135px;
+  height: 36px;
+  line-height: 36px;
+  text-align: center;
+  font-size: 18px;
+  color: #fff;
+  float: right;
+  display: inline-block;
+  background: url("../assets/images/btn_check.jpg");
+  background-repeat: no-repeat;
+}
+
+.cart_btn .delgoods {
+  width: 135px;
+  height: 36px;
+  float: left;
+  color: #fff;
+  font-size: 17px;
+  line-height: 36px;
+  text-align: center;
+  background: url("../assets/images/btn_check_1.jpg") ;
+  background-repeat: no-repeat;
+}
+
+.cart_btn .continue:hover {
+  text-decoration: none;
+
+}
+.cur2 {
+  color: white;
+  font-weight: bolder;
+}
+.cur1{
+  margin-left: -40px;
+}
+table {
+  border: 1px solid #E7E3E7;
+  border-top: 2px solid #CE0000;
+  background: #FFFDEE;
+  color: #666;
+  margin-top: 40px;
+  width: 100%;
+}
+thead {
+  height: 50px;
+  line-height: 36px;
+  background: url("../assets/images/sort_bg.png");
+}
+.f2{
+  font-size: 16px;
+  height: 40px;
+  line-height: 40px;
+}
+tbody td {
+  border-bottom: 1px solid #E7E3E7;
+}
+p{
+  margin-left: 15px;
+  font-size: 15px;
+}
+tbody img {
+  height: 80px;
+  border: 1px solid #eee;
+  vertical-align: middle;
+  float: left;
+  display: inline;
+  margin-right: 10px;
+}
+.c1{
+  text-align: left;
+  font-size: 17px;
+  margin-left: 18px;
+  color: black;
+  width: 10002px;
+}
+.f3{
+  text-align: right;
+  height: 40px;
+  line-height: 40px;
+}
