@@ -13,7 +13,7 @@ export default new Router({
   mode: 'history',
   routes: [
     {
-      path: '/order',
+      path: '/',
       name: 'HelloWorld',
       component: HelloWorld
     },
@@ -33,7 +33,7 @@ export default new Router({
       component: DetailPage
     },
     {
-      path: '/',
+      path: '/order',
       name: 'Order',
       component: Order
     }

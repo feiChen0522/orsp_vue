@@ -6,7 +6,7 @@
         <div class="col-md-4 h1 ">
           <img-zoom
             src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539577454588&di=cbdfd4cc49ba5764abbe90b6e35f705f&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F0117e2571b8b246ac72538120dd8a4.jpg%401280w_1l_2o_100sh.jpg"
-            width="330" height="350"
+            width="300" height="350"
             bigsrc="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539577454588&di=cbdfd4cc49ba5764abbe90b6e35f705f&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F0117e2571b8b246ac72538120dd8a4.jpg%401280w_1l_2o_100sh.jpg"
             :configs="configs">
           </img-zoom>
@@ -25,7 +25,7 @@
               <li>库存:</li>
             </ul>
           </div>
-          <div class="col-md-8">
+          <div class="col-md-8 a1">
             <ul>
               <li>8成新华为 P10 Plus全面屏4G手机</li>
               <li>非全新</li>
@@ -138,6 +138,7 @@
 
   ul, li {
     list-style: none;
+    text-align: left;
   }
 
   li {
@@ -156,6 +157,8 @@
   .bo1 {
     margin-bottom: 20px;
     font-size: 18px;
+    height: 50px;
+
   }
 
   .e1 {
@@ -171,19 +174,18 @@
     height: 150px;
     margin-bottom: 10px;
   }
-
   .a {
     margin-top: 60px;
   }
 
   .btn1 {
-
-    width: 400px;
+    width: 350px;
     height: 50px;
     font-size: 20px;
     background: #fb2a54;
     border: none;
     color: white;
+    margin-left: -50px;
   }
 
   .b {
