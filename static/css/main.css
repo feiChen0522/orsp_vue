@@ -1,17 +1,21 @@
 .type-container{
-  width: 892px;
+
   height: 523px;
 }
 .type-container>div{
   height: 100%;
+  width: 805px;
 }
 .type-container .type{
   background-color: #ff5000;
   height: 100%;
 }
 .type-container .detail-type{
-  background-color: #4fff41;
+  background-color: #FFFFFF;
   height: 100%;
+  border: 2px solid #ffb5b0;
+  overflow: hidden;
+  width: 669px;
 }
 .type-container .type>ul{
   display: flex;
@@ -23,10 +27,42 @@
   flex: 1;
   background-color: #FFFFFF;
   text-align: center;
-}
-.type-container .type>ul>li>p{
   height: 100%;
   line-height: 32px;
+  overflow: hidden;
+}
+.detail-type{
+  padding: 15px;
 
+
+}
+.detail-type>ul{
+}
+.detail-type>ul>li{
+  height: 170px;
+  width: 70%;
+  text-align: left;
+}
+.detail-type>ul>li>h1{
+  text-align: left;
+  margin-bottom: 10px;
+  font-weight: 600;
+
+}
+.detail-type>ul>li>a{
+  margin-right: 10px;
+  overflow: hidden;
+}
+.detail-type>ul>li>a>a{
+  color: #757575 !important;
+}
+.detail-type>ul>li>a>a:hover{
+  color: red !important;
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 3.5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 

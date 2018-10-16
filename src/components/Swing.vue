@@ -1,53 +1,54 @@
 <template>
-  <div class="type-container">
-    <div class="carousel-wrap" id="carousel">
-    // 轮播图列表
-    <transition-group tag="ul" class='slide-ul' name="list">
-      <li v-for="(list,index) in slideList" :key="index" v-show="index===currentIndex" @mouseenter="stop" @mouseleave="go">
-        <a :href="list.clickUrl" >
-          <img :src="list.image" :alt="list.desc">
-        </a>
-      </li>
-    </transition-group>
-    // 轮播图位置指示
-    <div class="carousel-items">
-      <span v-for="(item,index) in slideList.length" :class="{'active':index===currentIndex}" @mouseover="change(index)"></span>
+  <div class="swing-div">
+    <div class="img-container">
+      <a href=""  v-for="(i,index) of imgList" :data-id="index"><img :src="i"  alt="" v-show="currentIndex==index"></a>
     </div>
-  </div></div>
+    <ul class="dot-point">
+      <li :data-id="index" v-for="(i,index) of imgList" @mouseover="changeImg($event)" :class="{'changeBck':currentIndex==index}"></li>
+    </ul>
+  </div>
 </template>
 
 <script>
-export default {
-  name: 'Swing',
-  data (){
-    return {
-      slideList: [
-        {
-          "clickUrl": "#",
-          "desc": "nhwc",
-          "image": "http://dummyimage.com/1745x492/f1d65b"
-        },
-        {
-          "clickUrl": "#",
-          "desc": "hxrj",
-          "image": "http://dummyimage.com/1745x492/40b7ea"
-        },
-        {
-          "clickUrl": "#",
-          "desc": "rsdh",
-          "image": "http://dummyimage.com/1745x492/e3c933"
-        }
-      ],
-      currentIndex: 0,
-      timer: ''
-    }
-},
+  export default {
+    name: 'Swing',
+    data() {
+      return {
+        imgList:[
+          '../../static/images/swing/1.png',
+          '../../static/images/swing/2.png',
+          '../../static/images/swing/3.png',
+          '../../static/images/swing/4.png',
+          '../../static/images/swing/5.png',
+        ],
+        currentIndex:1,
+        isChangeBck:true
+      }
+    },
+    mounted:function(){
+      let vm =this;
 
-}
+      let img_length=vm.imgList.length;
+      setInterval(function () {
+
+        if (vm.currentIndex>img_length-2){
+          vm.currentIndex=0
+        } else {
+          vm.currentIndex+=1;
+        }
+      },2500)
+    },
+    methods:{
+      changeImg:function (event) {
+        this.currentIndex=parseInt(event.target.getAttribute('data-id'))
+      }
+    }
+
+  }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   @import '../../static/css/clear.css';
-  @import '../../static/css/main.css';
+  @import '../../static/css/swing.css';
 </style>
