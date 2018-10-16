@@ -1,16 +1,13 @@
 <template>
   <div class="center-div">
     <div class="so-box row">
-        <ul class="type_li" >
-          <li class="col-lg-1" style="margin-left: 200px"><a href="#">商品分类</a></li>
-          <li class="col-lg-1"><a href="#">首页</a></li>
-          <li class="col-lg-1"><a href="download/index.html">orsp下载</a></li>
-          <li class="col-lg-1"><a href="#">精品推荐</a></li>
-          <li class="col-lg-1"><a href="download/upload.html">上传物品</a></li>
-          <li class="col-lg-1"><a href="search.html">交换物品</a></li>
-          <li class="col-lg-1"><a href="#">超值购</a></li>
-        </ul>
-
+        <div class="col-lg-3"></div>
+      <ul>
+        <li><a href="">关于</a></li>
+        <li><a href="">关于我们</a></li>
+        <li><a href="">广告合作</a></li>
+        <li><a href="">友情链接</a></li>
+      </ul>
     </div>
   </div>
 </template>
@@ -20,9 +17,9 @@
 我们一直致力于为广大开发者提供更多的优质技术文档和辅助开发工具！
 
 关于
-关于我们
-广告合作
-友情链接
+
+
+
 招聘
 联系方式
 新浪微博
