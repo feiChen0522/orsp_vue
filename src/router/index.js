@@ -4,6 +4,7 @@ import HelloWorld from '@/components/HelloWorld'
 import Login from '@/components/Login'
 import Regist from '@/components/Regist'
 import DetailPage from '@/components/DetailPage'
+import Order from '@/components/Order'
 
 Vue.use(Router)
 
@@ -11,7 +12,7 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: '/',
+      path: '/order',
       name: 'HelloWorld',
       component: HelloWorld
     },
@@ -29,6 +30,12 @@ export default new Router({
       path: '/detailpage',
       name: 'DetailPage',
       component: DetailPage
+    },
+    ,
+    {
+      path: '/',
+      name: 'Order',
+      component: Order
     }
 
   ]
