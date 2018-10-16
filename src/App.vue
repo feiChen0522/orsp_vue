@@ -1,7 +1,10 @@
 <template>
   <div id="app" class="container-fluid">
-    <center-nav></center-nav>
-    <main-nav></main-nav>
+    <!--<center-nav></center-nav>-->
+    <!--<main-nav></main-nav>-->
+    <goods-div></goods-div>
+    <!--<router-view></router-view>-->
+
   </div>
 </template>
 

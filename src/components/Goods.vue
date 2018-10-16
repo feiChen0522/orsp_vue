@@ -1,20 +1,12 @@
 <template>
   <div class="hello">
-    <div id="example-1">
-      <button @click="show = !show">
-        Toggle render
-      </button>
-      <transition name="slide-fade">
-        <p v-if="show">hello</p>
-      </transition>
-    </div>
 
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'Goods',
   data () {
     return {
       show: true

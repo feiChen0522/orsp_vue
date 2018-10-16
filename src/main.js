@@ -8,6 +8,9 @@ import Regist from './components/Regist'
 import Nav from './components/Nav'
 import CenterNav from './components/CenterNav'
 import Main from './components/Main'
+import Swing from './components/Swing'
+import HelloWorld from './components/HelloWorld'
+import Goods from './components/Goods'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 Vue.config.productionTip = false;
 
@@ -17,6 +20,8 @@ Vue.component('Regist-div',Regist);
 Vue.component('nav-div',Nav);
 Vue.component('center-nav',CenterNav);
 Vue.component('main-nav',Main);
+Vue.component('swing-div',Swing);
+Vue.component('goods-div',Goods);
 new Vue({
   el: '#app',
   router,

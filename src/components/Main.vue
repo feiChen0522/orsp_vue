@@ -1,8 +1,8 @@
 <template>
   <div class="type-container">
-      <div class="row">
+      <div class="row"  @mouseleave="detailTypeShow=!detailTypeShow">
         <div class="col-lg-2 type">
-          <ul class="row" @mouseover="getThree($event)">
+          <ul class="row" @mouseover="getThree($event)" >
             <li v-for="(types,index) of type_data" :data-id="types.id" :data-flag="haveData" :index="index"  :data-type-name="types.product_type" :key="types.id">
 
                 <a v-for="t of types.category" href="" v-text="t.name" :data-id="t.id" :key="t.id"></a>
@@ -11,17 +11,25 @@
             </li>
           </ul>
         </div>
-        <div class="col-lg-9 detail-type">
+        <transition name="fade">
+          <div class="col-lg-9 detail-type" v-if="detailTypeShow">
             <ul v-for="(t,index) of typeThree">
               <li v-show="index==current_index" v-for="tt of typeThree[current_index]">
-                <h1 v-text="tt.product_type" class=""></h1>
+                <h1 v-text="tt.product_type" :data-id="tt.id" class=""></h1>
                 <a v-for="ttt of tt.category">
-                  <a href="" v-text="ttt.product_type"></a>
+                  <a href="" :data-id="ttt.id" v-text="ttt.product_type"></a>
                 </a>
               </li>
             </ul>
-        </div>
-        <!--<div class="col-lg-9 detail-type"></div>-->
+          </div>
+          <div class="col-lg-9 detail-type swing" @mouseleave="detailTypeShow=true" v-else>
+            <swing-div style="margin-left: -15px;margin-top: -15px"></swing-div>
+          </div>
+        </transition>
+
+
+
+
       </div>
   </div>
 </template>
@@ -36,7 +44,8 @@ export default {
       type_data:[],
       query_condition:'',
       current_index:"",
-      typeThree:[]
+      typeThree:[],
+      detailTypeShow:false
     }
   },
   mounted:function () {
@@ -56,11 +65,11 @@ export default {
         }
         //bind(this)可以不用
       }.bind(this))
-    console.log(1111111)
   },
   methods:{
     getThree:function (event) {
       let vm=this;
+      vm.detailTypeShow=true
       let e=event.target;
       if (e.nodeName=="LI"){
         this.query_condition=[];
@@ -97,6 +106,11 @@ export default {
         console.log(1)
 
       }
+    },
+    displaySwing:function (event) {
+      console.log(event.target.className);
+        // this.detailTypeShow=!this.detailTypeShow
+
     }
   }
 }
