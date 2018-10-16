@@ -14,7 +14,30 @@
     </div>
   </div>
 </template>
+<!--
 
+
+我们一直致力于为广大开发者提供更多的优质技术文档和辅助开发工具！
+
+关于
+关于我们
+广告合作
+友情链接
+招聘
+联系方式
+新浪微博
+电子邮件
+旗下网站
+Laravel中文网
+Ghost中国
+BootCDN
+Packagist中国镜像
+燃腾教育
+赞助商
+京东云
+又拍云
+
+-->
 <script>
 export default {
   name: 'CenterNav',
