@@ -29,7 +29,6 @@ export default {
     width: 1140px;
     height: 70px;
     margin: auto;
-    background-color: #F8F8F8;
   }
   .search-box .logo{
     float: left;
@@ -47,7 +46,7 @@ export default {
     width: 384px;
     float: left;
     height: 39px;
-    border: 3px solid #999999;
+    border: 3px solid #ff6a19;
     /*box-sizing: border-box;*/
     margin: 15px 0 15px 300px;
   }
@@ -70,7 +69,7 @@ export default {
     top: -1px;
   }
   .search-box .box .box-text .btn-search:focus, .search-box .box .box-text .btn-search:hover{
-    background-color: #999999;
+    background-color: #ff6a19;
     color: #ffffff;
   }
   .search-box .box .box-text .btn-search span{
