@@ -6,6 +6,7 @@
     <goods-div></goods-div>
     <footer-div></footer-div>
     <!--<router-view></router-view>-->
+    <footer-div></footer-div>
   </div>
 </template>
 
