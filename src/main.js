@@ -11,7 +11,6 @@ import Swing from './components/Swing'
 import HelloWorld from './components/HelloWorld'
 
 import Header from './components/Header'
-import Swing from './components/Swing'
 
 import Goods from './components/Goods'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
