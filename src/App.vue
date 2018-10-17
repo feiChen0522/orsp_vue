@@ -2,9 +2,9 @@
   <div id="app" class="container-fluid">
     <header-top></header-top>
     <center-nav></center-nav>
-    <main-nav></main-nav>
+    <main-nav class="div-center"></main-nav>
     <goods-div></goods-div>
-    <!--<router-view></router-view>-->
+    <footer-div></footer-div>
   </div>
 </template>
 
