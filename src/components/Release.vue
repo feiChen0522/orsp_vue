@@ -47,5 +47,5 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  @import "./1.css";
+  /*@import "./1.css";*/
 </style>

@@ -59,7 +59,7 @@
           3．4　用户须对自己在使用ORSP服务过程中的行为承担法律责任。用户承担法律责任的形式包括但不限于：对受到侵害者进行赔偿，以及在ORSP首先承担了因用户行为导致的行政处罚或侵权损害赔偿责任后，用户应给予ORSP等额的赔偿。<br>
         </p>
         <div class="col-md-12">
-          <router-link to="/"><button>我已阅读</button></router-link>
+          <router-link to="/upload" @click.native="flushCom"><button>我已阅读</button></router-link>
         </div>
       </div>
     </div>
@@ -67,7 +67,18 @@
 </template>
 <script>
   export default {
-    name: 'agreement'
+    name: 'agreement',
+    methods:{
+      flushCom:function(){
+
+        //router是路由实例,例如:var router = new Router({})
+
+        //router.go(n)是路由的一个方法，意思是在history记录中前进或者后退多少步，0就表示还是当前，类似window.history.go(n)
+
+        this.$router.go(0);
+
+      }
+    }
   }
 </script>
 <style>
