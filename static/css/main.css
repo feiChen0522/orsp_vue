@@ -1,3 +1,8 @@
+@media only screen and (max-width: 992px) {
+  .type-container{
+    display: none;
+  }
+}
 .type-container{
 
   height: 523px;
@@ -5,9 +10,12 @@
 .type-container>div{
   height: 100%;
   width: 805px;
+  margin-left: 141px;
 }
 .type-container .type{
-  background-color: #ff5000;
+  border: 1px solid #ffb0b0;
+  border-right: none;
+  border-top: none;
   height: 100%;
 }
 .type-container .detail-type{

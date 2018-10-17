@@ -1,7 +1,7 @@
 <template>
   <div class="type-container">
     <div class="row"  @mouseleave="detailTypeShow=!detailTypeShow">
-      <div class="col-lg-2 type">
+      <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 type">
         <ul class="row" @mouseover="getThree($event)" >
           <li v-for="(types,index) of type_data" :data-id="types.id" :data-flag="haveData" :index="index"  :data-type-name="types.product_type" :key="types.id">
 
@@ -11,8 +11,7 @@
           </li>
         </ul>
       </div>
-      <transition name="fade">
-        <div class="col-lg-9 detail-type" v-if="detailTypeShow">
+        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 detail-type" v-if="detailTypeShow">
           <ul v-for="(t,index) of typeThree">
             <li v-show="index==current_index" v-for="tt of typeThree[current_index]">
               <h1 v-text="tt.product_type" :data-id="tt.id" class=""></h1>
@@ -22,10 +21,9 @@
             </li>
           </ul>
         </div>
-        <div class="col-lg-9 detail-type swing" @mouseleave="detailTypeShow=true" v-else>
+        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 detail-type swing" @mouseleave="detailTypeShow=true" v-else>
           <swing-div style="margin-left: -15px;margin-top: -15px"></swing-div>
         </div>
-      </transition>
 
 
 

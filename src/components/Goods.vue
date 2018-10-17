@@ -1,5 +1,6 @@
 <template>
   <div class="hello">
+
     <div class="container ">
       <div class="row goods">
         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" v-for="(i,index) of goods">
@@ -20,12 +21,16 @@ export default {
   name: 'Goods',
   data () {
     return {
+      show: true,
       img_list:[
         'goods1.jpg','goods2.jpg','goods3.jpg'
       ]
       ,goods:[]
     }
-  },
+    },
+
+
+
   mounted:function () {
     let vm=this;
     axios.post('http://127.0.0.1:8000/resource/getgoods/',
@@ -53,6 +58,31 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+h1, h2 {
+  font-weight: normal;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+li {
+  display: inline-block;
+  margin: 0 10px;
+}
+a {
+  color: #42b983;
+}
+.slide-fade-enter-active {
+  transition: all .3s ease;
+}
+.slide-fade-leave-active {
+  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-to
+  /* .slide-fade-leave-active for below version 2.1.8 */ {
+  transform: translateX(10px);
+  opacity: 0;
+}
 @import "../../static/css/goods.css";
 @import "../../static/css/clear.css";
 </style>

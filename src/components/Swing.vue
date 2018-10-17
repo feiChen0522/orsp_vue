@@ -15,11 +15,11 @@
     data() {
       return {
         imgList:[
-          '../../static/images/swing/1.png',
-          '../../static/images/swing/2.png',
-          '../../static/images/swing/3.png',
-          '../../static/images/swing/4.png',
-          '../../static/images/swing/5.png',
+          '../../static/images/1.png',
+          '../../static/images/2.png',
+          '../../static/images/3.png',
+          '../../static/images/4.png',
+          '../../static/images/5.png',
         ],
         currentIndex:1,
         isChangeBck:true

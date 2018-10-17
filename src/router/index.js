@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import Login from '@/components/Login'
 import Regist from '@/components/Regist'
+import Swing from '@/components/Swing'
 import DetailPage from '@/components/DetailPage'
 import Order from '@/components/Order'
 import Address from '@/components/Address'
@@ -16,6 +17,7 @@ Vue.use(Router)
 
 export default new Router({
   mode: 'history',
+  redirect:'/',
   routes: [
     {
       path: '/',
@@ -31,6 +33,11 @@ export default new Router({
       path: '/Regist',
       name: 'Regist',
       component: Regist
+    },
+    {
+      path: '/swing',
+      name: 'Swing',
+      component: Swing
     },
     {
       path: '/detailpage',
