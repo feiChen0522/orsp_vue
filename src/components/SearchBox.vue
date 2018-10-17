@@ -68,9 +68,9 @@ export default {
     position: relative;
     top: -1px;
     cursor: pointer;
+    background-color: #ff6a19;
   }
   .search-box .box .box-text .btn-search:focus, .search-box .box .box-text .btn-search:hover{
-    background-color: #ff6a19;
     color: #ffffff;
   }
   .search-box .box .box-text .btn-search span{
