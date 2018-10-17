@@ -10,6 +10,7 @@
     left: 10%;
   }
   .goods>div>div>img{
+    width: 100%;
     height: 100%;
   }
 }
@@ -45,11 +46,18 @@ div[class*="col-"]{
   margin-bottom: 10px;
   overflow: hidden;
 }
-.goods>div>div>img{
+.goods img{
   width: 100%;
+}
+.goods>div>div>img{
+  width: 100%!important;
   height: 220px;
   cursor: pointer;
 }
+.goods>div>div img{
+  width: 100%;
+}
+
 .goods>div>p{
   height: 20px;
 }

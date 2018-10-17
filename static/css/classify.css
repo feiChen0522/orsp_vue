@@ -1,0 +1,95 @@
+/*@media only screen and (min-width: 380px) and (max-width: 768px){*/
+  /*.classify,.container{*/
+    /*width: 100%!important;*/
+  /*}*/
+/*}*/
+@media only screen and (min-width: 768px) {
+
+  .classify{
+    width: 100%!important;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .classify{
+    width: 77%!important;
+    margin-left: 11%;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .classify{
+    width: 86%!important;
+    margin-left: 3%;
+  }
+}
+.container{
+  margin: 0 auto;
+}
+.classify{
+}
+.classify>h1{
+  text-align: left;
+  padding-left: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.classify>div:nth-child(2){
+  border: 1px solid #cccccc;
+  padding: 5px 5px;
+  font-size: 12px;
+}
+.classify>div{
+  border: 1px solid #cccccc;
+}
+.classify>div:nth-of-type(1)>div:nth-of-type(1) a{
+  color: #b9e2de !important;
+}
+.classify>div:nth-of-type(2)>div:nth-of-type(1) a{
+  color: red !important;
+}
+.classify>div a{
+  color: #000000!important;
+
+}
+
+.sort-container{
+  margin-top: 20px;
+  padding: 5px 5px;
+  font-size: 12px;
+}
+.sort-container>.price{
+  position: relative;
+z-index: 1;
+}
+/*.sort-container>.price>a:hover+ul{*/
+  /*display: block;*/
+/*}*/
+.sort-container>.price>ul{
+  border: 1px solid #ffb5b0;
+  padding: 5px 5px;
+  cursor: pointer;
+  position: absolute;
+  z-index: 2;
+  background-color: #ffffff;
+  top: 0;
+  width: 100%;
+  height: 50px;
+  display: none;
+}
+.sort-container>.price>ul>li:first-child{
+  margin-bottom: 5px;
+}
+.sort-container>.price>ul>li:hover{
+  color: red;
+}
+.input-price>input{
+  border: 1px solid #3b49ff;
+  width: 40px;
+  margin-right: 15px;
+  padding-left: 2px;
+}
+.input-price>input:last-child{
+  border: none;
+  border-radius: 5px;
+  background-color: #ff4f14;
+  color: whitesmoke;
+}

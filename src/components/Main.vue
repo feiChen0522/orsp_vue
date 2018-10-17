@@ -16,7 +16,7 @@
             <li v-show="index==current_index" v-for="tt of typeThree[current_index]">
               <h1 v-text="tt.product_type" :data-id="tt.id" class=""></h1>
               <a v-for="ttt of tt.category">
-                <a href="" :data-id="ttt.id" v-text="ttt.product_type"></a>
+                <router-link to='/search' href="" :data-id="ttt.id" v-text="ttt.product_type"></router-link>
               </a>
             </li>
           </ul>

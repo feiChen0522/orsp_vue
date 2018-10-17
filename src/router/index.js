@@ -5,6 +5,7 @@ import Login from '@/components/Login'
 import Regist from '@/components/Regist'
 import Swing from '@/components/Swing'
 import DetailPage from '@/components/DetailPage'
+import Detail from '@/components/Detail'
 import Order from '@/components/Order'
 import Address from '@/components/Address'
 import AddAddress from '@/components/AddAddress'
@@ -13,6 +14,10 @@ import Car2 from '@/components/Car2'
 import Car3 from '@/components/Car3'
 import Release from '@/components/Release'
 import Agreement from '@/components/Agreement'
+import Index from '@/components/Index'
+import Upload from '@/components/download/upload'
+// import Search from '@/components/Search'
+import SearchMain from '@/components/search/SearchMain'
 
 Vue.use(Router)
 
@@ -22,34 +27,35 @@ export default new Router({
   redirect:'/',
   routes: [
     {
-      path: '/s2',
-      name: 'HelloWorld',
-      component: HelloWorld
+      path: '/',
+      name: 'Index',
+      component: Index,
     },
     {
       path: '/login',
       name: 'Login',
-      component: HelloWorld
+      component: Login
     },
     {
       path: '/Regist',
       name: 'Regist',
       component: Regist
     },
-    {
-      path: '/swing',
-      name: 'Swing',
-      component: Swing
-    },
+
     {
       path: '/detailpage',
       name: 'DetailPage',
-      component: DetailPage
+      component: Detail
     },
     {
       path: '/order',
       name: 'Order',
       component: Order
+    },
+    {
+      path: '/search',
+      name: 'SearchMain',
+      component: SearchMain
     },
     {
       path: '/address',
@@ -75,6 +81,11 @@ export default new Router({
       path: '/car3',
       name: 'Car3',
       component: Car3
+    },
+    {
+      path: '/upload',
+      name: 'Upload',
+      component: Upload
     },
     {
       path: '/',

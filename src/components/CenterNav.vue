@@ -53,7 +53,7 @@ export default {
     width: 100%;
     height: 30px;
     line-height: 30px;
-    background-color: rgba(255, 144, 0, 0.53);
+    background-color: #f5f5f5;
     /*position: fixed;*/
     /*top: 0px;*/
     z-index: 10;
@@ -71,14 +71,43 @@ export default {
   .type_li a:hover{
     color: red;
   }
-  @media only screen and (max-width: 992px) {
+  @media only screen and (min-width: 380px) and (max-width: 768px){
+    .type_li {
+      width: 100%;
+      margin-left: 0;
+    }
     .type_li>li{
       margin-left: 0!important;
     }
   }
-  @media only screen and (max-width: 1200px) {
+  @media only screen and (min-width: 768px) {
     .type_li>li{
       margin-left: 0!important;
     }
+    .type_li {
+      width: 100%;
+      margin-left: 0;
+    }
+
   }
+  @media only screen and (min-width: 992px) {
+    .type_li>li{
+      margin-left: 0!important;
+    }
+    .type_li{
+      width: 804px!important;
+      margin-left: 141px;
+    }
+  }
+  @media only screen and (min-width: 1200px) {
+    .type_li>li{
+      margin-left: 0!important;
+    }
+    .type_li{
+      width: 804px!important;
+      margin-left: 141px;
+    }
+  }
+
+
 </style>
