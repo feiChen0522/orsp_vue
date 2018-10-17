@@ -21,15 +21,16 @@ export default {
   name: 'Goods',
   data () {
     return {
-      show: true
-    }
-
+      show: true,
       img_list:[
         'goods1.jpg','goods2.jpg','goods3.jpg'
       ]
       ,goods:[]
     }
-  },
+
+
+    },
+
   mounted:function () {
     let vm=this;
     axios.post('http://127.0.0.1:8000/resource/getgoods/',

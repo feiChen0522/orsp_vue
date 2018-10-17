@@ -34,6 +34,7 @@ export default new Router({
       name: 'Swing',
       component: Swing
     },
+    {
       path: '/detailpage',
       name: 'DetailPage',
       component: DetailPage
