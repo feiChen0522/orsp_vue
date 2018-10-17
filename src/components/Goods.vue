@@ -3,8 +3,8 @@
 
     <div class="container ">
       <div class="row goods">
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" v-for="(i,index) of goods">
-          <div><img :src="i.img_href" alt=""></div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 " v-for="(i,index) of goods">
+          <div><img :src="i.img_href" alt="" class="imgs"></div>
 
           <p href=""><a href=""  v-text="i.price"></a> <a href="" v-text="i.sales_num"></a></p>
           <p  class="title"><a href="" v-text="i.title" style="color: black!important;"></a></p>
@@ -58,6 +58,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+  @import "../../static/css/goods.css";
+  @import "../../static/css/clear.css";
 h1, h2 {
   font-weight: normal;
 }
@@ -83,6 +85,6 @@ a {
   transform: translateX(10px);
   opacity: 0;
 }
-@import "../../static/css/goods.css";
-@import "../../static/css/clear.css";
+
+
 </style>

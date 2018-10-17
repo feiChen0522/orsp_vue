@@ -12,6 +12,7 @@ import Header from './components/Header'
 import Goods from './components/Goods'
 import Footer from './components/Footer'
 import SearchBox from './components/SearchBox'
+import Classify from './components/search/Classify'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
 Vue.config.productionTip = false;
@@ -27,6 +28,7 @@ Vue.component('swing-div', Swing);
 Vue.component('goods-div', Goods);
 Vue.component('search-div', SearchBox);
 Vue.component('footer-div', Footer);
+Vue.component('classify-div', Classify);
 new Vue({
   el: '#app',
   router,
