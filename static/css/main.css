@@ -10,9 +10,11 @@
 .type-container>div{
   height: 100%;
   width: 805px;
+  margin-left: 141px;
 }
 .type-container .type{
-  border: 1px solid #ffaea9;
+  border: 1px solid #ffb0b0;
+  border-right: none;
   height: 100%;
 }
 .type-container .detail-type{

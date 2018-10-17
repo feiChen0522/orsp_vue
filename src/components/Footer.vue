@@ -2,7 +2,7 @@
   <div class="center-div">
     <p>- - END - -</p>
     <div class="row">
-      <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
         ORSP全球最大的在线资源交换网站
       </div>
       <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">

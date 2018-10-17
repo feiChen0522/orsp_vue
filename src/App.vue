@@ -2,7 +2,7 @@
   <div id="app" class="container-fluid">
     <header-top></header-top>
     <center-nav></center-nav>
-    <main-nav></main-nav>
+    <main-nav class="div-center"></main-nav>
     <goods-div></goods-div>
     <footer-div></footer-div>
     <!--<router-view></router-view>-->
@@ -27,4 +27,6 @@ export default {
   padding-left: 0;
   padding-right: 0;
 }
+  .div-center{
+  }
 </style>
