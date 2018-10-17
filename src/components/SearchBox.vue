@@ -1,7 +1,7 @@
 <template>
   <div class="search-box">
     <div>
-      <a href="####"><div class="logo"></div></a>
+      <a href="#"><div class="logo"></div></a>
     </div>
     <div class="box">
       <div class="box-text" >
