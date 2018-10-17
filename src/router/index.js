@@ -13,6 +13,7 @@ import Car1 from '@/components/Car1'
 import Car2 from '@/components/Car2'
 import Car3 from '@/components/Car3'
 import Index from '@/components/Index'
+import Upload from '@/components/download/upload'
 // import Search from '@/components/Search'
 import SearchMain from '@/components/search/SearchMain'
 
@@ -78,6 +79,11 @@ export default new Router({
       path: '/car3',
       name: 'Car3',
       component: Car3
+    },
+    {
+      path: '/upload',
+      name: 'Upload',
+      component: Upload
     }
   ]
 })

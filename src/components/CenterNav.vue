@@ -53,7 +53,7 @@ export default {
     width: 100%;
     height: 30px;
     line-height: 30px;
-    background-color: rgba(255, 144, 0, 0.53);
+    background-color: #f5f5f5;
     /*position: fixed;*/
     /*top: 0px;*/
     z-index: 10;
