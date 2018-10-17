@@ -11,6 +11,7 @@ import AddAddress from '@/components/AddAddress'
 import Car1 from '@/components/Car1'
 import Car2 from '@/components/Car2'
 import Car3 from '@/components/Car3'
+import Index from '@/components/Index'
 
 Vue.use(Router)
 
@@ -21,13 +22,13 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      name: 'Index',
+      component: Index,
     },
     {
       path: '/login',
       name: 'Login',
-      component: HelloWorld
+      component: Login
     },
     {
       path: '/Regist',

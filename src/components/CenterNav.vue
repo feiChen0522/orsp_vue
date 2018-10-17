@@ -90,14 +90,22 @@ export default {
     }
 
   }
-  @media only screen and (max-width: 992px) {
+  @media only screen and (min-width: 992px) {
     .type_li>li{
       margin-left: 0!important;
     }
+    .type_li{
+      width: 804px!important;
+      margin-left: 141px;
+    }
   }
-  @media only screen and (max-width: 1200px) {
+  @media only screen and (min-width: 1200px) {
     .type_li>li{
       margin-left: 0!important;
+    }
+    .type_li{
+      width: 804px!important;
+      margin-left: 141px;
     }
   }
 
