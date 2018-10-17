@@ -1,7 +1,7 @@
 <template>
   <div class="search-box">
     <div>
-      <a href="####"><div class="logo"></div></a>
+      <a href="#"><div class="logo"></div></a>
     </div>
     <div class="box">
       <div class="box-text" >
@@ -61,17 +61,16 @@ export default {
   .search-box .box .box-text .btn-search{
     float: right;
     width: 50px;
-    color: gray;
     line-height: 36px;
     text-align: center;
     height: 35px;
     position: relative;
     top: -1px;
-    cursor: pointer;
-  }
-  .search-box .box .box-text .btn-search:focus, .search-box .box .box-text .btn-search:hover{
     background-color: #ff6a19;
     color: #ffffff;
+  }
+  .search-box .box .box-text .btn-search:focus, .search-box .box .box-text .btn-search:hover{
+    cursor: pointer;
   }
   .search-box .box .box-text .btn-search span{
     position: relative;
