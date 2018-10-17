@@ -12,6 +12,8 @@ import AddAddress from '@/components/AddAddress'
 import Car1 from '@/components/Car1'
 import Car2 from '@/components/Car2'
 import Car3 from '@/components/Car3'
+import Release from '@/components/Release'
+import Agreement from '@/components/Agreement'
 import Index from '@/components/Index'
 import Upload from '@/components/download/upload'
 // import Search from '@/components/Search'
@@ -84,6 +86,16 @@ export default new Router({
       path: '/upload',
       name: 'Upload',
       component: Upload
+    },
+    {
+      path: '/',
+      name: 'Release',
+      component: Release
+    },
+    {
+      path: '/agreement',
+      name: 'Agreement',
+      component: Agreement
     }
   ]
 })
