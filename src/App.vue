@@ -4,8 +4,8 @@
     <center-nav></center-nav>
     <main-nav></main-nav>
     <goods-div></goods-div>
-    <goods-div></goods-div>
-    <router-view></router-view>
+    <footer-div></footer-div>
+    <!--<router-view></router-view>-->
   </div>
 </template>
 

@@ -11,6 +11,7 @@ import Main from './components/Main'
 import Header from './components/Header'
 import Swing from './components/Swing'
 import Goods from './components/Goods'
+import Footer from './components/Footer'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 Vue.config.productionTip = false;
 
@@ -23,6 +24,7 @@ Vue.component('main-nav',Main);
 Vue.component('header-top',Header);
 Vue.component('swing-div',Swing);
 Vue.component('goods-div',Goods);
+Vue.component('footer-div',Footer);
 new Vue({
   el: '#app',
   router,
