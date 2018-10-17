@@ -1,3 +1,31 @@
+/*@media only screen and (min-width: 380px) and (max-width: 768px){*/
+  /*.classify,.container{*/
+    /*width: 100%!important;*/
+  /*}*/
+/*}*/
+@media only screen and (min-width: 768px) {
+
+  .classify{
+    width: 100%!important;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .classify{
+    width: 77%!important;
+    margin-left: 11%;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .classify{
+    width: 86%!important;
+    margin-left: 3%;
+  }
+}
+.container{
+  margin: 0 auto;
+}
+.classify{
+}
 .classify>h1{
   text-align: left;
   padding-left: 20px;
