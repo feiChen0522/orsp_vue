@@ -11,6 +11,8 @@ import AddAddress from '@/components/AddAddress'
 import Car1 from '@/components/Car1'
 import Car2 from '@/components/Car2'
 import Car3 from '@/components/Car3'
+import Release from '@/components/Release'
+import Agreement from '@/components/Agreement'
 
 Vue.use(Router)
 
@@ -20,7 +22,7 @@ export default new Router({
   redirect:'/',
   routes: [
     {
-      path: '/',
+      path: '/s2',
       name: 'HelloWorld',
       component: HelloWorld
     },
@@ -73,6 +75,16 @@ export default new Router({
       path: '/car3',
       name: 'Car3',
       component: Car3
+    },
+    {
+      path: '/',
+      name: 'Release',
+      component: Release
+    },
+    {
+      path: '/agreement',
+      name: 'Agreement',
+      component: Agreement
     }
   ]
 })
