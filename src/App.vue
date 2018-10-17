@@ -1,12 +1,13 @@
 <template>
   <div id="app" class="container-fluid">
     <header-top></header-top>
+    <search-div></search-div>
     <center-nav></center-nav>
     <main-nav class="div-center"></main-nav>
     <goods-div></goods-div>
     <footer-div></footer-div>
     <!--<router-view></router-view>-->
-    <footer-div></footer-div>
+
   </div>
 </template>
 
