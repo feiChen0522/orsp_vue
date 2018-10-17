@@ -71,6 +71,25 @@ export default {
   .type_li a:hover{
     color: red;
   }
+  @media only screen and (min-width: 380px) and (max-width: 768px){
+    .type_li {
+      width: 100%;
+      margin-left: 0;
+    }
+    .type_li>li{
+      margin-left: 0!important;
+    }
+  }
+  @media only screen and (min-width: 768px) {
+    .type_li>li{
+      margin-left: 0!important;
+    }
+    .type_li {
+      width: 100%;
+      margin-left: 0;
+    }
+
+  }
   @media only screen and (max-width: 992px) {
     .type_li>li{
       margin-left: 0!important;
@@ -81,4 +100,6 @@ export default {
       margin-left: 0!important;
     }
   }
+
+
 </style>

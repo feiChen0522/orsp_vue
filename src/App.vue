@@ -1,5 +1,6 @@
 <template>
   <div id="app" class="container-fluid">
+    <classify-div></classify-div>
     <header-top></header-top>
     <search-div style="margin-top: 20px"></search-div>
     <center-nav style="margin-top: 20px"></center-nav>
