@@ -15,6 +15,7 @@
 .type-container .type{
   border: 1px solid #ffb0b0;
   border-right: none;
+  border-top: none;
   height: 100%;
 }
 .type-container .detail-type{

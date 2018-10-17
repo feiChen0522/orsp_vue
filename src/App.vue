@@ -1,10 +1,10 @@
 <template>
   <div id="app" class="container-fluid">
     <header-top></header-top>
-    <search-div></search-div>
-    <center-nav></center-nav>
+    <search-div style="margin-top: 20px"></search-div>
+    <center-nav style="margin-top: 20px"></center-nav>
     <main-nav class="div-center"></main-nav>
-    <goods-div></goods-div>
+    <goods-div style="margin-top: 20px"></goods-div>
     <footer-div></footer-div>
     <!--<router-view></router-view>-->
 
