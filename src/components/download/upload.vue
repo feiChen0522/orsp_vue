@@ -11,27 +11,27 @@
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+              <h4 class="modal-title" id="myModalLabel">上传文件</h4>
             </div>
             <div class="modal-body">
               <div class="upload-container">
 
-                <form>
+                <form @submit.prevent="submit" id="aaa">
                   <div class="input-container col-lg-12">
-                    <input type="file" id="file" name="file">
+                    <input type="file" id="file" name="file" @change="fileChange">
                   </div>
                   <div class="col-lg-12">
                     你可以上传小于200M的压缩包
                   </div>
-                  <div class="col-lg-12">
-                    <label for="sel_primary">资源类型：</label>
-                    <select name="sel_primary" id="sel_primary0">
-                      <option value>请选择</option>
-                      <option value="1">移动开发</option>
-                      <option value="2">开发技术 </option>
-                      <option value="3">课程资源 </option>
-                    </select>
-                  </div>
+                  <!--<div class="col-lg-12">-->
+                    <!--<label for="sel_primary">资源类型：</label>-->
+                    <!--<select name="sel_primary" id="sel_primary0">-->
+                      <!--<option value>请选择</option>-->
+                      <!--<option value="1">移动开发</option>-->
+                      <!--<option value="2">开发技术 </option>-->
+                      <!--<option value="3">课程资源 </option>-->
+                    <!--</select>-->
+                  <!--</div>-->
                   <div class="col-lg-12">
                     <label for="sel_primary">所属分类：</label>
                     <select name="sel_primary" id="sel_primary1">
@@ -59,18 +59,15 @@
                   </div>
 
                   <div class="col-lg-12">
-                    <a href="">同意ORSP资源共享规则</a>
+                    <router-link to="/"  data-toggle="modal" data-target="#myModal" >同意ORSP资源共享规则</router-link>
                   </div>
                   <div class="r-agree-btn col-lg-12">
-                    <input type="button" value="上传">
+                    <input type="submit" value="上传">
                   </div>
                 </form>
               </div>
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
+
           </div>
         </div>
       </div>
@@ -85,7 +82,21 @@ export default {
   name: 'Upload',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      file:'',
+      resourceType:'',
+      classify:'',
+      describe:'',
+      need_integral:'',
+      title:''
+    }
+  },
+  methods:{
+    submit:function (e) {
+
+    },
+    fileChange:function (e) {
+      this.file = e.target.files[0];
+      console.log(this.file);
     }
   }
 }
