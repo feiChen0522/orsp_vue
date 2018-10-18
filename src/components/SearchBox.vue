@@ -20,7 +20,7 @@ export default {
   name: 'SearchBox',
   data () {
     return {
-        inputText:""
+        inputText:"秋上新"
     }
   },
   methods:{

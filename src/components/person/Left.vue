@@ -23,7 +23,7 @@
               </li>
               <!--<li>我的评价</li>-->
               <li>
-                <router-link to="">我的地址</router-link>
+                <router-link to="/address">我的地址</router-link>
               </li>
             </ul>
           </transition>

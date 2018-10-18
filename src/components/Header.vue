@@ -33,7 +33,7 @@
           </ul>
           <ul class="nav navbar-nav navbar-right" style="margin-top: 0;">
             <li>
-              <router-link to="/">
+              <router-link to="/personcenter">
                 <p class="p1">我的天下</p>
               </router-link>
             </li>

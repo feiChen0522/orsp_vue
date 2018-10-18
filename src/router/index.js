@@ -14,6 +14,7 @@ import Release from '@/components/Release'
 import Agreement from '@/components/Agreement'
 import Index from '@/components/Index'
 import Upload from '@/components/download/upload'
+import Center from '@/components/person/Center'
 // import Search from '@/components/Search'
 import SearchMain from '@/components/search/SearchMain'
 import MyChange from '@/components/MyChange'
@@ -67,11 +68,7 @@ export default new Router({
       name: 'SearchMain',
       component: SearchMain
     },
-    {
-      path: '/address',
-      name: 'Address',
-      component: Address
-    },
+
     {
       path: '/addaddress',
       name: 'AddAddress',
@@ -127,6 +124,19 @@ export default new Router({
       path: '/mychange',
       name: 'MyChange',
       component: MyChange
+    },
+  //  个人中心
+    {
+      path:'/personcenter',
+      name:'Center',
+      component:Center,
+      children:[
+        {
+          path: '/address',
+          name: 'Address',
+          component: Address
+        },
+      ]
     }
   ]
 })
