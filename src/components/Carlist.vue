@@ -1,5 +1,5 @@
 <template>
-  <div class="container a1">
+  <div class="container">
     <div class="row">
       <div class="col-md-11 table-responsive">
         <table class="table">
@@ -15,7 +15,7 @@
           </thead>
           <tbody>
           <tr>
-            <td class=""><a href=""><img src=${good.img} ></a> <strong><a href="">${good.title}</a></strong>
+            <td class=""><a href=""><img src=${good.img}></a> <strong><a href="">${good.title}</a></strong>
             </td>
             <td class="col2"><p>${good.color}</p>
               <p>${good.size}</p></td>
@@ -34,21 +34,12 @@
 </template>
 
 <script>
-    export default {
-        name: "Carlist"
-    }
+  export default {
+    name: "Carlist"
+  }
 </script>
 
 <style scoped>
-  .mycart {
-    overflow: auto;
-    width: 990px;
-    margin-top: 10px;
-    margin-left: auto;
-    margin-right: auto;
-    overflow: auto
-  }
-
   table {
     width: 100%;
     border: 1px solid #E7E3E7;
@@ -63,17 +54,18 @@
     background: url("../assets/images/sort_bg.png");
   }
 
-  th,td {
+  th, td {
     text-align: center;
   }
 
-  .mycart tbody td {
+  tbody td {
     border-bottom: 1px solid #E7E3E7;
   }
 
-  .mycart td {
+  td {
     text-align: center;
   }
+
   .col1 {
     width: 40%;
   }
@@ -85,6 +77,7 @@
   .col3 {
     width: 10%;
   }
+
   .mycart tbody img {
     width: 80px;
     height: 80px;
