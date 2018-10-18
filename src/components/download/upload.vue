@@ -7,11 +7,11 @@
        </button>
 
        <!-- Modal -->
-       <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+       <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
          <div class="modal-dialog" role="document">
            <div class="modal-content">
              <div class="modal-header">
-               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" style="margin-bottom: 0!important;">&times;</span></button>
                <h4 class="modal-title" id="myModalLabel">上传文件</h4>
              </div>
              <div class="modal-body">
@@ -75,7 +75,7 @@
 
      </div>
 
-      <agreement-div v-else></agreement-div>
+      <agreement-div v-else @agreement-display="showFile=!showFile"></agreement-div>
     </div>
 
 
@@ -93,7 +93,7 @@ export default {
       describe:'',
       need_integral:'',
       title:'',
-      showFile:true
+      showFile:true,
     }
   },
   methods:{
@@ -103,12 +103,16 @@ export default {
     fileChange:function (e) {
       this.file = e.target.files[0];
       console.log(this.file);
-    }
+    },
+
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-@import "../../../static/css/upload.css";f
+@import "../../../static/css/upload.css";
+button{
+  margin-bottom: 0!important;
+}
 </style>

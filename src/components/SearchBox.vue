@@ -6,8 +6,8 @@
       </div>
       <div class="box">
         <div class="box-text" >
-          <input type="text" placeholder="请输入要搜索的词" maxlength="30" class="input-txt">
-          <div class="btn-search glyphicon glyphicon-search"><span>搜索</span></div>
+          <input type="text" placeholder="请输入要搜索的词" maxlength="30" class="input-txt" v-model="inputText">
+          <div  class="btn-search glyphicon glyphicon-search" @click="searchGoods"><span>搜索</span></div>
         </div>
       </div>
     </div>
@@ -20,8 +20,41 @@ export default {
   name: 'SearchBox',
   data () {
     return {
-
+        inputText:""
     }
+  },
+  methods:{
+    searchGoods:function (e) {
+      console.log(this.inputText);
+      axios.get('http://127.0.0.1:8000/resource/searchGoods/?good='+this.inputText+'&index='+0
+        ,{
+          // headers: {
+          //   'Content-Type': 'application/json',
+          // }
+        })
+        .then(function (res) {
+          console.log(res.data)
+
+          this.$router.push({
+            name:"SearchMain",
+            params:{
+              good:res.data
+            }
+          });
+          //控制台打印请求成功时返回的数据
+          //bind(this)可以不用
+        }.bind(this))
+        .catch(function (err) {
+          if (err.response) {
+            console.log(err.response)
+            //控制台打印错误返回的内容
+          }
+          //bind(this)可以不用
+        }.bind(this))
+    }
+  },
+  mounted:function () {
+    this.$route.params.code
   }
 }
 </script>

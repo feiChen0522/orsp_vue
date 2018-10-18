@@ -2,7 +2,7 @@
   <div class="search-main">
     <search-div style="margin-top: 20px"></search-div>
     <classify-div style="margin-top: 20px"></classify-div>
-    <goods-div style="margin-top: 20px"></goods-div>
+    <goods-div style="margin-top: 20px" v-bind:goods="goods"></goods-div>
     <footer-div></footer-div>
   </div>
 </template>
@@ -12,8 +12,12 @@ export default {
   name: 'SearchMain',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      goods:[],
     }
+  },
+  mounted:function () {
+    console.log(this.$route.params.good);
+    this.goods=this.$route.params.good
   }
 }
 </script>

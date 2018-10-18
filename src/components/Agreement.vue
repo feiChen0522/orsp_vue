@@ -1,5 +1,5 @@
 <template>
-  <div class="container" style="margin-top: -80px">
+  <div class="container" style="margin-top: -80px" v-if="displayPro">
     <div class="row">
       <div class="col-md-10" style="margin-left: 100px">
         <h3 class="agreement-title">《ORSP用户协议》</h3>
@@ -59,7 +59,7 @@
           3．4　用户须对自己在使用ORSP服务过程中的行为承担法律责任。用户承担法律责任的形式包括但不限于：对受到侵害者进行赔偿，以及在ORSP首先承担了因用户行为导致的行政处罚或侵权损害赔偿责任后，用户应给予ORSP等额的赔偿。<br>
         </p>
         <div class="col-md-12">
-          <router-link to="/upload" @click.native="flushCom"><button>我已阅读</button></router-link>
+          <button @click="back">我已阅读</button>
         </div>
       </div>
     </div>
@@ -68,15 +68,20 @@
 <script>
   export default {
     name: 'agreement',
+    data(){
+      return {
+        displayPro:true
+      }
+
+    },
     methods:{
-      flushCom:function(){
+      back:function(){
 
         //router是路由实例,例如:var router = new Router({})
 
         //router.go(n)是路由的一个方法，意思是在history记录中前进或者后退多少步，0就表示还是当前，类似window.history.go(n)
 
-        this.$router.go(0);
-
+        this.$emit('agreement-display','display')
       }
     }
   }
