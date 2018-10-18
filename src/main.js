@@ -15,6 +15,8 @@ import Classify from './components/search/Classify'
 import Index from './components/Index'
 import DetailPage from './components/DetailPage'
 import agreement from './components/Agreement'
+import Swing from './components/Swing'
+import Paging2 from './components/Paging2'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
 Vue.config.productionTip = false;
@@ -36,6 +38,8 @@ Vue.component('classify-div', Classify);
 Vue.component('car-list', Carlist);
 Vue.component('detail-div', DetailPage);
 Vue.component('agreement-div', agreement);
+Vue.component('swing-div', Swing);
+Vue.component('paging2-div', Paging2);
 new Vue({
   el: '#app',
   router,

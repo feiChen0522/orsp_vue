@@ -6,8 +6,8 @@
       </div>
       <div class="box">
         <div class="box-text" >
-          <input type="text" placeholder="请输入要搜索的词" maxlength="30" class="input-txt" v-model="inputText">
-          <div  class="btn-search glyphicon glyphicon-search" @click="searchGoods"><span>搜索</span></div>
+          <input type="text" placeholder="请输入要搜索的词" maxlength="30" class="input-txt" v-model="inputText" @keyup.enter="searchGoods">
+          <div  class="btn-search glyphicon glyphicon-search" @click="searchGoods" ><span>搜索</span></div>
         </div>
       </div>
     </div>

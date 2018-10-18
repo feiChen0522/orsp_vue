@@ -3,6 +3,7 @@
     <search-div style="margin-top: 20px"></search-div>
     <classify-div style="margin-top: 20px"></classify-div>
     <goods-div style="margin-top: 20px" v-bind:goods="goods"></goods-div>
+    <paging2-div></paging2-div>
     <footer-div></footer-div>
   </div>
 </template>
