@@ -210,7 +210,7 @@
     float: left;
     width:100px;
     line-height:100px;
-    background-image:url("../assets/icon/addpicture.jpg") ;
+    /*background-image:url("assets/icon/addpicture.jpg") ;*/
     background-repeat: no-repeat;
     background-size: 100px 100px;
     border-radius:10px;

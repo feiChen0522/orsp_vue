@@ -14,6 +14,7 @@ import SearchBox from './components/SearchBox'
 import Classify from './components/search/Classify'
 import Index from './components/Index'
 import DetailPage from './components/DetailPage'
+import agreement from './components/Agreement'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
 Vue.config.productionTip = false;
@@ -34,6 +35,7 @@ Vue.component('footer-div', Footer);
 Vue.component('classify-div', Classify);
 Vue.component('car-list', Carlist);
 Vue.component('detail-div', DetailPage);
+Vue.component('agreement-div', agreement);
 new Vue({
   el: '#app',
   router,

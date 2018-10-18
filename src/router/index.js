@@ -17,6 +17,8 @@ import Upload from '@/components/download/upload'
 // import Search from '@/components/Search'
 import SearchMain from '@/components/search/SearchMain'
 import MyChange from '@/components/MyChange'
+import PersonLeft from '@/components/person/Left'
+import test from '@/components/test/test'
 
 Vue.use(Router)
 
@@ -108,6 +110,18 @@ export default new Router({
       path: '/agreement',
       name: 'Agreement',
       component: Agreement
+    },
+
+  //  个人中心左侧
+    {
+      path: '/personleft',
+      name: 'PersonLeft',
+      component: PersonLeft
+    },
+    {
+      path: '/test',
+      name: 'test',
+      component: test
     },
     {
       path: '/mychange',
