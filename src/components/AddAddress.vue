@@ -60,7 +60,7 @@
 </template>
 
 <script>
-  import {province, city} from '../../static/css/vue-area.js'
+  // import {province, city} from '../../static/css/vue-area.js'
 export default {
   name: 'AddAddress',
   data() {

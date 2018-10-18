@@ -1,0 +1,72 @@
+.upload-container{
+  height: 600px;
+}
+
+
+
+@media only screen and (min-width: 380px) and (max-width: 768px){
+  .upload-container{
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .upload-container{
+    width: 100%;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .upload-container{
+    width: 600px;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .upload-container{
+    width: 600px;
+  }
+}
+.upload-container>form{
+  padding-top: 40px;
+}
+.upload-container>form>div{
+  text-align: left;
+  padding-left: 30px;
+  margin-bottom: 20px;
+}
+.upload-container>form input,select,textarea{
+  margin-left: 20px;
+}
+.resource-describe>label{
+  position: relative;
+  top: -60px;
+}
+.resource-describe>textarea{
+  resize: none;
+  margin-left: 28px;
+}
+.input-container{
+  width: 40px;
+  height:40px;
+  background-image: url("../images/upload.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  padding-left: 0!important;
+  cursor: pointer;
+  z-index: 2;
+  margin-left: 25px;
+}
+.input-container:hover{
+  cursor: pointer;
+
+}
+.input-container>input{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  opacity: 0;
+  margin-left: 0!important;
+  left: 0;
+  cursor: pointer;
+
+}

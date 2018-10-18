@@ -1,12 +1,14 @@
 <template>
-  <div class="search-box">
-    <div class="con-logo">
-      <a href="#"><div class="logo"></div></a>
-    </div>
-    <div class="box">
-      <div class="box-text" >
-        <input type="text" placeholder="请输入要搜索的词" maxlength="30" class="input-txt">
-        <div class="btn-search glyphicon glyphicon-search"><span>搜索</span></div>
+  <div class="container">
+    <div class="search-box">
+      <div class="con-logo">
+        <a href="#"><div class="logo"></div></a>
+      </div>
+      <div class="box">
+        <div class="box-text" >
+          <input type="text" placeholder="请输入要搜索的词" maxlength="30" class="input-txt">
+          <div class="btn-search glyphicon glyphicon-search"><span>搜索</span></div>
+        </div>
       </div>
     </div>
   </div>
@@ -26,6 +28,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
   @media only screen and (min-width: 581px){
     .search-box{
       width: 100%;
@@ -78,6 +81,7 @@ export default {
       top: -1px;
       background-color: #ff6a19;
       color: #ffffff;
+      left: 2px;
     }
     .search-box .box .box-text .btn-search:focus, .search-box .box .box-text .btn-search:hover{
       cursor: pointer;
@@ -85,6 +89,7 @@ export default {
     .search-box .box .box-text .btn-search span{
       position: relative;
       top: -2px;
+      left: 1px;
     }
   }
   @media only screen and (min-width: 240px) and (max-width: 580px){

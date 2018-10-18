@@ -9,20 +9,54 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <p class="navbar-text"><a class="navbar-brand navbar-link" href="#" style="margin-left: 0; padding: 0 0 0 5px; height: 20px;">ORSP</a></p>
+          <p class="navbar-text">
+            <router-link to="/">
+        <p class="navbar-brand navbar-link "  style="margin-left: 0; padding: 0 0 0 5px; height: 10px;">ORSP</p>
+
+        </router-link>
+        </p>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav" style="margin-bottom: 0">
-            <li><a href="#">您好，请登录 <span class="sr-only">(current)</span></a></li>
-            <li><a href="#">注册</a></li>
+           <li>
+             <!--<a >您好，请登录<span class="sr-only">(current)</span></a>-->
+             <router-link to="/Login">
+               <p class="p1">您好，请登录</p>
+             </router-link>
+           </li>
+            <li>
+              <router-link to="/Regist">
+                <p class="p1">注册</p>
+              </router-link>
+            </li>
           </ul>
           <ul class="nav navbar-nav navbar-right" style="margin-top: 0;">
-            <li><a href="#">我的天下</a></li>
-            <li><a href="#">换物车</a></li>
-            <li><a href="#">我的收藏</a></li>
-            <li><a href="#">易物指南</a></li>
-            <li><a href="#">加入诚信商</a></li>
+            <li>
+              <router-link to="/">
+                <p class="p1">我的天下</p>
+              </router-link>
+            </li>
+            <li>
+              <router-link to="/car1">
+                <p class="p1">换物车</p>
+              </router-link>
+            </li>
+            <li>
+              <router-link to="/">
+                <p class="p1">我的收藏</p>
+              </router-link>
+            </li>
+            <li>
+              <router-link to="/">
+                <p class="p1">易物指南</p>
+              </router-link>
+            </li>
+            <li>
+              <router-link to="/">
+                <p class="p1">加入诚信商</p>
+              </router-link>
+            </li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
@@ -52,5 +86,9 @@ export default {
   .navbar-text {
     margin-top: 5px;
     margin-bottom: 5px;
+  }
+  .p1{
+    height: 10px;
+    font-size: 12px!important;
   }
 </style>
