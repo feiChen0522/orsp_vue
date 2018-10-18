@@ -59,7 +59,7 @@
           3．4　用户须对自己在使用ORSP服务过程中的行为承担法律责任。用户承担法律责任的形式包括但不限于：对受到侵害者进行赔偿，以及在ORSP首先承担了因用户行为导致的行政处罚或侵权损害赔偿责任后，用户应给予ORSP等额的赔偿。<br>
         </p>
         <div class="col-md-12">
-          <router-link to="/"><button>我已阅读</button></router-link>
+          <button @click="goBack">我已阅读</button>
         </div>
       </div>
     </div>
@@ -67,7 +67,13 @@
 </template>
 <script>
   export default {
-    name: 'agreement'
+    name: 'agreement',
+    methods:{
+      goBack:function()
+      {
+        window.history.back()
+      }
+    }
   }
 </script>
 <style>
