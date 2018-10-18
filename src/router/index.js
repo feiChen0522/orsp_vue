@@ -1,9 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
 import Login from '@/components/Login'
 import Regist from '@/components/Regist'
-import Swing from '@/components/Swing'
 import DetailPage from '@/components/DetailPage'
 import Detail from '@/components/Detail'
 import Order from '@/components/Order'
@@ -18,6 +16,7 @@ import Index from '@/components/Index'
 import Upload from '@/components/download/upload'
 // import Search from '@/components/Search'
 import SearchMain from '@/components/search/SearchMain'
+import MyChange from '@/components/MyChange'
 import PersonLeft from '@/components/person/Left'
 import test from '@/components/test/test'
 
@@ -27,6 +26,15 @@ Vue.use(Router)
 export default new Router({
   mode: 'history',
   redirect:'/',
+  scrollBehavior(to, from, savedPosition) {
+
+    if (savedPosition) {
+      //真正起作用的是这里,else里面的if删除了，免得误导
+      return savedPosition
+    } else {
+      return { x: 0, y: to.meta.savedPosition || 0 }
+    }
+  },
   routes: [
     {
       path: '/',
@@ -90,9 +98,13 @@ export default new Router({
       component: Upload
     },
     {
-      path: '/',
+      path: '/release',
       name: 'Release',
-      component: Release
+      component: Release,
+      meta: {
+        title: 'Release',
+        keepAlive:true
+      },
     },
     {
       path: '/agreement',
@@ -110,6 +122,11 @@ export default new Router({
       path: '/test',
       name: 'test',
       component: test
+    },
+    {
+      path: '/mychange',
+      name: 'MyChange',
+      component: MyChange
     }
   ]
 })

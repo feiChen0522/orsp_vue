@@ -29,13 +29,12 @@
             <ul>
               <li>8成新华为 P10 Plus全面屏4G手机</li>
               <li>非全新</li>
-              <li>手机
-              <li>
+              <li>电脑数码</li>
+              <li>手机</li>
               <li>华为:HuaWei</li>
               <li>河北衡水 武邑县</li>
               <li class="e1">￥2999</li>
               <li>￥1299</li>
-              <li>电脑外设</li>
               <li>1件</li>
             </ul>
           </div>
