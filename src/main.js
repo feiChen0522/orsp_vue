@@ -17,6 +17,9 @@ import DetailPage from './components/DetailPage'
 import ChangeName from './components/ChangeName'
 import ChangePassword from './components/ChangePassword'
 import ChangeTelephone from './components/ChangeTelephone'
+import agreement from './components/Agreement'
+import Swing from './components/Swing'
+import Paging2 from './components/Paging2'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
 Vue.config.productionTip = false;
@@ -40,6 +43,9 @@ Vue.component('detail-div', DetailPage);
 Vue.component('change-name', ChangeName);
 Vue.component('change-password',ChangePassword);
 Vue.component('change-telephone',ChangeTelephone);
+Vue.component('agreement-div', agreement);
+Vue.component('swing-div', Swing);
+Vue.component('paging2-div', Paging2);
 new Vue({
   el: '#app',
   router,

@@ -1,7 +1,7 @@
 <template>
   <div class="index-container">
 
-    <search-div style="margin-top: 20px"></search-div>
+    <search-div @searchData="getGoodData" style="margin-top: 20px"></search-div>
     <center-nav style="margin-top: 20px"></center-nav>
     <main-nav class="div-center"></main-nav>
     <goods-div style="margin-top: 20px"></goods-div>
@@ -15,6 +15,11 @@ export default {
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
+    }
+  },
+  methods:{
+    getGoodData:function (t) {
+      console.log(t);
     }
   }
 }

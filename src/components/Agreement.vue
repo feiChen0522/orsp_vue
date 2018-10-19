@@ -1,5 +1,5 @@
 <template>
-  <div class="container" style="margin-top: -80px">
+  <div class="container" style="margin-top: -80px" v-if="displayPro">
     <div class="row">
       <div class="col-md-10" style="margin-left: 100px">
         <h3 class="agreement-title">《ORSP用户协议》</h3>
@@ -68,12 +68,20 @@
 <script>
   export default {
     name: 'agreement',
+    data(){
+      return {
+        displayPro:true
+      }
+
+    },
     methods:{
       goBack:function()
       {
         window.history.back()
       }
     }
+
+
   }
 </script>
 <style>

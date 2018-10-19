@@ -7,10 +7,11 @@
           <div><img :src="i.img_href" alt="" class="imgs"></div>
           <p href=""><a href=""  v-text="i.price"></a> <a href="" v-text="i.sales_num"></a></p>
           <p  class="title"><router-link to="/detailpage" href="" v-text="i.title" style="color: black!important;"></router-link></p>
-          <a href=""> <span class="glyphicon glyphicon-th-list"></span>{{i.shop}}</a>
+          <a style="width: 118px;display:inline-block;text-overflow: ellipsis;height: 20px;overflow: hidden"> <span class="glyphicon glyphicon-th-list"></span>{{i.shop}}</a>
           <a href="" v-text="i.address"></a>
         </div>
       </div>
+
     </div>
   </div>
 </template>
@@ -18,40 +19,41 @@
 <script>
 export default {
   name: 'Goods',
+  props:['goods'],
   data () {
     return {
       show: true,
       img_list:[
         'goods1.jpg','goods2.jpg','goods3.jpg'
       ]
-      ,goods:[]
+      // ,goods:[]
     }
     },
 
 
 
-  mounted:function () {
-    let vm=this;
-    axios.post('http://127.0.0.1:8000/resource/getgoods/',
-      {
-        // headers: {
-        //   'Content-Type': 'application/json',
-        // }
-      })
-      .then(function (res) {
-        console.log(res.data);
-        vm.goods=res.data;
-        //控制台打印请求成功时返回的数据
-        //bind(this)可以不用
-      }.bind(this))
-      .catch(function (err) {
-        if (err.response) {
-          console.log(err.response)
-          //控制台打印错误返回的内容
-        }
-        //bind(this)可以不用
-      }.bind(this))
-  }
+  // mounted:function () {
+  //   let vm=this;
+  //   axios.post('http://127.0.0.1:8000/resource/getgoods/',
+  //     {
+  //       // headers: {
+  //       //   'Content-Type': 'application/json',
+  //       // }
+  //     })
+  //     .then(function (res) {
+  //       console.log(res.data);
+  //       vm.goods=res.data;
+  //       //控制台打印请求成功时返回的数据
+  //       //bind(this)可以不用
+  //     }.bind(this))
+  //     .catch(function (err) {
+  //       if (err.response) {
+  //         console.log(err.response)
+  //         //控制台打印错误返回的内容
+  //       }
+  //       //bind(this)可以不用
+  //     }.bind(this))
+  // }
 }
 </script>
 
