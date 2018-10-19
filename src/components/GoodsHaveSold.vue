@@ -22,6 +22,11 @@
         <div class="current_status">状态</div>
       </div>
       <div class="dongtai_goods">
+        <div class="info">
+          <span>订单号：<i>11003526</i></span>
+          <span>下单时间：<i>1990-01-01 00:00:00</i></span>
+          <span>订单完成时间：<i>2018-10-19 22:22:22</i></span>
+        </div>
         <div class="change_goods">
           <div class="good_img">
             <div class="good_img_div"></div>
@@ -31,7 +36,7 @@
           <div class="good_specification">新科(Shinco) DVP-311A型 DVD播放机</div>
           <div class="good_price">300.00</div>
           <div class="good_number">1</div>
-          <div class="good_current_status">待付款</div>
+          <div class="good_current_status">交易成功</div>
         </div>
       </div>
 
@@ -41,7 +46,7 @@
 
 <script>
 export default {
-  name: 'MyReleaseGoods',
+  name: 'GoodsHaveSold',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
@@ -62,7 +67,7 @@ export default {
     padding: 0 10px;
     background-color: white;
   }
-  .status span{
+  .status>span{
     display: inline-block;
     width: 120px;
     height: 50px;
@@ -113,8 +118,17 @@ export default {
   }
   .dongtai_goods{
     color: #666;
-    min-height: 100px;
+    min-height: 125px;
     background-color: #FFF4E8;
+  }
+  .dongtai_goods .info{
+    width: 100%;
+    line-height: 25px;
+    height: 25px;
+    background-color: #e3e3e3;
+  }
+  .dongtai_goods .info span{
+    margin: 0 10px;
   }
   .change_goods{
     text-align: center;
@@ -125,7 +139,7 @@ export default {
   .change_goods .good_img .good_img_div{
     width: 100px;
     height: 99px;
-    background-image: url("../assets/images/1538788453189.jpg");
+    background-image: url("../assets/1538788453189.jpg");
     background-size: cover;
     position: relative;
     left: 35%;

@@ -23,6 +23,8 @@ import Car3 from '@/components/Car3'
 import SecurityCenter from '@/components/SecurityCenter'
 import ShoppingAddress from '@/components/ShoppingAddress'
 import MyReleaseGoods from '@/components/MyReleaseGoods'
+import GoodsHaveSold from '@/components/GoodsHaveSold'
+
 // import Search from '@/components/Search'
 import SearchMain from '@/components/search/SearchMain'
 import MyChange from '@/components/MyChange'
@@ -184,5 +186,10 @@ export default new Router({
       name: 'MyReleaseGoods',
       component: MyReleaseGoods
     },
+    {
+      path: '/goodshavesold',
+      name: 'GoodsHaveSold',
+      component: GoodsHaveSold
+    }
   ]
 })

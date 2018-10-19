@@ -18,6 +18,7 @@ import ChangeName from './components/ChangeName'
 import ChangePassword from './components/ChangePassword'
 import ChangeTelephone from './components/ChangeTelephone'
 import MyReleaseGoods from './components/MyReleaseGoods'
+import GoodsHaveSold from './components/GoodsHaveSold'
 import agreement from './components/Agreement'
 import Swing from './components/Swing'
 import AddAddress from './components/AddAddress'
@@ -59,6 +60,7 @@ Vue.component('left-div', Left);
 Vue.component('paging-div', Paging);
 Vue.component('addaddress-div', AddAddress);
 Vue.component('MyChange-div', MyChange);
+Vue.component('goods-have-sold',GoodsHaveSold);
 //购物车页面
 Vue.component('Car1-div', Car1);
 
