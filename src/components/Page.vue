@@ -13,6 +13,12 @@
     <span class="show-elevator" v-if="showElevator">
             跳至<input type="text" v-model="goToPage" class="page-input" maxlength="5">页
         </span>
+    <!--<a href="" v-text="total"></a>-->
+    <!--<a href="" v-text="value"></a>-->
+    <!--<a href="" v-text="showNum"></a>-->
+    <!--<a href="" v-text="pageSize"></a>-->
+    <!--<a href="" v-text="showElevator"></a>-->
+
   </div>
 </template>
 <script>

@@ -39,7 +39,7 @@
               <a href="" class="delgoods" @click="goBack">放弃商品</a>
             </div>
             <div class="col-md-1">
-              <a href="#" class="checkout">结 算</a>
+              <router-link tag="a" to="/car2" href="#" class="checkout">结 算</router-link>
             </div>
           </div>
         </div>

@@ -8,7 +8,7 @@ import CenterNav from './components/CenterNav'
 import Main from './components/Main'
 import Header from './components/Header'
 import Goods from './components/Goods'
-import Carlist from './components/Carlist'
+import Carlist from './components/Cart/Carlist'
 import Footer from './components/Footer'
 import SearchBox from './components/SearchBox'
 import Classify from './components/search/Classify'
@@ -17,10 +17,19 @@ import DetailPage from './components/DetailPage'
 import ChangeName from './components/ChangeName'
 import ChangePassword from './components/ChangePassword'
 import ChangeTelephone from './components/ChangeTelephone'
+import MyReleaseGoods from './components/MyReleaseGoods'
+import GoodsHaveSold from './components/GoodsHaveSold'
 import agreement from './components/Agreement'
 import Swing from './components/Swing'
-import Paging2 from './components/Paging2'
+import AddAddress from './components/AddAddress'
+import MyChange from './components/MyChange'
+import Page from './components/Page'
+import Address from './components/Address'
+import Left from './components/person/Left'
+import Paging from './components/test/Paging'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
+//导入购物车
+import Car1 from './components/Car1'
 
 Vue.config.productionTip = false;
 
@@ -46,6 +55,16 @@ Vue.component('change-telephone',ChangeTelephone);
 Vue.component('agreement-div', agreement);
 Vue.component('swing-div', Swing);
 Vue.component('paging2-div', Paging2);
+Vue.component('my-release-goods', MyReleaseGoods);
+Vue.component('left-div', Left);
+Vue.component('paging-div', Paging);
+Vue.component('addaddress-div', AddAddress);
+Vue.component('MyChange-div', MyChange);
+Vue.component('goods-have-sold',GoodsHaveSold);
+//购物车页面
+Vue.component('Car1-div', Car1);
+
+
 new Vue({
   el: '#app',
   router,

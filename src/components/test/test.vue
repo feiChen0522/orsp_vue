@@ -1,19 +1,8 @@
 <template>
-  <div class="container"  >
+  <div class="container">
 
-    <div id="example-1">
-      <button @mouseover="show = !show">
-        Toggle render
-      </button>
-      <transition
-        name="custom-classes-transition"
-        enter-active-class="animated slideInUp"
-        leave-active-class="animated slideOutDown"
-      >
-        <p v-if="show">hello</p>
-      </transition>
+    <div id="test"></div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -26,6 +15,28 @@ export default {
     }
   }
 }
+// var count=12;
+// $("#test").page({count:12,pageSize:1,skipPart:true});
+// $(document).on('click','#test .pagination_search',function(){
+//   if($(document).find("#test .pagination_change_page").val()==""){
+//     alert("跳转页码不能为空");
+//   }else{
+//     var num=parseInt($(document).find("#test .pagination_change_page").val());
+//     $("#test").page({count:12,pageNo:num,pageSize:1,skipPart:true});
+//   }
+// });
+//
+// $(document).on("click","#test .pagination li",function(){
+//   var num=$(this).attr("num");
+//   if($(this).attr("class")=="disabled"){
+//     return false;
+//   }
+//   if(num==0 || num==(count+1)){
+//
+//   }else{
+//     $("#test").page({count:12,pageNo:num,pageSize:1,skipPart:true});
+//   }
+// });
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

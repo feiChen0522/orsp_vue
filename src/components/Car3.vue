@@ -100,7 +100,7 @@
   .success_hd {
     height: 36px;
     line-height: 36px;
-    background: url("../../src/assets/images/sort_bg.png") 0 0 repeat-x;
+    background: url("../assets/images/sort_bg.png") 0 0 repeat-x;
     border: 1px solid #E7E3E7;
     border-top: 2px solid #CE0000;
     border-bottom: 0;
@@ -117,7 +117,7 @@
     display: inline-block;
     width: 36px;
     height: 36px;
-    background: url("../../src/assets/images/bg_icons.png") 0 -304px;
+    background: url("../assets/images/bg_icons.png") 0 -304px;
     margin-right: 5px;
     position: relative;
     top: 10px;

@@ -88,7 +88,7 @@
   thead {
     height: 50px;
     line-height: 36px;
-    background: url("../assets/images/sort_bg.png");
+    background: url("../../assets/images/sort_bg.png");
   }
 
   th, td {
