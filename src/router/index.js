@@ -15,6 +15,7 @@ import Agreement from '@/components/Agreement'
 import Index from '@/components/Index'
 import Upload from '@/components/download/upload'
 import Center from '@/components/person/Center'
+import Paging from '@/components/test/Paging'
 // import Search from '@/components/Search'
 import SearchMain from '@/components/search/SearchMain'
 import MyChange from '@/components/MyChange'
@@ -124,6 +125,11 @@ export default new Router({
       path: '/mychange',
       name: 'MyChange',
       component: MyChange
+    },
+    {
+      path: '/paging',
+      name: 'Paging',
+      component: Paging
     },
   //  个人中心
     {

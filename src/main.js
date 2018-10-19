@@ -19,6 +19,7 @@ import Swing from './components/Swing'
 import Page from './components/Page'
 import Address from './components/Address'
 import Left from './components/person/Left'
+import Paging from './components/test/Paging'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
 Vue.config.productionTip = false;
@@ -41,8 +42,8 @@ Vue.component('car-list', Carlist);
 Vue.component('detail-div', DetailPage);
 Vue.component('agreement-div', agreement);
 Vue.component('swing-div', Swing);
-Vue.component('paging-div', Page);
 Vue.component('left-div', Left);
+Vue.component('paging-div', Paging);
 new Vue({
   el: '#app',
   router,
