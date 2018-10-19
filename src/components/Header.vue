@@ -104,6 +104,24 @@ export default {
     return {
       msg: 'Welcome to Your Vue.js App'
     }
+  },
+  mounted:function(){
+    console.log("------------------------")
+  },
+  beforeRouteEnter:(to,from,next)=>{
+
+    //此时该组件还没被实例化
+
+    alert(this.infor);       //弹出消息框信息为 undefined
+
+    next(vm =>{
+
+      //此时该组件被实例化了
+
+      alert(vm.infor);         //弹出消息框信息为 hw
+
+    })
+
   }
 }
 </script>

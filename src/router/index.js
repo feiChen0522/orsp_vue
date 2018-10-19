@@ -139,6 +139,7 @@ export default new Router({
       path:'/personcenter',
       name:'Center',
       component:Center,
+      redirect:'/accountManage',
       children:[
         {
           path: '/address',
@@ -160,6 +161,7 @@ export default new Router({
           path: '/accountManage',
           name: 'AccountManage',
           component: AccountManage,
+          redirect:'/msgManage',
           children:[
             {
               path: '/msgManage',

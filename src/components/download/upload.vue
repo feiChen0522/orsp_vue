@@ -66,9 +66,22 @@
                      <a  data-toggle="modal" data-target="#myModal" @click="showFile=!showFile" >同意ORSP资源共享规则</a>
                    </div>
                    <div class="r-agree-btn col-lg-12">
-                     <div type="submit"  @click="uploadFile" style="background-color: red;width: 100px;height: 30px;color: white;text-align: center;line-height: 30px;margin-left: 40px;">上传</div>
+                     <div type="submit"  @click="uploadFile" style="background-color: red;width: 100px;height: 30px;color: white;text-align: center;line-height: 30px;margin-left: 40px;" >上传</div>
                    </div>
                  </form>
+
+
+                 <!--上传成功-->
+                 <button id="uploada" data-toggle="modal" data-target="#myModal" style="display: none">
+                 </button>
+                 <div class="modal fade bs-example-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+                   <div class="modal-dialog modal-sm" role="document">
+                     <div class="modal-content">
+                       <a v-text="uploadMsg"></a>
+                     </div>
+                   </div>
+                 </div>
+
                </div>
              </div>
     </div>
@@ -95,7 +108,8 @@ export default {
       describeTip:'',
       need_integralTip:'',
       resourceTypeTip:'',
-      fileTip:''
+      fileTip:'',
+      uploadMsg:"上传成功"
     }
   },
   methods:{
@@ -139,6 +153,7 @@ export default {
 
   //  上传文件
     uploadFile:function () {
+
       //同意ORSP协议之后才能上传文件
       //判断上传文件的信息是否填写完整
 
@@ -182,19 +197,22 @@ export default {
               "describe":this.describe,
               "need_integral":this.need_integral
             }
+            console.log("11111111111111111")
             axios.post('http://127.0.0.1:8000/file/savefile/', fileMsg, config)
               .then(function (res) {
-                console.log(res.data)
+                $('#uploada')[0].click();
+                window.location.reload()
                 //    发送文件信息到后台
-
-
-
                 //控制台打印请求成功时返回的数据
+                this.uploadMsg="上传成功"
+
                 //bind(this)可以不用
               }.bind(this))
               .catch(function (err) {
                 if (err.response) {
                   console.log(err.response)
+
+
                   //控制台打印错误返回的内容
                 }
                 //bind(this)可以不用
