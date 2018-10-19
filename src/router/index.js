@@ -14,6 +14,10 @@ import Release from '@/components/Release'
 import Agreement from '@/components/Agreement'
 import Index from '@/components/Index'
 import Upload from '@/components/download/upload'
+import AccountManage from '@/components/AccountManage'
+import MsgManage from '@/components/MsgManage'
+import SecurityCenter from '@/components/SecurityCenter'
+import ShoppingAddress from '@/components/ShoppingAddress'
 // import Search from '@/components/Search'
 import SearchMain from '@/components/search/SearchMain'
 import MyChange from '@/components/MyChange'
@@ -113,6 +117,28 @@ export default new Router({
       path: '/mychange',
       name: 'MyChange',
       component: MyChange
-    }
+    },
+    {
+      path: '/accountManage',
+      name: 'AccountManage',
+      component: AccountManage,
+      children:[
+        {
+          path: '/msgManage',
+          name: 'MsgManage',
+          component: MsgManage
+        },
+        {
+          path: '/securityCenter',
+          name: 'SecurityCenter',
+          component: SecurityCenter
+        },
+        {
+          path: '/shoppingAddress',
+          name: 'ShoppingAddress',
+          component: ShoppingAddress
+        }
+      ]
+    },
   ]
 })

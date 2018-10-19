@@ -14,6 +14,9 @@ import SearchBox from './components/SearchBox'
 import Classify from './components/search/Classify'
 import Index from './components/Index'
 import DetailPage from './components/DetailPage'
+import ChangeName from './components/ChangeName'
+import ChangePassword from './components/ChangePassword'
+import ChangeTelephone from './components/ChangeTelephone'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
 Vue.config.productionTip = false;
@@ -34,6 +37,9 @@ Vue.component('footer-div', Footer);
 Vue.component('classify-div', Classify);
 Vue.component('car-list', Carlist);
 Vue.component('detail-div', DetailPage);
+Vue.component('change-name', ChangeName);
+Vue.component('change-password',ChangePassword);
+Vue.component('change-telephone',ChangeTelephone);
 new Vue({
   el: '#app',
   router,

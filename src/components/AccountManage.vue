@@ -14,7 +14,11 @@
       </li>
     </ul>
   </div>
-  <div class="right"></div>
+  <div class="right">
+    <router-view>
+
+    </router-view>
+  </div>
 </div>
 </template>
 
@@ -34,13 +38,13 @@ export default {
   .account{
     margin: 40px auto 40px;
     width: 85%;
-    height: 500px;
+    min-height: 500px;
     /*border: 1px solid red;*/
   }
   .account .left{
     float: left;
     width: 20%;
-    height: 100%;
+    height: 500px;
     background-color: #FAFAFA;
     border: 1px solid #e2e2e2;
   }
