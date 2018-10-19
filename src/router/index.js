@@ -16,6 +16,10 @@ import Index from '@/components/Index'
 import Upload from '@/components/download/upload'
 import Center from '@/components/person/Center'
 import Paging from '@/components/test/Paging'
+import AccountManage from '@/components/AccountManage'
+import MsgManage from '@/components/MsgManage'
+import SecurityCenter from '@/components/SecurityCenter'
+import ShoppingAddress from '@/components/ShoppingAddress'
 // import Search from '@/components/Search'
 import SearchMain from '@/components/search/SearchMain'
 import MyChange from '@/components/MyChange'
@@ -69,7 +73,11 @@ export default new Router({
       name: 'SearchMain',
       component: SearchMain
     },
-
+    {
+      path: '/address',
+      name: 'Address',
+      component: Address
+    },
     {
       path: '/addaddress',
       name: 'AddAddress',
@@ -143,6 +151,28 @@ export default new Router({
           component: Address
         },
       ]
-    }
+    },
+    {
+      path: '/accountManage',
+      name: 'AccountManage',
+      component: AccountManage,
+      children:[
+        {
+          path: '/msgManage',
+          name: 'MsgManage',
+          component: MsgManage
+        },
+        {
+          path: '/securityCenter',
+          name: 'SecurityCenter',
+          component: SecurityCenter
+        },
+        {
+          path: '/shoppingAddress',
+          name: 'ShoppingAddress',
+          component: ShoppingAddress
+        }
+      ]
+    },
   ]
 })

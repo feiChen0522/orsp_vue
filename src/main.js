@@ -14,6 +14,9 @@ import SearchBox from './components/SearchBox'
 import Classify from './components/search/Classify'
 import Index from './components/Index'
 import DetailPage from './components/DetailPage'
+import ChangeName from './components/ChangeName'
+import ChangePassword from './components/ChangePassword'
+import ChangeTelephone from './components/ChangeTelephone'
 import agreement from './components/Agreement'
 import Swing from './components/Swing'
 import Page from './components/Page'
@@ -40,6 +43,9 @@ Vue.component('footer-div', Footer);
 Vue.component('classify-div', Classify);
 Vue.component('car-list', Carlist);
 Vue.component('detail-div', DetailPage);
+Vue.component('change-name', ChangeName);
+Vue.component('change-password',ChangePassword);
+Vue.component('change-telephone',ChangeTelephone);
 Vue.component('agreement-div', agreement);
 Vue.component('swing-div', Swing);
 Vue.component('left-div', Left);
