@@ -18,6 +18,7 @@ import AccountManage from '@/components/AccountManage'
 import MsgManage from '@/components/MsgManage'
 import SecurityCenter from '@/components/SecurityCenter'
 import ShoppingAddress from '@/components/ShoppingAddress'
+import MyReleaseGoods from '@/components/MyReleaseGoods'
 // import Search from '@/components/Search'
 import SearchMain from '@/components/search/SearchMain'
 import MyChange from '@/components/MyChange'
@@ -153,6 +154,11 @@ export default new Router({
           component: ShoppingAddress
         }
       ]
+    },
+    {
+      path: '/myreleasegoods',
+      name: 'MyReleaseGoods',
+      component: MyReleaseGoods
     },
   ]
 })
