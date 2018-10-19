@@ -21,6 +21,7 @@ import agreement from './components/Agreement'
 import Swing from './components/Swing'
 import AddAddress from './components/AddAddress'
 import MyChange from './components/MyChange'
+import upload from './components/download/upload'
 import Page from './components/Page'
 import Address from './components/Address'
 import Left from './components/person/Left'
@@ -56,6 +57,7 @@ Vue.component('left-div', Left);
 Vue.component('paging-div', Paging);
 Vue.component('addaddress-div', AddAddress);
 Vue.component('MyChange-div', MyChange);
+Vue.component('upload-div', upload);
 //购物车页面
 Vue.component('Car1-div', Car1);
 
