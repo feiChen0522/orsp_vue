@@ -1,9 +1,8 @@
 .login-div{
-  margin: 0 auto;
+  margin-left: 20px;
   width: 400px ;
   height: 380px;
-  background-color: #ababab21;
-
+  margin-right: 10px;
 }
 a:hover{
   color: red!important;

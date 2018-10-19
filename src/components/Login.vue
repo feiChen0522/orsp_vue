@@ -1,5 +1,5 @@
 <template>
-  <div class="container"  >
+  <div class="container" style="width: 400px!important;">
 
           <div class="login-div" >
             <div class="row">

@@ -3,42 +3,42 @@
     <div class="row">
       <div class="col-md-10">
         <div class="col-md-10">
-          <div class="col-md-12"><h3>新增收货地址</h3></div>
-          <div class="col-md-12 a"></div>
           <form class="form-horizontal">
             <div class="form-group">
-              <label for="" class="col-sm-2 control-label">收货人:</label>
-              <div class="col-sm-10">
+              <label for="" class="col-sm-3 control-label">收货人:</label>
+              <div class="col-sm-9">
                 <input  class="form-control" id="inputpersonal">
               </div>
             </div>
             <div class="form-group">
-              <label for="" class="col-sm-2 control-label" >地址:</label>
-              <div class="col-sm-10">
-                <select v-model="selected"  v-if="provinceL">
-                  <option disabled value="请选择城市">请选择省份</option>
-                  <option v-for="(item,index) in provinceL" :value="item">{{item.name}}</option>
-                </select>
-                <select v-model="citySelected" v-if="cityL">
-                  <option disabled value="请选择城市">请选择城市</option>
-                  <option v-for="(item,index) in cityL" :value="item">{{item.name}}</option>
-                </select>
+              <label for="" class="col-sm-3 control-label" >地址:</label>
+              <div class="col-sm-9">
+                <div class="row">
+                  <select class="col-lg-3" v-model="selected"  v-if="provinceL" style="width: 100px;margin-right: 20px;margin-left: 16px;">
+                    <option disabled value="请选择城市">请选择省份</option>
+                    <option v-for="(item,index) in provinceL" :value="item">{{item.name}}</option>
+                  </select>
+                  <select class="col-lg-3" v-model="citySelected" v-if="cityL" style="width: 100px">
+                    <option disabled value="请选择城市">请选择城市</option>
+                    <option v-for="(item,index) in cityL" :value="item">{{item.name}}</option>
+                  </select>
+                </div>
               </div>
             </div>
             <div class="form-group">
-              <label for="" class="col-sm-2 control-label">详细地址:</label>
-              <div class="col-sm-10">
+              <label for="" class="col-sm-3 control-label">详细地址:</label>
+              <div class="col-sm-9">
                 <input class="form-control" id="inputaddress">
               </div>
             </div>
             <div class="form-group">
-              <label for="" class="col-sm-2 control-label">手机号:</label>
-              <div class="col-sm-10">
+              <label for="" class="col-sm-3 control-label">手机号:</label>
+              <div class="col-sm-9">
                 <input class="form-control" id="inputphone">
               </div>
             </div>
             <div class="form-group">
-              <div class="col-sm-offset-2 col-sm-10">
+              <div class="col-sm-offset-3 col-sm-10">
                 <div class="checkbox">
                   <label>
                     <input type="checkbox"> 设为默认地址
@@ -47,7 +47,7 @@
               </div>
             </div>
             <div class="form-group">
-              <div class="col-sm-offset-2 col-sm-10">
+              <div class="col-sm-offset-3 col-sm-10">
                 <button type="submit" class="btn btn-default">提交</button>
               </div>
             </div>
@@ -85,7 +85,7 @@ export default {
     }
   },
   created() {
-    this.provinceL = [...province]
+    // this.provinceL = [...province]
   }
 }
 </script>
