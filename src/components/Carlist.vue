@@ -14,17 +14,19 @@
           </tr>
           </thead>
           <tbody>
-          <tr>
-            <td class=""><a href=""><img src=${good.img}></a> <strong><a href="">${good.title}</a></strong>
+          <tr v-bind:id="goods.price" v-if=flag>
+            <td class="col1">
+              <router-link to="/detailpage">
+                <img :src=imgsrc style="width: 110px; height: 80px;margin-left: 10px;border: none" class="col-md-8">
+                <p v-text="goods.title" style="text-align: left"></p></router-link>
             </td>
-            <td class="col2"><p>${good.color}</p>
-              <p>${good.size}</p></td>
-            <td class="col3">￥<span>${good.price}</span></td>
+            <td class="col2"><p>棕色</p></td>
+            <td class="col3"><p>￥{{goods.price}}</p></td>
             <td class="col4">
-              <p>${good.use_level}</p>
+              <p>level8</p>
             </td>
-            <td class="col5"><p>${good.yes_or_no}</p></td>
-            <td class="col6"><a href="" class="del">删除</a></td>
+            <td class="col5"><p>默认</p></td>
+            <td class="col6"><p class="del" @click="delall">删除</p></td>
           </tr>
           </tbody>
         </table>
@@ -35,8 +37,34 @@
 
 <script>
   export default {
-    name: "Carlist"
+    name: "Carlist",
+    data() {
+      return {
+        goods: {},
+        imgsrc: '',
+        flag:true
+      }
+    },
+    mounted: function () {
+      // this.goods=this.$route.params
+      this.goods['price'] = sessionStorage.getItem('price')
+      this.goods['title'] = sessionStorage.getItem('title')
+      this.goods['address'] = sessionStorage.getItem('address')
+      this.goods['img'] = sessionStorage.getItem('img')
+      this.imgsrc = this.goods['img']
+      if (this.goods){
+
+      }
+    },
+    methods:{
+      delall:function () {
+        // sessionStorage.clear();
+        // // window.location.reload()
+        this.flag=!true
+      }
+    }
   }
+
 </script>
 
 <style scoped>
@@ -46,6 +74,15 @@
     border-top: 2px solid #CE0000;
     background: #FFFDEE;
     color: #666;
+  }
+
+  p {
+    margin-top: 20px;
+    line-height: normal;
+    font-size: 14px;
+  }
+  p:hover{
+    cursor: pointer;
   }
 
   thead {

@@ -21,7 +21,7 @@
           <div class="col-md-12 d01"><span class="glyphicon glyphicon-sort " aria-hidden="true"></span></div>
           <div class="col-md-12 e">
             <div class="col-md-3"><h4><span>请添加你将交换的物品:</span></h4></div>
-            <div class="dropdown">
+            <div class="col-md-9 dropdown">
               <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
                       aria-haspopup="true" aria-expanded="true">
                 我提交的订单
@@ -36,7 +36,7 @@
           <div class="col-md-12 cart_btn">
             <div class="col-md-8"></div>
             <div class="col-md-3">
-              <a href="" class="delgoods">放弃商品</a>
+              <a href="" class="delgoods" @click="goBack">放弃商品</a>
             </div>
             <div class="col-md-1">
               <a href="#" class="checkout">结 算</a>
@@ -50,29 +50,49 @@
 
 <script>
   export default {
-    name: "Car1"
+    name: "Car1",
+    props: [''],
+    data: function () {
+      return {}
+    },
+    mounted: function () {
+
+    },
+    methods: {
+      goBack: function () {
+        this.$router.push({
+          name:"SearchMain"
+        }
+
+        )
+      }
+    },
+
   }
 </script>
 
 <style scoped>
-  ul,li{
+  ul, li {
     list-style: none;
   }
-  .a{
+
+  .a {
     margin-top: 20px;
     margin-bottom: 50px;
     border-bottom: 2px solid #c30;
   }
-  .b{
+
+  .b {
     height: 100px;
     overflow: hidden;
   }
 
-  .c{
+  .c {
     height: 120px;
     width: 100px;
   }
-  div{
+
+  div {
     text-align: left;
   }
 
@@ -80,6 +100,7 @@
     width: 200px;
     height: 35px;
   }
+
   .img01 {
     width: 656px;
     height: 32px;
@@ -88,6 +109,7 @@
     display: inline;
     float: right;
   }
+
   .img01 li {
     float: left;
     width: 205px;
@@ -96,30 +118,36 @@
     font-size: 13px;
   }
 
-  .d{
+  .d {
     position: relative;
     right: 40px;
     top: 40px;
   }
-  .e{
+
+  .e {
     margin-bottom: 30px;
   }
-  .d01{
+
+  .d01 {
     text-align: center;
     margin-top: 30px;
     margin-bottom: 30px;
   }
+
   .mycart h2 {
     width: 190px;
     height: 50px;
   }
-  .f1{
+
+  .f1 {
     background: url(../assets/images/cart_001.gif);
     background-repeat: no-repeat;
   }
+
   .mycart h2 span {
     display: none;
   }
+
   .cart_btn {
   }
 
@@ -157,6 +185,7 @@
     text-decoration: none;
 
   }
+
   .cur {
     color: white;
     font-weight: bolder;
