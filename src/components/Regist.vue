@@ -1,5 +1,5 @@
 <template>
-  <div class="container"  >
+  <div class="container" style="width: 400px!important;" >
 
           <div class="login-div" v-if="!regist_success">
             <div class="row">
@@ -252,14 +252,12 @@ export default {
     margin: 0 auto;
     width: 400px ;
     /*height: 380px;*/
-    background-color: #ababab21;
 
   }
   a:hover{
     color: red!important;
   }
   .container{
-    margin: 0 auto;
   }
   div.row h1{
     font-size: 18px;

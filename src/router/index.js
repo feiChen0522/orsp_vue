@@ -7,9 +7,7 @@ import Detail from '@/components/Detail'
 import Order from '@/components/Order'
 import Address from '@/components/Address'
 import AddAddress from '@/components/AddAddress'
-import Car1 from '@/components/Car1'
-import Car2 from '@/components/Car2'
-import Car3 from '@/components/Car3'
+
 import Release from '@/components/Release'
 import Agreement from '@/components/Agreement'
 import Index from '@/components/Index'
@@ -18,6 +16,10 @@ import Center from '@/components/person/Center'
 import Paging from '@/components/test/Paging'
 import AccountManage from '@/components/AccountManage'
 import MsgManage from '@/components/MsgManage'
+import Cart from '@/components/Cart/Cart'
+import Car1 from '@/components/Car1'
+import Car2 from '@/components/Car2'
+import Car3 from '@/components/Car3'
 import SecurityCenter from '@/components/SecurityCenter'
 import ShoppingAddress from '@/components/ShoppingAddress'
 // import Search from '@/components/Search'
@@ -63,41 +65,19 @@ export default new Router({
       name: 'DetailPage',
       component: Detail
     },
-    {
-      path: '/order',
-      name: 'Order',
-      component: Order
-    },
+
     {
       path: '/search',
       name: 'SearchMain',
       component: SearchMain
     },
-    {
-      path: '/address',
-      name: 'Address',
-      component: Address
-    },
+
     {
       path: '/addaddress',
       name: 'AddAddress',
       component: AddAddress
     },
-    {
-      path: '/car1',
-      name: 'Car1',
-      component: Car1
-    },
-    {
-      path: '/car2',
-      name: 'Car2',
-      component: Car2
-    },
-    {
-      path: '/car3',
-      name: 'Car3',
-      component: Car3
-    },
+
     {
       path: '/upload',
       name: 'Upload',
@@ -117,8 +97,26 @@ export default new Router({
       name: 'Agreement',
       component: Agreement
     },
+    {
+      path: '/car1',
+      name: 'Car1',
+      component: Car1
+    },
+    {
+      path: '/car2',
+      name: 'Car2',
+      component: Car2
+    },
 
-  //  个人中心左侧
+    {
+      path: '/car3',
+      name: 'Car3',
+      component: Car3
+    },
+
+
+
+    //  个人中心左侧
     {
       path: '/personleft',
       name: 'PersonLeft',
@@ -129,11 +127,7 @@ export default new Router({
       name: 'test',
       component: test
     },
-    {
-      path: '/mychange',
-      name: 'MyChange',
-      component: MyChange
-    },
+
     {
       path: '/paging',
       name: 'Paging',
@@ -149,6 +143,16 @@ export default new Router({
           path: '/address',
           name: 'Address',
           component: Address
+        },
+        {
+          path: '/mychange',
+          name: 'MyChange',
+          component: MyChange
+        },
+        {
+          path: '/order',
+          name: 'Order',
+          component: Order
         },
       ]
     },

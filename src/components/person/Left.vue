@@ -40,7 +40,7 @@
         >
       <ul v-if="show[1]">
       <li><router-link to="">我发布的商品</router-link></li>
-      <li><router-link to="">交换请求</router-link></li>
+      <li><router-link to="/MyChange">交换请求</router-link></li>
       <!--<li>我的地址</li>-->
       <!--<li>个人信息</li>-->
       </ul>

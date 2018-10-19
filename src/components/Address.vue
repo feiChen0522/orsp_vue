@@ -4,7 +4,7 @@
       <div class="col-md-10 a1">
         <div class="col-md-12">
           <div class="col-md-3"><h3>收货地址薄</h3></div>
-          <div class="col-md-3"><button type="button" class="btn btn-default sp2">新增地址</button></div>
+          <div class="col-md-3"><button type="button" class="btn btn-default sp2" data-toggle="modal" data-target="#myModal">新增地址</button></div>
         </div>
         <div class="col-md-10">
           <div class="col-md-12 a2"></div>
@@ -37,6 +37,27 @@
           </div>
         </div>
       </div>
+
+      <!--新增地址模态框-->
+      <!-- Button trigger modal -->
+      <!-- Modal -->
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">新增收货地址</h4>
+            </div>
+            <div class="modal-body">
+              <addaddress-div></addaddress-div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+      <!--模态框结束-->
     </div>
   </div>
 </template>

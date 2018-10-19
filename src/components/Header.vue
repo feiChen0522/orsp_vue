@@ -21,14 +21,47 @@
           <ul class="nav navbar-nav" style="margin-bottom: 0">
            <li>
              <!--<a >您好，请登录<span class="sr-only">(current)</span></a>-->
-             <router-link to="/Login">
+             <a data-toggle="modal" data-target="#myModal1">
                <p class="p1">您好，请登录</p>
-             </router-link>
+             </a>
            </li>
+
+            <!--登录模态框开始-->
+            <!-- Button trigger modal -->
+
+
+            <!-- Modal -->
+            <div class="modal fade in" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content" style="width: 475px;">
+
+                  <div class="modal-body" >
+                    <Login-div></Login-div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <!--登录模态框结束-->
+
+            <!--注册模态框开始-->
+            <div class="modal fade in" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content" style="width: 475px;">
+
+                  <div class="modal-body" >
+                    <Regist-div></Regist-div>
+
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <!--模态框结束-->
             <li>
-              <router-link to="/Regist">
+              <a data-toggle="modal" data-target="#myModal2">
                 <p class="p1">注册</p>
-              </router-link>
+              </a>
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right" style="margin-top: 0;">
