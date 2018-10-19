@@ -23,6 +23,9 @@ import Car3 from '@/components/Car3'
 import MsgManage from '@/components/MsgManage'
 import SecurityCenter from '@/components/SecurityCenter'
 import ShoppingAddress from '@/components/ShoppingAddress'
+import MyReleaseGoods from '@/components/MyReleaseGoods'
+import GoodsHaveSold from '@/components/GoodsHaveSold'
+
 // import Search from '@/components/Search'
 import SearchMain from '@/components/search/SearchMain'
 import MyChange from '@/components/MyChange'
@@ -126,7 +129,7 @@ export default new Router({
     {
       path: '/test',
       name: 'test',
-      component: MyCollect
+      component: test
     },
 
     {
@@ -139,7 +142,6 @@ export default new Router({
       path:'/personcenter',
       name:'Center',
       component:Center,
-      redirect:'/accountManage',
       children:[
         {
           path: '/address',
@@ -187,7 +189,15 @@ export default new Router({
         },
       ]
     },
-
-
+    {
+      path: '/myreleasegoods',
+      name: 'MyReleaseGoods',
+      component: MyReleaseGoods
+    },
+    {
+      path: '/goodshavesold',
+      name: 'GoodsHaveSold',
+      component: GoodsHaveSold
+    }
   ]
 })

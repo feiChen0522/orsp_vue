@@ -53,11 +53,14 @@ Vue.component('change-password',ChangePassword);
 Vue.component('change-telephone',ChangeTelephone);
 Vue.component('agreement-div', agreement);
 Vue.component('swing-div', Swing);
+Vue.component('paging2-div', Paging2);
+Vue.component('my-release-goods', MyReleaseGoods);
 Vue.component('left-div', Left);
 Vue.component('paging-div', Paging);
 Vue.component('addaddress-div', AddAddress);
 Vue.component('MyChange-div', MyChange);
 Vue.component('upload-div', upload);
+Vue.component('goods-have-sold',GoodsHaveSold);
 //购物车页面
 Vue.component('Car1-div', Car1);
 
