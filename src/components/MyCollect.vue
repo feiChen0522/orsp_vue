@@ -1,0 +1,121 @@
+<template>
+  <div class="container-fluid">
+    <div class="r-collect-container">
+      <div class="r-collect-title">我的收藏</div>
+      <table>
+        <tr>
+          <td>商品展示</td>
+          <td>商品名称</td>
+          <td>价格</td>
+          <td>操作</td>
+        </tr>
+        <tr>
+          <td><div class="r-img-container"></div></td>
+          <td>iphone6s</td>
+          <td><b>$6000</b></td>
+          <td>
+            <a href="#">关注</a>
+            <a href="#">加入购物车</a>
+            <a href="#">删除</a>
+          </td>
+        </tr>
+        <tr>
+          <td><div class="r-img-container"></div></td>
+          <td>iphone6s</td>
+          <td><b>$6000</b></td>
+          <td>
+            <a href="#">关注</a>
+            <a href="#">加入购物车</a>
+            <a href="#">删除</a>
+          </td>
+        </tr>
+        <tr>
+          <td><div class="r-img-container"></div></td>
+          <td>iphone6s</td>
+          <td><b>$6000</b></td>
+          <td>
+            <a href="#">关注</a>
+            <a href="#">加入购物车</a>
+            <a href="#">删除</a>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+  </div>
+</template>
+
+<script>
+  export default {
+    name: "MyCollect"
+  }
+</script>
+
+<style scoped>
+  @import '../../static/css/clear.css';
+  .r-collect-container{
+    background-color: #2aabd20a;
+    display: block;
+
+  }
+  .r-collect-container>.r-collect-title{
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    font-size: 18px;
+    font-weight: 500;
+    padding-left: 20px;
+  }
+  .r-collect-container>table{
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 20px;
+  }
+  .r-collect-container>table tr{
+    width: 100%;
+    display: flex;
+
+    border: 1px solid black;
+    border-bottom: none;
+  }
+  .r-collect-container>table tr:last-child{
+    border-bottom: 1px solid black;
+  }
+  .r-collect-container>table tr:first-child>td{
+    height: 30px;
+
+    line-height: 30px;
+  }
+  .r-collect-container>table tr:first-child{
+    height: 30px;
+    line-height: 30px;
+  }
+  .r-collect-container>table tr>td{
+    flex: 1;
+    height: 100px;
+    line-height: 100px;
+    /*border: 1px solid #e6c5c5;*/
+    padding-left: 10px;
+    text-align: center;
+    border-left: none;
+  }
+  .r-collect-container>table tr>td:first-child{
+  }
+  .r-collect-container>table tr>td>div{
+    background-image:url("../../static/images/logoko.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 70%;
+    height: 70%;
+    margin: 0 auto;
+    margin-top: 20px;
+  }
+  .r-collect-container>table tr>td>a{
+    color: red!important;
+    font-size: 14px;
+    margin-right: 10px;
+  }
+
+
+
+</style>

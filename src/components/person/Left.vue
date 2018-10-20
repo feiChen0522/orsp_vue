@@ -16,7 +16,7 @@
 
             <ul class="slideUl"   v-if="show[0]">
               <li>
-                <router-link to="">个人信息</router-link>
+                <router-link to="/accountManage">个人信息</router-link>
               </li>
               <li>
                 <router-link to=""> 我的订单</router-link>
@@ -61,7 +61,7 @@
         >
       <ul v-if="show[2]">
       <li><router-link to="">已买到的商品</router-link></li>
-      <li><router-link to="">我的收藏</router-link></li>
+      <li><router-link to="/mycollect">我的收藏</router-link></li>
       <!--<li>我的出价</li>-->
       <!--<li>浏览历史</li>-->
       </ul>
@@ -83,14 +83,28 @@
       <ul v-if="show[3]">
       <li><router-link to="">我的下载</router-link></li>
       <li><router-link to="">我的上传</router-link></li>
+
       <!--<li>个人信息</li>-->
-      <li><router-link to="">我要上传</router-link></li>
+      <li><a data-toggle="modal" data-target="#myModal_upload">我要上传</a></li>
+
+
+        <!--协议书-->
       </ul>
         </transition>
       </dd>
       </dl>
     </div>
+    <div class="modal fade" id="myModal_upload" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="margin-left: 400px;height: 800px;">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
 
+          <div class="modal-body" style="height: 700px;">
+            <upload-div></upload-div>
+          </div>
+
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 

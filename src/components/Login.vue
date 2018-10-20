@@ -49,7 +49,7 @@ export default {
   name: 'Login',
   data () {
     return {
-      telephone:"15755407860",
+      telephone:"15755407823",
       password:"1234561",
       tel_correct:false,
       psd_correct:false,
@@ -96,6 +96,7 @@ export default {
           console.log(res)
           console.log(res.headers);
           sessionStorage.setItem('token',res.headers.token)
+          window.location.reload()
           //控制台打印请求成功时返回的数据
           //bind(this)可以不用
         }.bind(this))

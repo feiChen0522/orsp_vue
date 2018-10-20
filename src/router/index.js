@@ -14,12 +14,13 @@ import Index from '@/components/Index'
 import Upload from '@/components/download/upload'
 import Center from '@/components/person/Center'
 import Paging from '@/components/test/Paging'
+import MyCollect from '@/components/MyCollect'
 import AccountManage from '@/components/AccountManage'
-import MsgManage from '@/components/MsgManage'
 import Cart from '@/components/Cart/Cart'
 import Car1 from '@/components/Car1'
 import Car2 from '@/components/Car2'
 import Car3 from '@/components/Car3'
+import MsgManage from '@/components/MsgManage'
 import SecurityCenter from '@/components/SecurityCenter'
 import ShoppingAddress from '@/components/ShoppingAddress'
 import MyReleaseGoods from '@/components/MyReleaseGoods'
@@ -157,28 +158,35 @@ export default new Router({
           name: 'Order',
           component: Order
         },
-      ]
-    },
-    {
-      path: '/accountManage',
-      name: 'AccountManage',
-      component: AccountManage,
-      children:[
+        //个人信息
         {
-          path: '/msgManage',
-          name: 'MsgManage',
-          component: MsgManage
+          path: '/accountManage',
+          name: 'AccountManage',
+          component: AccountManage,
+          redirect:'/msgManage',
+          children:[
+            {
+              path: '/msgManage',
+              name: 'MsgManage',
+              component: MsgManage
+            },
+            {
+              path: '/securityCenter',
+              name: 'SecurityCenter',
+              component: SecurityCenter
+            },
+            {
+              path: '/shoppingAddress',
+              name: 'ShoppingAddress',
+              component: ShoppingAddress
+            }
+          ]
         },
         {
-          path: '/securityCenter',
-          name: 'SecurityCenter',
-          component: SecurityCenter
+          path: '/mycollect',
+          name: 'MyCollect',
+          component: MyCollect
         },
-        {
-          path: '/shoppingAddress',
-          name: 'ShoppingAddress',
-          component: ShoppingAddress
-        }
       ]
     },
     {

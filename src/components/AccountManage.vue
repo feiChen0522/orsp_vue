@@ -1,25 +1,27 @@
 <template>
-<div class="account">
-  <div class="left">
-    <div class="left-top">账户管理</div>
-    <ul class="nav nav-pills nav-stacked">
-      <li role="presentation">
-        <router-link to="/msgManage">账号信息</router-link>
-      </li>
-      <li role="presentation">
-        <router-link to="/securityCenter">安全中心</router-link>
-      </li>
-      <li role="presentation">
-        <router-link to="/shoppingAddress">收货地址</router-link>
-      </li>
-    </ul>
-  </div>
-  <div class="right">
-    <router-view>
+  <div>
+    <div class="account">
+      <div class="left">
+        <div class="left-top">账户管理</div>
+        <ul class="nav nav-pills nav-stacked">
+          <li role="presentation">
+            <router-link to="/msgManage">账号信息</router-link>
+          </li>
+          <li role="presentation">
+            <router-link to="/securityCenter">安全中心</router-link>
+          </li>
+          <li role="presentation">
+            <router-link to="/shoppingAddress">收货地址</router-link>
+          </li>
+        </ul>
+      </div>
+      <div class="right">
+        <router-view>
 
-    </router-view>
+        </router-view>
+      </div>
+    </div>
   </div>
-</div>
 </template>
 
 <script>
@@ -37,7 +39,7 @@ export default {
 <style scoped>
   .account{
     margin: 40px auto 40px;
-    width: 85%;
+    width: 1038px;
     min-height: 500px;
     /*border: 1px solid red;*/
   }
