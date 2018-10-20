@@ -22,13 +22,17 @@ export default {
     }
   },
   created:function () {
-    console.log(this.$route.params.good);
-    this.goods=this.$route.params.good
+    if (sessionStorage.getItem('searchGoods')!=null){
+      console.log("aaaaaaaaaaaaaaa")
+      this.goods=JSON.parse(sessionStorage.getItem('searchGoods'))
+    }else {
+      console.log(this.$route.params.good);
+      this.goods=this.$route.params.good
+    }
     console.log("1goods",this.goods);
     //获取到数据之后,获取有多少页
     this.currentCount=parseInt(this.goods.length/this.pageCount)+1
     console.log("this.currentCount",this.currentCount);
-
   },
   methods:{
     displayGoods:function (e) {

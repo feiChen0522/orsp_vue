@@ -60,6 +60,7 @@ div[class*="col-"]{
 
 .goods>div>p{
   height: 20px;
+  overflow: hidden;
 }
 .goods>div>p:nth-of-type(1)>a:first-child{
   float: left;

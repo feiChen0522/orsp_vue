@@ -1,39 +1,41 @@
 <template>
-  <div class="con">
-    <div class="status">
-      <span>全部订单(<i>0</i>)</span>
-      <span>待收款(<i>0</i>)</span>
-      <span>待发货(<i>0</i>)</span>
-      <span>发货中(<i>0</i>)</span>
-      <span>已成交(<i>0</i>)</span>
-      <span>退款中(<i>0</i>)</span>
-      <div class="box-text" >
-        <input type="text" placeholder="请输入要搜索的词" maxlength="30" class="input-txt">
-        <div class="btn-search glyphicon glyphicon-search"></div>
-      </div>
-    </div>
-    <div class="change_message">
-      <div class="change_message_item">
-        <div class="goods_msg">商品信息</div>
-        <div class="seller">卖家</div>
-        <div class="specification">规格</div>
-        <div class="price">单价</div>
-        <div class="number">数量</div>
-        <div class="current_status">状态</div>
-      </div>
-      <div class="dongtai_goods">
-        <div class="change_goods">
-          <div class="good_img">
-            <div class="good_img_div"></div>
-          </div>
-          <div class="good_seller">卖家</div>
-          <div class="good_specification">新科(Shinco) DVP-311A型 DVD播放机</div>
-          <div class="good_price">300.00</div>
-          <div class="good_number">1</div>
-          <div class="good_current_status">待付款</div>
+  <div>
+    <div class="con" style="margin: 0 auto">
+      <div class="status">
+        <span>全部订单(<i>0</i>)</span>
+        <span>待收款(<i>0</i>)</span>
+        <span>待发货(<i>0</i>)</span>
+        <span>发货中(<i>0</i>)</span>
+        <span>已成交(<i>0</i>)</span>
+        <span>退款中(<i>0</i>)</span>
+        <div class="box-text" >
+          <input type="text" placeholder="请输入要搜索的词" maxlength="30" class="input-txt">
+          <div class="btn-search glyphicon glyphicon-search"></div>
         </div>
       </div>
+      <div class="change_message">
+        <div class="change_message_item">
+          <div class="goods_msg">商品信息</div>
+          <div class="seller">卖家</div>
+          <div class="specification">规格</div>
+          <div class="price">单价</div>
+          <div class="number">数量</div>
+          <div class="current_status">状态</div>
+        </div>
+        <div class="dongtai_goods">
+          <div class="change_goods">
+            <div class="good_img">
+              <div class="good_img_div"></div>
+            </div>
+            <div class="good_seller">卖家</div>
+            <div class="good_specification">新科(Shinco) DVP-311A型 DVD播放机</div>
+            <div class="good_price">300.00</div>
+            <div class="good_number">1</div>
+            <div class="good_current_status">待付款</div>
+          </div>
+        </div>
 
+      </div>
     </div>
   </div>
 </template>
