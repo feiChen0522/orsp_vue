@@ -10,11 +10,8 @@
             <span class="icon-bar"></span>
           </button>
           <p class="navbar-text">
-            <router-link to="/">
-        <p class="navbar-brand navbar-link "  style="margin-left: 0; padding: 0 0 0 5px; height: 10px;">ORSP</p>
-
-        </router-link>
-        </p>
+            <router-link to="/" tag="p" class="navbar-brand navbar-link "  style="margin-left: 0; padding: 0 0 0 5px; height: 10px;">ORSP</router-link>
+          </p>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
