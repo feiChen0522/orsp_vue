@@ -76,7 +76,7 @@
           </table>
         </div>
         <div class="col-md-12">
-          <a href="" class="delgoods">放弃商品</a>
+          <router-link tag="a" to="/car3"  class="delgoods">放弃商品</router-link>
         </div>
       </div>
     </div>

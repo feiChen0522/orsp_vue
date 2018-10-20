@@ -2,7 +2,7 @@
   <div class="container">
     <div class="search-box">
       <div class="con-logo">
-        <a href="#"><div class="logo"></div></a>
+        <router-link tag="a" to="/" href="#"><div class="logo"></div></router-link>
       </div>
       <div class="box">
         <div class="box-text" >
@@ -20,7 +20,7 @@ export default {
   name: 'SearchBox',
   data () {
     return {
-        inputText:""
+        inputText:"秋上新"
     }
   },
   methods:{
