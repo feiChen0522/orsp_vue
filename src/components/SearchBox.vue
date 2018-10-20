@@ -34,6 +34,8 @@ export default {
         })
         .then(function (res) {
           console.log(res.data)
+          //在sessionStorage暂时存储搜索到的数据
+          sessionStorage.setItem('searchGoods',res.data)
 
           this.$router.push({
             name:"SearchMain",
@@ -54,7 +56,6 @@ export default {
     }
   },
   mounted:function () {
-    this.$route.params.code
   }
 }
 </script>

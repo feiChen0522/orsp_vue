@@ -30,6 +30,7 @@
         <div class="change_goods">
           <div class="good_img">
             <div class="good_img_div"></div>
+            <!--<img src="images/cf/2018090400.png" alt="">-->
           </div>
           <div class="good_seller">卖家</div>
           <div class="good_specification">新科(Shinco) DVP-311A型 DVD播放机</div>
@@ -78,6 +79,7 @@ export default {
   }
   .change_message{
     font-size: 12px;
+    /*min-height: 900px;*/
     color: #999;
   }
   .change_message_item{
@@ -131,7 +133,7 @@ export default {
   .change_goods .good_img .good_img_div{
     width: 100px;
     height: 99px;
-    background-image: url("../assets/images/1538788453189.jpg");
+    background-image: url("../assets/1538788453189.jpg");
     background-size: cover;
     position: relative;
     left: 35%;
