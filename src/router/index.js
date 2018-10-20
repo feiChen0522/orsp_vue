@@ -160,6 +160,11 @@ export default new Router({
           component: Order
         },
         {
+          path: '/goodshaveSold',
+          name: 'GoodsHaveSold',
+          component: GoodsHaveSold
+        },
+        {
           path: '/myreleaseGoods',
           name: 'MyReleaseGoods',
           component: MyReleaseGoods

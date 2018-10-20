@@ -60,7 +60,7 @@
                     leave-active-class="animated zoomOut"
         >
       <ul v-if="show[2]">
-      <li><router-link to="">已买到的商品</router-link></li>
+      <li><router-link to="/goodshaveSold">已买到的商品</router-link></li>
       <li><router-link to="/mycollect">我的收藏</router-link></li>
       <!--<li>我的出价</li>-->
       <!--<li>浏览历史</li>-->
