@@ -8,7 +8,7 @@
             <th class="col1">商品名称</th>
             <th class="col2">商品信息</th>
             <th class="col3">单价</th>
-            <th class="col3">用户等级</th>
+            <th class="col3">数量</th>
             <th class="col3">是否担保</th>
             <th class="col3">操作</th>
           </tr>
@@ -21,15 +21,22 @@
                 <p v-text="goods.title" style="text-align: left"></p></router-link>
             </td>
             <td class="col2"><p>棕色</p></td>
-            <td class="col3"><p>￥{{goods.price}}</p></td>
+            <td class="col3"><p v-text="'$'+parseFloat(unitPrice).toFixed(2)"></p></td>
             <td class="col4">
-              <p>level8</p>
+              <p>
+                <input type="button" value="-" @click="numOperation(0)">
+                <input type="text" readonly v-model="goodNum" style="width: 30px">
+                <input type="button" value="+" @click="numOperation(1)">
+
+              </p>
             </td>
             <td class="col5"><p>默认</p></td>
             <td class="col6"><p class="del" @click="delall">删除</p></td>
           </tr>
           </tbody>
         </table>
+        <p style="float: right;height: 42px;line-height: 40px;color: red;font-size: 20px" v-text="parseFloat(unitPrice*goodNum).toFixed(2)">15.00</p>
+        <p style="float: right;height: 40px;line-height: 40px;font-weight: 600;font-size: 16px;margin-right: 10px;">总价格:  </p>
       </div>
     </div>
   </div>
@@ -42,7 +49,14 @@
       return {
         goods: {},
         imgsrc: '',
-        flag:true
+        flag:true,
+      //  商品数量
+        goodNum:1,
+        //商品单价
+        unitPrice:10.10,
+        //库存
+        cateNum:10,
+        totalPrice:0.00
       }
     },
     mounted: function () {
@@ -61,6 +75,17 @@
         // sessionStorage.clear();
         // // window.location.reload()
         this.flag=!true
+      },
+      numOperation:function (f) {
+
+          this.goodNum=f===1?this.goodNum+1:this.goodNum-1
+        if (this.goodNum==0){
+          this.goodNum+=1
+        }else if (this.goodNum>this.cateNum) {
+          this.goodNum-=1
+        }
+        console.log(this.goodNum);
+
       }
     }
   }

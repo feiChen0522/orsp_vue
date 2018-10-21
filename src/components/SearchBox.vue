@@ -20,12 +20,18 @@ export default {
   name: 'SearchBox',
   data () {
     return {
-        inputText:"秋上新"
+        inputText:""
+    }
+  },
+  created(){
+    if (sessionStorage.getItem('searchCondition')!=null) {
+      this.inputText=sessionStorage.getItem('searchCondition')
     }
   },
   methods:{
     searchGoods:function (e) {
       console.log(this.inputText);
+      sessionStorage.setItem('searchCondition',this.inputText)
       axios.get('http://127.0.0.1:8000/resource/searchGoods/?good='+this.inputText+'&index='+0
         ,{
           // headers: {
@@ -35,7 +41,7 @@ export default {
         .then(function (res) {
           console.log(res.data)
           //在sessionStorage暂时存储搜索到的数据
-          sessionStorage.setItem('searchGoods',res.data)
+          sessionStorage.setItem('searchGoods',JSON.stringify(res.data))
 
           this.$router.push({
             name:"SearchMain",
@@ -43,6 +49,7 @@ export default {
               good:res.data
             }
           });
+          // window.location.reload();
           //控制台打印请求成功时返回的数据
           //bind(this)可以不用
         }.bind(this))

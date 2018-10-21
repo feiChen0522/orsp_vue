@@ -1,5 +1,5 @@
 <template>
-  <div class="con">
+  <div class="con" style="margin: 0 auto">
     <div class="status">
       <span>全部订单(<i>0</i>)</span>
       <span>待收款(<i>0</i>)</span>
@@ -126,6 +126,7 @@ export default {
     line-height: 25px;
     height: 25px;
     background-color: #e3e3e3;
+    text-align: left;
   }
   .dongtai_goods .info span{
     margin: 0 10px;
@@ -139,11 +140,10 @@ export default {
   .change_goods .good_img .good_img_div{
     width: 100px;
     height: 99px;
-    background-image: url("../assets/images/1538788453189.jpg");
+    background-image: url("../assets/logo.png");
     background-size: cover;
     position: relative;
     left: 35%;
-    
   }
   .change_goods .good_current_status{
     color: #D30000;

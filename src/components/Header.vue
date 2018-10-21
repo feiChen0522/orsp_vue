@@ -18,8 +18,8 @@
           <ul class="nav navbar-nav" style="margin-bottom: 0">
            <li>
              <!--<a >您好，请登录<span class="sr-only">(current)</span></a>-->
-             <a data-toggle="modal" data-target="#myModal1">
-               <p class="p1">您好，请登录</p>
+             <a data-toggle="modal" data-target="#myModal1" @click.stop.prevent="goPersonCenter">
+               <p class="p1" v-text="LoginStatus" style="cursor: pointer" ></p>
              </a>
            </li>
 
@@ -33,7 +33,7 @@
                 <div class="modal-content" style="width: 475px;">
 
                   <div class="modal-body" >
-                    <Login-div></Login-div>
+                    <Login-div @jump-regist="displayRegist"></Login-div>
                   </div>
 
                 </div>
@@ -48,7 +48,6 @@
 
                   <div class="modal-body" >
                     <Regist-div></Regist-div>
-
                   </div>
 
                 </div>
@@ -57,7 +56,7 @@
             <!--模态框结束-->
             <li>
               <a data-toggle="modal" data-target="#myModal2">
-                <p class="p1">注册</p>
+                <p class="p1" v-text="RegistStatus" style="cursor: pointer" @click.stop.prevent="cancelLogin" @jumpResit="displayRegist"></p>
               </a>
             </li>
           </ul>
@@ -94,31 +93,73 @@
 </template>
 
 <script>
+  import 'bootstrap/js/modal'
 
 export default {
   name: 'Header',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      LoginStatus:"您好，请登录",
+      RegistStatus:"注册",
+
     }
   },
   mounted:function(){
-    console.log("------------------------")
+    if (sessionStorage.getItem('token')!=null) {
+      var token=sessionStorage.getItem('token')
+      // console.log("token",token);
+      axios.post('http://127.0.0.1:8000/user/judgetoken/',
+        {
+          headers: {
+            'token': sessionStorage.getItem('token'),
+          }
+        })
+        .then(function (res) {
+          console.log(res)
+          if (res.data.hasOwnProperty('name')){
+            this.LoginStatus="欢迎"+res.data.name
+            this.RegistStatus="退出"
+            next();
+          } else {
+            alert("登录失败")
+          }
+          //控制台打印请求成功时返回的数据
+          //bind(this)可以不用
+        }.bind(this))
+        .catch(function (err) {
+          if (err.response) {
+            console.log(err.response)
+            //控制台打印错误返回的内容
+          }
+          //bind(this)可以不用
+        }.bind(this))
+    }
   },
-  beforeRouteEnter:(to,from,next)=>{
-
-    //此时该组件还没被实例化
-
-    alert(this.infor);       //弹出消息框信息为 undefined
-
-    next(vm =>{
-
-      //此时该组件被实例化了
-
-      alert(vm.infor);         //弹出消息框信息为 hw
-
-    })
-
+  methods:{
+    goPersonCenter:function () {
+      if (this.LoginStatus!="您好，请登录") {
+        this.$router.push({
+          name:'Center'
+        })
+      }else {
+        $('#myModal1').modal('show');
+      }
+    },
+    cancelLogin:function () {
+      console.log(this.RegistStatus);
+      if (this.RegistStatus!="注册") {
+        console.log("_________________")
+        sessionStorage.removeItem('token')
+        window.location.reload()
+      }else {
+        $('#myModal2').modal('show');
+      }
+    },
+    displayRegist:function () {
+      console.log("----------------------")
+      $('myModal2').modal('hide')
+      $('myModal1').modal('show')
+    }
   }
 }
 </script>

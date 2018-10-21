@@ -23,6 +23,7 @@ import AddAddress from './components/AddAddress'
 import MyChange from './components/MyChange'
 import MyReleaseGoods from './components/MyReleaseGoods'
 import GoodsHaveSold from './components/GoodsHaveSold'
+import PhotoLoupe from './components/PhotoLoupe'
 import upload from './components/download/upload'
 import Page from './components/Page'
 import Address from './components/Address'
@@ -63,28 +64,12 @@ Vue.component('addaddress-div', AddAddress);
 Vue.component('MyChange-div', MyChange);
 Vue.component('upload-div', upload);
 Vue.component('goods-have-sold',GoodsHaveSold);
+Vue.component('photo-loupe',PhotoLoupe);
 //购物车页面
 Vue.component('Car1-div', Car1);
 
 
 
-// router.beforeEach((to, from, next) => {
-//   console.log('navigation-guards');
-//   // to: Route: 即将要进入的目标 路由对象
-//   // from: Route: 当前导航正要离开的路由
-//   // next: Function: 一定要调用该方法来 resolve 这个钩子。执行效果依赖 next 方法的调用参数。
-//
-//   // token=sessionStorage.getItem('token')
-//   // console.log("token",token);
-//   // if (token){
-//   //   next();
-//   //
-//   // } else {
-//   //   this.$route.push({
-//   //     name:'/login'
-//   //   })
-//   // }
-// });
 
 new Vue({
   el: '#app',
