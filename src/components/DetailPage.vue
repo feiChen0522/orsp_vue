@@ -84,14 +84,14 @@
         <div class="e"></div>
         <div class="col-md-12">
           <div class="col-md-6 f1">店主:</div>
-          <div class="col-md-6 f1"><span>孙宁koy</span></div>
+          <div class="col-md-6 f1"><span v-text="goods.name"></span></div>
         </div>
         <div class="col-md-12 f2"><p>她加入ORSP25天，常居{{goods.address}}</p></div>
 
         <div class="col-md-12 f3"><span>查看卖家芝麻信用</span></div>
 
         <div class="col-md-12 f4">
-          <div class="col-md-5"><span class="c1">|</span><a href="#" style="background-color: #3b49ff">我的发布</a></div>
+          <div class="col-md-5"><span class="c1">|</span><a href="#" >我的发布</a></div>
           <div class="col-md-7"><a href="#" class="c2">点击查看详细信息></a></div>
         </div>
         <div class="col-md-12 f5" style="margin-bottom: 50px">
@@ -154,6 +154,7 @@
       this.goods['title'] = sessionStorage.getItem('title')
       this.goods['address'] = sessionStorage.getItem('address')
       this.goods['img'] = sessionStorage.getItem('img')
+      this.goods['name'] = sessionStorage.getItem('name')
       this.imgsrc = this.goods['img']
       this.goodsImg.push(this.imgsrc)
     },

@@ -1,18 +1,7 @@
 <template>
   <div id="app" class="container-fluid">
-    <!--<router-view></router-view>-->
-    <!--<Release></Release>-->
-    <!--<keep-alive >-->
-      <!--<router-view v-if="$route.meta.keepAlive"></router-view>-->
-    <!--</keep-alive>-->
-    <!--<router-view v-if="!$route.meta.keepAlive"></router-view>-->
     <header-top></header-top>
-    <!--<search-div style="margin-top: 20px"></search-div>-->
-    <!--<center-nav style="margin-top: 20px"></center-nav>-->
-    <!--<main-nav class="div-center"></main-nav>-->
-    <!--<goods-div style="margin-top: 20px"></goods-div>-->
-    <!--<footer-div></footer-div>-->
-    <router-view></router-view>
+    <router-view/>
 
   </div>
 </template>
