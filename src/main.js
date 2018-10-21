@@ -9,6 +9,7 @@ import Main from './components/Main'
 import Header from './components/Header'
 import Goods from './components/Goods'
 import Carlist from './components/Cart/Carlist'
+import CarlistSeller from './components/Cart/CarlistSeller'
 import Footer from './components/Footer'
 import SearchBox from './components/SearchBox'
 import Classify from './components/search/Classify'
@@ -50,6 +51,7 @@ Vue.component('search-div', SearchBox);
 Vue.component('footer-div', Footer);
 Vue.component('classify-div', Classify);
 Vue.component('car-list', Carlist);
+Vue.component('carsell-list', CarlistSeller);
 Vue.component('detail-div', DetailPage);
 Vue.component('change-name', ChangeName);
 Vue.component('change-password',ChangePassword);

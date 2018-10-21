@@ -6,15 +6,21 @@
     <!--<main-nav class="div-center"></main-nav>-->
     <!--<goods-div style="margin-top: 20px"></goods-div>-->
     <!--<footer-div></footer-div>-->
-    <detail-div></detail-div>
-    <router-view></router-view>
+    <detail-div ></detail-div>
+    <router-view ></router-view>
 
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Detail'
+
+  name: 'Detail',
+  methods:{
+    isLogin:function () {
+      Login.$emit('isLogin',1)
+    }
+  }
 }
 </script>
 

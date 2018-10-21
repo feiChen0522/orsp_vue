@@ -161,7 +161,7 @@ export default {
                 .then(function (res) {
                   console.log(res);
                   console.log(res.headers);
-                  sessionStorage.setItem('token',res.headers.token);
+                  localStorage.setItem('token',res.headers.token);
                   vm.regist_success=true;
                   setInterval(function () {
                     if(vm.second===0){

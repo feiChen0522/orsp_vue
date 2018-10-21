@@ -10,13 +10,13 @@
             <span v-if="item===1" class="btn btn-default" @click="showPage(pageCurrent-1,$event)" :class="{'disabled':fDisabled}">
                 上一页
             </span>
-            <span v-if="item===1" class="btn btn-default" @click="showPage(item,$event)"
+            <span v-if="item===1" class="btn btn-default " @click="showPage(item,$event)"
                   :class="{red_white:item==pageCurrent}"
             >
                 {{item}}
             </span>
-            <span v-if="item===1&&item<showPagesStart-1" class="btn btn-default disabled">
-                ...
+            <span v-if="item===1&&item<showPagesStart-1" class="btn btn-default disabled ">
+              ...
             </span>
             <span v-if="item>1&&item<=count-1&&item>=showPagesStart&&item<=showPageEnd&&item<=count"
                   class="btn btn-default" @click.prevent.stop="showPage(item,$event)"
@@ -27,7 +27,7 @@
             <span v-if="item===count&&item>showPageEnd+1" class="btn btn-default disabled">
                 ...
             </span>
-            <span v-if="item===count" class="btn btn-default" @click="showPage(item,$event)"
+            <span v-if="item===count" class="btn btn-default 1" @click="showPage(item,$event)" :style="{'display':pageShow}"
                   :class="{red_white:item==pageCurrent}"
             >
                 {{item}}
@@ -72,7 +72,9 @@ export default {
       // 开始显示的分页按钮
       showPagesStart: 1,
       // 结束显示的分页按钮
-      showPageEnd: 3
+      showPageEnd: 3,
+    // 解决count=1的bug
+      pageShow:false
     }
   },
 
@@ -80,6 +82,13 @@ export default {
 
   mounted () {
     this.showPage(this.pageCurrent, null, true)
+  },
+  created:function(){
+    console.log("count",)
+
+    if (this.count===1){
+      this.pageShow="none"
+    }
   },
   updated () {
     // 获取当前页码
