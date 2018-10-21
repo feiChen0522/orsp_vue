@@ -143,6 +143,7 @@ export default {
     background-size: cover;
     position: relative;
     left: 35%;
+    
   }
   .change_goods .good_current_status{
     color: #D30000;
