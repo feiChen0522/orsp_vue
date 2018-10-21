@@ -12,7 +12,7 @@
     <!--<main-nav class="div-center"></main-nav>-->
     <!--<goods-div style="margin-top: 20px"></goods-div>-->
     <!--<footer-div></footer-div>-->
-    <router-view ></router-view>
+    <router-view></router-view>
 
   </div>
 </template>
