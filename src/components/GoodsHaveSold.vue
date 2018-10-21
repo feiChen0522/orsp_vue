@@ -133,7 +133,7 @@ export default {
   .change_goods .good_img .good_img_div{
     width: 100px;
     height: 99px;
-    background-image: url("../assets/1538788453189.jpg");
+    background-image: url("../assets/images/1538788453189.jpg");
     background-size: cover;
     position: relative;
     left: 35%;
