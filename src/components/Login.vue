@@ -8,13 +8,13 @@
                 <input type="text" placeholder="请输入手机号" maxlength="11" v-model="telephone">
               </div>
               <div class="col-lg-12 check-txt" >
-                <a href="" v-if="tel_correct">手机号不合法</a>
+                <a  v-if="tel_correct">手机号不合法</a>
               </div>
               <div class="col-lg-12 r-password-input">
                 <input type="password" placeholder="请输入密码" maxlength="40" v-model="password">
               </div>
               <div class="col-lg-12 check-txt" >
-                <a href="" v-if="psd_correct">密码不正确请重新输入</a>
+                <a  v-if="psd_correct">密码不正确请重新输入</a>
               </div>
               <div class="col-lg-12 r-login-div">
                 <div class="btn btn-success" @click="login">登录</div>
@@ -22,14 +22,14 @@
 
               <div class="have-account col-lg-12">
                 <div class="row">
-                  <a href="" class="col-lg-9">
+                  <a  class="col-lg-9">
                     还没有账号?
                   </a>
 
-                <a href="" class="col-lg-3">去注册</a>
+                <a  class="col-lg-3" @click="jumpRegist">去注册</a>
                 </div></div>
               <div class="login-third">
-                <p><a href="">第三方登录</a></p>
+                <p><a >第三方登录</a></p>
                 <div class="login-third-icon">
                   <div></div>
                   <div></div>
@@ -107,6 +107,10 @@ export default {
           }
           //bind(this)可以不用
         }.bind(this))
+    },
+    jumpRegist:function () {
+      console.log("========")
+      this.$emit('jump-regist',1)
     }
   },
   computed:{

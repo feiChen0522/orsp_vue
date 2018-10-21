@@ -19,7 +19,7 @@
            <li>
              <!--<a >您好，请登录<span class="sr-only">(current)</span></a>-->
              <a data-toggle="modal" data-target="#myModal1" @click.stop.prevent="goPersonCenter">
-               <p class="p1" v-text="LoginStatus" style="cursor: pointer"></p>
+               <p class="p1" v-text="LoginStatus" style="cursor: pointer" ></p>
              </a>
            </li>
 
@@ -33,7 +33,7 @@
                 <div class="modal-content" style="width: 475px;">
 
                   <div class="modal-body" >
-                    <Login-div></Login-div>
+                    <Login-div @jump-regist="displayRegist"></Login-div>
                   </div>
 
                 </div>
@@ -48,7 +48,6 @@
 
                   <div class="modal-body" >
                     <Regist-div></Regist-div>
-
                   </div>
 
                 </div>
@@ -57,7 +56,7 @@
             <!--模态框结束-->
             <li>
               <a data-toggle="modal" data-target="#myModal2">
-                <p class="p1" v-text="RegistStatus" style="cursor: pointer" @click.stop.prevent="cancelLogin"></p>
+                <p class="p1" v-text="RegistStatus" style="cursor: pointer" @click.stop.prevent="cancelLogin" @jumpResit="displayRegist"></p>
               </a>
             </li>
           </ul>
@@ -153,8 +152,13 @@ export default {
         sessionStorage.removeItem('token')
         window.location.reload()
       }else {
-        $('#myModal1').modal('show');
+        $('#myModal2').modal('show');
       }
+    },
+    displayRegist:function () {
+      console.log("----------------------")
+      $('myModal2').modal('hide')
+      $('myModal1').modal('show')
     }
   }
 }

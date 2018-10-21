@@ -200,15 +200,7 @@ export default new Router({
         },
       ]
     },
-    {
-      path: '/myreleasegoods',
-      name: 'MyReleaseGoods',
-      component: MyReleaseGoods
-    },
-    {
-      path: '/goodshavesold',
-      name: 'GoodsHaveSold',
-      component: GoodsHaveSold
-    }
+
+
   ]
 })
