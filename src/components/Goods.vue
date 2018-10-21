@@ -22,7 +22,16 @@
 <script>
   export default {
     name: 'Goods',
-    props: ['goods'],
+    props: {
+      goods:{
+        default:function(){
+          if (sessionStorage.getItem('searchGoods')!=null){
+            console.log("aaaaaaaaaaaaaaa")
+          }
+            return JSON.parse(sessionStorage.getItem('searchGoods'))
+          }
+      }
+    },
     data() {
       return {
         show: true,
@@ -35,9 +44,22 @@
           address:'',
           img:''
         },
+
       }
     },
+    mounted:function(){
+        if (sessionStorage.getItem('searchGoods')!=null){
+          this.currentGoods= JSON.parse(sessionStorage.getItem('searchGoods'))
+        }
+    },
     methods: {
+      initGoods:function(){
+        if (sessionStorage.getItem('searchGoods')!=null){
+          return JSON.parse(sessionStorage.getItem('searchGoods'))
+        }
+      },
+
+
       sendGoods: function (e) {
         let nodes=e.target.parentNode.parentNode.querySelectorAll('a')
         let imgs=e.target.parentNode.parentNode.querySelector('img')

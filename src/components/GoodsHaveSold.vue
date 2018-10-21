@@ -120,6 +120,7 @@ export default {
     line-height: 25px;
     height: 25px;
     background-color: #e3e3e3;
+    text-align: left;
   }
   .dongtai_goods .info span{
     margin: 0 10px;

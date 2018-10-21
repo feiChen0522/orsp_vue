@@ -1,5 +1,5 @@
 <template>
-  <div class="con">
+  <div class="con" style="margin: 0 auto">
     <div class="status">
       <span>全部订单(<i>0</i>)</span>
       <span>待收款(<i>0</i>)</span>
@@ -22,15 +22,21 @@
         <div class="current_status">状态</div>
       </div>
       <div class="dongtai_goods">
+        <div class="info">
+          <span>上传时间：<i>2018/10/19</i></span>
+          <span>订单号：<i>待交易状态就不显示</i></span>
+          <span>订单生成时间：<i>待交易不显示</i></span>
+        </div>
         <div class="change_goods">
           <div class="good_img">
             <div class="good_img_div"></div>
+            <!--<img src="images/cf/2018090400.png" alt="">-->
           </div>
           <div class="good_seller">卖家</div>
           <div class="good_specification">新科(Shinco) DVP-311A型 DVD播放机</div>
           <div class="good_price">300.00</div>
           <div class="good_number">1</div>
-          <div class="good_current_status">待付款</div>
+          <div class="good_current_status">待交易</div>
         </div>
       </div>
 
@@ -61,7 +67,7 @@ export default {
     padding: 0 10px;
     background-color: white;
   }
-  .status span{
+  .status>span{
     display: inline-block;
     width: 120px;
     height: 50px;
@@ -73,6 +79,7 @@ export default {
   }
   .change_message{
     font-size: 12px;
+    /*min-height: 900px;*/
     color: #999;
   }
   .change_message_item{
@@ -87,26 +94,42 @@ export default {
   }
   .change_message_item .goods_msg,.change_goods .good_img{
     width: 30%;
+    /*background-color: #FF7E00;*/
   }
   .change_message_item .seller,.change_goods .good_seller{
+    /*background-color: #eba85a;*/
     width: 12.5%;
   }
   .change_message_item .specification,.change_goods .good_specification{
+    /*background-color: blue;*/
     width: 20%;
   }
   .change_message_item .price,.change_goods .good_price{
+    /*background-color: yellow;*/
     width: 12.5%;
   }
   .change_message_item .number,.change_goods .good_number{
+    /*background-color: blanchedalmond;*/
     width: 12.5%;
   }
   .change_message_item .current_status,.change_goods .good_current_status{
+    /*background-color: chartreuse;*/
     width: 12.5%;
   }
   .dongtai_goods{
     color: #666;
-    min-height: 100px;
+    min-height: 125px;
     background-color: #FFF4E8;
+  }
+  .dongtai_goods .info{
+    width: 100%;
+    line-height: 25px;
+    height: 25px;
+    background-color: #e3e3e3;
+    text-align: left;
+  }
+  .dongtai_goods .info span{
+    margin: 0 10px;
   }
   .change_goods{
     text-align: center;
@@ -117,7 +140,7 @@ export default {
   .change_goods .good_img .good_img_div{
     width: 100px;
     height: 99px;
-    background-image: url("../assets/images/1538788453189.jpg");
+    background-image: url("../assets/logo.png");
     background-size: cover;
     position: relative;
     left: 35%;

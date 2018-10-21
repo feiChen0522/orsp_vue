@@ -19,7 +19,7 @@
                 <router-link to="/accountManage">个人信息</router-link>
               </li>
               <li>
-                <router-link to=""> 我的订单</router-link>
+                <router-link to="/order"> 我的订单</router-link>
               </li>
               <!--<li>我的评价</li>-->
               <li>
@@ -39,7 +39,7 @@
                     leave-active-class="animated zoomOut"
         >
       <ul v-if="show[1]">
-      <li><router-link to="">我发布的商品</router-link></li>
+      <li><router-link to="/myreleaseGoods">我发布的商品</router-link></li>
       <li><router-link to="/MyChange">交换请求</router-link></li>
       <!--<li>我的地址</li>-->
       <!--<li>个人信息</li>-->
@@ -60,7 +60,7 @@
                     leave-active-class="animated zoomOut"
         >
       <ul v-if="show[2]">
-      <li><router-link to="">已买到的商品</router-link></li>
+      <li><router-link to="/goodshaveSold">已买到的商品</router-link></li>
       <li><router-link to="/mycollect">我的收藏</router-link></li>
       <!--<li>我的出价</li>-->
       <!--<li>浏览历史</li>-->

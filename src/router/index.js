@@ -142,6 +142,7 @@ export default new Router({
       path:'/personcenter',
       name:'Center',
       component:Center,
+      redirect:'/accountManage',
       children:[
         {
           path: '/address',
@@ -157,6 +158,16 @@ export default new Router({
           path: '/order',
           name: 'Order',
           component: Order
+        },
+        {
+          path: '/goodshaveSold',
+          name: 'GoodsHaveSold',
+          component: GoodsHaveSold
+        },
+        {
+          path: '/myreleaseGoods',
+          name: 'MyReleaseGoods',
+          component: MyReleaseGoods
         },
         //个人信息
         {
@@ -189,15 +200,7 @@ export default new Router({
         },
       ]
     },
-    {
-      path: '/myreleasegoods',
-      name: 'MyReleaseGoods',
-      component: MyReleaseGoods
-    },
-    {
-      path: '/goodshavesold',
-      name: 'GoodsHaveSold',
-      component: GoodsHaveSold
-    }
+
+
   ]
 })
