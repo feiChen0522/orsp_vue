@@ -106,10 +106,6 @@
     height: 260px;
   }
 
-  .item1 {
-    color: #e8e8e8;
-  }
-
   .sp1 {
     margin-bottom: 10px;
     margin-top: 10px;

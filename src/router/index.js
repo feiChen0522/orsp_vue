@@ -25,6 +25,7 @@ import SecurityCenter from '@/components/SecurityCenter'
 import ShoppingAddress from '@/components/ShoppingAddress'
 import MyReleaseGoods from '@/components/MyReleaseGoods'
 import GoodsHaveSold from '@/components/GoodsHaveSold'
+import ShowMyUpSesource from '@/components/download/ShowMyUpSesource'
 
 // import Search from '@/components/Search'
 import SearchMain from '@/components/search/SearchMain'
@@ -168,6 +169,11 @@ export default new Router({
           path: '/myreleaseGoods',
           name: 'MyReleaseGoods',
           component: MyReleaseGoods
+        },
+        {
+          path: '/showmyupsesource',
+          name: 'ShowMyUpSesource',
+          component: ShowMyUpSesource
         },
         //个人信息
         {

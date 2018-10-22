@@ -95,7 +95,7 @@ export default {
         .then(function (res) {
           console.log(res)
           console.log(res.headers);
-          sessionStorage.setItem('token',res.headers.token)
+          localStorage.setItem('token',res.headers.token)
           window.location.reload()
           //控制台打印请求成功时返回的数据
           //bind(this)可以不用

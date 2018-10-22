@@ -4,12 +4,16 @@
     <div class="container ">
       <div class="row goods">
         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 " v-for="(i,index) of goods">
-          <div><img :src="i.img_href" alt="" class="imgs"></div>
+          <div><a @click="sendGoods" style="cursor: pointer;">
+            <img :src="i.img_href" alt="" class="imgs">
+
+          </a>
+          </div>
           <p href=""><a href="" v-text="i.price"></a> <a href="" v-text="i.sales_num"></a></p>
           <p class="title">
-            <a v-text="i.title" style="color: black!important;" @click="sendGoods"></a>
+            <a class="dataPlayLoad" v-text="i.title" style="color: black!important;cursor: pointer" @click="sendGoods" :data-change="i.change" :data-belong_name="i.belong_name" :data-belong_to="i.belong_to" :data-Stock="i.Stock"></a>
           </p>
-          <a style="width: 118px;display:inline-block;text-overflow: ellipsis;height: 20px;overflow: hidden"> <span
+          <a style="width: 118px;display:inline-block;text-overflow: ellipsis;height: 20px;overflow: hidden;text-align: left"> <span
             class="glyphicon glyphicon-th-list"></span>{{i.shop}}</a>
           <a href="" v-text="i.address"></a>
         </div>
@@ -61,21 +65,40 @@
 
 
       sendGoods: function (e) {
-        let nodes=e.target.parentNode.parentNode.querySelectorAll('a')
-        let imgs=e.target.parentNode.parentNode.querySelector('img')
-        this.good_list['price']=nodes[0].innerText;
-        this.good_list['title']=nodes[2].innerText;
-        this.good_list['address']=nodes[4].innerText;
-        this.good_list['img']=imgs.getAttribute('src')
+        if (e.target.nodeName=="A"){
 
-        sessionStorage.setItem('price',this.good_list['price'])
-        sessionStorage.setItem('title',this.good_list['title'])
-        sessionStorage.setItem('address',this.good_list['address'])
-        sessionStorage.setItem('img',this.good_list['img'])
-        this.$router.push({
-          name:"DetailPage"
-        })
+          let nodes=e.target.parentNode.parentNode.querySelectorAll('a')
+          let imgs=e.target.parentNode.parentNode.querySelector('img')
+          this.good_list['price']=nodes[1].innerText;
+          this.good_list['payNum']=nodes[2].innerText;
+          this.good_list['title']=nodes[3].innerText;
+          this.good_list['store']=nodes[4].innerText;
+          this.good_list['address']=nodes[5].innerText;
+          this.good_list['img']=imgs.getAttribute('src')
+          console.log(e.target.getAttribute('data-change'));
+          this.good_list["change"]=e.target.getAttribute('data-change');
+          this.good_list["belong_name"]=e.target.getAttribute('data-belong_name');
+          this.good_list["belong_to"]=e.target.getAttribute('data-belong_to');
+          this.good_list["Stock"]=e.target.getAttribute('data-Stock');
+          console.log(e.target.getAttribute('data-change'));
+          console.log(e.target.getAttribute('data-change'));
+          console.log("==============")
+          console.log(this.good_list["change"]);
+          sessionStorage.setItem('price',this.good_list['price'])
+          sessionStorage.setItem('title',this.good_list['title'])
+          sessionStorage.setItem('payNum',this.good_list['payNum'])
+          sessionStorage.setItem('address',this.good_list['address'])
+          sessionStorage.setItem('img',this.good_list['img'])
+          sessionStorage.setItem('change',this.good_list['change'])
+          sessionStorage.setItem('belong_name',this.good_list['belong_name'])
+          sessionStorage.setItem('belong_to',this.good_list['belong_to'])
+          sessionStorage.setItem('Stock',this.good_list['Stock'])
+          sessionStorage.setItem('store',this.good_list['store'])
+          this.$router.push({
+            name:"DetailPage"
+          })
 
+        }
       },
 
     }

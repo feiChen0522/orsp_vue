@@ -49,13 +49,10 @@ div[class*="col-"]{
 .goods img{
   width: 100%;
 }
-.goods>div>div>img{
+.goods>div>div img{
   width: 100%!important;
   height: 220px;
   cursor: pointer;
-}
-.goods>div>div img{
-  width: 100%;
 }
 
 .goods>div>p{

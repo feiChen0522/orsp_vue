@@ -24,7 +24,19 @@
               <td>
                 <div class="col-md-12">
                   <span class="col-md-10 f2"><strong>收货人信息:</strong></span>
-                  <a href="#" class="col-md-2 f3">新增收货地址</a>
+                  <a href="#" class="col-md-2 f3" data-toggle="modal" data-target="#myModal_Address">新增收货地址</a>
+                  <div class="modal fade" id="myModal_Address" tabindex="-1" role="dialog"
+                       aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+
+                        <div class="modal-body">
+                          <addaddress-div></addaddress-div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div class="col-md-12" @click="onclick">
                   <p :class="{'g1':flag1}">麻花疼 13555555555 苏州 虎丘区 Q讯大厦 108层</p>
@@ -47,13 +59,19 @@
               <td>
                 <div class="col-md-12">
                   <span class="col-md-10 f2"><strong>邮寄方式:</strong></span>
-                  <a href="#" class="col-md-2 f3">更多+</a>
                 </div>
-                <div class="col-md-12" @click="onclick">
-                  <p :class="{'g1':flag1}">顺丰快递</p>
+                <div class="col-md-12">
+                  <span><button class="sp1 ">顺丰快递</button><button class="sp1">用户自提</button></span>
                 </div>
-                <div class="col-md-12" @click="onclick">
-                  <p :class="{'g1':flag1}">送货时间不限</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="col-md-12">
+                  <span class="col-md-10 f2"><strong>发票类型:</strong></span>
+                </div>
+                <div class="col-md-12" >
+                  <p >该类型商品不支持发票</p>
                 </div>
               </td>
             </tr>
@@ -76,7 +94,7 @@
           </table>
         </div>
         <div class="col-md-12">
-          <router-link tag="a" to="/car3"  class="delgoods">放弃商品</router-link>
+          <router-link tag="a" to="/car3" class="delgoods">提交商品订单</router-link>
         </div>
       </div>
     </div>
@@ -101,37 +119,45 @@
       },
       onclick: function () {
         this.flag1 = !this.flag1
+      },
+      addAddress: function () {
+
       }
     }
   }
 </script>
 
 <style scoped>
-  ul,li{
+  ul, li {
     list-style: none;
   }
-  a{
+
+  a {
     color: black;
   }
 
-  a:hover{
+  a:hover {
     text-decoration: none;
     color: black;
   }
-  .a{
+
+  .a {
     margin-top: 20px;
     margin-bottom: 50px;
     border-bottom: 2px solid #c30;
   }
-  .b{
+
+  .b {
     height: 100px;
     overflow: hidden;
   }
-  .c{
+
+  .c {
     height: 120px;
     width: 100px;
   }
-  div{
+
+  div {
     text-align: left;
   }
 
@@ -143,6 +169,7 @@
     display: inline;
     float: right;
   }
+
   .img01 li {
     float: left;
     width: 205px;
@@ -151,15 +178,17 @@
     font-size: 13px;
   }
 
-  .d{
+  .d {
     position: relative;
     right: 20px;
     top: 40px;
   }
+
   .e {
     margin-left: 15px;
   }
-  .f1{
+
+  .f1 {
     background: url(../assets/images/cart_001.gif);
     background-repeat: no-repeat;
   }
@@ -172,60 +201,89 @@
     font-size: 17px;
     line-height: 36px;
     text-align: center;
-    background: url("../assets/images/btn_check_1.jpg") ;
+    background: url("../assets/images/btn_check_1.jpg");
     background-repeat: no-repeat;
   }
-  .delgoods:hover{
+
+  .delgoods:hover {
     text-decoration: none;
     color: white;
   }
+
   a:hover {
     text-decoration: none;
   }
+
   .cur2 {
     color: white;
     font-weight: bolder;
   }
-  .cur1{
+
+  .cur1 {
     margin-left: -40px;
   }
+
   table {
     border: 1px solid #E7E3E7;
     border-top: 2px solid #CE0000;
     background: #FFFDEE;
     color: #666;
-    margin-top: 40px;}
+    margin-top: 40px;
+  }
+
   thead {
     height: 50px;
     line-height: 36px;
     background: url("../assets/images/sort_bg.png");
   }
-  .f2{
+
+  .f2 {
     font-size: 16px;
     height: 40px;
     line-height: 40px;
     color: black;
   }
+
   tbody td {
     border-bottom: 1px solid #E7E3E7;
   }
-  p{
+
+  p {
     margin-left: 15px;
     font-size: 15px;
-    cursor:pointer;
+    cursor: pointer;
     height: 40px;
     line-height: 40px;
   }
-  b{
-    cursor:pointer;
+
+  b {
+    cursor: pointer;
   }
-  .g1{
-    background-color: gainsboro;
-  }
-  p:hover{
+
+  .g1 {
     background-color: gainsboro;
   }
 
+  p:hover {
+    background-color: gainsboro;
+  }
+
+  .sp1 {
+    font-size: 15px;
+    border: solid 0.5px #0080ff;
+    width: 120px;
+    height: 40px;
+    margin-left: 15px;
+    margin-top: 15px;
+  }
+  button{
+    border: 0;
+    background-color: transparent;
+    outline: none;
+  }
+  button:focus{
+    border: solid 1px red;
+  }
   tbody img {
     height: 80px;
     border: 1px solid #eee;
@@ -234,27 +292,27 @@
     display: inline;
     margin-right: 10px;
   }
-  .c1{
+
+  .c1 {
     text-align: left;
     font-size: 17px;
     margin-left: 18px;
     color: black;
   }
-  .f3{
+
+  .f3 {
     text-align: right;
     height: 40px;
     line-height: 40px;
   }
-  .p1{
+
+  .p1 {
     font-size: 10px;
     margin-top: 5px;
     margin-left: 15px;
     width: 60px;
   }
 
-  .e1{
-    margin-top: 10px;
-  }
 
 
 </style>

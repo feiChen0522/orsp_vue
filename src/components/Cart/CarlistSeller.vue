@@ -14,16 +14,16 @@
           </tr>
           </thead>
           <tbody>
-          <tr v-bind:id="goods.price" v-if=flag>
+          <tr  v-if=flag>
             <td class="col1">
               <router-link to="/detailpage">
                 <img :src=imgsrc style="width: 110px; height: 80px;margin-left: 10px;border: none" class="col-md-8">
-                <p v-text="good.name" style="text-align: left"></p></router-link>
+                <p  style="text-align: left"></p></router-link>
 
-              <p v-text="good"></p>
+              <p ></p>
             </td>
-            <td class="col2"><p v-text="good.description"></p></td>
-            <td class="col3"><p v-text="'$'+parseFloat(good.price).toFixed(2)"></p></td>
+            <td class="col2"><p ></p></td>
+            <td class="col3"><p v-text="'$'+parseFloat(1).toFixed(2)"></p></td>
             <td class="col4">
               <p>
                 <input type="button" value="-" @click="numOperation(0)">

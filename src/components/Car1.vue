@@ -17,22 +17,18 @@
         <div class="col-md-12">
           <div class="col-md-8 mycart hidden-xs hidden-sm"><h2 class="f1"><span>我的购物车</span></h2></div>
           <div class="col-md-4"><h2><span></span></h2></div>
-          <car-list></car-list>
+          <carsell-list></carsell-list>
           <div class="col-md-12 d01"><span class="glyphicon glyphicon-sort " aria-hidden="true"></span></div>
           <div class="col-md-12 e">
             <div class="col-md-3"><h4><span>请添加你将交换的物品:</span></h4></div>
-            <div class="col-md-9 dropdown">
-              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
-                      aria-haspopup="true" aria-expanded="true">
-                我提交的订单
-                <span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                <li><a href="#">Action</a></li>
-              </ul>
-            </div>
+            <div class="col-md-5 order" >我提交的商品 <span style="position: relative;top: 2px;" :class="[{'glyphicon glyphicon-chevron-right':isActiveDown},{'glyphicon glyphicon-arrow-down':!isActiveDown}]" @click="isActiveDown=!isActiveDown"></span></div>
+
+            <ul class="col-md-3" style="position: absolute;left:300px;top: 30px;z-index: 2" v-show="!isActiveDown">
+              <li class="order" v-for="(item,index) in buyerGood" v-text="item.name" :data-id="index" @click="showGood(index)"></li>
+            </ul>
+
           </div>
-          <car-list></car-list>
+          <car-list :good="selectedGood"></car-list>
           <div class="col-md-12 cart_btn">
             <div class="col-md-8"></div>
             <div class="col-md-3">
@@ -53,10 +49,17 @@
     name: "Car1",
     props: [''],
     data: function () {
-      return {}
+      return {
+        isActiveDown:true,
+        buyerGood:[],
+        selectedGood:[]
+      }
     },
     mounted: function () {
-
+      console.log(this.$route.params);
+      this.buyerGood=this.$route.params;
+      this.selectedGood=this.buyerGood[0]
+      sessionStorage.setItem('buyerSelectGood',JSON.stringify(this.selectedGood))
     },
     methods: {
       goBack: function () {
@@ -65,6 +68,9 @@
         }
 
         )
+      },
+      showGood:function (index) {
+        this.selectedGood=this.buyerGood[index]
       }
     },
 
@@ -72,6 +78,20 @@
 </script>
 
 <style scoped>
+
+  /*<!--我的订单-->*/
+  .order{
+    height: 30px;
+    width: 116px;
+    background-color: rgba(0,0,0,.075);
+    color: red;
+    padding: 0;
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
+    user-select: none;
+  }
+
   ul, li {
     list-style: none;
   }

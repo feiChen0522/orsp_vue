@@ -1,5 +1,5 @@
 <template>
-  <div class="con" style="margin: 0 auto">
+  <div class="con">
     <div class="status">
       <span>全部订单(<i>0</i>)</span>
       <span>待收款(<i>0</i>)</span>
@@ -133,7 +133,7 @@ export default {
   .change_goods .good_img .good_img_div{
     width: 100px;
     height: 99px;
-    background-image: url("../assets/logo.png");
+    background-image: url("../assets/images/1538788453189.jpg");
     background-size: cover;
     position: relative;
     left: 35%;

@@ -10,7 +10,7 @@
             <span class="icon-bar"></span>
           </button>
           <p class="navbar-text">
-            <router-link to="/" tag="p" class="navbar-brand navbar-link "  style="margin-left: 0; padding: 0 0 0 5px; height: 10px;">ORSP</router-link>
+            <router-link to="/" tag="a" class="navbar-brand navbar-link "  style="margin-left: 0; padding: 0 0 0 5px; height: 10px;">ORSP</router-link>
           </p>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -94,17 +94,25 @@
 
 <script>
   import 'bootstrap/js/modal'
-
+  import Login from '../common/js/login'
 export default {
   name: 'Header',
   data () {
     return {
+      LoginTitle:"欢迎登录",
       LoginStatus:"您好，请登录",
       RegistStatus:"注册",
 
     }
   },
+
   mounted:function(){
+    Login.$on('HaveLogin',target=>{
+      console.log("==================_____________")
+      console.log(target)
+      $('#myModal1').modal('show')
+    });
+
     if (sessionStorage.getItem('token')!=null) {
       var token=sessionStorage.getItem('token')
       // console.log("token",token);

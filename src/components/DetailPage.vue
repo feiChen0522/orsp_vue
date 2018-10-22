@@ -21,11 +21,11 @@
             <div class="col-md-8 btw"></div>
             <div class="col-md-8 btw">
               <span class="col-md-5 c2">商品类型:</span>
-              <span class="item-price-title col-md-6">手机家电 数码</span>
+              <span class="item-price-title col-md-6">{{goods.belong_name}}</span>
             </div>
             <div class="col-md-8 btw">
               <span class="col-md-5 c2">品牌:</span>
-              <span class="item-price-title col-md-6">华为:HuaWei</span>
+              <span class="item-price-title col-md-6">{{goods.belong_to}}</span>
             </div>
             <div class="col-md-8 btw">
               <span class="col-md-5 c2">成色:</span>
@@ -36,7 +36,7 @@
           <div class="col-md-12">
             <div class="col-md-8 btw" style="margin-top: 20px">
               <span class="col-md-5 c2" style="height: 60px;line-height: 40px">优先交换:</span>
-              <button class="item-select-box">自行车</button>
+              <button class="item-select-box">{{goods.change}}</button>
             </div>
           </div>
           <div class="col-md-12">
@@ -48,7 +48,7 @@
           <div class="col-md-12">
             <div class="col-md-8 btw">
               <span class="col-md-5 c2">原价:</span>
-              <span class="col-md-6 e1">￥2999</span>
+              <span class="col-md-6 e1">{{goods.price-10}}</span>
             </div>
           </div>
           <div class="col-md-12">
@@ -60,13 +60,11 @@
           <div class="col-md-12">
             <div class="col-md-8 btw">
               <span class="col-md-5 c2">库存:</span>
-              <span class="col-md-6">1</span>
+              <span class="col-md-6" v-text="goods.Stock"></span>
             </div>
           </div>
           <div class="col-md-12 a">
-            <router-link to="/car1">
-              <button value="马上换购" class="btn1">马上换购</button>
-            </router-link>
+              <button value="马上换购" class="btn1" @click="isLogin">马上换购</button>
           </div>
         </div>
         <div class="col-md-3 item-detail-righe">
@@ -83,8 +81,10 @@
       <div class="col-md-3 d">
         <div class="e"></div>
         <div class="col-md-12">
-          <div class="col-md-6 f1">店主:</div>
-          <div class="col-md-6 f1"><span>孙宁koy</span></div>
+          <div class="col-md-12 f1">
+            <span style="color: red;">店主:</span>
+            <span style="font-size: 18px;font-family: sans-serif">{{goods.store}}</span>
+          </div>
         </div>
         <div class="col-md-12 f2"><p>她加入ORSP25天，常居{{goods.address}}</p></div>
 
@@ -98,7 +98,7 @@
           <div class="col-md-6 f7">
             <ul>
               <li class="col-md-12 f6">成交数量</li>
-              <li class="col-md-12 f6">8</li>
+              <li class="col-md-12 f6">{{goods.payNum}}</li>
             </ul>
           </div>
           <div class="col-md-6">
@@ -134,6 +134,8 @@
 </template>
 
 <script>
+  import Login from '../common/js/login'
+
   export default {
     name: 'DetailPage',
     data() {
@@ -152,10 +154,24 @@
       // this.goods=this.$route.params
       this.goods['price'] = sessionStorage.getItem('price')
       this.goods['title'] = sessionStorage.getItem('title')
+      this.goods['payNum'] = sessionStorage.getItem('payNum')
       this.goods['address'] = sessionStorage.getItem('address')
       this.goods['img'] = sessionStorage.getItem('img')
+      this.goods['change'] = sessionStorage.getItem('change')
+      this.goods['belong_name'] = sessionStorage.getItem('belong_name')
+      this.goods['belong_to'] = sessionStorage.getItem('belong_to')
+      this.goods['Stock'] = sessionStorage.getItem('Stock')
+      this.goods['store'] = sessionStorage.getItem('store')
       this.imgsrc = this.goods['img']
       this.goodsImg.push(this.imgsrc)
+      console.log("------------dasdsd")
+      console.log("this.goods",this.goods)
+
+      /*
+      *   sessionStorage.setItem('belong_name',this.good_list['belong_name'])
+        sessionStorage.setItem('belong_to',this.good_list['belong_to'])
+      *
+      * */
     },
     methods: {
       select(index1, index2) {
@@ -164,6 +180,46 @@
       },
       showBigImg(index) {
         this.imgIndex = index;
+      },
+    //  判断是否登录
+      isLogin(){
+        let that=this
+        if (localStorage.getItem('token')!=null){
+          let token=localStorage.getItem('token')
+
+          axios({
+            method:'post',
+            url:'http://127.0.0.1:8000/user/judgetoken/',
+            headers:{'token':token},
+          })
+            .then(function (rsp) {
+              console.log(rsp);
+              axios({
+                method:'post',
+                url:'http://127.0.0.1:8000/resource/seegoodsbyid/',
+                headers:{'token':token},
+                data:{
+                  "id":1
+                }
+              })
+                .then(function (rsp) {
+                  console.log(rsp);
+                  that.$router.push({
+                    name:"Car1",
+                    params:rsp.data
+                  })
+                })
+                .catch(function (err) {
+                  console.log('请求失败',err);
+                })
+            })
+            .catch(function (err) {
+              console.log('请求失败',err);
+            })
+
+        } else {
+          Login.$emit('HaveLogin',"你还没有登录")
+        }
       },
     }
   }
