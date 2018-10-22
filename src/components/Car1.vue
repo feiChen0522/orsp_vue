@@ -35,7 +35,7 @@
               <a href="" class="delgoods" @click="goBack">放弃商品</a>
             </div>
             <div class="col-md-1">
-              <a   class="checkout" @click="generateOrder">结 算</a>
+              <a   class="checkout" @click="generateOrder" style="cursor: pointer">结 算</a>
             </div>
           </div>
         </div>
@@ -77,12 +77,14 @@
         console.log("执行了generateOrder")
         let sellerSelectGood=sessionStorage.getItem('sellerSelectGood')
         let buyerSelectGood=sessionStorage.getItem('buyerSelectGood')
+        buyerSelectGood=JSON.parse(buyerSelectGood)
+        buyerSelectGood["user_id"]=sessionStorage.getItem('currentUserId')
         axios({
           method:'post',
           url:'http://127.0.0.1:8000/resource/generateorder/',
           data:{
             "sellerSelectGood":sellerSelectGood,
-            "buyerSelectGood":buyerSelectGood
+            "buyerSelectGood":JSON.stringify(buyerSelectGood)
           }
         })
           .then(function (rsp) {

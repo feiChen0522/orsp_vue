@@ -1,7 +1,7 @@
 <template>
   <div class="big">
     <!--下载页面header-->
-    <nav class="navbar navbar-default" style="background-color: #EAEBEC">
+    <nav class="navbar navbar-default" style="background-color: #EAEBEC;height: 30px">
       <div class="container">
         <ul class="nav navbar-nav">
           <li class="active"></li>

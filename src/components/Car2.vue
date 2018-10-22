@@ -146,7 +146,13 @@ import index from "../router";
       return {
         flag: false,
         flag1: false,
-        address:[],
+
+        address:[{
+          "concact_name":"",
+          "concact_telephone":"",
+          "provice_id":"",
+          "city_id":""
+        }],
         selectAddressByUser:0,
         selectExpressByUser:"顺丰快递",
         _id:""
@@ -191,15 +197,19 @@ import index from "../router";
       },
       submitOrder:function () {
         let vm=this
+        console.log("执行到了这里")
         axios({
           method:'post',
           url:'http://127.0.0.1:8000/resource/paymentguaranty/',
           data:{
-            "id":vm._id
+            "id":vm._id,
+            "selectAddressByUser":vm.selectAddressByUser,
+            "selectExpressByUser":vm.selectExpressByUser
           }
         })
           .then(function (rsp) {
-            if (rsp.data.code=="214"){
+            console.log(rsp)
+            if (rsp.data.code=="215"){
               vm.$router.push({
                 name:"Car3"
               })

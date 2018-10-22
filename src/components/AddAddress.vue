@@ -48,7 +48,7 @@
             </div>
             <div class="form-group">
               <div class="col-sm-offset-3 col-sm-10">
-                <button type="submit" class="btn btn-default">提交</button>
+                <button type="submit" class="btn btn-default" @click="addAddress">提交</button>
               </div>
             </div>
           </form>
@@ -86,6 +86,11 @@ export default {
   },
   created() {
     // this.provinceL = [...province]
+  },
+  methods:{
+    addAddress:function () {
+      
+    }
   }
 }
 </script>

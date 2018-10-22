@@ -19,24 +19,16 @@
           </tr>
           </thead>
           <tbody>
-          <tr>
-            <td><a href="">471196680</a></td>
-            <td><a href="" style="color: #ff5000"></a></td>
-            <td>王</td>
-            <td>湖北省 武汉市 武昌 软件园1号201 13333333333</td>
-            <td>2018-10-06 23:00:00</td>
-            <td>已完成</td>
-            <td><a href="">查看</a>|<a href="">删除</a></td>
+          <tr v-for="i in myOrder">
+            <td style="text-align: left"><a >{{i.id}}</a></td>
+            <td><a style="color: #060200;text-align: left;font-size: 12px" v-text="i.sellerSelectGood.title" ></a></td>
+            <td v-text="i.buyerSelectGood.selectAddressByUser.concact_name" style="text-align: left"></td>
+            <td v-text="i.buyerSelectGood.selectAddressByUser.provice_id+'        '+i.buyerSelectGood.selectAddressByUser.city_id"></td>
+            <td v-text="i.generateTime"></td>
+            <td v-text="formatStatus(i.buyerSelectGood.guarantyStatus)"></td>
+            <td><a >查看</a>|<a >删除</a></td>
           </tr>
-          <tr>
-            <td><a href="">471196612</a></td>
-            <td><a href="">2222222222222</a></td>
-            <td>王</td>
-            <td>湖北省 武汉市 武昌 软件园1号201 13333333333</td>
-            <td>2018-10-06 23:00:00</td>
-            <td>待确定</td>
-            <td><a href="">查看</a>|<a href="">取消订单</a></td>
-          </tr>
+
           </tbody>
         </table>
       </div>
@@ -51,9 +43,52 @@
     name: 'Order',
     data() {
       return {
-        msg: 'Welcome to Your Vue.js App'
+        myOrder:[]
       }
-    }
+    },
+    created:function () {
+      let that=this
+      if (localStorage.getItem('token')!=null) {
+        let token = localStorage.getItem('token')
+        axios({
+          method: 'post',
+          url: 'http://127.0.0.1:8000/user/judgetoken/',
+          headers: {'token': token},
+        })
+          .then(function (rsp) {
+            let id =sessionStorage.getItem('currentUserId')
+            axios({
+              method: 'post',
+              url: 'http://127.0.0.1:8000/resource/seemyorder/',
+              data:{
+                "id":id
+              }
+            })
+              .then(function (rsp) {
+                console.log(rsp,"查看我的订单")
+                that.myOrder=rsp.data;
+              })
+              .catch(function (err) {
+                console.log('请求失败', err);
+              })
+          })
+          .catch(function (err) {
+            console.log('请求失败', err);
+          })
+      }
+    },
+   methods:{
+     formatStatus:function (i) {
+       if (parseInt(i)==1){
+         return "已缴纳担保金"
+       }else {
+         return "未缴纳担保金"
+
+       }
+
+     }
+   }
+
   }
 </script>
 
