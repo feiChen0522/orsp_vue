@@ -23,7 +23,7 @@
             <div class="col-md-3"><h4><span>请添加你将交换的物品:</span></h4></div>
             <div class="col-md-5 order" >我提交的商品 <span style="position: relative;top: 2px;" :class="[{'glyphicon glyphicon-chevron-right':isActiveDown},{'glyphicon glyphicon-arrow-down':!isActiveDown}]" @click="isActiveDown=!isActiveDown"></span></div>
 
-            <ul class="col-md-3" style="position: absolute;left:300px;top: 30px;z-index: 2" v-show="!isActiveDown">
+            <ul class="col-md-3" style="position: absolute;left:300px;top: 30px;z-index: 2" v-show="isActiveDown">
               <li class="order" v-for="(item,index) in buyerGood" v-text="item.name" :data-id="index" @click="showGood(index)"></li>
             </ul>
 
@@ -35,7 +35,7 @@
               <a href="" class="delgoods" @click="goBack">放弃商品</a>
             </div>
             <div class="col-md-1">
-              <router-link tag="a" to="/car2" href="#" class="checkout">结 算</router-link>
+              <a   class="checkout" @click="generateOrder">结 算</a>
             </div>
           </div>
         </div>
@@ -56,7 +56,7 @@
       }
     },
     mounted: function () {
-      console.log(this.$route.params);
+      console.log(111111111,this.$route.params);
       this.buyerGood=this.$route.params;
       this.selectedGood=this.buyerGood[0]
       sessionStorage.setItem('buyerSelectGood',JSON.stringify(this.selectedGood))
@@ -71,7 +71,35 @@
       },
       showGood:function (index) {
         this.selectedGood=this.buyerGood[index]
+      },
+      generateOrder:function () {
+        let vm=this
+        console.log("执行了generateOrder")
+        let sellerSelectGood=sessionStorage.getItem('sellerSelectGood')
+        let buyerSelectGood=sessionStorage.getItem('buyerSelectGood')
+        axios({
+          method:'post',
+          url:'http://127.0.0.1:8000/resource/generateorder/',
+          data:{
+            "sellerSelectGood":sellerSelectGood,
+            "buyerSelectGood":buyerSelectGood
+          }
+        })
+          .then(function (rsp) {
+            console.log(rsp);
+            sessionStorage.setItem('_id',rsp.data.insert_id)
+            vm.$router.push({
+              name:"Car2",
+              params:{
+                "_id":rsp.data.insert_id
+              }
+            })
+          })
+          .catch(function (err) {
+            console.log('请求失败',err);
+          })
       }
+
     },
 
   }
