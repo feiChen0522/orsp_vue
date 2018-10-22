@@ -26,6 +26,7 @@ import ShoppingAddress from '@/components/ShoppingAddress'
 import MyReleaseGoods from '@/components/MyReleaseGoods'
 import GoodsHaveSold from '@/components/GoodsHaveSold'
 import ShowMyUpSesource from '@/components/download/ShowMyUpSesource'
+import DownSesource from '@/components/download/DownSesource'
 
 // import Search from '@/components/Search'
 import SearchMain from '@/components/search/SearchMain'
@@ -174,6 +175,11 @@ export default new Router({
           path: '/showmyupsesource',
           name: 'ShowMyUpSesource',
           component: ShowMyUpSesource
+        },
+        {
+          path: '/downsesource',
+          name: 'DownSesource',
+          component: DownSesource
         },
         //个人信息
         {
