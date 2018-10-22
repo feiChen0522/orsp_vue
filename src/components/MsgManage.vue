@@ -21,8 +21,6 @@
         </div>
       </div>
     </div>
-
-
     <div class="right-top">
       <span>账号消息</span>
     </div>
@@ -85,7 +83,7 @@ export default {
       isDisplay:false,
       userinfo:[
         {
-          name:"捶死你q321",
+          name:"捶死你q3sdasdddd",
           new_name:'',
           telephone:'123',
           email:'尚未绑定邮箱',
