@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="account">
+    <div class="account" style="margin: 0 auto;">
       <div class="left">
         <div class="left-top">账户管理</div>
         <ul class="nav nav-pills nav-stacked">

@@ -1,5 +1,5 @@
 <template>
-  <div class="con">
+  <div class="con"style="margin: 0 auto">
     <div class="status">
       <span>全部订单(<i>0</i>)</span>
       <span>待收款(<i>0</i>)</span>
@@ -39,7 +39,6 @@
           <div class="good_current_status">交易成功</div>
         </div>
       </div>
-
     </div>
   </div>
 </template>

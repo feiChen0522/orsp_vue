@@ -10,7 +10,7 @@
             <h4 class="modal-title" id="myModalLabel" v-text="modal_title"></h4>
           </div>
           <div class="modal-body">
-            <change-name v-if="modal_change==1"></change-name>
+            <change-name v-if="modal_change==1"  :old_name='userinfo[0].name'></change-name>
             <change-telephone v-if="modal_change==2"></change-telephone>
             <change-password v-if="modal_change==3"></change-password>
            </div>
@@ -21,15 +21,13 @@
         </div>
       </div>
     </div>
-
-
     <div class="right-top">
       <span>账号消息</span>
     </div>
     <div class="line"></div>
     <div class="personal-info">
       <div class="info-left">
-        <p class="personal-name">亲耐的<span class="name" v-text="name"></span>,上传一张头像吧</p>
+        <p class="personal-name">亲耐的<span class="name" v-text="userinfo[0].name"></span>,上传一张头像吧</p>
         <p class="personal-logo">
           <input type="file" class="file">
           <img src="../../static/images/perpeo.png" alt="" class="logo-img">
@@ -39,22 +37,22 @@
         <ul class="input-list">
           <li>
             <span class="per_txtrit">用户名：</span>
-            <span class="per_txtmid" id="name" v-text="name" ></span>
+            <span class="per_txtmid" id="name" v-text="userinfo[0].name" ></span>
             <span class="ritchange" data-toggle="modal" data-target="#change" @click="modalChange($event)" id="1">修改</span>
           </li>
           <li>
             <span class="per_txtrit">手机号：</span>
-            <span class="per_txtmid" id="telephone" v-text="telephone"></span>
+            <span class="per_txtmid" id="telephone" v-text="userinfo[0].telephone"></span>
             <span class="ritchange" data-toggle="modal" data-target="#change" @click="modalChange($event)" id="2">修改</span>
           </li>
           <li>
             <span class="per_txtrit">密码：</span>
-            <span class="per_txtmid" id="password" v-text="password"></span>
+            <span class="per_txtmid" id="password" v-text="userinfo[0].password"></span>
             <span class="ritchange" data-toggle="modal" data-target="#change" @click="modalChange($event)" id="3">修改</span>
           </li>
           <li>
             <span class="per_txtrit">邮箱：</span>
-            <span class="per_txtmid" id="email" v-text="email"></span>
+            <span class="per_txtmid" id="email" v-text="userinfo[0].email"></span>
             <span class="ritchange">立即绑定</span>
           </li>
           <li>
@@ -82,12 +80,16 @@ export default {
       modal_title:'',
       modal_list:['修改用户名','修改手机号','修改密码'],
       list:[],
-      name:"捶死你",
-      new_name:'',
-      telephone:'123',
-      email:'尚未绑定邮箱',
-      password:'123456',
-      isDisplay:false
+      isDisplay:false,
+      userinfo:[
+        {
+          name:"捶死你q3sdasdddd",
+          new_name:'',
+          telephone:'123',
+          email:'尚未绑定邮箱',
+          password:'123456',
+        }
+      ],
     }
   },
   mounted:function(){
