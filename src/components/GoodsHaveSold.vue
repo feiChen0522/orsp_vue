@@ -39,7 +39,6 @@
           <div class="good_current_status">交易成功</div>
         </div>
       </div>
-
     </div>
   </div>
 </template>
