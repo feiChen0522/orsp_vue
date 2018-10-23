@@ -1,5 +1,29 @@
 <template>
-  <button @click="checkdownload">下载文件</button>
+  <div class="my-download">
+    <button @click="checkdownload">下载文件</button>
+    <table>
+      <tr>
+        <th>标题</th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+      </tr>
+    </table>
+  </div>
+
+
 </template>
 
 <script>
@@ -66,5 +90,16 @@
 </script>
 
 <style scoped>
-
+.my-download table{
+  width: 800px;
+  height: 600px;
+  background-color: #3b49ff;
+  margin-left: 40px;
+}
+.my-download table>tr{
+  border: 1px solid black;
+}
+.my-download table>tr>td{
+  border-right: 1px solid black;
+}
 </style>

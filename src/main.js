@@ -26,10 +26,11 @@ import MyReleaseGoods from './components/MyReleaseGoods'
 import GoodsHaveSold from './components/GoodsHaveSold'
 import PhotoLoupe from './components/PhotoLoupe'
 import upload from './components/download/upload'
-import Page from './components/Page'
+import Notice from './components/Notice'
 import Address from './components/Address'
 import Left from './components/person/Left'
 import Paging from './components/test/Paging'
+import comment from './components/comment/comment'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 //导入购物车
 import Car1 from './components/Car1'
@@ -67,8 +68,10 @@ Vue.component('MyChange-div', MyChange);
 Vue.component('upload-div', upload);
 Vue.component('goods-have-sold',GoodsHaveSold);
 Vue.component('photo-loupe',PhotoLoupe);
+Vue.component('comment-div',comment);
 //购物车页面
 Vue.component('Car1-div', Car1);
+Vue.component('notice', Notice);
 
 
 

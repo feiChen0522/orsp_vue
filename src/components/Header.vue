@@ -77,14 +77,12 @@
               </router-link>
             </li>
             <li>
-              <router-link to="/">
-                <p class="p1">易物指南</p>
+              <router-link to="/board">
+                <p class="p1">联系我们</p>
               </router-link>
             </li>
             <li>
-              <router-link to="/">
-                <p class="p1">加入诚信商</p>
-              </router-link>
+                <p class="p1 p2" @click="coll">收藏网站</p>
             </li>
           </ul>
         </div><!-- /.navbar-collapse -->
@@ -163,6 +161,9 @@ export default {
       $('myModal2').modal('hide')
       $('myModal1').modal('show')
     },
+    coll:function(){
+      alert('点击CTRL+D 收藏网站')
+    },
     is_login:function () {
       var token=localStorage.getItem('token')
       if(token){
@@ -193,5 +194,16 @@ export default {
   .p1{
     height: 10px;
     font-size: 12px!important;
+    cursor: pointer;
+  }
+  .p2{
+    padding-top: 7px;
+    padding-bottom: 5px;
+    font-size: 12px;
+    color: rgba(251, 253, 252, 0.68);
+  }
+  .p2:hover{
+    color: white;
+    cursor: pointer;
   }
 </style>
