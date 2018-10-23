@@ -74,6 +74,7 @@
       this.goods['belong_name'] = sessionStorage.getItem('belong_name')
       this.goods['change'] = sessionStorage.getItem('change')
       this.goods['payNum'] = sessionStorage.getItem('payNum')
+      this.goods['user'] = sessionStorage.getItem('user')
       this.goods['pnum'] = this.goodNum
       this.cateNum=this.goods['Stock']
       this.imgsrc = this.goods['img']

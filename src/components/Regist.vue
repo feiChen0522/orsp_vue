@@ -158,14 +158,30 @@ export default {
                   // }
                 })
                 .then(function (res) {
-                  localStorage.setItem('token',res.headers.token);
+                  let token=res.headers.token
+                  localStorage.setItem('token',token);
                   vm.regist_success=true;
-                  setInterval(function () {
-                    if(vm.second===0){
-                    //  ?????????????????在这里放跳转主页
-                    }
-                    vm.second-=1
-                  },1000)
+                  console.log("++++++++++++++++++++++++++")
+                  axios({
+                    method:'post',
+                    url:'http://127.0.0.1:8000/user/judgetoken/',
+                    headers:{'token':token},
+                  })
+                    .then(function (rsp) {
+                      console.log("++++++++++++++++++++++++++")
+                      sessionStorage.setItem('currentUserId',rsp.data.id)
+                      setInterval(function () {
+                        if(parseInt(vm.second)===1){
+                          //  ?????????????????在这里放跳转主页
+                          window.location.reload()
+                        }
+                        vm.second-=1
+                      },1000)
+                    })
+                    .catch(function (err) {
+                      console.log('请求失败',err);
+                    })
+
                   //控制台打印请求成功时返回的数据
                   //bind(this)可以不用
                 }.bind(this))

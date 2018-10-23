@@ -11,7 +11,7 @@
           </div>
           <p href=""><a href="" v-text="i.price"></a> <a href="" v-text="i.sales_num"></a></p>
           <p class="title">
-            <a class="dataPlayLoad" v-text="i.title" style="color: black!important;cursor: pointer" @click="sendGoods" :data-change="i.change" :data-belong_name="i.belong_name" :data-belong_to="i.belong_to" :data-Stock="i.Stock" :data-_id="i._id"></a>
+            <a :data-user="i.user" class="dataPlayLoad" v-text="i.title" style="color: black!important;cursor: pointer" @click="sendGoods" :data-change="i.change" :data-belong_name="i.belong_name" :data-belong_to="i.belong_to" :data-Stock="i.Stock" :data-_id="i._id"></a>
           </p>
           <a style="width: 118px;display:inline-block;text-overflow: ellipsis;height: 20px;overflow: hidden;text-align: left"> <span
             class="glyphicon glyphicon-th-list"></span>{{i.shop}}</a>
@@ -75,6 +75,7 @@
           this.good_list['address']=nodes[5].innerText;
           this.good_list['img']=imgs.getAttribute('src')
           this.good_list["change"]=e.target.getAttribute('data-change');
+          this.good_list["user"]=e.target.getAttribute('data-user');
           this.good_list["belong_name"]=e.target.getAttribute('data-belong_name');
           this.good_list["belong_to"]=e.target.getAttribute('data-belong_to');
           this.good_list["Stock"]=e.target.getAttribute('data-Stock');
@@ -90,6 +91,7 @@
           sessionStorage.setItem('Stock',this.good_list['Stock'])
           sessionStorage.setItem('store',this.good_list['store'])
           sessionStorage.setItem('_id',this.good_list['_id'])
+          sessionStorage.setItem('user',this.good_list['user'])
           this.$router.push({
             name:"DetailPage"
           })

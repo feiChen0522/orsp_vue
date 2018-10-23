@@ -162,6 +162,7 @@
       this.goods['belong_to'] = sessionStorage.getItem('belong_to')
       this.goods['Stock'] = sessionStorage.getItem('Stock')
       this.goods['store'] = sessionStorage.getItem('store')
+      this.goods['user'] = sessionStorage.getItem('user')
       this.imgsrc = this.goods['img']
       this.goodsImg.push(this.imgsrc)
 

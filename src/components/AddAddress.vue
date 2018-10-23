@@ -7,7 +7,7 @@
             <div class="form-group">
               <label class="col-sm-3 control-label">收货人:</label>
               <div class="col-sm-9">
-                <input  class="form-control" id="inputpersonal">
+                <input  class="form-control" id="inputpersonal" v-model="concact_name">
               </div>
             </div>
             <div class="form-group">
@@ -34,7 +34,7 @@
             <div class="form-group">
               <label class="col-sm-3 control-label">手机号:</label>
               <div class="col-sm-9">
-                <input class="form-control" id="inputphone">
+                <input class="form-control" id="inputphone" v-model="concact_telephone">
               </div>
             </div>
             <div class="form-group">
@@ -74,6 +74,9 @@ export default {
       citySelected: {},
       provinceL: [],
       cityL: [],
+
+      concact_name:"",
+      concact_telephone:""
     }
   },
   watch: {
