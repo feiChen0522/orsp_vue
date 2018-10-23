@@ -30,7 +30,6 @@
       goods:{
         default:function(){
           if (sessionStorage.getItem('searchGoods')!=null){
-            console.log("aaaaaaaaaaaaaaa")
           }
             return JSON.parse(sessionStorage.getItem('searchGoods'))
           }
@@ -75,16 +74,11 @@
           this.good_list['store']=nodes[4].innerText;
           this.good_list['address']=nodes[5].innerText;
           this.good_list['img']=imgs.getAttribute('src')
-          console.log(e.target.getAttribute('data-change'));
           this.good_list["change"]=e.target.getAttribute('data-change');
           this.good_list["belong_name"]=e.target.getAttribute('data-belong_name');
           this.good_list["belong_to"]=e.target.getAttribute('data-belong_to');
           this.good_list["Stock"]=e.target.getAttribute('data-Stock');
           this.good_list["_id"]=e.target.getAttribute('data-_id');
-          console.log(e.target.getAttribute('data-change'));
-          console.log(e.target.getAttribute('data-change'));
-          console.log("==============")
-          console.log(this.good_list["change"]);
           sessionStorage.setItem('price',this.good_list['price'])
           sessionStorage.setItem('title',this.good_list['title'])
           sessionStorage.setItem('payNum',this.good_list['payNum'])

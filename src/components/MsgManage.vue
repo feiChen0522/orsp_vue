@@ -104,34 +104,21 @@ export default {
       axios.get("http://127.0.0.1:8000/user/getuserinfo/"+vm.telephone)
         .then(function (response) {
           vm.list=response.data;
-          console.log(vm.data);
         })
         },
     modalChange:function (event) {
       if(event.currentTarget.id=='1'){
-        console.log(1);
         this.modal_change=1;
         this.modal_title=this.modal_list[0];
-        console.log(this.modal_change);
-        console.log(this.modal_title);
       }
       if(event.currentTarget.id=='2'){
-        console.log(2);
         this.modal_change=2;
         this.modal_title=this.modal_list[1];
-        console.log(this.modal_change);
-        console.log(this.modal_title);
       }
       if(event.currentTarget.id=='3'){
-        console.log(3);
         this.modal_change=3;
         this.modal_title=this.modal_list[2];
-        console.log(this.modal_change);
-        console.log(this.modal_title);
       }
-      console.log(event.currentTarget.id);
-      console.log(this.modal_change);
-      console.log(this.modal_title);
     },
   }
 }

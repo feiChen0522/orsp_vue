@@ -95,11 +95,9 @@
         }
       })
         .then(function (rsp) {
-          console.log(rsp,"查看我的地址")
           vm.address=rsp.data
         })
         .catch(function (err) {
-          console.log('请求失败', err);
         })
     },
     methods: {

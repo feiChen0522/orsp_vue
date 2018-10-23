@@ -17,8 +17,8 @@
           <tr v-bind:id="goods.price" v-if=flag>
             <td class="col1">
               <router-link to="/detailpage">
-                <img :src=imgsrc style="width: 110px; height: 80px;margin-left: 10px;border: none" class="col-md-8">
-                <p v-text="goods.name" style="text-align: left"></p></router-link>
+                <img :src="goods.imgurl" style="width: 110px; height: 80px;margin-left: 10px;border: none" class="col-md-8">
+                <p v-text="goods.name" style="text-align: center"></p></router-link>
 
             </td>
             <td class="col2"><p v-text="goods.description"></p></td>
@@ -64,11 +64,7 @@
     },
     mounted: function () {
       // this.goods=this.$route.params
-      console.log(sessionStorage.getItem('buyerSelectGood'))
       this.goods=JSON.parse(sessionStorage.getItem('buyerSelectGood'))
-      console.log("=========");
-      console.log(this.goods);
-      console.log(this.goods.pnum)
       this.goodNum=parseInt(this.goods.pnum)
       this.cateNum=parseInt(this.goods.category)
       this.unitPrice=parseFloat(this.goods.price)
@@ -90,7 +86,6 @@
         this.goods.pnum=this.goodNum
         sessionStorage.setItem('buyerSelectGood',JSON.stringify(this.goods))
 
-        console.log(this.goodNum);
 
       }
     }
