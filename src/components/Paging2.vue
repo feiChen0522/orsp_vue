@@ -50,19 +50,16 @@ export default {
   methods:{
     getCurrentPage:function (i) {
       this.currentPage=i; //获取当前页
-      console.log("currentPage:"+this.currentPage);
       this.$emit("indexclick",i)
     },
     changeIndex:function (event) {
       if(event.currentTarget.id=="nextpage"){
           this.currentPage+=1;
           this.$emit("indexclick",this.currentPage);
-          console.log(1111111111,this.currentPage);
       }
       if(event.currentTarget.id=="lastpage"){
           this.currentPage = this.currentPage - 1;
           this.$emit("indexclick", this.currentPage);
-          console.log(222222222222222, this.currentPage)
       }
     }
   }

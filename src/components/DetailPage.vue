@@ -164,8 +164,6 @@
       this.goods['store'] = sessionStorage.getItem('store')
       this.imgsrc = this.goods['img']
       this.goodsImg.push(this.imgsrc)
-      console.log("------------dasdsd")
-      console.log("this.goods",this.goods)
 
       /*
       *   sessionStorage.setItem('belong_name',this.good_list['belong_name'])
@@ -193,7 +191,6 @@
             headers:{'token':token},
           })
             .then(function (rsp) {
-              console.log("登录",rsp);
               sessionStorage.setItem('currentUserId',rsp.data.id)
               axios({
                 method:'post',
@@ -204,7 +201,6 @@
                 }
               })
                 .then(function (rsp) {
-                  console.log("seegood",rsp);
                   sessionStorage.setItem('buyerSelectGood',JSON.stringify(rsp.data[0]))
                   that.$router.push({
                     name:"Car1",

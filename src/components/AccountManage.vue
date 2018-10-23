@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="account" style="margin: 0 auto;">
+    <div class="account" style="margin: 0 auto">
       <div class="left">
         <div class="left-top">账户管理</div>
         <ul class="nav nav-pills nav-stacked">
@@ -45,17 +45,19 @@ export default {
   }
   .account .left{
     float: left;
-    width: 20%;
+    width: 15%;
     height: 500px;
     background-color: #FAFAFA;
     border: 1px solid #e2e2e2;
+    margin-left: 30px;
   }
   .account .right{
     float: right;
-    width: 77%;
+    width: 70%;
     height: 100%;
     border: 1px solid #e2e2e2;
     padding: 20px 15px;
+    margin-right: 50px;
   }
   .account .left .left-top{
     width: 100%;

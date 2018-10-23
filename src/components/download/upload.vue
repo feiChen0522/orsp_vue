@@ -118,7 +118,6 @@ export default {
     },
     fileChange:function (e) {
       this.file = e.target.files[0];
-      console.log(this.file);
     },
     update (e) {  // 上传照片
 
@@ -128,7 +127,6 @@ export default {
 
       var self = this;
       let file = e.target.files[0];
-      console.log("file",file)
       this.preview1(file);
       /* eslint-disable no-undef */
       let param = new FormData() ;// 创建form对象
@@ -158,25 +156,21 @@ export default {
       //判断上传文件的信息是否填写完整
 
       if (!this.file) {
-        console.log("请填写file")
         this.uploadFlag=false
         this.fileTip="请选择一个文件"
 
       }
       if (!this.resourceType) {
-        console.log("请填写resourceType")
         this.uploadFlag=false
         this.resourceTypeTip="请选择资源的类型"
 
       }
       if (!this.describe) {
-        console.log("请填写describe")
         this.uploadFlag=false
         this.describeTip="请填写文件的描述"
 
       }
       if (!this.need_integral) {
-        console.log("请填写describe")
         this.uploadFlag=false
         this.need_integralTip="请填写所需要的积分"
 
@@ -189,7 +183,6 @@ export default {
         };
         axios.post('http://127.0.0.1:8000/file/uploadfile/', this.file, config)
           .then(function (res) {
-            console.log(res.data)
             //    发送文件信息到后台
             let fileMsg={
               "name":res.data.name,
@@ -197,7 +190,6 @@ export default {
               "describe":this.describe,
               "need_integral":this.need_integral
             }
-            console.log("11111111111111111")
             axios.post('http://127.0.0.1:8000/file/savefile/', fileMsg, config)
               .then(function (res) {
                 $('#uploada')[0].click();
@@ -210,7 +202,6 @@ export default {
               }.bind(this))
               .catch(function (err) {
                 if (err.response) {
-                  console.log(err.response)
 
 
                   //控制台打印错误返回的内容
@@ -225,7 +216,6 @@ export default {
           }.bind(this))
           .catch(function (err) {
             if (err.response) {
-              console.log(err.response)
               //控制台打印错误返回的内容
             }
             //bind(this)可以不用

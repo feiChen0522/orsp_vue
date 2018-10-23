@@ -1,6 +1,6 @@
 <template>
   <div class="type-container">
-    <div class="row" @mouseleave="detailTypeShow=!detailTypeShow" style="position: relative">
+    <div class="row"  @mouseleave="detailTypeShow=!detailTypeShow">
       <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 type">
         <ul class="row" @mouseover="getThree($event)">
           <li v-for="(types,index) of type_data" :data-id="types.id" :data-flag="haveData" :index="index"
@@ -34,19 +34,19 @@
 <script>
   export default {
     name: 'HelloWorld',
-    data() {
+    data () {
       return {
-        haveData: "false",
-        type_count: 10,
-        type_data: [],
-        query_condition: '',
-        current_index: "",
-        typeThree: [],
-        detailTypeShow: false
+        haveData:"false",
+        type_count:10,
+        type_data:[],
+        query_condition:'',
+        current_index:"",
+        typeThree:[],
+        detailTypeShow:false
       }
     },
-    mounted: function () {
-      let vm = this;
+    mounted:function () {
+      let vm=this;
       axios.get('http://127.0.0.1:8000/resource/getgoodtypetwo/')
         .then(function (res) {
           console.log(res.data);
@@ -86,7 +86,7 @@
             axios.get('http://127.0.0.1:8000/resource/getgoodtypethree/' + this.query_condition)
               .then(function (res) {
                 console.log(res.data);
-                vm.$set(vm.typeThree, this.current_index, res.data)
+                vm.$set(vm.typeThree,this.current_index,res.data)
                 //控制台打印请求成功时返回的数据
                 //bind(this)可以不用
               }.bind(this))

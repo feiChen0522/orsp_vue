@@ -44,12 +44,10 @@ export default {
     },
   methods:{
     displayUlFunc:function () {
-      console.log(1);
       this.displayUl={'display':"block"}
     },
     unDisplayUlFunc:function (event) {
       this.displayUl={'display':"none"}
-      console.log(event);
     }
   },
 

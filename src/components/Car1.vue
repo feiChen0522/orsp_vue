@@ -21,10 +21,10 @@
           <div class="col-md-12 d01"><span class="glyphicon glyphicon-sort " aria-hidden="true"></span></div>
           <div class="col-md-12 e">
             <div class="col-md-3"><h4><span>请添加你将交换的物品:</span></h4></div>
-            <div class="col-md-5 order" >我提交的商品 <span style="position: relative;top: 2px;" :class="[{'glyphicon glyphicon-chevron-right':isActiveDown},{'glyphicon glyphicon-arrow-down':!isActiveDown}]" @click="isActiveDown=!isActiveDown"></span></div>
+            <div class="col-md-5 order" >我提交的商品 <span style="position: relative;top: 2px;" :class="[{'glyphicon glyphicon-chevron-right':!isActiveDown},{'glyphicon glyphicon-arrow-down':isActiveDown}]" @click="isActiveDown=!isActiveDown"></span></div>
 
-            <ul class="col-md-3" style="position: absolute;left:300px;top: 30px;z-index: 2" v-show="isActiveDown">
-              <li class="order" v-for="(item,index) in buyerGood" v-text="item.name" :data-id="index" @click="showGood(index)"></li>
+            <ul class="col-md-3" style="position: absolute;left:300px;top: 30px;z-index: 2;" v-show="isActiveDown">
+              <li  style="background-color: rgba(59, 73, 255, 0.4)" class="order mySelectGood" v-for="(item,index) in buyerGood" v-text="item.name" :data-id="index" @click="showGood(index,$event)"></li>
             </ul>
 
           </div>
@@ -50,13 +50,12 @@
     props: [''],
     data: function () {
       return {
-        isActiveDown:true,
+        isActiveDown:false,
         buyerGood:[],
         selectedGood:[]
       }
     },
     mounted: function () {
-      console.log(111111111,this.$route.params);
       this.buyerGood=this.$route.params;
       this.selectedGood=this.buyerGood[0]
       sessionStorage.setItem('buyerSelectGood',JSON.stringify(this.selectedGood))
@@ -69,12 +68,20 @@
 
         )
       },
-      showGood:function (index) {
+      showGood:function (index,event) {
         this.selectedGood=this.buyerGood[index]
+        console.log()
+        let all_li=event.target.parentNode.childNodes
+        for (let li of all_li){
+          li.style.backgroundColor="rgba(59, 73, 255, 0.4)"
+        }
+        console.log(event.target);
+        event.target.style.backgroundColor="#00ff57";
+        console.log(event.target);
+
       },
       generateOrder:function () {
         let vm=this
-        console.log("执行了generateOrder")
         let sellerSelectGood=sessionStorage.getItem('sellerSelectGood')
         let buyerSelectGood=sessionStorage.getItem('buyerSelectGood')
         buyerSelectGood=JSON.parse(buyerSelectGood)
@@ -88,7 +95,6 @@
           }
         })
           .then(function (rsp) {
-            console.log(rsp);
             sessionStorage.setItem('_id',rsp.data.insert_id)
             vm.$router.push({
               name:"Car2",
@@ -100,6 +106,9 @@
           .catch(function (err) {
             console.log('请求失败',err);
           })
+      },
+      selectGood:function (e) {
+
       }
 
     },
@@ -109,12 +118,15 @@
 
 <style scoped>
 
+  .mySelectGood:hover{
+    background-color: #2bd9a4!important;
+  }
   /*<!--我的订单-->*/
   .order{
     height: 30px;
     width: 116px;
     background-color: rgba(0,0,0,.075);
-    color: red;
+    color: #a94442;
     padding: 0;
     text-align: center;
     line-height: 30px;

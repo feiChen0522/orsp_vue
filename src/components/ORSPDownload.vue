@@ -188,6 +188,9 @@ export default {
     padding: 5px 10px;
 
   }
+  .download_l dd ul,.download_l dd ul li{
+    list-style: none;
+  }
   .download_l dd ul li{
     float: left;
     margin: 0 8px;
@@ -224,6 +227,10 @@ export default {
     float: left;
     margin-left: 10px;
     cursor: pointer;
+  }
+  .container .con-2 .res-model .describe p{
+    text-align: left;
+    margin: 0;
   }
   .container .con-2 .res-model .describe p:nth-child(1){
     padding-bottom: 6px;

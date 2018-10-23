@@ -84,9 +84,9 @@ export default {
     this.showPage(this.pageCurrent, null, true)
   },
   created:function(){
-    console.log("count",)
+    console.log("count",this.count)
 
-    if (this.count===1){
+    if (this.count===1||this.count===0){
       this.pageShow="none"
     }
   },
@@ -101,16 +101,11 @@ export default {
       if (pageIndex>this.count){
         console.log("pageIndex",pageIndex);
       } else if (pageIndex<=0){
-        console.log("pageIndex",pageIndex);
       } else {
         this.pageCurrent = pageIndex
-        console.log("pageIndex-----------------",pageIndex);
         if (event)       {
           console.log("$('.btn')",$('.btn'));
-          console.log("$('#pager')[0]",$('#pager')[0].children);
           for (let e of $('.btn')) {
-            console.log("e.className",e.className);
-            console.log("e.innerText",e.innerText);
             e.style.backgroundColor="white"
             if (pageIndex==parseInt(e.innerText)){
 
@@ -118,10 +113,8 @@ export default {
               e.style.backgroundColor="grey";
             }
           }
-          console.log("-----------",pageIndex);
 
           // event.currentTarget.style.backgroundColor="gray";
-          console.log("背景颜色",event.currentTarget.style.backgroundColor);
         }
         if (pageIndex > 0) {
           this.$emit('indexclick', pageIndex)
@@ -129,8 +122,6 @@ export default {
             pageIndex = this.count
           }
           this.pageCurrent = pageIndex
-          console.log("12122",this.pageCurrent);
-          console.log("this.count",this.count);
           // 如果当前页首页或者尾页，则上一页首页就不能点击，下一页尾页就不能点击
           if (this.pageCurrent === 1) {
             this.fDisabled = true

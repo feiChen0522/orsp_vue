@@ -61,10 +61,10 @@
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right" style="margin-top: 0;">
-            <li>
-              <router-link to="/personcenter">
-                <p class="p1">我的天下</p>
-              </router-link>
+            <li @click='is_login'>
+              <!--<router-link to="/personcenter">-->
+              <a @click.self.prevent><p class="p1">我的天下</p></a>
+              <!--</router-link>-->
             </li>
             <li>
               <router-link to="/car1">
@@ -108,15 +108,11 @@ export default {
 
   mounted:function(){
     Login.$on('HaveLogin',target=>{
-      console.log("==================_____________")
-      console.log(target)
       $('#myModal1').modal('show')
     });
-    console.log(localStorage.getItem('token'))
 
     if (localStorage.getItem('token')!=null) {
       var token=localStorage.getItem('token')
-      // console.log("token",token);
       let vm=this
       axios({
         method:'post',
@@ -127,7 +123,6 @@ export default {
       })
         .then(function (res) {
 
-          console.log(1,res)
           if (res.data.hasOwnProperty('user_name')){
             vm.LoginStatus="欢迎"+res.data.user_name
             vm.RegistStatus="退出"
@@ -139,9 +134,7 @@ export default {
 
         })
         .catch(function (err) {
-          console.log(1111111111,vm.LoginStatus)
 
-          console.log('请求失败',err);
         })
 
 
@@ -159,9 +152,7 @@ export default {
       }
     },
     cancelLogin:function () {
-      console.log(this.RegistStatus);
       if (this.RegistStatus!="注册") {
-        console.log("_________________")
         localStorage.removeItem('token')
         window.location.reload()
       }else {
@@ -169,9 +160,19 @@ export default {
       }
     },
     displayRegist:function () {
-      console.log("----------------------")
       $('myModal2').modal('hide')
       $('myModal1').modal('show')
+    },
+    is_login:function () {
+      var token=localStorage.getItem('token')
+      if(token){
+        console.log("前往个人中心")
+        this.$router.push({
+          name:'Center'
+        });
+      }else{
+        alert("请先登录！！！在查看个人中心！！！！   宝仕，这里要弹出登录模态框，我没弹出来，你来搞")
+      }
     }
   }
 }

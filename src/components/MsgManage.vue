@@ -10,10 +10,10 @@
             <h4 class="modal-title" id="myModalLabel" v-text="modal_title"></h4>
           </div>
           <div class="modal-body">
-            <change-name v-if="modal_change==1"  :old_name='userinfo[0].name'></change-name>
+            <change-name v-if="modal_change==1"  :old_name='list.user_name'></change-name>
             <change-telephone v-if="modal_change==2"></change-telephone>
             <change-password v-if="modal_change==3"></change-password>
-           </div>
+          </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
             <button type="button" class="btn btn-primary">保存</button>
@@ -27,7 +27,7 @@
     <div class="line"></div>
     <div class="personal-info">
       <div class="info-left">
-        <p class="personal-name">亲耐的<span class="name" v-text="userinfo[0].name"></span>,上传一张头像吧</p>
+        <p class="personal-name">亲耐的<span class="name" v-text="list.user_name"></span>,上传一张头像吧</p>
         <p class="personal-logo">
           <input type="file" class="file">
           <img src="../../static/images/perpeo.png" alt="" class="logo-img">
@@ -37,12 +37,12 @@
         <ul class="input-list">
           <li>
             <span class="per_txtrit">用户名：</span>
-            <span class="per_txtmid" id="name" v-text="userinfo[0].name" ></span>
+            <span class="per_txtmid" id="name" v-text="list.user_name" ></span>
             <span class="ritchange" data-toggle="modal" data-target="#change" @click="modalChange($event)" id="1">修改</span>
           </li>
           <li>
             <span class="per_txtrit">手机号：</span>
-            <span class="per_txtmid" id="telephone" v-text="userinfo[0].telephone"></span>
+            <span class="per_txtmid" id="telephone" v-text="list.telephone"></span>
             <span class="ritchange" data-toggle="modal" data-target="#change" @click="modalChange($event)" id="2">修改</span>
           </li>
           <li>
@@ -57,8 +57,8 @@
           </li>
           <li>
             <span class="per_txtrit">性别：</span>
-            <input type="radio" style="position: relative;top: 3px;" name="sex" checked><span style="margin-left: 5px;margin-right: 20px">男</span>
-            <input type="radio" style="position: relative;top: 3px;" name="sex"><span style="margin-left: 5px">女</span>
+            <input type="radio" style="position: relative;top: 3px;" name="sex" checked><span style="margin-left: 5px;margin-right: 20px" class="male">男</span>
+            <input type="radio" style="position: relative;top: 3px;" name="sex"><span style="margin-left: 5px" class="female">女</span>
           </li>
           <li>
             <span class="per_txtrit">QQ：</span>
@@ -79,59 +79,58 @@ export default {
       modal_change:1,
       modal_title:'',
       modal_list:['修改用户名','修改手机号','修改密码'],
-      list:[],
+      list:{},
       isDisplay:false,
       userinfo:[
         {
-          name:"捶死你q3sdasdddd",
+          name:"",
           new_name:'',
-          telephone:'123',
-          email:'尚未绑定邮箱',
-          password:'123456',
+          telephone:'',
+          email:'',
+          password:'******',
         }
       ],
     }
   },
-  mounted:function(){
-
+  created:function(){
+    var vm =this;
+    var token=localStorage.getItem("token")
+    axios({
+      url:"http://127.0.0.1:8000/user/showuser/",
+      headers:{
+        "token":token
+      },
+      method:"get"
+    })
+      .then(function (response) {
+        vm.list=response.data;
+        console.log('showuser data:'+vm.list);  //得到的数据
+        if(vm.list.email){
+          vm.userinfo[0].email=vm.list.email;
+        }
+        else{
+          vm.userinfo[0].email='尚未绑定邮箱';
+        }
+        console.log("user_name:>>>>"+vm.list.user_name);
+      })
   },
   methods:{
     save:function(){
-
+      console.log(1);
     },
-    getInfo:function () {
-      var vm =this;
-      axios.get("http://127.0.0.1:8000/user/getuserinfo/"+vm.telephone)
-        .then(function (response) {
-          vm.list=response.data;
-          console.log(vm.data);
-        })
-        },
     modalChange:function (event) {
       if(event.currentTarget.id=='1'){
-        console.log(1);
         this.modal_change=1;
         this.modal_title=this.modal_list[0];
-        console.log(this.modal_change);
-        console.log(this.modal_title);
       }
       if(event.currentTarget.id=='2'){
-        console.log(2);
         this.modal_change=2;
         this.modal_title=this.modal_list[1];
-        console.log(this.modal_change);
-        console.log(this.modal_title);
       }
       if(event.currentTarget.id=='3'){
-        console.log(3);
         this.modal_change=3;
         this.modal_title=this.modal_list[2];
-        console.log(this.modal_change);
-        console.log(this.modal_title);
       }
-      console.log(event.currentTarget.id);
-      console.log(this.modal_change);
-      console.log(this.modal_title);
     },
   }
 }
