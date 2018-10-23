@@ -228,6 +228,10 @@ export default {
     margin-left: 10px;
     cursor: pointer;
   }
+  .container .con-2 .res-model .describe p{
+    text-align: left;
+    margin: 0;
+  }
   .container .con-2 .res-model .describe p:nth-child(1){
     padding-bottom: 6px;
     font-size: 16px;
