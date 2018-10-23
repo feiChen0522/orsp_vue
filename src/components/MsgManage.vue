@@ -93,7 +93,12 @@ export default {
     }
   },
   mounted:function(){
-
+    var vm =this;
+    axios.get("http://127.0.0.1:8000/user/getuserinfo/"+vm.telephone)
+      .then(function (response) {
+        vm.list=response.data;
+        console.log(vm.data);
+      })
   },
   methods:{
     save:function(){
