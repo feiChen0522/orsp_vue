@@ -32,9 +32,8 @@
                      <label for="sel_primary">所属分类：</label>
                      <select name="sel_primary" id="sel_primary1" style="height: 30px" v-model="resourceType">
                        <option value>请选择</option>
-                       <option value="移动开发">移动开发</option>
-                       <option value="开发技术">开发技术 </option>
-                       <option value="课程资源">课程资源 </option>
+                       <option value="游戏辅助">游戏辅助</option>
+                       <option value="python">python </option>
                      </select>
 
                    </div>
@@ -188,7 +187,8 @@ export default {
               "name":res.data.name,
               "resourceType":this.resourceType,
               "describe":this.describe,
-              "need_integral":this.need_integral
+              "need_integral":this.need_integral,
+              "upload_user_id":sessionStorage.getItem('currentUserId')
             }
             axios.post('http://127.0.0.1:8000/file/savefile/', fileMsg, config)
               .then(function (res) {

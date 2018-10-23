@@ -197,7 +197,7 @@
                 url:'http://127.0.0.1:8000/resource/seegoodsbyid/',
                 headers:{'token':token},
                 data:{
-                  "id":1
+                  "id":sessionStorage.getItem('currentUserId')
                 }
               })
                 .then(function (rsp) {
