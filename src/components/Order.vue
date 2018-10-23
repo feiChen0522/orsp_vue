@@ -64,7 +64,6 @@
               }
             })
               .then(function (rsp) {
-                console.log(rsp,"查看我的订单")
                 that.myOrder=rsp.data;
               })
               .catch(function (err) {

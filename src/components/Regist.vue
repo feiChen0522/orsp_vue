@@ -147,7 +147,6 @@ export default {
             // }
           })
           .then(function (res) {
-            console.log(res.data.code);
             if (res.data.code=="208"){
               vm.telephone_tip="手机号已被注册,请直接登录";
             }else if (res.data.code=="408"){
@@ -159,8 +158,6 @@ export default {
                   // }
                 })
                 .then(function (res) {
-                  console.log(res);
-                  console.log(res.headers);
                   localStorage.setItem('token',res.headers.token);
                   vm.regist_success=true;
                   setInterval(function () {
@@ -187,7 +184,6 @@ export default {
           }.bind(this))
           .catch(function (err) {
             if (err.response) {
-              console.log(err.response)
               //控制台打印错误返回的内容
             }
             //bind(this)可以不用
@@ -206,7 +202,6 @@ export default {
       console.log("执行了getAnswer");
       this.debouncedvertifyTel();
       this.telephone_tip="";
-      console.log("this.tel_flag", this.tel_flag);
       if(this.tel_flag){
         console.log("执行了axios");
 
@@ -218,7 +213,6 @@ export default {
 
     },
     username:function () {
-      console.log("username改变了");
       this.debouncedvertifyUserName();
       this.username_tip=""
     },

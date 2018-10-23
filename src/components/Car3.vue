@@ -32,7 +32,6 @@
     name: "Car3",
     methods:{
       showOrder:function () {
-        console.log("============+++++++++")
         this.$router.push({
           name:"Order",
         })

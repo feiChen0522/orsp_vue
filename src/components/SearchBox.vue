@@ -18,19 +18,28 @@
 
 export default {
   name: 'SearchBox',
+  props:['con'],
   data () {
     return {
         inputText:""
     }
   },
   created(){
+
     if (sessionStorage.getItem('searchCondition')!=null) {
       this.inputText=sessionStorage.getItem('searchCondition')
     }
   },
+  mounted(){
+
+    console.log("con",this.con)
+    if (this.con) this.inputText=this.con
+    console.log("con",this.inputText)
+    sessionStorage.setItem('searchCondition',this.inputText)
+
+  },
   methods:{
     searchGoods:function (e) {
-      console.log(this.inputText);
       sessionStorage.setItem('searchCondition',this.inputText)
       axios.get('http://127.0.0.1:8000/resource/searchGoods/?good='+this.inputText+'&index='+0
         ,{
@@ -39,7 +48,6 @@ export default {
           // }
         })
         .then(function (res) {
-          console.log(res.data)
           //在sessionStorage暂时存储搜索到的数据
           sessionStorage.setItem('searchGoods',JSON.stringify(res.data))
 
@@ -55,15 +63,13 @@ export default {
         }.bind(this))
         .catch(function (err) {
           if (err.response) {
-            console.log(err.response)
             //控制台打印错误返回的内容
           }
           //bind(this)可以不用
         }.bind(this))
     }
   },
-  mounted:function () {
-  }
+
 }
 </script>
 

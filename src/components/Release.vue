@@ -134,7 +134,6 @@
     },
     watch: {
       selected: function () {
-        console.log(this.selected)
         // 清除区县
         this.citySelected = {}
         this.cityL = city.filter((item) => item.parentId === this.selected.code)

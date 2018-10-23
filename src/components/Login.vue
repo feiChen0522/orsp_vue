@@ -93,8 +93,6 @@ export default {
         // }
       })
         .then(function (res) {
-          console.log(res)
-          console.log(res.headers);
           localStorage.setItem('token',res.headers.token)
           window.location.reload()
           //控制台打印请求成功时返回的数据
@@ -102,14 +100,12 @@ export default {
         }.bind(this))
         .catch(function (err) {
           if (err.response) {
-            console.log(err.response)
             //控制台打印错误返回的内容
           }
           //bind(this)可以不用
         }.bind(this))
     },
     jumpRegist:function () {
-      console.log("========")
       this.$emit('jump-regist',1)
     }
   },
@@ -120,7 +116,6 @@ export default {
     },
   watch:{
     telephone:function (newtel) {
-      console.log("执行了getAnswer");
       this.debouncedvertifyTel();
     },
     password:function () {

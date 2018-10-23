@@ -108,15 +108,11 @@ export default {
 
   mounted:function(){
     Login.$on('HaveLogin',target=>{
-      console.log("==================_____________")
-      console.log(target)
       $('#myModal1').modal('show')
     });
-    console.log(localStorage.getItem('token'))
 
     if (localStorage.getItem('token')!=null) {
       var token=localStorage.getItem('token')
-      // console.log("token",token);
       let vm=this
       axios({
         method:'post',
@@ -127,7 +123,6 @@ export default {
       })
         .then(function (res) {
 
-          console.log(1,res)
           if (res.data.hasOwnProperty('user_name')){
             vm.LoginStatus="欢迎"+res.data.user_name
             vm.RegistStatus="退出"
@@ -139,9 +134,7 @@ export default {
 
         })
         .catch(function (err) {
-          console.log(1111111111,vm.LoginStatus)
 
-          console.log('请求失败',err);
         })
 
 
@@ -159,9 +152,7 @@ export default {
       }
     },
     cancelLogin:function () {
-      console.log(this.RegistStatus);
       if (this.RegistStatus!="注册") {
-        console.log("_________________")
         localStorage.removeItem('token')
         window.location.reload()
       }else {
@@ -169,7 +160,6 @@ export default {
       }
     },
     displayRegist:function () {
-      console.log("----------------------")
       $('myModal2').modal('hide')
       $('myModal1').modal('show')
     },

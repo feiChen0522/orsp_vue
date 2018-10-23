@@ -40,7 +40,7 @@ import index from "../router";
                   </div>
                 </div>
                 <div class="col-md-12" @click="onclick">
-                  <p :class="{'g1':flag1}" @click="selectAddress(0)">
+                  <p :class="{'g1':flag1}" @click="selectAddress(0,$event)" id="default">
                     <b>联系人:</b>
                     <a v-text='address[0]["concact_name"]'></a>
                     <b>手机号:</b>
@@ -50,8 +50,8 @@ import index from "../router";
                   </p>
                 </div>
                 <div v-if="flag">
-                  <div class="col-md-12">
-                    <p v-for="i,index in address" v-if="index!=0" @click="selectAddress(index)">
+                  <div class="col-md-12" id="have">
+                    <p v-for="i,index in address" v-if="index!=0" @click="selectAddress(index,$event)" >
                       <b>联系人:</b>
                       <a v-text='address[index]["concact_name"]'></a>
                       <b>手机号:</b>
@@ -87,8 +87,8 @@ import index from "../router";
                 <div class="col-md-12">
                   <span class="col-md-10 f2"><strong>发票类型:</strong></span>
                 </div>
-                <div class="col-md-12" >
-                  <p >该类型商品不支持发票</p>
+                <div class="col-md-12">
+                  <p>该类型商品不支持发票</p>
                 </div>
               </td>
             </tr>
@@ -115,20 +115,19 @@ import index from "../router";
           <a class="delgoods" @click="submitOrder" style="cursor: pointer">提交商品订单</a>
 
 
-
           <!--<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" >-->
-            <!--<div class="modal-dialog modal-sm" role="document">-->
-              <!--<div class="modal-content">-->
-                <!--<div class="modal-header">-->
-                  <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
-                  <!--<h4 class="modal-title" id="myModalLabel" style="font-size: 14px">请使用手机扫描二维码支付担保金</h4>-->
-                <!--</div>-->
-                <!--<div style="width: 150px;height: 150px;margin: 0 auto" >-->
-                  <!--<img  :src="'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://123.207.11.101/?_id='+_id" alt="">-->
+          <!--<div class="modal-dialog modal-sm" role="document">-->
+          <!--<div class="modal-content">-->
+          <!--<div class="modal-header">-->
+          <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
+          <!--<h4 class="modal-title" id="myModalLabel" style="font-size: 14px">请使用手机扫描二维码支付担保金</h4>-->
+          <!--</div>-->
+          <!--<div style="width: 150px;height: 150px;margin: 0 auto" >-->
+          <!--<img  :src="'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://123.207.11.101/?_id='+_id" alt="">-->
 
-                <!--</div>-->
-              <!--</div>-->
-            <!--</div>-->
+          <!--</div>-->
+          <!--</div>-->
+          <!--</div>-->
           <!--</div>-->
         </div>
       </div>
@@ -146,37 +145,42 @@ import index from "../router";
       return {
         flag: false,
         flag1: false,
-
-        address:[{
-          "concact_name":"",
-          "concact_telephone":"",
-          "provice_id":"",
-          "city_id":""
+        currentIndex:1,
+        activClass:'select',
+        address: [{
+          "concact_name": "",
+          "concact_telephone": "",
+          "provice_id": "",
+          "city_id": ""
         }],
-        selectAddressByUser:0,
-        selectExpressByUser:"顺丰快递",
-        _id:""
+        selectAddressByUser: 0,
+        selectExpressByUser: "顺丰快递",
+        _id: "",
+        nodes:[]
       }
     },
-    created:function(){
-    //  去请求当前用户的地址
-      this._id=sessionStorage.getItem("_id")
-      let vm=this
-      let id= sessionStorage.getItem('currentUserId')
+    created: function () {
+      //  去请求当前用户的地址
+      this._id = sessionStorage.getItem("_id")
+      let vm = this
+      let id = sessionStorage.getItem('currentUserId')
       axios({
-        method:'post',
-        url:'http://127.0.0.1:8000/user/getaddresbyid/',
-        data:{
-          "id":id
+        method: 'post',
+        url: 'http://127.0.0.1:8000/user/getaddresbyid/',
+        data: {
+          "id": id
         }
       })
         .then(function (rsp) {
-          console.log("请求的地址",rsp.data)
-          vm.address=rsp.data;
+          vm.address = rsp.data;
         })
         .catch(function (err) {
-          console.log('请求失败',err);
+          console.log('请求失败', err);
         })
+    },
+    mounted:function(){
+
+
     },
     methods: {
       onchange: function () {
@@ -188,35 +192,58 @@ import index from "../router";
       addAddress: function () {
 
       },
-      selectAddress:function (i) {
-        console.log("选中了地址",i)
-        this.selectAddressByUser=this.address[i]
+      selectAddress: function (i,event) {
+        console.log("选中了地址", i)
+        this.selectAddressByUser = this.address[i]
+        // console.log(event.target.nodeName);
+        // if (event.target.nodeName=="P"){
+        //   for (let li of event.target.parentNode.childNodes){
+        //     console.log("li",li)
+        //     if (li.nodeName=="P"){
+        //       li.style.backgroundColor="gainsboro"
+        //
+        //     }
+        //   }
+        //   $('#default').css("backgroundColor","gainsboro")
+        //   event.target.style.backgroundColor="red"
+        //
+        // }
+        let defaultAddress=document.querySelector('#default')
+        let haveAddress=document.querySelectorAll('#have>p')
+        defaultAddress.style.backgroundColor="gainsboro"
+        for (let p of haveAddress){
+          console.log(p)
+          p.style.backgroundColor="gainsboro"
+        }
+        if (event.target.nodeName=="P"){
+          event.target.style.backgroundColor="#ff000030"
+        }
+
+
       },
-      selectExpress:function (i) {
-        this.selectExpressByUser=i
+      selectExpress: function (i) {
+        this.selectExpressByUser = i
       },
-      submitOrder:function () {
-        let vm=this
-        console.log("执行到了这里")
+      submitOrder: function () {
+        let vm = this
         axios({
-          method:'post',
-          url:'http://127.0.0.1:8000/resource/paymentguaranty/',
-          data:{
-            "id":vm._id,
-            "selectAddressByUser":vm.selectAddressByUser,
-            "selectExpressByUser":vm.selectExpressByUser
+          method: 'post',
+          url: 'http://127.0.0.1:8000/resource/paymentguaranty/',
+          data: {
+            "id": vm._id,
+            "selectAddressByUser": vm.selectAddressByUser,
+            "selectExpressByUser": vm.selectExpressByUser
           }
         })
           .then(function (rsp) {
-            console.log(rsp)
-            if (rsp.data.code=="215"){
+            if (rsp.data.code == "215") {
               vm.$router.push({
-                name:"Car3"
+                name: "Car3"
               })
             }
           })
           .catch(function (err) {
-            console.log('请求失败',err);
+            console.log('请求失败', err);
           })
       }
     }
@@ -224,6 +251,11 @@ import index from "../router";
 </script>
 
 <style scoped>
+
+  .select{
+    background-color: #3b49ff;
+  }
+
   ul, li {
     list-style: none;
   }
@@ -372,14 +404,17 @@ import index from "../router";
     margin-left: 15px;
     margin-top: 15px;
   }
-  button{
+
+  button {
     border: 0;
     background-color: transparent;
     outline: none;
   }
-  button:focus{
+
+  button:focus {
     border: solid 1px red;
   }
+
   tbody img {
     height: 80px;
     border: 1px solid #eee;
@@ -408,7 +443,6 @@ import index from "../router";
     margin-left: 15px;
     width: 60px;
   }
-
 
 
 </style>
