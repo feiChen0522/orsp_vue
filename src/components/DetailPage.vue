@@ -193,7 +193,8 @@
             headers:{'token':token},
           })
             .then(function (rsp) {
-              console.log(rsp);
+              console.log("登录",rsp);
+              sessionStorage.setItem('currentUserId',rsp.data.id)
               axios({
                 method:'post',
                 url:'http://127.0.0.1:8000/resource/seegoodsbyid/',
@@ -203,7 +204,8 @@
                 }
               })
                 .then(function (rsp) {
-                  console.log(rsp);
+                  console.log("seegood",rsp);
+                  sessionStorage.setItem('buyerSelectGood',JSON.stringify(rsp.data[0]))
                   that.$router.push({
                     name:"Car1",
                     params:rsp.data

@@ -1,3 +1,4 @@
+import index from "../router";
 <template>
   <div class="container-fluid">
     <div class="col-md-1"></div>
@@ -39,13 +40,26 @@
                   </div>
                 </div>
                 <div class="col-md-12" @click="onclick">
-                  <p :class="{'g1':flag1}">麻花疼 13555555555 苏州 虎丘区 Q讯大厦 108层</p>
+                  <p :class="{'g1':flag1}" @click="selectAddress(0)">
+                    <b>联系人:</b>
+                    <a v-text='address[0]["concact_name"]'></a>
+                    <b>手机号:</b>
+                    <a v-text='address[0]["concact_telephone"]'></a>
+                    <a v-text='address[0]["provice_id"]'></a>
+                    <a v-text='address[0]["city_id"]'></a>
+                  </p>
                 </div>
                 <div v-if="flag">
                   <div class="col-md-12">
-                    <p>麻花疼 13555555555 苏州 虎丘区 Q讯大厦 108层</p>
-                    <p>麻花疼 13555555555 苏州 虎丘区 Q讯大厦 108层</p>
-                    <p>麻花疼 13555555555 苏州 虎丘区 Q讯大厦 108层</p>
+                    <p v-for="i,index in address" v-if="index!=0" @click="selectAddress(index)">
+                      <b>联系人:</b>
+                      <a v-text='address[index]["concact_name"]'></a>
+                      <b>手机号:</b>
+                      <a v-text='address[index]["concact_telephone"]'></a>
+                      <a v-text='address[index]["provice_id"]'></a>
+                      <a v-text='address[index]["city_id"]'></a>
+                    </p>
+
                   </div>
                 </div>
                 <div class="col-md-12" @click="onchange">
@@ -61,7 +75,10 @@
                   <span class="col-md-10 f2"><strong>邮寄方式:</strong></span>
                 </div>
                 <div class="col-md-12">
-                  <span><button class="sp1 ">顺丰快递</button><button class="sp1">用户自提</button></span>
+                  <span>
+                    <button class="sp1" @click="selectExpress('顺丰快递')">顺丰快递</button>
+                    <button class="sp1" @click="selectExpress('用户自提')">用户自提</button>
+                  </span>
                 </div>
               </td>
             </tr>
@@ -94,7 +111,25 @@
           </table>
         </div>
         <div class="col-md-12">
-          <router-link tag="a" to="/car3" class="delgoods">提交商品订单</router-link>
+          <!--<a  data-toggle="modal" data-target=".bs-example-modal-sm" class="delgoods">提交商品订单</a>-->
+          <a class="delgoods" @click="submitOrder" style="cursor: pointer">提交商品订单</a>
+
+
+
+          <!--<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" >-->
+            <!--<div class="modal-dialog modal-sm" role="document">-->
+              <!--<div class="modal-content">-->
+                <!--<div class="modal-header">-->
+                  <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
+                  <!--<h4 class="modal-title" id="myModalLabel" style="font-size: 14px">请使用手机扫描二维码支付担保金</h4>-->
+                <!--</div>-->
+                <!--<div style="width: 150px;height: 150px;margin: 0 auto" >-->
+                  <!--<img  :src="'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://123.207.11.101/?_id='+_id" alt="">-->
+
+                <!--</div>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
         </div>
       </div>
     </div>
@@ -111,7 +146,37 @@
       return {
         flag: false,
         flag1: false,
+
+        address:[{
+          "concact_name":"",
+          "concact_telephone":"",
+          "provice_id":"",
+          "city_id":""
+        }],
+        selectAddressByUser:0,
+        selectExpressByUser:"顺丰快递",
+        _id:""
       }
+    },
+    created:function(){
+    //  去请求当前用户的地址
+      this._id=sessionStorage.getItem("_id")
+      let vm=this
+      let id= sessionStorage.getItem('currentUserId')
+      axios({
+        method:'post',
+        url:'http://127.0.0.1:8000/user/getaddresbyid/',
+        data:{
+          "id":id
+        }
+      })
+        .then(function (rsp) {
+          console.log("请求的地址",rsp.data)
+          vm.address=rsp.data;
+        })
+        .catch(function (err) {
+          console.log('请求失败',err);
+        })
     },
     methods: {
       onchange: function () {
@@ -122,6 +187,37 @@
       },
       addAddress: function () {
 
+      },
+      selectAddress:function (i) {
+        console.log("选中了地址",i)
+        this.selectAddressByUser=this.address[i]
+      },
+      selectExpress:function (i) {
+        this.selectExpressByUser=i
+      },
+      submitOrder:function () {
+        let vm=this
+        console.log("执行到了这里")
+        axios({
+          method:'post',
+          url:'http://127.0.0.1:8000/resource/paymentguaranty/',
+          data:{
+            "id":vm._id,
+            "selectAddressByUser":vm.selectAddressByUser,
+            "selectExpressByUser":vm.selectExpressByUser
+          }
+        })
+          .then(function (rsp) {
+            console.log(rsp)
+            if (rsp.data.code=="215"){
+              vm.$router.push({
+                name:"Car3"
+              })
+            }
+          })
+          .catch(function (err) {
+            console.log('请求失败',err);
+          })
       }
     }
   }

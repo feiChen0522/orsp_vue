@@ -112,35 +112,40 @@ export default {
       console.log(target)
       $('#myModal1').modal('show')
     });
+    console.log(localStorage.getItem('token'))
 
-    if (sessionStorage.getItem('token')!=null) {
-      var token=sessionStorage.getItem('token')
+    if (localStorage.getItem('token')!=null) {
+      var token=localStorage.getItem('token')
       // console.log("token",token);
-      axios.post('http://127.0.0.1:8000/user/judgetoken/',
-        {
-          headers: {
-            'token': sessionStorage.getItem('token'),
-          }
-        })
+      let vm=this
+      axios({
+        method:'post',
+        url:'http://127.0.0.1:8000/user/judgetoken/',
+        headers: {
+          'token': token
+        }
+      })
         .then(function (res) {
-          console.log(res)
-          if (res.data.hasOwnProperty('name')){
-            this.LoginStatus="欢迎"+res.data.name
-            this.RegistStatus="退出"
+
+          console.log(1,res)
+          if (res.data.hasOwnProperty('user_name')){
+            vm.LoginStatus="欢迎"+res.data.user_name
+            vm.RegistStatus="退出"
             next();
           } else {
             alert("登录失败")
           }
-          //控制台打印请求成功时返回的数据
-          //bind(this)可以不用
-        }.bind(this))
+          //控
+
+        })
         .catch(function (err) {
-          if (err.response) {
-            console.log(err.response)
-            //控制台打印错误返回的内容
-          }
-          //bind(this)可以不用
-        }.bind(this))
+          console.log(1111111111,vm.LoginStatus)
+
+          console.log('请求失败',err);
+        })
+
+
+
     }
   },
   methods:{
@@ -157,7 +162,7 @@ export default {
       console.log(this.RegistStatus);
       if (this.RegistStatus!="注册") {
         console.log("_________________")
-        sessionStorage.removeItem('token')
+        localStorage.removeItem('token')
         window.location.reload()
       }else {
         $('#myModal2').modal('show');

@@ -9,7 +9,7 @@
             <th class="col2">商品信息</th>
             <th class="col3">单价</th>
             <th class="col3">数量</th>
-            <th class="col3">是否担保</th>
+            <th class="col3">上传时间</th>
             <th class="col3">操作</th>
           </tr>
           </thead>
@@ -18,12 +18,11 @@
             <td class="col1">
               <router-link to="/detailpage">
                 <img :src=imgsrc style="width: 110px; height: 80px;margin-left: 10px;border: none" class="col-md-8">
-                <p v-text="good.name" style="text-align: left"></p></router-link>
+                <p v-text="goods.name" style="text-align: left"></p></router-link>
 
-              <p v-text="good"></p>
             </td>
-            <td class="col2"><p v-text="good.description"></p></td>
-            <td class="col3"><p v-text="'$'+parseFloat(good.price).toFixed(2)"></p></td>
+            <td class="col2"><p v-text="goods.description"></p></td>
+            <td class="col3"><p v-text="'$'+parseFloat(goods.price).toFixed(2)"></p></td>
             <td class="col4">
               <p>
                 <input type="button" value="-" @click="numOperation(0)">
@@ -32,7 +31,7 @@
 
               </p>
             </td>
-            <td class="col5"><p>默认</p></td>
+            <td class="col5"><p v-text="goods.upload_time"></p></td>
             <td class="col6"><p class="del" @click="delall">删除</p></td>
           </tr>
           </tbody>
@@ -59,19 +58,20 @@
         unitPrice:10.10,
         //库存
         cateNum:10,
-        totalPrice:0.00
+        totalPrice:0.00,
+
       }
     },
     mounted: function () {
       // this.goods=this.$route.params
-      this.goods['price'] = sessionStorage.getItem('price')
-      this.goods['title'] = sessionStorage.getItem('title')
-      this.goods['address'] = sessionStorage.getItem('address')
-      this.goods['img'] = sessionStorage.getItem('img')
-      this.imgsrc = this.goods['img']
-      if (this.goods){
-
-      }
+      console.log(sessionStorage.getItem('buyerSelectGood'))
+      this.goods=JSON.parse(sessionStorage.getItem('buyerSelectGood'))
+      console.log("=========");
+      console.log(this.goods);
+      console.log(this.goods.pnum)
+      this.goodNum=parseInt(this.goods.pnum)
+      this.cateNum=parseInt(this.goods.category)
+      this.unitPrice=parseFloat(this.goods.price)
     },
     methods:{
       delall:function () {
@@ -82,11 +82,14 @@
       numOperation:function (f) {
 
           this.goodNum=f===1?this.goodNum+1:this.goodNum-1
-        if (this.goodNum==0){
+        if (this.goodNum<=0){
           this.goodNum+=1
         }else if (this.goodNum>this.cateNum) {
           this.goodNum-=1
         }
+        this.goods.pnum=this.goodNum
+        sessionStorage.setItem('buyerSelectGood',JSON.stringify(this.goods))
+
         console.log(this.goodNum);
 
       }

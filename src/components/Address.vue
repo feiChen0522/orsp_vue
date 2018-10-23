@@ -8,7 +8,9 @@
         </div>
         <div class="col-md-10">
           <div class="col-md-12 a2"></div>
-          <div class="col-md-11 a">
+
+
+          <div class="col-md-11 a" v-for="i in address">
             <div class="col-md-2 c"><span v-if="flag">曾用地址</span><span v-if="!flag">默认地址</span></div>
             <div class="col-md-9"></div>
             <div class="col-md-1">
@@ -16,11 +18,11 @@
             </div>
             <div class="col-md-12 sp1">
               <span class="col-md-2">收货人:</span>
-              <div class="col-md-8">王</div>
+              <div class="col-md-8" v-text="i.concact_name"></div>
             </div>
             <div class="col-md-12 sp1">
               <span class="col-md-2">所在地区:</span>
-              <div class="col-md-8">北京市 昌平区</div>
+              <div class="col-md-8" v-text="i.provice_id+'   '+i.city_id">北京市 昌平区</div>
             </div>
             <div class="col-md-12 sp1">
               <span class="col-md-2">详细地址:</span>
@@ -28,7 +30,7 @@
             </div>
             <div class="col-md-12 sp1">
               <span class="col-md-2">手机号码:</span>
-              <div class="col-md-8">13555555555</div>
+              <div class="col-md-8" v-text="i.concact_telephone">13555555555</div>
             </div>
             <div class="col-md-12">
               <div class="col-md-11 a11"><a href="#" @click="onchange">设为默认地址</a></div>
@@ -78,9 +80,27 @@
     name: 'Address',
     data() {
       return {
-        msg: 'Welcome to Your Vue.js App',
-        flag:true
+        flag:true,
+        address:[]
       }
+    },
+    created:function(){
+      let vm=this
+      let id=sessionStorage.getItem("currentUserId")
+      axios({
+        method: 'post',
+        url: 'http://127.0.0.1:8000/user/getaddresbyid/',
+        data:{
+          "id":id
+        }
+      })
+        .then(function (rsp) {
+          console.log(rsp,"查看我的地址")
+          vm.address=rsp.data
+        })
+        .catch(function (err) {
+          console.log('请求失败', err);
+        })
     },
     methods: {
       onchange:function () {

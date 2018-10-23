@@ -27,6 +27,7 @@ import MyReleaseGoods from '@/components/MyReleaseGoods'
 import GoodsHaveSold from '@/components/GoodsHaveSold'
 import ShowMyUpSesource from '@/components/download/ShowMyUpSesource'
 import DownSesource from '@/components/download/DownSesource'
+import ORSPDownload from '@/components/ORSPDownload'
 
 // import Search from '@/components/Search'
 import SearchMain from '@/components/search/SearchMain'
@@ -181,6 +182,12 @@ export default new Router({
           name: 'DownSesource',
           component: DownSesource
         },
+        {
+          path: '/orapdownload',
+          name: 'ORSPDownload',
+          component: ORSPDownload
+        },
+
         //个人信息
         {
           path: '/accountManage',

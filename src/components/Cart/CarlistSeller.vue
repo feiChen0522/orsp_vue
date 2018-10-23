@@ -20,10 +20,10 @@
                 <img :src=imgsrc style="width: 110px; height: 80px;margin-left: 10px;border: none" class="col-md-8">
                 <p  style="text-align: left"></p></router-link>
 
-              <p ></p>
+              <p v-text="goods.title"></p>
             </td>
             <td class="col2"><p ></p></td>
-            <td class="col3"><p v-text="'$'+parseFloat(1).toFixed(2)"></p></td>
+            <td class="col3"><p v-text="'$'+parseFloat(goods.price).toFixed(2)"></p></td>
             <td class="col4">
               <p>
                 <input type="button" value="-" @click="numOperation(0)">
@@ -68,10 +68,18 @@
       this.goods['title'] = sessionStorage.getItem('title')
       this.goods['address'] = sessionStorage.getItem('address')
       this.goods['img'] = sessionStorage.getItem('img')
+      this.goods['Stock'] = sessionStorage.getItem('Stock')
+      this.goods['_id'] = sessionStorage.getItem('_id')
+      this.goods['belong_to'] = sessionStorage.getItem('belong_to')
+      this.goods['belong_name'] = sessionStorage.getItem('belong_name')
+      this.goods['change'] = sessionStorage.getItem('change')
+      this.goods['payNum'] = sessionStorage.getItem('payNum')
+      this.goods['pnum'] = this.goodNum
+      this.cateNum=this.goods['Stock']
       this.imgsrc = this.goods['img']
-      if (this.goods){
+      this.unitPrice=this.goods["price"]
+      sessionStorage.setItem('sellerSelectGood',JSON.stringify(this.goods))
 
-      }
     },
     methods:{
       delall:function () {
@@ -87,6 +95,9 @@
         }else if (this.goodNum>this.cateNum) {
           this.goodNum-=1
         }
+        this.goods['pnum'] = this.goodNum
+        sessionStorage.setItem('sellerSelectGood',JSON.stringify(this.goods))
+
         console.log(this.goodNum);
 
       }
