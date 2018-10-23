@@ -11,7 +11,6 @@
           <li class="col-lg-2 col-md-2 col-sm-2 col-xs-2"><a href="download/upload.html">上传物品</a></li>
           <li class="col-lg-2 col-md-2 col-sm-2 col-xs-2"><a href="search.html">交换物品</a></li>
         </ul>
-
     </div>
   </div>
 </template>

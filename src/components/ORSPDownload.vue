@@ -188,6 +188,9 @@ export default {
     padding: 5px 10px;
 
   }
+  .download_l dd ul,.download_l dd ul li{
+    list-style: none;
+  }
   .download_l dd ul li{
     float: left;
     margin: 0 8px;
