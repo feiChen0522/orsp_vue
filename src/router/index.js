@@ -140,6 +140,13 @@ export default new Router({
       name: 'Paging',
       component: Paging
     },
+  //  下载首页
+    {
+      path: '/orapdownload',
+      name: 'ORSPDownload',
+      component: ORSPDownload
+    },
+
   //  个人中心
     {
       path:'/personcenter',
@@ -182,11 +189,7 @@ export default new Router({
           name: 'DownSesource',
           component: DownSesource
         },
-        {
-          path: '/orapdownload',
-          name: 'ORSPDownload',
-          component: ORSPDownload
-        },
+
 
         //个人信息
         {
