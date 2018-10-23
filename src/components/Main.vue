@@ -120,12 +120,12 @@
 
   .show1{
     position: absolute;
-    left: 850px;
+    left: 1000px;
     height: 330px;
   }
   .show2{
     position: absolute;
-    left: 850px;
-    top:365px
+    left: 1000px;
+    top:555px
   }
 </style>
