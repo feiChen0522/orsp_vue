@@ -28,7 +28,6 @@
             <td v-text="formatStatus(i.buyerSelectGood.guarantyStatus)"></td>
             <td><a >查看</a>|<a >删除</a></td>
           </tr>
-
           </tbody>
         </table>
       </div>
