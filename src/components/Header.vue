@@ -61,10 +61,10 @@
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right" style="margin-top: 0;">
-            <li>
-              <router-link to="/personcenter">
-                <p class="p1">我的天下</p>
-              </router-link>
+            <li @click='is_login'>
+              <!--<router-link to="/personcenter">-->
+              <a @click.self.prevent><p class="p1">我的天下</p></a>
+              <!--</router-link>-->
             </li>
             <li>
               <router-link to="/car1">
@@ -77,14 +77,12 @@
               </router-link>
             </li>
             <li>
-              <router-link to="/">
-                <p class="p1">易物指南</p>
+              <router-link to="/board">
+                <p class="p1">联系我们</p>
               </router-link>
             </li>
             <li>
-              <router-link to="/">
-                <p class="p1">加入诚信商</p>
-              </router-link>
+                <p class="p1 p2" @click="coll">收藏网站</p>
             </li>
           </ul>
         </div><!-- /.navbar-collapse -->
@@ -162,6 +160,20 @@ export default {
     displayRegist:function () {
       $('myModal2').modal('hide')
       $('myModal1').modal('show')
+    },
+    coll:function(){
+      alert('点击CTRL+D 收藏网站')
+    },
+    is_login:function () {
+      var token=localStorage.getItem('token')
+      if(token){
+        console.log("前往个人中心")
+        this.$router.push({
+          name:'Center'
+        });
+      }else{
+        alert("请先登录！！！在查看个人中心！！！！   宝仕，这里要弹出登录模态框，我没弹出来，你来搞")
+      }
     }
   }
 }
@@ -182,5 +194,16 @@ export default {
   .p1{
     height: 10px;
     font-size: 12px!important;
+    cursor: pointer;
+  }
+  .p2{
+    padding-top: 7px;
+    padding-bottom: 5px;
+    font-size: 12px;
+    color: rgba(251, 253, 252, 0.68);
+  }
+  .p2:hover{
+    color: white;
+    cursor: pointer;
   }
 </style>

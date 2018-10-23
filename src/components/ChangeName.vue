@@ -33,6 +33,9 @@ export default {
   .mo-div{
     height: 70px;
   }
+  .mo-div ul,.mo-div ul li{
+    list-style: none;
+  }
   .mo-div ul li{
     font-size: 12px;
     color: #333;
