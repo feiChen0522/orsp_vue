@@ -41,7 +41,6 @@
         </tr>
       </table>
     </div>
-
   </div>
 </template>
 
@@ -54,9 +53,7 @@
 <style scoped>
   @import '../../static/css/clear.css';
   .r-collect-container{
-    background-color: #2aabd20a;
     display: block;
-
   }
   .r-collect-container>.r-collect-title{
     width: 100%;
