@@ -5,13 +5,13 @@
         <div class="col-md-10">
           <form class="form-horizontal">
             <div class="form-group">
-              <label for="" class="col-sm-3 control-label">收货人:</label>
+              <label class="col-sm-3 control-label">收货人:</label>
               <div class="col-sm-9">
                 <input  class="form-control" id="inputpersonal">
               </div>
             </div>
             <div class="form-group">
-              <label for="" class="col-sm-3 control-label" >地址:</label>
+              <label class="col-sm-3 control-label" >地址:</label>
               <div class="col-sm-9">
                 <div class="row">
                   <select class="col-lg-3" v-model="selected"  v-if="provinceL" style="width: 100px;margin-right: 20px;margin-left: 16px;">
@@ -26,13 +26,13 @@
               </div>
             </div>
             <div class="form-group">
-              <label for="" class="col-sm-3 control-label">详细地址:</label>
+              <label class="col-sm-3 control-label">详细地址:</label>
               <div class="col-sm-9">
                 <input class="form-control" id="inputaddress">
               </div>
             </div>
             <div class="form-group">
-              <label for="" class="col-sm-3 control-label">手机号:</label>
+              <label class="col-sm-3 control-label">手机号:</label>
               <div class="col-sm-9">
                 <input class="form-control" id="inputphone">
               </div>
@@ -89,7 +89,7 @@ export default {
   },
   methods:{
     addAddress:function () {
-      
+
     }
   }
 }
