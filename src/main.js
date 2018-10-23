@@ -26,7 +26,7 @@ import MyReleaseGoods from './components/MyReleaseGoods'
 import GoodsHaveSold from './components/GoodsHaveSold'
 import PhotoLoupe from './components/PhotoLoupe'
 import upload from './components/download/upload'
-import Page from './components/Page'
+import Notice from './components/Notice'
 import Address from './components/Address'
 import Left from './components/person/Left'
 import Paging from './components/test/Paging'
@@ -69,6 +69,7 @@ Vue.component('goods-have-sold',GoodsHaveSold);
 Vue.component('photo-loupe',PhotoLoupe);
 //购物车页面
 Vue.component('Car1-div', Car1);
+Vue.component('notice', Notice);
 
 
 

@@ -77,8 +77,8 @@
               </router-link>
             </li>
             <li>
-              <router-link to="/">
-                <p class="p1">易物指南</p>
+              <router-link to="/board">
+                <p class="p1">联系我们</p>
               </router-link>
             </li>
             <li>

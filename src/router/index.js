@@ -28,6 +28,7 @@ import GoodsHaveSold from '@/components/GoodsHaveSold'
 import ShowMyUpSesource from '@/components/download/ShowMyUpSesource'
 import DownSesource from '@/components/download/DownSesource'
 import ORSPDownload from '@/components/ORSPDownload'
+import Board from '@/components/Board'
 
 // import Search from '@/components/Search'
 import SearchMain from '@/components/search/SearchMain'
@@ -78,11 +79,15 @@ export default new Router({
       name: 'SearchMain',
       component: SearchMain
     },
-
     {
-      path: '/addaddress',
-      name: 'AddAddress',
-      component: AddAddress
+      path: '/search',
+      name: 'SearchMain',
+      component: SearchMain
+    },
+    {
+      path: '/board',
+      name: 'Board',
+      component: Board
     },
 
     {
