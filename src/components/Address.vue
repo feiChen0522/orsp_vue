@@ -52,23 +52,6 @@
           </div>
         </div>
       </div>
-      <!-- Button trigger modal -->
-      <!-- Modal -->
-      <!--<div class="modal fade" id="myModal_Address" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">-->
-        <!--<div class="modal-dialog" role="document">-->
-          <!--<div class="modal-content">-->
-            <!--<div class="modal-header">-->
-              <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
-              <!--<h4 class="modal-title" id="myModalLabel">新增收货地址</h4>-->
-            <!--</div>-->
-            <!--<div class="modal-body">-->
-              <!--11111111111-->
-            <!--</div>-->
-
-          <!--</div>-->
-        <!--</div>-->
-      <!--</div>-->
-
 
       <!--模态框结束-->
     </div>
@@ -85,8 +68,8 @@
       }
     },
     created:function(){
-      let vm=this
-      let id=sessionStorage.getItem("currentUserId")
+      let vm=this;
+      let id=sessionStorage.getItem("currentUserId");
       axios({
         method: 'post',
         url: 'http://127.0.0.1:8000/user/getaddresbyid/',

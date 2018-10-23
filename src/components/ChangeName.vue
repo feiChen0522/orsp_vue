@@ -3,11 +3,11 @@
     <ul>
       <li >
         <span class="col-md-4" style="text-align: right; padding-left: 0">当前用户名：</span>
-        <span class="col-md-8" style="padding-left: 0" v-text="old_name" v-once></span>
+        <span class="col-md-8" style="padding-left: 0" v-text="old_name"></span>
       </li>
       <li>
         <span class="col-md-4" style="padding-left: 0">新用户名：</span>
-        <input type="text" class="col-md-8" style="text-align: left; width: 200px; padding-left: 0;padding-right: 0" maxlength="8">
+        <input type="text" class="col-md-8" style="text-align: left; width: 200px; padding-left: 0;padding-right: 0" maxlength="8" v-model="new_name" @mouseout="submit(new_name)">
       </li>
     </ul>
   </div>
@@ -16,14 +16,20 @@
 <script>
 export default {
   props:["old_name"],
-  name: 'ChangePassword',
+  name: 'ChangeName',
   data () {
     return {
-
+      new_name:''
     }
   },
   mounted:function () {
-    console.log(111111,this.old_name);
+
+  },
+  methods:{
+    submit:function (new_name) {
+      alert(new_name);
+      this.$emit('newName',new_name);
+    }
   }
 }
 </script>

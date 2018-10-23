@@ -71,6 +71,7 @@ export default {
     width: 120px;
     height: 50px;
     line-height: 50px;
+    text-align: left;
   }
   .status span:hover{
     color: #d02210;
