@@ -87,7 +87,7 @@
                   <input type="checkbox"><router-link to="/agreement">同意ORSP服务协议</router-link>
                 </label>
               </div>
-              <button type="submit" class="btn btn-default">提交</button>
+              <button type="submit" class="btn btn-default" @click="submitForm">提交</button>
             </form>
           </div>
         </div>
@@ -130,7 +130,33 @@
       //删除图片
       delImg(index) {
         this.imgBase64.splice(index, 1);
+      },
+    //  上传商品
+        getFile(event) {
+          this.file = event.target.files[0];
+          console.log(this.file);
+        },
+        submitForm(event) {
+          event.preventDefault();
+          let formData = new FormData();
+          formData.append('name', this.name);
+          formData.append('age', this.age);
+          formData.append('file', this.file);
+
+          let config = {
+            headers: {
+              'Content-Type': 'multipart/form-data'
+            }
+          }
+
+          this.$http.post('/upload', formData, config).then(function (res) {
+            if (res.status === 2000) {
+              /*这里做处理*/
+            }
+          })
       }
+
+
     },
     watch: {
       selected: function () {
@@ -209,7 +235,7 @@
     float: left;
     width:100px;
     line-height:100px;
-    /*background-image:url("assets/icon/addpicture.jpg") ;*/
+    background-image:url("../assets/icon/addpicture.jpg") ;
     background-repeat: no-repeat;
     background-size: 100px 100px;
     border-radius:10px;
