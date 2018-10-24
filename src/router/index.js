@@ -21,6 +21,7 @@ import Car1 from '@/components/Car1'
 import Car2 from '@/components/Car2'
 import Car3 from '@/components/Car3'
 import MsgManage from '@/components/MsgManage'
+import Swing from '@/components/Swing'
 import SecurityCenter from '@/components/SecurityCenter'
 import ShoppingAddress from '@/components/ShoppingAddress'
 import MyReleaseGoods from '@/components/MyReleaseGoods'
@@ -137,8 +138,8 @@ export default new Router({
     },
     {
       path: '/test',
-      name: 'comment',
-      component: comment
+      name: 'Swing',
+      component: Swing
     },
 
     {

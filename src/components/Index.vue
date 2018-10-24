@@ -2,9 +2,8 @@
   <div class="index-container">
 
     <search-div @searchData="getGoodData" style="margin-top: 20px"></search-div>
-    <center-nav style="margin-top: 20px;margin-bottom: 20px"></center-nav>
-    <main-nav class="div-center"></main-nav>
-    <goods-div style="margin-top: 20px"></goods-div>
+    <center-nav style="margin-top: 20px;" @show-title="showTwoTitle"></center-nav>
+    <main-nav class="div-center" :twoTitle="twoTitle"></main-nav>
     <footer-div></footer-div>
   </div>
 </template>
@@ -14,12 +13,18 @@ export default {
   name: 'Index',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      twoTitle:false
     }
   },
   methods:{
     getGoodData:function (t) {
       console.log(t);
+    },
+    showTwoTitle:function (tag) {
+      console.log("------------------")
+      console.log(tag)
+      this.twoTitle=tag
+
     }
   }
 }

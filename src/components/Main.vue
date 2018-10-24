@@ -1,18 +1,26 @@
-<template>
-  <div class="type-container">
-    <div class="row"  @mouseleave="detailTypeShow=!detailTypeShow">
-      <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 type">
-        <ul class="row" @mouseover="getThree($event)">
-          <li v-for="(types,index) of type_data" :data-id="types.id" :data-flag="haveData" :index="index"
-              :data-type-name="types.product_type" :key="types.id">
 
-            <a v-for="t of types.category" href="" v-text="t.name" :data-id="t.id" :key="t.id"></a>
-            <i style="float: right;color: rgba(46,0,0,0.68);margin-right: 15px;"> > </i>
+<!--
+颜色:
+
+#ce2516
+
+
+-->
+
+<template>
+  <div class="container-fluid">
+    <div class="row"  @mouseleave="detailTypeShow=!detailTypeShow" style="position: relative;height: 0px">
+      <div v-show="twoTitle" class=" type" style="position: absolute;z-index: 666;left: 180px;background-color: white;width: 200px;height: 460px;border: 1px solid rgba(255,157,147,0.45)">
+        <ul class="row" @mouseover="getThree($event)" style="display: flex;flex-direction: column;height: 100%">
+          <li v-for="(types,index) of type_data" :data-id="types.id" :data-flag="haveData" :index="index"
+              :data-type-name="types.product_type" :key="types.id" style="flex: 1;line-height: 28px">
+
+            <a style="color: #eeeeee;margin-right: 15px" v-for="t of types.category" href="" v-text="t.name" :data-id="t.id" :key="t.id"></a>
 
           </li>
         </ul>
       </div>
-      <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 detail-type" v-if="detailTypeShow">
+      <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 detail-type" v-if="detailTypeShow" style="z-index: 666;background-color: whitesmoke;height: 460px;width: 700px;">
         <ul v-for="(t,index) of typeThree">
           <li v-show="index==current_index" v-for="tt of typeThree[current_index]">
             <h1 v-text="tt.product_type" :data-id="tt.id" class=""></h1>
@@ -22,18 +30,20 @@
           </li>
         </ul>
       </div>
-      <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 detail-type swing" @mouseleave="detailTypeShow=true" v-else>
-        <swing-div style="margin-left: -15px;margin-top: -15px"></swing-div>
-      </div>
-      <div><img src="../assets/images/true.jpg" class="show1"></div>
-      <div class="show2"><notice></notice></div>
+      <!--<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 detail-type swing" @mouseleave="detailTypeShow=true" v-else>-->
+      <!--</div>-->
+
     </div>
+
+    <swing-div ></swing-div>
+
   </div>
 </template>
 
 <script>
   export default {
     name: 'HelloWorld',
+    props:['twoTitle'],
     data () {
       return {
         haveData:"false",
@@ -42,7 +52,8 @@
         query_condition:'',
         current_index:"",
         typeThree:[],
-        detailTypeShow:false
+        detailTypeShow:false,
+        two_title:true
       }
     },
     mounted:function () {

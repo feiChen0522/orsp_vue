@@ -1,7 +1,6 @@
 .swing-div{
-  width: 669px;
-  height: 523px;
-  background-color: #ff5000;
+  width: 100%;
+  height: 460px;
   position: relative;
 
 }
@@ -24,7 +23,7 @@
 .dot-point{
   position: absolute;
   bottom: 10px;
-  left: 300px;
+  left: 50%;
 }
 .dot-point>li{
   border-radius: 50%;

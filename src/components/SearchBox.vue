@@ -4,10 +4,12 @@
       <div class="con-logo">
         <router-link tag="a" to="/" href="#"><div class="logo"></div></router-link>
       </div>
+
+
       <div class="box">
-        <div class="box-text" >
+        <div class="box-text" style="background-color: #ce2516;">
           <input type="text" placeholder="请输入要搜索的词" maxlength="30" class="input-txt" v-model="inputText" @keyup.enter="searchGoods">
-          <div  class="btn-search glyphicon glyphicon-search" @click="searchGoods" ><span>搜索</span></div>
+          <div style="background-color: #ce2516"  class="btn-search glyphicon glyphicon-search" @click="searchGoods" ><span>搜索</span></div>
         </div>
       </div>
     </div>
@@ -83,30 +85,29 @@ export default {
       margin: auto;
     }
     .search-box .con-logo{
-      width: 20%;
+      width: 10%;
       /*background-color: yellow;*/
       height: 64px;
       float: left;
 
     }
     .search-box .logo{
-      width: 64px;
-      height: 64px;
+      width: 94px;
+      height: 94px;
       background-image: url("../../static/images/logoko.png");
       background-repeat: no-repeat;
-      background-size: cover;
-      margin-left: 80px;
+      background-size: contain;
     }
     .search-box .box{
       /*background-color: #5bc0de;*/
       height: 64px;
-      width: 80%;
+      width: 60%;
       float: right;
     }
     .search-box .box .box-text{
       width: 384px;
       height: 39px;
-      border: 3px solid #ff6a19;
+      border: 3px solid rgb(206, 37, 22);
       /*box-sizing: border-box;*/
       margin: 15px auto;
     }
