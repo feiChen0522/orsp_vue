@@ -3,7 +3,7 @@
     <ul>
       <li >
         <span class="col-md-4" style="text-align: right; padding-left: 0">当前用户名：</span>
-        <span class="col-md-8" style="padding-left: 0" v-text="old_name" v-once></span>
+        <span class="col-md-8" style="padding-left: 0" v-text="old_name" ></span>
       </li>
       <li>
         <span class="col-md-4" style="padding-left: 0">新用户名：</span>
@@ -16,14 +16,12 @@
 <script>
 export default {
   props:["old_name"],
-  name: 'ChangePassword',
+  name: 'ChangeName',
   data () {
     return {
-
     }
   },
   mounted:function () {
-    console.log(111111,this.old_name);
   }
 }
 </script>

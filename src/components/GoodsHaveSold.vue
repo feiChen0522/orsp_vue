@@ -1,5 +1,5 @@
 <template>
-  <div class="con" style="margin: 0 auto">
+  <div class="con" style="margin-left:250px">
     <div class="status">
       <span>全部订单(<i>0</i>)</span>
       <span>待收款(<i>0</i>)</span>
@@ -71,6 +71,7 @@ export default {
     width: 120px;
     height: 50px;
     line-height: 50px;
+    text-align: left ;
   }
   .status span:hover{
     color: #d02210;
