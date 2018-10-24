@@ -120,7 +120,6 @@ export default {
         }
       })
         .then(function (res) {
-
           if (res.data.hasOwnProperty('user_name')){
             vm.LoginStatus="欢迎"+res.data.user_name
             vm.RegistStatus="退出"

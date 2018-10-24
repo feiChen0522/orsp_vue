@@ -10,8 +10,8 @@
             <h4 class="modal-title" id="myModalLabel" v-text="modal_title"></h4>
           </div>
           <div class="modal-body">
-            <change-name v-if="modal_change==1"  :old_name='list.user_name'></change-name>
-            <change-telephone v-if="modal_change==2"></change-telephone>
+            <change-name v-if="modal_change==1"  :old_name='userinfo.name' @newName="getNewName"></change-name>
+            <change-telephone v-if="modal_change==2" :old_telephone='userinfo.telephone' @NewTelephone="getNewTelephone"></change-telephone>
             <change-password v-if="modal_change==3"></change-password>
           </div>
           <div class="modal-footer">
@@ -27,7 +27,7 @@
     <div class="line"></div>
     <div class="personal-info">
       <div class="info-left">
-        <p class="personal-name">亲耐的<span class="name" v-text="list.user_name"></span>,上传一张头像吧</p>
+        <p class="personal-name">亲耐的<span class="name" v-text="userinfo.name"></span>,上传一张头像吧</p>
         <p class="personal-logo">
           <input type="file" class="file">
           <img src="../../static/images/perpeo.png" alt="" class="logo-img">
@@ -37,22 +37,22 @@
         <ul class="input-list">
           <li>
             <span class="per_txtrit">用户名：</span>
-            <span class="per_txtmid" id="name" v-text="list.user_name" ></span>
+            <span class="per_txtmid" id="name" v-text="userinfo.name" ></span>
             <span class="ritchange" data-toggle="modal" data-target="#change" @click="modalChange($event)" id="1">修改</span>
           </li>
           <li>
             <span class="per_txtrit">手机号：</span>
-            <span class="per_txtmid" id="telephone" v-text="list.telephone"></span>
+            <span class="per_txtmid" id="telephone" v-text="userinfo.telephone"></span>
             <span class="ritchange" data-toggle="modal" data-target="#change" @click="modalChange($event)" id="2">修改</span>
           </li>
           <li>
             <span class="per_txtrit">密码：</span>
-            <span class="per_txtmid" id="password" v-text="userinfo[0].password"></span>
+            <span class="per_txtmid" id="password" v-text="userinfo.password"></span>
             <span class="ritchange" data-toggle="modal" data-target="#change" @click="modalChange($event)" id="3">修改</span>
           </li>
           <li>
             <span class="per_txtrit">邮箱：</span>
-            <span class="per_txtmid" id="email" v-text="userinfo[0].email"></span>
+            <span class="per_txtmid" id="email" v-text="userinfo.email"></span>
             <span class="ritchange">立即绑定</span>
           </li>
           <li>
@@ -81,15 +81,15 @@ export default {
       modal_list:['修改用户名','修改手机号','修改密码'],
       list:{},
       isDisplay:false,
-      userinfo:[
-        {
-          name:"",
-          new_name:'',
-          telephone:'',
-          email:'',
-          password:'******',
-        }
-      ],
+      userinfo:{
+        name:'',
+        telephone:'',
+        sex:'',
+        email:'',
+        password:'******',
+        level:'',
+        icon:''
+      }
     }
   },
   created:function(){
@@ -104,14 +104,22 @@ export default {
     })
       .then(function (response) {
         vm.list=response.data;
-        console.log('showuser data:'+vm.list);  //得到的数据
+        console.log(response.data);
+        console.log('showuser data:',vm.list);  //得到的数据
+
+        vm.userinfo.name=vm.list.user_name;
+        vm.userinfo.telephone=vm.list.telephone;
+        vm.userinfo.icon=vm.list.icon;
+        vm.userinfo.sex=vm.list.sex;
         if(vm.list.email){
-          vm.userinfo[0].email=vm.list.email;
+          vm.userinfo.email=vm.list.email;
         }
         else{
-          vm.userinfo[0].email='尚未绑定邮箱';
+          vm.userinfo.email='尚未绑定邮箱';
         }
-        console.log("user_name:>>>>"+vm.list.user_name);
+      })
+      .catch(function (err) {
+        console.log("error:",err)
       })
   },
   methods:{
@@ -132,6 +140,18 @@ export default {
         this.modal_title=this.modal_list[2];
       }
     },
+    getNewName:function (new_name) {
+      console.log(1111111111111);
+      console.log("new_name",new_name);
+      this.userinfo.name=new_name;
+      console.log(this.userinfo.name)
+    },
+    getNewTelephone:function (new_telephone) {
+      console.log(2222222222222);
+      console.log("new_telephone",new_telephone);
+      this.userinfo.telephone=new_telephone;
+      console.log(this.userinfo.telephone);
+    }
   }
 }
 </script>

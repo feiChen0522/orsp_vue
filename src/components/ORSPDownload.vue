@@ -78,54 +78,57 @@
         <div class="res-father">
           <!--循环开始-->
           <!--1-->
-          <div class="res-model">
+          <div class="res-model" v-for="i in files">
             <div class="img-div">
               <img src="../assets/download/xlsx.png" alt="">
             </div>
             <div class="describe">
-              <p>云资源物理机代码</p>
+              <p v-text="i.describe"></p>
               <p>
-                <span class="sp1">上传者：</span><span v-text="upload_user"></span>
-                <span class="sp1">上传时间：</span><span v-text="upload_time"></span>
-                <span class="sp1">积分/O币：</span><span v-text="need_integral"></span>
+                <span class="sp1">上传者：</span><span v-text="i.upload_user"></span>
+                <span class="sp1">上传时间：</span><span v-text="i.upload_time"></span>
+
+                <span class="glyphicon glyphicon-download-alt" style="float: right;margin-right: -10px" :data-name="i.name" @click="download(i.name)"></span>
+
+                <span class="sp1">积分/O币：</span><span v-text="i.need_integral"></span>
               </p>
             </div>
           </div>
           <!--2-->
-          <div class="res-model">
-            <div class="img-div">
-              <img src="../assets/download/zip.png" alt="">
-            </div>
-            <div class="describe">
-              <p>云资源物理机代码</p>
-              <p>
-                <span class="sp1">上传者：</span><span v-text="upload_user"></span>
-                <span class="sp1">上传时间：</span><span v-text="upload_time"></span>
-                <span class="sp1">积分/O币：</span><span v-text="need_integral"></span>
-              </p>
-            </div>
-            </div>
-          </div>
-            <!--3-->
-          <div class="res-model">
-            <div class="img-div">
-              <img src="../assets/download/csdnc-file-edu.png" alt="">
-            </div>
-            <div class="describe"></div>
-          </div>
-            <!--4-->
-          <div class="res-model">
-            <div class="img-div">
-              <img src="../assets/download/rar.png" alt="">
-            </div>
-            <div class="describe"></div>
-          </div>
-            <!--5-->
-          <div class="res-model">
-            <div class="img-div">
-              <img src="../assets/download/unkonw.png" alt="">
-            </div>
-            <div class="describe"></div>
+          <!--<div class="res-model">-->
+            <!--<div class="img-div">-->
+              <!--<img src="../assets/download/zip.png" alt="">-->
+            <!--</div>-->
+            <!--<div class="describe">-->
+              <!--<p>云资源物理机代码</p>-->
+              <!--<p>-->
+                <!--<span class="sp1">上传者：</span><span v-text="upload_user"></span>-->
+                <!--<span class="sp1">上传时间：</span><span v-text="upload_time"></span>-->
+                <!--<span class="sp1">积分/O币：</span><span v-text="need_integral"></span>-->
+              <!--</p>-->
+            <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
+            <!--&lt;!&ndash;3&ndash;&gt;-->
+          <!--<div class="res-model">-->
+            <!--<div class="img-div">-->
+              <!--<img src="../assets/download/csdnc-file-edu.png" alt="">-->
+            <!--</div>-->
+            <!--<div class="describe"></div>-->
+          <!--</div>-->
+            <!--&lt;!&ndash;4&ndash;&gt;-->
+          <!--<div class="res-model">-->
+            <!--<div class="img-div">-->
+              <!--<img src="../assets/download/rar.png" alt="">-->
+            <!--</div>-->
+            <!--<div class="describe"></div>-->
+          <!--</div>-->
+            <!--&lt;!&ndash;5&ndash;&gt;-->
+          <!--<div class="res-model">-->
+            <!--<div class="img-div">-->
+              <!--<img src="../assets/download/unkonw.png" alt="">-->
+            <!--</div>-->
+            <!--<div class="describe"></div>-->
           </div>
         </div>
       </div>
@@ -137,10 +140,64 @@ export default {
   name: 'ORSPDownload',
   data () {
     return {
-      upload_user: '小飞侠',
-      upload_time: '2018-10-22 19:18:22',
-      need_integral: '1'
+      files:[{
+
+
+      }],
+
     }
+  },
+  created:function(){
+    let vm=this
+    let url="http://127.0.0.1:8000/file/showallfile/"
+    axios({
+      method: 'get',
+      url: url,
+
+    })
+      .then(function (rsp) {
+        console.log(rsp.data);
+        vm.files=rsp.data
+      })
+      .catch(function (err) {
+        console.log('请求失败', err);
+      })
+
+  },
+  methods:{
+  //下载资源
+    download: function (name) {
+      var vm = this;
+      // axios.post('http://localhost:8000/file/downloadfile',url: 'api/user/', {'fname': this.fname})
+      axios({
+        method: 'post',
+        url: 'http://localhost:8000/file/downloadfile/',
+        data: {
+          fname: name
+        },
+        responseType: 'blob'
+      }).then(function (response) {
+        const content = response.data
+        const blob = new Blob([content])
+        const fileName = name
+        if ('download' in document.createElement('a')) { // 非IE下载
+          const elink = document.createElement('a')
+          elink.download = fileName
+          elink.style.display = 'none'
+          elink.href = URL.createObjectURL(blob)
+          document.body.appendChild(elink)
+          elink.click()
+          URL.revokeObjectURL(elink.href) // 释放URL 对象
+          document.body.removeChild(elink)
+        } else { // IE10+下载
+          navigator.msSaveBlob(blob, fileName)
+        }
+      })
+        .catch(function (error) {
+          console.log(error)
+        })
+    },
+
   }
 }
 </script>

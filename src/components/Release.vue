@@ -11,67 +11,36 @@
 
               <div class="form-group">
                 <label for="exampleInputTitle">宝贝标题</label>
-                <input type="text" class="form-control" id="exampleInputTitle" placeholder="请输入宝贝标题">
+                <input type="text" class="form-control" id="exampleInputTitle" placeholder="请输入宝贝标题" v-model="title">
               </div>
               <div class="form-group">
                 <label for="exampleInputTally">宝贝便签</label>
-                <input type="text" class="form-control" id="exampleInputTally" placeholder="请输入宝贝标签 例如数码产品 手机">
+                <input type="text" class="form-control" id="exampleInputTally" placeholder="请输入宝贝标签 例如数码产品 手机" v-model="product_type">
               </div>
               <div class="form-group">
                 <label for="exampleInputName">宝贝名称</label>
-                <input type="text" class="form-control" id="exampleInputName" placeholder="请输入宝贝名称 例如手机名称 华为mate10">
+                <input type="text" class="form-control" id="exampleInputName" placeholder="请输入宝贝名称 例如手机名称 华为mate10" v-model="name">
               </div>
-              <div class="form-group">
-                <label for="exampleInputNew">宝贝成色</label>
-                <p id="exampleInputNew">
-                  <label class="col-md-2 radio-inline">
-                    <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" checked> 全新
-                  </label>
-                  <label class=" col-md-2 radio-inline">
-                    <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 9成新
-                  </label>
-                  <label class=" col-md-2 radio-inline">
-                    <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">8成新
-                  </label>
-                  <label class=" col-md-5 radio-inline">
-                    <input type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option4"> 7成新
-                  </label>
-                </p>
-              </div>
-              <div class="form-group a1">
-                <label for="exampleInputAddress">我现在的居住地</label>
-                <p id="exampleInputAddress">
-                  <select v-model="selected" v-if="provinceL">
-                    <option disabled value="请选择城市">请选择省份</option>
-                    <option v-for="(item,index) in provinceL" :value="item">{{item.name}}</option>
-                  </select>
-                  <select v-model="citySelected" v-if="cityL">
-                    <option disabled value="请选择城市">请选择城市</option>
-                    <option v-for="(item,index) in cityL" :value="item">{{item.name}}</option>
-                  </select>
-                </p>
-              </div>
+
+
               <div class="form-group">
                 <label for="exampleInputOldPrice">宝贝原价</label>
-                <input type="text" class="form-control" id="exampleInputOldPrice" placeholder="请输入宝贝原价">
+                <input type="text" class="form-control" id="exampleInputOldPrice" placeholder="请输入宝贝原价" v-model="price">
               </div>
-              <div class="form-group">
-                <label for="exampleInputNewPrice">宝贝二手现价</label>
-                <input type="text" class="form-control" id="exampleInputNewPrice" placeholder="请输入宝贝转手现价">
-              </div>
+
               <div class="form-group">
                 <label for="exampleInputNum">库存</label>
-                <input type="text" class="form-control" id="exampleInputNum" placeholder="请输入宝贝库存">
+                <input type="text" class="form-control" id="exampleInputNum" placeholder="请输入宝贝库存" v-model="category">
               </div>
               <div class="form-group a3">
                 <label>添加商品描述</label>
 
-                <textarea class="a4"></textarea>
+                <textarea class="a4" v-model="description"></textarea>
 
                 <label>上传图片</label>
                 <div class="image-view">
                   <div class="addbox">
-                    <input type="file" @change="getImgBase()">
+                    <input type="file" @change="getImgBase()" name="good_icon" id="good_img">
                     <div class="addbtn"></div>
                   </div>
                   <div class="view">
@@ -87,7 +56,7 @@
                   <input type="checkbox"><router-link to="/agreement">同意ORSP服务协议</router-link>
                 </label>
               </div>
-              <button type="submit" class="btn btn-default">提交</button>
+              <button type="submit" class="btn btn-default" @click="submitForm">提交</button>
             </form>
           </div>
         </div>
@@ -112,6 +81,17 @@
         citySelected: {},
         provinceL: [],
         cityL: [],
+        file:"",
+        title:"",
+        name:"",
+        price:0,
+      //  库存
+        category:0,
+        description:"",
+        product_type:"",
+      //  销量
+        pnum:0
+
       }
     },
     methods: {
@@ -126,11 +106,63 @@
           _this.imgBase64.push(e.target.result);
         }
         reader.readAsDataURL(file);
+
+        this.file = file
+        console.log(this.file);
       },
       //删除图片
       delImg(index) {
         this.imgBase64.splice(index, 1);
+      },
+    //  上传商品
+        submitForm(event) {
+        let user_id=sessionStorage.getItem('currentUserId')
+          console.log(user_id,1111111)
+          event.preventDefault();
+          let formData = new FormData();
+          formData.append('name', this.name);
+          formData.append('title', this.title);
+          formData.append('file', this.file);
+          // formData.append('file', this.file);
+          let file=document.querySelector('#good_img').files[0]
+          formData.append('good_icon', file,file.name ) ;// 通过append向form对象添加数据
+
+          formData.append('user_id', user_id);
+          formData.append('price', this.price);
+          formData.append('pnum', this.pnum);
+          formData.append('product_type', this.product_type);
+          formData.append('description', this.description);
+          formData.append('category', this.category);
+
+          let config = {
+            headers: {
+              'Content-Type': 'multipart/form-data'
+            }
+          }
+
+
+
+          axios.post('http://127.0.0.1:8000/resource/uploadgoods/', formData, config)
+            .then(function (res) {
+              console.log(res.data)
+              //控制台打印请求成功时返回的数据
+              //bind(this)可以不用
+              if (res.data.code=="299"){
+                alert("恭喜你上传成功")
+
+              } else {
+                alert("上传失败")
+              }
+            }.bind(this))
+            .catch(function (err) {
+              if (err.response) {
+                //控制台打印错误返回的内容
+              }
+              //bind(this)可以不用
+            }.bind(this))
       }
+
+
     },
     watch: {
       selected: function () {
@@ -209,7 +241,7 @@
     float: left;
     width:100px;
     line-height:100px;
-    /*background-image:url("assets/icon/addpicture.jpg") ;*/
+    background-image:url("../assets/icon/addpicture.jpg") ;
     background-repeat: no-repeat;
     background-size: 100px 100px;
     border-radius:10px;

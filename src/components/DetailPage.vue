@@ -162,6 +162,7 @@
       this.goods['belong_to'] = sessionStorage.getItem('belong_to')
       this.goods['Stock'] = sessionStorage.getItem('Stock')
       this.goods['store'] = sessionStorage.getItem('store')
+      this.goods['user'] = sessionStorage.getItem('user')
       this.imgsrc = this.goods['img']
       this.goodsImg.push(this.imgsrc)
 
@@ -197,7 +198,7 @@
                 url:'http://127.0.0.1:8000/resource/seegoodsbyid/',
                 headers:{'token':token},
                 data:{
-                  "id":1
+                  "id":sessionStorage.getItem('currentUserId')
                 }
               })
                 .then(function (rsp) {

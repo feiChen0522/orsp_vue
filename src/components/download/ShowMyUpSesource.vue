@@ -39,6 +39,7 @@
     methods: {
       getData: function () {
         var vm = this;
+        this.id=sessionStorage.getItem('currentUserId')
         axios.get('http://localhost:8000/file/showmyupfile/?id=' + vm.id)
           .then(function (response) {
             vm.sesourcelist = (response.data)
