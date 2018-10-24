@@ -4,14 +4,18 @@
       <div class="col-md-10 a1">
         <div class="col-md-12">
           <div class="col-md-3"><h3>收货地址薄</h3></div>
-          <div class="col-md-3"><button type="button" class="btn btn-default sp2" data-toggle="modal" data-target="#myModal_Address">新增地址</button></div>
+          <div class="col-md-3">
+            <button type="button" class="btn btn-default sp2" data-toggle="modal" data-target="#myModal_Address">新增地址
+            </button>
+          </div>
         </div>
         <div class="col-md-10">
           <div class="col-md-12 a2"></div>
 
 
-          <div class="col-md-11 a" v-for="i in address">
-            <div class="col-md-2 c"><span v-if="flag">曾用地址</span><span v-if="!flag">默认地址</span></div>
+          <div class="col-md-11 a" v-for="(i,index) in address">
+            <div class="col-md-2 c"><span v-if="!i.default">曾用地址</span><span
+              v-if="i.default">默认地址</span></div>
             <div class="col-md-9"></div>
             <div class="col-md-1">
               <a href="" class="del1">删除</a>
@@ -22,7 +26,7 @@
             </div>
             <div class="col-md-12 sp1">
               <span class="col-md-2">所在地区:</span>
-              <div class="col-md-8" v-text="i.provice_id+'   '+i.city_id">北京市 昌平区</div>
+              <div class="col-md-8" v-text="i.provice_id+'   '+i.city_id"></div>
             </div>
             <div class="col-md-12 sp1">
               <span class="col-md-2">详细地址:</span>
@@ -33,7 +37,7 @@
               <div class="col-md-8" v-text="i.concact_telephone">13555555555</div>
             </div>
             <div class="col-md-12">
-              <div class="col-md-11 a11"><a href="#" @click="onchange">设为默认地址</a></div>
+              <div class="col-md-11 a11"><a href="#" @click="onchange(index,i.user_id,i.id)">设为默认地址</a></div>
               <div class="col-md-1 "><a href="" class="x1">编辑</a></div>
             </div>
           </div>
@@ -67,29 +71,58 @@
         address:[]
       }
     },
-    created:function(){
-      let vm=this;
-      let id=sessionStorage.getItem("currentUserId");
+    created: function () {
+      let that = this
+      let token = localStorage.getItem('token')
+
       axios({
         method: 'post',
-        url: 'http://127.0.0.1:8000/user/getaddresbyid/',
-        data:{
-          "id":id
-        }
+        url: 'http://127.0.0.1:8000/user/judgetoken/',
+        headers: {'token': token},
       })
         .then(function (rsp) {
-          vm.address=rsp.data
+          that.useid = rsp.data.id
+
+          axios({
+            method: 'post',
+            url: 'http://127.0.0.1:8000/user/getaddresbyid/',
+            data:{
+              "id":that.useid
+            }
+          })
+            .then(function (rsp) {
+              that.address = (rsp.data)
+              console.log(that.address)
+            })
+            .catch(function (err) {
+              console.log('请求失败', err);
+            })
+
         })
         .catch(function (err) {
+          console.log('请求失败', err);
         })
     },
     methods: {
-      onchange:function () {
-        this.flag=false
-
+      onchange: function (index,userid,id) {
+        // let id =sessionStorage.getItem('currentUserId')
+        axios({
+          method: 'post',
+          url: 'http://127.0.0.1:8000/user/changeaddress/',
+          data: {'index': index,'userid':userid,'id':id},
+        })
+          .then(function (rsp) {
+            location.replace(location)
+            alert('sssssss')
+            console.log(rsp.data)
+          })
+          .catch(function (err) {
+            console.log('请求失败', err);
+          })
       }
     }
   }
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -97,7 +130,8 @@
   .a1 {
     text-align: left;
   }
-  .a11{
+
+  .a11 {
     text-align: right;
   }
 
@@ -136,10 +170,12 @@
     margin-left: 40px;
     display: inline-block
   }
-  a:hover{
+
+  a:hover {
     text-decoration: none;
   }
-  .c{
+
+  .c {
     width: 100px;
     height: 30px;
     background-color: #ffaa45;

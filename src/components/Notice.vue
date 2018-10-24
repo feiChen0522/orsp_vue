@@ -16,11 +16,11 @@
   .top1 {
     width: 250px;
     height: 160px;
-    border: #999999 solid 1px;
+    border: solid #ffc6f5 0.5px;
   }
 
   .sp1 {
-    border: 1px solid black;
+    border: 1px solid #ffc6f5;
     font-size: 18px;
   }
 
