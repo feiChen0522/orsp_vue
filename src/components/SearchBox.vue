@@ -90,12 +90,14 @@ export default {
 
     }
     .search-box .logo{
-      width: 64px;
-      height: 64px;
+      width: 120px;
+      height: 120px;
       background-image: url("../../static/images/logoko.png");
       background-repeat: no-repeat;
       background-size: cover;
       margin-left: 80px;
+      position: relative;
+      top: -29px;
     }
     .search-box .box{
       /*background-color: #5bc0de;*/

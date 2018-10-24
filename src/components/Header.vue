@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-default navbar-inverse" style="border-radius: 0; min-height: 30px; margin-bottom: 0;">
+  <nav class="navbar navbar-default " style="border-radius: 0; min-height: 30px; margin-bottom: 0;">
     <div class="container-fluid" style="width: 90%;">
       <!-- Brand and toggle get grouped fsor better mobile display -->
       <div class="navbar-header">
@@ -184,7 +184,7 @@ export default {
     padding-top: 5px;
     padding-bottom: 5px;
     font-size: 12px;
-    color: rgba(251, 253, 252, 0.68);
+    color: #6c6c6c;
   }
   .navbar-text {
     margin-top: 5px;
