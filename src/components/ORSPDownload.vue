@@ -24,7 +24,7 @@
       <!--下载页面中间标签分类-->
       <div class="download_l">
         <dl>
-          <dt>资源领域:</dt>
+          <dt>技术  领域:</dt>
           <dd>
             <ul>
               <li><a href="#">全部</a></li>

@@ -10,14 +10,14 @@
             <h4 class="modal-title" id="myModalLabel" v-text="modal_title"></h4>
           </div>
           <div class="modal-body">
-            <change-name v-if="modal_change==1"  :old_name='userinfo.name' @newName="getNewName"></change-name>
-            <change-telephone v-if="modal_change==2" :old_telephone='userinfo.telephone' @NewTelephone="getNewTelephone"></change-telephone>
-            <change-password v-if="modal_change==3"></change-password>
+            <!--<change-name v-if="modal_change==1"  :old_name='userinfo.name' @newName="getNewName"></change-name>-->
+            <!--<change-telephone v-if="modal_change==2" :old_telephone='userinfo.telephone' @NewTelephone="getNewTelephone"></change-telephone>-->
+            <change-password v-if="modal_change==3" :telephone="userinfo.telephone"></change-password>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-            <button type="button" class="btn btn-primary" @click="save">保存</button>
-          </div>
+          <!--<div class="modal-footer">-->
+            <!--<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>-->
+            <!--<button type="button" class="btn btn-primary" @click="changePassword">保存</button>-->
+          <!--</div>-->
         </div>
       </div>
     </div>
@@ -29,62 +29,64 @@
       <div class="line"></div><!--分割线-->
       <!--中间主体部分-->
       <div class="personal-info">
-        <div class="info-left">
-          <p class="personal-name">亲耐的<span class="name" v-text="userinfo.name"></span>,上传一张头像吧</p>
-          <div class="personal-logo">
-            <input type="file" class="file" @click="pushHeadPortrait">
-            <!--<img src="../../static/images/perpeo.png" alt="" class="logo-img">-->
+        <div class="aa">
+          <div class="info-left">
+            <p class="personal-name">亲耐的<span class="name" v-text="userinfo.name"></span>,上传一张头像吧</p>
+            <div class="personal-logo">
+              <input type="file" class="file" @click="pushHeadPortrait">
+              <!--<img src="../../static/images/perpeo.png" alt="" class="logo-img">-->
+            </div>
+            <div class="txt_touxiang">编辑头像</div>
+            <div class="level">
+              <span>等级：</span>
+              <i>LV<i v-text="userinfo.level"></i></i>
+            </div>
+            <div class="integral">
+              <span>我的积分：</span>
+              <i v-text="userinfo.integral"></i>
+            </div>
           </div>
-          <div class="txt_touxiang">编辑头像</div>
-          <div class="level">
-            <span>等级：</span>
-            <i>LV<i v-text="userinfo.level"></i></i>
-          </div>
-          <div class="integral">
-            <span>我的积分：</span>
-            <i v-text="userinfo.integral"></i>
-          </div>
-        </div>
-        <div class="info-right">
-          <ul class="input-list">
-            <li class="row">
-              <span class="col-md-4">用户名：</span>
-              <input class="col-md-4 per_txtmid" type="text" v-model="userinfo.name">
-              <!--<span class="per_txtmid" id="name" v-text="userinfo.name" ></span>-->
-              <!--<span class="ritchange" data-toggle="modal" data-target="#change" @click="modalChange($event)" id="1">修改</span>-->
-            </li>
-            <li class="row">
-              <span class="col-md-4">手机号：</span>
-              <input class="col-md-4 per_txtmid" type="text" v-model="userinfo.telephone" style="border: none">
-              <!--<span class="per_txtmid" id="telephone" v-text="userinfo.telephone"></span>-->
-              <!--<span class="ritchange" data-toggle="modal" data-target="#change" @click="modalChange($event)" id="2">修改</span>-->
-            </li>
-            <li class="row">
-              <span class="col-md-4">密码：</span>
-              <input class="col-md-4 per_txtmid" type="text" v-model="password" style="border: none" readonly>
-              <span class="ritchange col-md-4" data-toggle="modal" data-target="#change" @click="modalChange($event)" id="3">修改</span>
-            </li>
-            <li class="row">
-              <span class="col-md-4">邮箱：</span>
-              <span class="col-md-4 per_txtmid" id="email" v-text="userinfo.email"></span>
-              <span class="ritchange col-md-4">立即绑定</span>
-            </li>
-            <li class="row">
-              <span class="col-md-4">性别：</span>
-              <div style="text-align: left;" class="col-md-8">
-                <input type="radio" style="position: relative;top: 3px;" name="sex" :checked="userinfo.sex=='男'" @click="getSex($event)" value="男">
-                <span style="position: relative;top: -6px; left: 5px;margin-right: 20px">男</span>
+          <div class="info-right">
+            <ul class="input-list">
+              <li class="row">
+                <span class="col-md-4">用户名：</span>
+                <input class="col-md-4 per_txtmid" type="text" v-model="userinfo.name">
+                <!--<span class="per_txtmid" id="name" v-text="userinfo.name" ></span>-->
+                <!--<span class="ritchange" data-toggle="modal" data-target="#change" @click="modalChange($event)" id="1">修改</span>-->
+              </li>
+              <li class="row">
+                <span class="col-md-4">手机号：</span>
+                <input class="col-md-4 per_txtmid" type="text" v-model="userinfo.telephone">
+                <!--<span class="per_txtmid" id="telephone" v-text="userinfo.telephone"></span>-->
+                <!--<span class="ritchange" data-toggle="modal" data-target="#change" @click="modalChange($event)" id="2">修改</span>-->
+              </li>
+              <li class="row">
+                <span class="col-md-4">密码：</span>
+                <input class="col-md-4 per_txtmid" type="text" v-model="password" style="border: none" readonly>
+                <span class="ritchange col-md-4" data-toggle="modal" data-target="#change" @click="modalChange($event)" id="3">修改</span>
+              </li>
+              <li class="row">
+                <span class="col-md-4">邮箱：</span>
+                <span class="col-md-4 per_txtmid" id="email" v-text="userinfo.email"></span>
+                <span class="ritchange col-md-4">立即绑定</span>
+              </li>
+              <li class="row">
+                <span class="col-md-4">性别：</span>
+                <div style="text-align: left;" class="col-md-8">
+                  <input type="radio" style="position: relative;top: 3px;" name="sex" :checked="userinfo.sex=='男'" @click="getSex($event)" value="男">
+                  <span style="position: relative;top: -6px; left: 5px;margin-right: 20px">男</span>
 
-                <input type="radio" style="position: relative;top: 3px;" name="sex" :checked="userinfo.sex=='女'" @click="getSex($event)" value="女">
-                <span style="position: relative;top: -6px; left: 5px">女</span>
-              </div>
-            </li>
-            <li class="row">
-              <span class="col-md-4">QQ：</span>
-              <input type="text" name="QQ" maxlength="10" minlength="5" class="col-md-4" style="border: 1px solid #E2E2E2;">
-            </li>
-          </ul>
-          <div class="submit" @click="save">保存</div>
+                  <input type="radio" style="position: relative;top: 3px;" name="sex" :checked="userinfo.sex=='女'" @click="getSex($event)" value="女">
+                  <span style="position: relative;top: -6px; left: 5px">女</span>
+                </div>
+              </li>
+              <li class="row">
+                <span class="col-md-4">QQ：</span>
+                <input type="text" name="QQ" maxlength="10" minlength="5" class="col-md-4" v-model="userinfo.QQ">
+              </li>
+            </ul>
+            <div class="submit" @click="save">保存</div>
+          </div>
         </div>
       </div>
     </div>
@@ -111,7 +113,8 @@
         email:'',
         level:'',
         icon:'',
-        integral:''
+        integral:'',
+        QQ:''
       }
     }
   },
@@ -137,6 +140,7 @@
         vm.userinfo.integral=vm.list.integral;
         vm.userinfo.level=vm.list.level;
         vm.userinfo.email=vm.list.email;
+        vm.userinfo.QQ=vm.list.one;
         // if(vm.list.email){
         //   vm.userinfo.email=vm.list.email;
         // }
@@ -177,6 +181,10 @@
       axios({
 
       })
+    },
+    //修改密码
+    changePassword:function(){
+
     },
     modalChange:function (event) {
       if(event.currentTarget.id=='1'){
@@ -236,9 +244,14 @@
     border-top: 2px solid #d74132;
     text-align: center;
   }
+  .personal-info .aa{
+    margin: auto;
+    width: 80%;
+    height: 100%;
+  }
   .personal-info .info-left{
     padding: 0 40px;
-    width: 220px;
+    width: 40%;
     float: left;
     height: 100%;
     border-right: 1px dashed #ddd;
@@ -302,12 +315,12 @@
     color: #ee9026;
   }
   .personal-info .info-left .integral{
-    width: 100px;
     height: 30px;
     line-height: 30px;
     margin: 5px auto;
     font-size: 16px;
     font-weight: bold;
+
   }
   .personal-info .info-left .integral span{
     color: #EE290D;
@@ -318,7 +331,7 @@
   .personal-info .info-right{
     margin-top: 20px;
     float: left;
-    width: 500px;
+    width: 60%;
   }
   .info-right .input-list{
     width: 100%;
