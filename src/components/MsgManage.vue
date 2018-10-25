@@ -32,10 +32,18 @@
         <div class="info-left">
           <p class="personal-name">亲耐的<span class="name" v-text="userinfo.name"></span>,上传一张头像吧</p>
           <div class="personal-logo">
-            <input type="file" class="file">
+            <input type="file" class="file" @click="pushHeadPortrait">
             <!--<img src="../../static/images/perpeo.png" alt="" class="logo-img">-->
           </div>
           <div class="txt_touxiang">编辑头像</div>
+          <div class="level">
+            <span>等级：</span>
+            <i>LV<i v-text="userinfo.level"></i></i>
+          </div>
+          <div class="integral">
+            <span>我的积分：</span>
+            <i v-text="userinfo.integral"></i>
+          </div>
         </div>
         <div class="info-right">
           <ul class="input-list">
@@ -53,7 +61,7 @@
             </li>
             <li class="row">
               <span class="col-md-4">密码：</span>
-              <span class="col-md-4  per_txtmid" id="password" v-text="userinfo.password"></span>
+              <input class="col-md-4 per_txtmid" type="text" v-model="password" style="border: none" readonly>
               <span class="ritchange col-md-4" data-toggle="modal" data-target="#change" @click="modalChange($event)" id="3">修改</span>
             </li>
             <li class="row">
@@ -64,8 +72,11 @@
             <li class="row">
               <span class="col-md-4">性别：</span>
               <div style="text-align: left;" class="col-md-8">
-                <input type="radio" class="male" style="position: relative;top: 3px;" name="sex" checked><span style="position: relative;top: -6px; left: 5px;margin-right: 20px">男</span>
-                <input type="radio" class="female" style="position: relative;top: 3px;" name="sex"><span style="position: relative;top: -6px; left: 5px">女</span>
+                <input type="radio" style="position: relative;top: 3px;" name="sex" :checked="userinfo.sex=='男'" @click="getSex($event)" value="男">
+                <span style="position: relative;top: -6px; left: 5px;margin-right: 20px">男</span>
+
+                <input type="radio" style="position: relative;top: 3px;" name="sex" :checked="userinfo.sex=='女'" @click="getSex($event)" value="女">
+                <span style="position: relative;top: -6px; left: 5px">女</span>
               </div>
             </li>
             <li class="row">
@@ -89,16 +100,18 @@
       modal_change:1,
       modal_title:'',
       modal_list:['修改用户名','修改手机号','修改密码'],
+      res:"",
       list:{},
       isDisplay:false,
+      password:'******',
       userinfo:{
         name:'',
         telephone:'',
         sex:'',
         email:'',
-        password:'******',
         level:'',
-        icon:''
+        icon:'',
+        integral:''
       }
     }
   },
@@ -116,27 +129,54 @@
         vm.list=response.data;
         console.log(response.data);
         console.log('showuser data:',vm.list);  //得到的数据
-
         vm.userinfo.name=vm.list.user_name;
         vm.userinfo.telephone=vm.list.telephone;
+        vm.userinfo.password=vm.list.password;
         vm.userinfo.icon=vm.list.icon;
         vm.userinfo.sex=vm.list.sex;
-        if(vm.list.email){
-          vm.userinfo.email=vm.list.email;
-        }
-        else{
-          vm.userinfo.email='尚未绑定邮箱';
-        }
+        vm.userinfo.integral=vm.list.integral;
+        vm.userinfo.level=vm.list.level;
+        vm.userinfo.email=vm.list.email;
+        // if(vm.list.email){
+        //   vm.userinfo.email=vm.list.email;
+        // }
+        // else{
+        //   vm.userinfo.email='尚未绑定邮箱';
+        // }
       })
       .catch(function (err) {
         console.log("error:",err)
       })
   },
   methods:{
+    //提交用户修改的信息
     save:function(){
-      console.log(1);
-      $("#change").modal('hide')
-      window.location.reload()
+      var vm=this;
+      // console.log("保存>>>");
+      axios({
+        method:"post",
+        url:"http://127.0.0.1:8000/user/changemsg/",
+        data:this.userinfo
+      })
+        .then(function (response) {
+          vm.res=response.data;
+          // console.log("-------------------",vm.res);
+          alert(vm.res.code)
+        })
+        .catch(function (err) {
+          console.log(err);
+        })
+    },
+    //难道修改的性别
+    getSex:function(event){
+      this.userinfo.sex=event.currentTarget.value;
+      // alert(this.userinfo.sex)
+    },
+    //上传头像
+    pushHeadPortrait:function(){
+      axios({
+
+      })
     },
     modalChange:function (event) {
       if(event.currentTarget.id=='1'){
@@ -153,13 +193,11 @@
       }
     },
     getNewName:function (new_name) {
-      console.log(1111111111111);
       console.log("new_name",new_name);
       this.userinfo.name=new_name;
       console.log(this.userinfo.name)
     },
     getNewTelephone:function (new_telephone) {
-      console.log(2222222222222);
       console.log("new_telephone",new_telephone);
       this.userinfo.telephone=new_telephone;
       console.log(this.userinfo.telephone);
@@ -180,14 +218,14 @@
     /*background-color: yellow;*/
   }
   .top span{
-    color: #666;
+    color: #EE290D;
     text-align: left;
     font-size: 20px;
     line-height: 40px;
   }
   .line{
-    background-color: #999;
-    height: 1px;
+    background-color: #d74132;
+    height: 3px;
     width: 100%;
   }
   .personal-info{
@@ -195,6 +233,7 @@
     margin: 30px auto;
     height: 360px;
     border: 1px solid #e2e2e2;
+    border-top: 2px solid #d74132;
     text-align: center;
   }
   .personal-info .info-left{
@@ -246,6 +285,35 @@
     color: #fff;
     -webkit-transition: bottom .2s ease;
     transition: bottom .2s ease;
+  }
+  .personal-info .info-left .level{
+    width: 100px;
+    height: 20px;
+    margin: 10px auto 0;
+    line-height: 20px;
+  }
+  .personal-info .info-left .level span{
+    font-size: 12px;
+    font-weight: 400;
+  }
+  .personal-info .info-left .level i{
+    font-size: 18px;
+    font-weight: bold;
+    color: #ee9026;
+  }
+  .personal-info .info-left .integral{
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    margin: 5px auto;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  .personal-info .info-left .integral span{
+    color: #EE290D;
+  }
+  .personal-info .info-left .integral i{
+    font-size: 18px;
   }
   .personal-info .info-right{
     margin-top: 20px;

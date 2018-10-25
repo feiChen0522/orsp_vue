@@ -50,17 +50,17 @@ export default {
   .account .center{
     width: 1038px;
     height: 100%;
-    border: 1px solid #e2e2e2;
+    border: 1px solid #d74132;
     padding: 20px 15px;
 
   }
   .account .top ul li{
-    background-color: #e2e2e2;
+    background-color: #d74132;
     margin-left: 0;
-    border: 1px solid #e2e2e2;
+    border: 1px solid #d74132;
   }
   .account ul li a{
-    color: #999;
+    color: #fff;
     border-radius: 0;
     height: 50px;
     line-height: 30px;

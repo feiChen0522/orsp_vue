@@ -3,21 +3,21 @@
     <ul>
       <li>
         <span class="col-md-4" style="padding-left: 0">当前密码：</span>
-        <input type="password" class="col-md-8" style="text-align: left; width: 200px; padding-left: 0;padding-right: 0" maxlength="8" v-model="current_password" @mouseout="checkpassword">
+        <input type="password" class="col-md-8" style="text-align: left; width: 200px; padding-left: 0;padding-right: 0" maxlength="8" v-model="current_password" @change="checkpassword">
       </li>
       <p class="p1">密码错误，请重新输入</p>
 
 
       <li>
         <span class="col-md-4" style="padding-left: 0">新密码：</span>
-        <input type="password" class="col-md-8" style="text-align: left; width: 200px; padding-left: 0;padding-right: 0" maxlength="8" v-model="new_password" @mouseout="checkgeshi">
+        <input type="password" class="col-md-8" style="text-align: left; width: 200px; padding-left: 0;padding-right: 0" maxlength="8" v-model="new_password" @change="checkgeshi">
       </li>
       <p class="p2">密码长度不能小于8，大于16</p>
 
 
       <li>
         <span class="col-md-4" style="padding-left: 0">确认密码：</span>
-        <input type="password" class="col-md-8" style="text-align: left; width: 200px; padding-left: 0;padding-right: 0" maxlength="8" v-model="new_password_verify" @mouseout="checktwopsw">
+        <input type="password" class="col-md-8" style="text-align: left; width: 200px; padding-left: 0;padding-right: 0" maxlength="8" v-model="new_password_verify" @change="checktwopsw">
       </li>
       <p class="p3">两次密码不一致，请重新输入</p>
 
@@ -34,6 +34,11 @@ export default {
       new_password:'',
       new_password_verify:'',
     }
+  },
+  mounted:function(){
+    $(".mo-div .p1").css("opacity",0);
+    $(".mo-div .p2").css("opacity",0);
+    $(".mo-div .p3").css("opacity",0);
   },
   methods:{
     checkpassword:function(){
