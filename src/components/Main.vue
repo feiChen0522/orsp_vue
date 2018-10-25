@@ -10,23 +10,30 @@
 <template>
   <div class="container-fluid">
     <div class="row"  @mouseleave="detailTypeShow=!detailTypeShow" style="position: relative;height: 0px">
-      <div v-show="twoTitle" class=" type" style="position: absolute;z-index: 666;left: 180px;background-color: white;width: 200px;height: 460px;border: 1px solid rgba(255,157,147,0.45)">
+      <div v-show="twoTitle" class=" type 111111111" style="position: absolute;z-index: 666;left: 180px;background-color: rgb(206, 37, 22);width: 200px;height: 460px;">
         <ul class="row" @mouseover="getThree($event)" style="display: flex;flex-direction: column;height: 100%">
           <li v-for="(types,index) of type_data" :data-id="types.id" :data-flag="haveData" :index="index"
-              :data-type-name="types.product_type" :key="types.id" style="flex: 1;line-height: 28px">
+              :data-type-name="types.product_type" :key="types.id" style="flex: 1;line-height: 28px;text-align: left;padding-left: 10px" v-text="types.name">
 
-            <a style="color: #eeeeee;margin-right: 15px" v-for="t of types.category" href="" v-text="t.name" :data-id="t.id" :key="t.id"></a>
+            <a style="color: #333333!important;margin-right: 15px" v-for="t of types.category" href="" v-text="t.mn" :data-id="t.id" :key="t.id"></a>
 
           </li>
         </ul>
       </div>
-      <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 detail-type" v-if="detailTypeShow" style="z-index: 666;background-color: whitesmoke;height: 460px;width: 700px;">
-        <ul v-for="(t,index) of typeThree">
-          <li v-show="index==current_index" v-for="tt of typeThree[current_index]">
-            <h1 v-text="tt.product_type" :data-id="tt.id" class=""></h1>
-            <a v-for="ttt of tt.category">
-              <router-link to='/search' href="" :data-id="ttt.id" v-text="ttt.product_type"></router-link>
-            </a>
+      <!--<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 detail-type" v-if="detailTypeShow" style="z-index: 666;background-color: whitesmoke;height: 460px;width: 700px;">-->
+      <div v-if="detailTypeShow" class="col-lg-9 col-md-9 col-sm-9 col-xs-9 detail-type" style="z-index: 666;background-color: whitesmoke;height: 460px;width: 700px;">
+
+
+        <!--<ul v-for="(t,index) of type_data.ta.ch.tc.te">-->
+        <ul v-for="t,index in type_data">
+
+          <li   v-show="index==current_index" >
+            <div v-for="tt in t.category" style="margin-bottom: 25px;">
+              <b style="height:14px;font-weight: 1000;position: relative;font: 14px/1.5 arial,'\65b0\5b8b\4f53';font-family: Arial,'Microsoft Yahei';display: inline-block;border-right: 1px solid #ccacac;padding-right: 10px;line-height: 6px;" class="" v-text="tt.mn"></b>
+
+              <router-link tag="a" to='/search' v-for="ttt,index in tt.ch.tc.cl" v-text="ttt.t" :key="index" v-show="index<6" style="margin-left: 5px;">
+              </router-link>
+            </div>
           </li>
         </ul>
       </div>
@@ -53,26 +60,49 @@
         current_index:"",
         typeThree:[],
         detailTypeShow:false,
-        two_title:true
+        two_title:false,
+        one_type:[]
+
+
       }
     },
-    mounted:function () {
-      let vm=this;
-      axios.get('http://127.0.0.1:8000/resource/getgoodtypetwo/')
-        .then(function (res) {
-          console.log(res.data);
-          vm.type_data = res.data;
-          console.log(vm.type_data)
-          //控制台打印请求成功时返回的数据
-          //bind(this)可以不用
-        }.bind(this))
-        .catch(function (err) {
-          if (err.response) {
-            console.log(err.response)
-            //控制台打印错误返回的内容
-          }
-          //bind(this)可以不用
-        }.bind(this))
+    // mounted:function () {
+    //   let vm=this;
+    //   axios.get('http://127.0.0.1:8000/resource/getgoodtypetwo/')
+    //     .then(function (res) {
+    //       console.log(res.data);
+    //       vm.type_data = res.data;
+    //       console.log(vm.type_data)
+    //       //控制台打印请求成功时返回的数据
+    //       //bind(this)可以不用
+    //     }.bind(this))
+    //     .catch(function (err) {
+    //       if (err.response) {
+    //         console.log(err.response)
+    //         //控制台打印错误返回的内容
+    //       }
+    //       //bind(this)可以不用
+    //     }.bind(this))
+    // },
+
+    created:function(){
+      console.log("-----------")
+      let vm=this
+      axios.get('http://127.0.0.1:8000/resource/getguomei/')
+          .then(function (res) {
+            console.log(res.data);
+            vm.type_data = res.data;
+
+            //控制台打印请求成功时返回的数据
+            //bind(this)可以不用
+          }.bind(this))
+          .catch(function (err) {
+            if (err.response) {
+              console.log(err.response)
+              //控制台打印错误返回的内容
+            }
+            //bind(this)可以不用
+          }.bind(this))
     },
     methods: {
       getThree: function (event) {

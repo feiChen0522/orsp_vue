@@ -4,19 +4,23 @@
       <div class="con-logo">
         <router-link tag="a" to="/" href="#"><div class="logo"></div></router-link>
       </div>
-
-
+      <div class="title-container" style="width: 300px;float: left;height: 80px">
+        <img src="../../static/images/title.png" alt="" style="object-fit: contain;width: 100%;height: 100%">
+      </div>
       <div class="box">
         <div class="box-text" style="background-color: #ce2516;">
           <input type="text" placeholder="请输入要搜索的词" maxlength="30" class="input-txt" v-model="inputText" @keyup.enter="searchGoods">
           <div style="background-color: #ce2516"  class="btn-search glyphicon glyphicon-search" @click="searchGoods" ><span>搜索</span></div>
         </div>
       </div>
+
     </div>
+
   </div>
 </template>
 
 <script>
+  import myCartBox from './indexCom/myRecommend'
 
 export default {
   name: 'SearchBox',
@@ -25,6 +29,9 @@ export default {
     return {
         inputText:""
     }
+  },
+  components:{
+    myCartBox
   },
   created(){
 
@@ -96,7 +103,8 @@ export default {
       height: 94px;
       background-image: url("../../static/images/logoko.png");
       background-repeat: no-repeat;
-      background-size: contain;
+      background-size: cover;
+      margin-top: -20px;
     }
     .search-box .box{
       /*background-color: #5bc0de;*/
