@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="right-top">
+    <div class="top">
       <span>安全中心</span>
     </div>
     <div class="line"></div>
@@ -20,18 +20,24 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  .right-top{
+  ul,li{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  .top{
     height: 40px;
     /*background-color: yellow;*/
   }
-  .right-top span{
-    color: #666;
+  .top span{
+    color: #EE290D;
+    text-align: left;
     font-size: 20px;
     line-height: 40px;
   }
   .line{
-    background-color: #999;
-    height: 1px;
+    background-color: #d74132;
+    height: 3px;
     width: 100%;
   }
 </style>

@@ -27,7 +27,7 @@ export default {
   },
   methods:{
     submit:function (new_name) {
-      alert(new_name);
+      // alert(new_name);
       this.$emit('newName',new_name);
     }
   }

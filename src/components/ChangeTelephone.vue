@@ -27,7 +27,7 @@ export default {
   },
   methods:{
     submit:function (new_telephone) {
-      alert(new_telephone);
+      // alert(new_telephone);
       this.$emit("NewTelephone",new_telephone)
     }
   }

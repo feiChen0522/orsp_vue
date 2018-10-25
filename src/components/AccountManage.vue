@@ -1,9 +1,8 @@
 <template>
   <div>
     <div class="account" style="margin: 0 auto">
-      <div class="left">
-        <div class="left-top">账户管理</div>
-        <ul class="nav nav-pills nav-stacked">
+      <div class="top">
+        <ul class="nav nav-pills">
           <li role="presentation">
             <router-link to="/msgManage">账号信息</router-link>
           </li>
@@ -15,7 +14,7 @@
           </li>
         </ul>
       </div>
-      <div class="right">
+      <div class="center">
         <router-view>
 
         </router-view>
@@ -38,48 +37,37 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   .account{
-    margin: 40px auto 40px;
-    width: 1038px;
-    min-height: 500px;
-    /*border: 1px solid red;*/
-  }
-  .account .left{
-    float: left;
-    width: 15%;
-    height: 500px;
-    background-color: #FAFAFA;
-    border: 1px solid #e2e2e2;
-    margin-left: 30px;
-  }
-  .account .right{
-    float: right;
+    margin: 40px auto;
     width: 70%;
-    height: 100%;
-    border: 1px solid #e2e2e2;
-    padding: 20px 15px;
-    margin-right: 50px;
+    min-height: 500px;
   }
-  .account .left .left-top{
+  .account .top{
     width: 100%;
-    text-indent: 15px;
     height: 50px;
-    line-height: 50px;
-    font-size: 16px;
-    color: #ffffff;
-    background-color: #C80000;
+    border-bottom: none;
+
+  }
+  .account .center{
+    width: 100%;
+    height: 100%;
+    border: 1px solid #d74132;
+    padding: 20px 15px;
+
+  }
+  .account .top ul li{
+    background-color: #d74132;
+    margin-left: 0;
+    border: 1px solid #d74132;
   }
   .account ul li a{
-    color: #999;
+    color: #fff;
+    border-radius: 0;
+    height: 50px;
+    line-height: 30px;
   }
-  .account .left .nav>li>a:focus,.nav>li>a:hover{
-    /*background-color: #ffffff;*/
-    color: #cb1414;
-  }
-  /*.account .left .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover{*/
-    /*background-color: #AA0000;*/
+  .account .top .nav>li>a:focus,.nav>li>a:hover{
+    background-color: #ffffff;
+    color: #888888;
+   }
 
-  /*.account .right .info{*/
-    /*margin: 0 15px;*/
-    /*background-color: yellow;*/
-  /*}*/
 </style>
