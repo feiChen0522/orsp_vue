@@ -7,7 +7,7 @@
       <a></a>
     </div>
     <div class="like-container">
-      <div>
+      <div @click.stop="showDetail('LOGO印花全棉T恤','11189.00','0001')">
         <div>
           <a>
             <img src="../../../static/images/clothes1.jpg" alt="">
@@ -16,8 +16,8 @@
         <h6>LOGO印花全棉T恤</h6>
 
         <p>￥11189.00</p>
-      </div>
-      <div>
+      </div >
+      <div @click.stop="showDetail('LOGO印花全棉T恤','11189.00','0001')">
         <div>
           <a>
             <img src="../../../static/images/clothes2.jpg" alt="">
@@ -27,7 +27,7 @@
 
         <p>￥2480.00</p>
       </div>
-      <div>
+      <div @click.stop="showDetail('LOGO印花全棉T恤','11189.00','0001')">
         <div>
           <a>
             <img src="../../../static/images/clothes3.jpg" alt="">
@@ -37,7 +37,7 @@
 
         <p>5534.00</p>
       </div>
-      <div>
+      <div @click.stop="showDetail('LOGO印花全棉T恤','11189.00','0001')">
         <div>
           <a>
             <img src="../../../static/images/clothes4.jpg" alt="">
@@ -54,7 +54,26 @@
 
 <script>
     export default {
-        name: ""
+        name: "",
+      methods:{
+        showDetail:function (title,price,id) {
+          sessionStorage.setItem('price',price)
+          sessionStorage.setItem('title',title)
+          sessionStorage.setItem('payNum',10)
+          sessionStorage.setItem('address',"江苏苏州")
+          sessionStorage.setItem('img','../../../static/images/clothes1.jpg')
+          sessionStorage.setItem('change',"手表")
+          sessionStorage.setItem('belong_name',"衣服")
+          sessionStorage.setItem('belong_to',"时尚")
+          sessionStorage.setItem('Stock',10)
+          sessionStorage.setItem('store',"ORSP旗舰店")
+          sessionStorage.setItem('_id',id)
+          sessionStorage.setItem('user',"官方")
+          this.$router.push({
+            name:"DetailPage"
+          })
+        }
+      }
     }
 </script>
 

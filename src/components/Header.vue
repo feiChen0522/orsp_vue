@@ -16,8 +16,7 @@
           <ul class="nav navbar-nav" style="margin-bottom: 0">
             <li>
               <p class="navbar-text">
-                <a style="font-size: 12px;color: #6c6c6c;cursor: pointer;">苏州</a>
-                <span class="glyphicon glyphicon-chevron-down" style="position: relative;left: 2px;top: 2px;"></span>
+                <router-link tag="a" to="/" style="font-size: 12px;color: #6c6c6c;cursor: pointer;">ORSP</router-link>
               </p>
             </li>
            <li>

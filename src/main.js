@@ -31,6 +31,7 @@ import Address from './components/Address'
 import Left from './components/person/Left'
 import Paging from './components/test/Paging'
 import comment from './components/comment/comment'
+import Search from './components/test/Search'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 //导入购物车
 import Car1 from './components/Car1'
@@ -72,6 +73,7 @@ Vue.component('comment-div',comment);
 //购物车页面
 Vue.component('Car1-div', Car1);
 Vue.component('notice', Notice);
+Vue.component('classify-search', Search);
 
 
 

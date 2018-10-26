@@ -31,6 +31,7 @@ import DownSesource from '@/components/download/DownSesource'
 import ORSPDownload from '@/components/ORSPDownload'
 import comment from '@/components/comment/comment'
 import Board from '@/components/Board'
+import Search from '@/components/test/Search'
 
 // import Search from '@/components/Search'
 import SearchMain from '@/components/search/SearchMain'
@@ -76,11 +77,7 @@ export default new Router({
       component: Detail
     },
 
-    {
-      path: '/search',
-      name: 'SearchMain',
-      component: SearchMain
-    },
+
     {
       path: '/search',
       name: 'SearchMain',
@@ -138,8 +135,8 @@ export default new Router({
     },
     {
       path: '/test',
-      name: 'Swing',
-      component: Swing
+      name: 'Search',
+      component: Search
     },
 
     {

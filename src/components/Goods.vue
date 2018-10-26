@@ -6,16 +6,13 @@
         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 " v-for="(i,index) of goods">
           <div><a @click="sendGoods" style="cursor: pointer;">
             <img :src="i.img_href" alt="" class="imgs">
-
           </a>
           </div>
-          <p href=""><a href="" v-text="i.price"></a> <a href="" v-text="i.sales_num"></a></p>
+          <p href=""><a>￥</a><a  v-text="i.price"></a></p>
           <p class="title">
-            <a :data-user="i.user" class="dataPlayLoad" v-text="i.title" style="color: black!important;cursor: pointer" @click="sendGoods" :data-change="i.change" :data-belong_name="i.belong_name" :data-belong_to="i.belong_to" :data-Stock="i.Stock" :data-_id="i._id"></a>
+            <a :data-title="i.title" :data-price="i.price" :data-sales_num="i.sales_num" :data-shop="i.shop" :data-address="i.address"  :data-user="i.user" class="dataPlayLoad" v-text="i.title.substring(0,12)" style="color: black!important;cursor: pointer" @click="sendGoods" :data-change="i.change" :data-belong_name="i.belong_name" :data-belong_to="i.belong_to" :data-Stock="i.Stock" :data-_id="i._id"></a>
           </p>
-          <a style="width: 118px;display:inline-block;text-overflow: ellipsis;height: 20px;overflow: hidden;text-align: left"> <span
-            class="glyphicon glyphicon-th-list"></span>{{i.shop}}</a>
-          <a href="" v-text="i.address"></a>
+
         </div>
       </div>
 
@@ -68,11 +65,11 @@
 
           let nodes=e.target.parentNode.parentNode.querySelectorAll('a')
           let imgs=e.target.parentNode.parentNode.querySelector('img')
-          this.good_list['price']=nodes[1].innerText;
-          this.good_list['payNum']=nodes[2].innerText;
-          this.good_list['title']=nodes[3].innerText;
-          this.good_list['store']=nodes[4].innerText;
-          this.good_list['address']=nodes[5].innerText;
+          // this.good_list['price']=nodes[1].innerText;
+          // this.good_list['payNum']=nodes[2].innerText;
+          // this.good_list['title']=nodes[3].innerText;
+          // this.good_list['store']=nodes[4].innerText;
+          // this.good_list['address']=nodes[5].innerText;
           this.good_list['img']=imgs.getAttribute('src')
           this.good_list["change"]=e.target.getAttribute('data-change');
           this.good_list["user"]=e.target.getAttribute('data-user');
@@ -80,6 +77,11 @@
           this.good_list["belong_to"]=e.target.getAttribute('data-belong_to');
           this.good_list["Stock"]=e.target.getAttribute('data-Stock');
           this.good_list["_id"]=e.target.getAttribute('data-_id');
+          this.good_list["payNum"]=e.target.getAttribute('data-sales_num');
+          this.good_list["price"]=e.target.getAttribute('data-price');
+          this.good_list["title"]=e.target.getAttribute('data-title');
+          this.good_list["store"]=e.target.getAttribute('data-shop');
+          this.good_list["address"]=e.target.getAttribute('data-address');
           sessionStorage.setItem('price',this.good_list['price'])
           sessionStorage.setItem('title',this.good_list['title'])
           sessionStorage.setItem('payNum',this.good_list['payNum'])
@@ -92,6 +94,7 @@
           sessionStorage.setItem('store',this.good_list['store'])
           sessionStorage.setItem('_id',this.good_list['_id'])
           sessionStorage.setItem('user',this.good_list['user'])
+          // sessionStorage.setItem('address',this.good_list['address'])
           this.$router.push({
             name:"DetailPage"
           })

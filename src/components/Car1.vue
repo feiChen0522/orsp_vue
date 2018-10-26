@@ -24,7 +24,7 @@
             <div class="col-md-5 order" >我提交的商品 <span style="position: relative;top: 2px;" :class="[{'glyphicon glyphicon-chevron-right':!isActiveDown},{'glyphicon glyphicon-arrow-down':isActiveDown}]" @click="isActiveDown=!isActiveDown"></span></div>
 
             <ul class="col-md-3" style="position: absolute;left:300px;top: 30px;z-index: 2;" v-show="isActiveDown">
-              <li  style="background-color: rgba(59, 73, 255, 0.4)" class="order mySelectGood" v-for="(item,index) in buyerGood" v-text="item.name" :data-id="index" @click="showGood(index,$event)"></li>
+              <li  style="background-color: #eeeeeefa" class="order mySelectGood" v-for="(item,index) in buyerGood" v-text="item.name" :data-id="index" @click="showGood(index,$event)"></li>
             </ul>
 
           </div>
@@ -73,7 +73,7 @@
         console.log()
         let all_li=event.target.parentNode.childNodes
         for (let li of all_li){
-          li.style.backgroundColor="rgba(59, 73, 255, 0.4)"
+          li.style.backgroundColor="#eeeeeefa"
         }
         console.log(event.target);
         event.target.style.backgroundColor="#00ff57";
