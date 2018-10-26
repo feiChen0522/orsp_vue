@@ -79,6 +79,9 @@ export default {
       concact_telephone:""
     }
   },
+  created:function(){
+
+  },
   watch: {
     selected: function () {
       console.log(this.selected)

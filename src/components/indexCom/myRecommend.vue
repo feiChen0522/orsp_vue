@@ -5,7 +5,7 @@
         <b>每日推荐</b>
       </div>
       <div class="like">
-        <div>
+        <div @click.stop="showDetail('LOGO印花全棉T恤','11189.00','0001')">
           <div>
             <a>
               <img src="../../../static/images/recommend1.jpg" alt="">
@@ -15,7 +15,7 @@
 
           <p>￥18.90</p>
         </div>
-        <div>
+        <div @click.stop="showDetail('LOGO印花全棉T恤','11189.00','0001')">
           <div>
             <a>
               <img src="../../../static/images/recommend2.jpg" alt="">
@@ -25,7 +25,7 @@
 
           <p>￥19999.00</p>
         </div>
-        <div>
+        <div @click.stop="showDetail('LOGO印花全棉T恤','11189.00','0001')">
           <div>
             <a>
               <img src="../../../static/images/recommend3.jpg" alt="">
@@ -34,7 +34,7 @@
           <h6>小米(MI) PLM09ZM 移动电源2新版 10000mAh</h6>
           <p>￥75.90</p>
         </div>
-        <div>
+        <div @click.stop="showDetail('LOGO印花全棉T恤','11189.00','0001')">
           <div>
             <a>
               <img src="../../../static/images/recommend4.jpg" alt="">
@@ -73,6 +73,25 @@
         setInterval(function () {
           vm.showLunbo=!vm.showLunbo
         },1500)
+      },
+      methods:{
+        showDetail:function (title,price,id) {
+          sessionStorage.setItem('price',price)
+          sessionStorage.setItem('title',title)
+          sessionStorage.setItem('payNum',10)
+          sessionStorage.setItem('address',"江苏苏州")
+          sessionStorage.setItem('img','../../../static/images/clothes1.jpg')
+          sessionStorage.setItem('change',"手表")
+          sessionStorage.setItem('belong_name',"衣服")
+          sessionStorage.setItem('belong_to',"时尚")
+          sessionStorage.setItem('Stock',10)
+          sessionStorage.setItem('store',"ORSP旗舰店")
+          sessionStorage.setItem('_id',id)
+          sessionStorage.setItem('user',"官方")
+          this.$router.push({
+            name:"DetailPage"
+          })
+        }
       }
     }
 </script>
