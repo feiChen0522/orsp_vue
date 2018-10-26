@@ -4,17 +4,23 @@
       <div class="con-logo">
         <router-link tag="a" to="/" href="#"><div class="logo"></div></router-link>
       </div>
+      <div class="title-container" style="width: 300px;float: left;height: 80px">
+        <img src="../../static/images/title.png" alt="" style="object-fit: contain;width: 100%;height: 100%">
+      </div>
       <div class="box">
-        <div class="box-text" >
+        <div class="box-text" style="background-color: #ce2516;">
           <input type="text" placeholder="请输入要搜索的词" maxlength="30" class="input-txt" v-model="inputText" @keyup.enter="searchGoods">
-          <div  class="btn-search glyphicon glyphicon-search" @click="searchGoods" ><span>搜索</span></div>
+          <div style="background-color: #ce2516"  class="btn-search glyphicon glyphicon-search" @click="searchGoods" ><span>搜索</span></div>
         </div>
       </div>
+
     </div>
+
   </div>
 </template>
 
 <script>
+  import myCartBox from './indexCom/myRecommend'
 
 export default {
   name: 'SearchBox',
@@ -23,6 +29,9 @@ export default {
     return {
         inputText:""
     }
+  },
+  components:{
+    myCartBox
   },
   created(){
 
@@ -83,32 +92,30 @@ export default {
       margin: auto;
     }
     .search-box .con-logo{
-      width: 20%;
+      width: 10%;
       /*background-color: yellow;*/
       height: 64px;
       float: left;
 
     }
     .search-box .logo{
-      width: 120px;
-      height: 120px;
+      width: 94px;
+      height: 94px;
       background-image: url("../../static/images/logoko.png");
       background-repeat: no-repeat;
       background-size: cover;
-      margin-left: 80px;
-      position: relative;
-      top: -29px;
+      margin-top: -20px;
     }
     .search-box .box{
       /*background-color: #5bc0de;*/
       height: 64px;
-      width: 80%;
+      width: 60%;
       float: right;
     }
     .search-box .box .box-text{
       width: 384px;
       height: 39px;
-      border: 3px solid #ff6a19;
+      border: 3px solid rgb(206, 37, 22);
       /*box-sizing: border-box;*/
       margin: 15px auto;
     }

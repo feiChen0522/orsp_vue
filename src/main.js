@@ -15,7 +15,7 @@ import SearchBox from './components/SearchBox'
 import Classify from './components/search/Classify'
 import Index from './components/Index'
 import DetailPage from './components/DetailPage'
-import ChangeName from './components/ChangeName'
+import UploadUsericon from './components/UploadUsericon'
 import ChangePassword from './components/ChangePassword'
 import ChangeTelephone from './components/ChangeTelephone'
 import agreement from './components/Agreement'
@@ -31,6 +31,7 @@ import Address from './components/Address'
 import Left from './components/person/Left'
 import Paging from './components/test/Paging'
 import comment from './components/comment/comment'
+import Search from './components/test/Search'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 //导入购物车
 import Car1 from './components/Car1'
@@ -54,7 +55,7 @@ Vue.component('classify-div', Classify);
 Vue.component('car-list', Carlist);
 Vue.component('carsell-list', CarlistSeller);
 Vue.component('detail-div', DetailPage);
-Vue.component('change-name', ChangeName);
+Vue.component('upload-usericon', UploadUsericon);
 Vue.component('change-password',ChangePassword);
 Vue.component('change-telephone',ChangeTelephone);
 Vue.component('agreement-div', agreement);
@@ -72,6 +73,7 @@ Vue.component('comment-div',comment);
 //购物车页面
 Vue.component('Car1-div', Car1);
 Vue.component('notice', Notice);
+Vue.component('classify-search', Search);
 
 
 

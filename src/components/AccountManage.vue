@@ -38,17 +38,17 @@ export default {
 <style scoped>
   .account{
     margin: 40px auto;
-    width: 1038px;
+    width: 70%;
     min-height: 500px;
   }
   .account .top{
-    width: 1038px;
+    width: 100%;
     height: 50px;
     border-bottom: none;
 
   }
   .account .center{
-    width: 1038px;
+    width: 100%;
     height: 100%;
     border: 1px solid #d74132;
     padding: 20px 15px;

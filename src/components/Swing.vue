@@ -1,7 +1,15 @@
 <template>
   <div class="swing-div">
     <div class="img-container">
-      <a href=""  v-for="(i,index) of imgList" :data-id="index"><img :src="i"  alt="" v-show="currentIndex==index"></a>
+      <a href=""  v-for="(i,index) of imgList" :data-id="index">
+        <transition name="fade"
+                    enter-active-class="animated fadeInRight"
+                    leave-active-class="animated fadeOutLeft"
+
+        >
+        <img :src="i"  alt="" v-show="currentIndex==index">
+        </transition>
+      </a>
     </div>
     <ul class="dot-point">
       <li :data-id="index" v-for="(i,index) of imgList" @mouseover="changeImg($event)" :class="{'changeBck':currentIndex==index}"></li>
@@ -15,11 +23,11 @@
     data() {
       return {
         imgList:[
-          '../../static/images/1.png',
-          '../../static/images/2.png',
-          '../../static/images/3.png',
-          '../../static/images/4.png',
-          '../../static/images/5.png',
+          '../../static/images/1.jpg',
+          '../../static/images/2.jpg',
+          '../../static/images/3.jpg',
+          '../../static/images/4.jpg',
+          '../../static/images/5.jpg',
         ],
         currentIndex:1,
         isChangeBck:true

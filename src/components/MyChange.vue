@@ -17,10 +17,10 @@
               </tr>
               </thead>
               <tbody>
-              <tr>
-                <td class="li2">2018-9-10</td>
-                <td class="li2">phone6</td>
-                <td class="li2">请求交换一部mac</td>
+              <tr v-for="i in allOrder">
+                <td class="li2">{{i.generateTime}}</td>
+                <td class="li2">{{i.sellerSelectGood.title}}</td>
+                <td class="li2">{{'请求交换'+'  '+i.buyerSelectGood.title}}</td>
                 <td>
                    <a>同意请求</a>/<a>拒绝</a>
                   <router-link to="/">
@@ -39,7 +39,32 @@
 
 <script>
   export default {
-    name: "MyChange"
+    name: "MyChange",
+    data() {
+      return {
+        allOrder:[]
+      }
+
+  },
+    mounted:function (e) {
+      let vm=this
+      console.log(e)
+      axios({
+        url:"http://127.0.0.1:8000/resource/seechange/",
+        data:{
+          "user_id":sessionStorage.getItem('currentUserId')
+        },
+        method:"post"
+      })
+        .then(function (res) {
+          vm.allOrder=res.data
+
+        })
+        .catch(function (error) {
+          console.log("请求失败：，",error)
+
+        })
+    }
   }
 </script>
 

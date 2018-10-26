@@ -9,36 +9,17 @@
           <td>价格</td>
           <td>操作</td>
         </tr>
-        <tr>
+        <tr v-for="i in all_collect">
           <td><div class="r-img-container"></div></td>
-          <td>iphone6s</td>
-          <td><b>$6000</b></td>
+          <td>{{i.name}}</td>
+          <td><b>{{'$6'+i.price}}</b></td>
           <td>
             <a href="#">关注</a>
             <a href="#">加入购物车</a>
             <a href="#">删除</a>
           </td>
         </tr>
-        <tr>
-          <td><div class="r-img-container"></div></td>
-          <td>iphone6s</td>
-          <td><b>$6000</b></td>
-          <td>
-            <a href="#">关注</a>
-            <a href="#">加入购物车</a>
-            <a href="#">删除</a>
-          </td>
-        </tr>
-        <tr>
-          <td><div class="r-img-container"></div></td>
-          <td>iphone6s</td>
-          <td><b>$6000</b></td>
-          <td>
-            <a href="#">关注</a>
-            <a href="#">加入购物车</a>
-            <a href="#">删除</a>
-          </td>
-        </tr>
+
       </table>
     </div>
   </div>
@@ -46,7 +27,30 @@
 
 <script>
   export default {
-    name: "MyCollect"
+    name: "MyCollect",
+    data(){
+      return {
+        all_collect:[]
+      }
+    },
+    mounted:function () {
+      let vm=this
+      axios({
+        url:"http://127.0.0.1:8000/resource/seemycollect/",
+        data:{
+          "user_id":sessionStorage.getItem('currentUserId')
+        },
+        method:"post"
+
+      })
+        .then(function (res) {
+          console.log(res.data)
+          vm.all_collect=res.data
+        })
+        .catch(function (error) {
+          console.log("请求失败："+error)
+        })
+    }
   }
 </script>
 

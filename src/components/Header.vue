@@ -1,21 +1,24 @@
 <template>
-  <nav class="navbar navbar-default " style="border-radius: 0; min-height: 30px; margin-bottom: 0;">
-    <div class="container-fluid" style="width: 90%;">
+  <nav class="navbar navbar-default navbar-inverse" style="border-radius: 0; min-height: 30px; margin-bottom: 0;">
+    <div class="container-fluid" style="width: 90%;height: 20px;">
       <!-- Brand and toggle get grouped fsor better mobile display -->
-      <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed " data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" style="padding: 2px 4px;margin: 3px 5px 0 0;;">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <p class="navbar-text">
-            <router-link to="/" tag="a" class="navbar-brand navbar-link "  style="margin-left: 0; padding: 0 0 0 5px; height: 10px;">ORSP</router-link>
-          </p>
+      <div class="navbar-header" style="background-color: #f2f2f2;">
+        <button style="height: 30px" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav" style="margin-bottom: 0">
+            <li>
+              <p class="navbar-text">
+                <router-link tag="a" to="/" style="font-size: 12px;color: #6c6c6c;cursor: pointer;">ORSP</router-link>
+              </p>
+            </li>
            <li>
              <!--<a >您好，请登录<span class="sr-only">(current)</span></a>-->
              <a data-toggle="modal" data-target="#myModal1" @click.stop.prevent="goPersonCenter">
@@ -61,6 +64,9 @@
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right" style="margin-top: 0;">
+            <li>
+
+            </li>
             <li @click='is_login'>
               <!--<router-link to="/personcenter">-->
               <a @click.self.prevent><p class="p1">我的天下</p></a>
@@ -81,9 +87,7 @@
                 <p class="p1">联系我们</p>
               </router-link>
             </li>
-            <li>
-                <p class="p1 p2" @click="coll">收藏网站</p>
-            </li>
+
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
@@ -180,15 +184,28 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+  .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form{
+  }
+  .navbar-inverse{
+    background-color: #f2f2f2;
+    border:none;
+  }
   .navbar-nav>li>a {
     padding-top: 5px;
     padding-bottom: 5px;
     font-size: 12px;
     color: #6c6c6c;
   }
+  .navbar-nav>li>a:hover{
+
+    color: red;
+  }
   .navbar-text {
     margin-top: 5px;
     margin-bottom: 5px;
+  }
+  .navbar-text>a:hover{
+    text-decoration: none;
   }
   .p1{
     height: 10px;

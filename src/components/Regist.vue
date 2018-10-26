@@ -168,7 +168,8 @@ export default {
                     headers:{'token':token},
                   })
                     .then(function (rsp) {
-                      console.log("++++++++++++++++++++++++++")
+                      console.log("++++++++++++++++11111regist++++++++++")
+                      console.log(rsp.data)
                       sessionStorage.setItem('currentUserId',rsp.data.id)
                       setInterval(function () {
                         if(parseInt(vm.second)===1){
