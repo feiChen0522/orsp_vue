@@ -15,7 +15,7 @@ import SearchBox from './components/SearchBox'
 import Classify from './components/search/Classify'
 import Index from './components/Index'
 import DetailPage from './components/DetailPage'
-import ChangeName from './components/ChangeName'
+import UploadUsericon from './components/UploadUsericon'
 import ChangePassword from './components/ChangePassword'
 import ChangeTelephone from './components/ChangeTelephone'
 import agreement from './components/Agreement'
@@ -55,7 +55,7 @@ Vue.component('classify-div', Classify);
 Vue.component('car-list', Carlist);
 Vue.component('carsell-list', CarlistSeller);
 Vue.component('detail-div', DetailPage);
-Vue.component('change-name', ChangeName);
+Vue.component('upload-usericon', UploadUsericon);
 Vue.component('change-password',ChangePassword);
 Vue.component('change-telephone',ChangeTelephone);
 Vue.component('agreement-div', agreement);

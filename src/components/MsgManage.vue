@@ -21,6 +21,22 @@
         </div>
       </div>
     </div>
+
+    <!--上传头像模态框-->
+    <div class="modal fade" id="usericon" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="myModalLabel2">上传头像</h4>
+            </div>
+            <div class="modal-body" >
+              <upload-usericon :telephone="userinfo.telephone" @getFilename="getfilename"></upload-usericon>
+            </div>
+
+          </div>
+      </div>
+    </div>
+    <!--上传头像模态框end-->
     <div class="all">
       <!--头部-->
       <div class="top">
@@ -30,13 +46,16 @@
       <!--中间主体部分-->
       <div class="personal-info">
         <div class="aa">
+          <!--左边头像部分-->
           <div class="info-left">
             <p class="personal-name">亲耐的<span class="name" v-text="userinfo.name"></span>,上传一张头像吧</p>
             <div class="personal-logo">
-              <input type="file" class="file" @click="pushHeadPortrait">
-              <!--<img src="../../static/images/perpeo.png" alt="" class="logo-img">-->
+              <!--src="../assets/images/avatar_89373029_1496285287409.jpg"-->
+              <img :src="userinfo.icon" alt="" class="image" data-toggle="modal" data-target="#usericon">
+              <input type="file" class="file" data-toggle="modal" data-target="#usericon" v-on:click.prevent="onClick">
             </div>
-            <div class="txt_touxiang">编辑头像</div>
+            <div class="txt_touxiang" @click="uploadUsericon" data-toggle="modal" data-target="#usericon">编辑头像</div>
+            <!--<input type="file" class="file2" @click="pushHeadPortrait">-->
             <div class="level">
               <span>等级：</span>
               <i>LV<i v-text="userinfo.level"></i></i>
@@ -46,6 +65,7 @@
               <i v-text="userinfo.integral"></i>
             </div>
           </div>
+          <!--右边的个人信息-->
           <div class="info-right">
             <ul class="input-list">
               <li class="row">
@@ -95,10 +115,13 @@
 
 <script>
   import 'bootstrap/js/modal'
+  import Upload from "./download/upload";
   export default {
   name: 'MsgManage',
+  components: {Upload},
   data () {
     return {
+      defaulturl:"../assets/images/avatar_89373029_1496285287409.jpg",
       modal_change:1,
       modal_title:'',
       modal_list:['修改用户名','修改手机号','修改密码'],
@@ -120,7 +143,7 @@
   },
   created:function(){
     var vm =this;
-    var token=localStorage.getItem("token")
+    var token=localStorage.getItem("token");
     axios({
       url:"http://127.0.0.1:8000/user/showuser/",
       headers:{
@@ -131,26 +154,35 @@
       .then(function (response) {
         vm.list=response.data;
         console.log(response.data);
-        console.log('showuser data:',vm.list);  //得到的数据
         vm.userinfo.name=vm.list.user_name;
         vm.userinfo.telephone=vm.list.telephone;
         vm.userinfo.password=vm.list.password;
-        vm.userinfo.icon=vm.list.icon;
+
         vm.userinfo.sex=vm.list.sex;
         vm.userinfo.integral=vm.list.integral;
         vm.userinfo.level=vm.list.level;
         vm.userinfo.email=vm.list.email;
         vm.userinfo.QQ=vm.list.one;
-        // if(vm.list.email){
-        //   vm.userinfo.email=vm.list.email;
-        // }
-        // else{
-        //   vm.userinfo.email='尚未绑定邮箱';
-        // }
+        if(vm.list.email){
+          vm.userinfo.email=vm.list.email;
+        }
+        else{
+          vm.userinfo.email='尚未绑定邮箱';
+        }
+        // vm.userinfo.icon=vm.list.icon;
+        if(vm.list.icon){
+          vm.userinfo.icon="http://127.0.0.1:8000/media/pic/"+vm.list.icon;
+        }
+        else{
+          vm.userinfo.icon=vm.defaulturl;
+        }
       })
       .catch(function (err) {
         console.log("error:",err)
       })
+  },
+  mounted:function(){
+
   },
   methods:{
     //提交用户修改的信息
@@ -176,14 +208,12 @@
       this.userinfo.sex=event.currentTarget.value;
       // alert(this.userinfo.sex)
     },
-    //上传头像
-    pushHeadPortrait:function(){
-      axios({
-
-      })
+    //拿到头像filename
+    getfilename:function(filename){
+      this.userinfo.icon=filename;
     },
-    //修改密码
-    changePassword:function(){
+    //上传头像
+    uploadUsericon:function(){
 
     },
     modalChange:function (event) {
@@ -216,6 +246,12 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+  #change {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
   ul,li{
     padding: 0;
     margin: 0;
@@ -268,9 +304,14 @@
     width: 100px;
     height: 100px;
     margin: 0 auto 10px;
-    background-image: url("../assets/images/avatar_89373029_1496285287409.jpg");
-    background-size: cover;
     border-radius: 50%;
+    cursor: pointer;
+  }
+  .personal-info .info-left .personal-logo .image{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-size: cover;
   }
   /*头像*/
   .personal-info .info-left .personal-logo .file {
@@ -280,11 +321,11 @@
     line-height: 100px;
     text-indent: 5px;
     position: relative;
+    top: -100px;
     z-index: 50;
     border-radius: 50%;
   }
   .personal-info .info-left .txt_touxiang{
-    position: relative;
     margin: auto;
     /*z-index: 2;*/
     width: 100px;
@@ -302,7 +343,7 @@
   .personal-info .info-left .level{
     width: 100px;
     height: 20px;
-    margin: 10px auto 0;
+    margin: 15px auto 0;
     line-height: 20px;
   }
   .personal-info .info-left .level span{
@@ -320,12 +361,13 @@
     margin: 5px auto;
     font-size: 16px;
     font-weight: bold;
-
   }
   .personal-info .info-left .integral span{
     color: #EE290D;
   }
   .personal-info .info-left .integral i{
+    position: relative;
+    top: 1px;
     font-size: 18px;
   }
   .personal-info .info-right{
