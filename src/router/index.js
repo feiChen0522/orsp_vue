@@ -56,12 +56,12 @@ export default new Router({
   },
   routes: [
     {
-      path: '/sssss',
+      path: '/',
       name: 'Index',
       component: Index,
     },
     {
-      path: '/',
+      path: '/newcar',
       name: 'NewCar',
       component: NewCar,
     },
