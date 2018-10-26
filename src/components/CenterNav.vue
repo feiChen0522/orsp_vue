@@ -1,8 +1,8 @@
 <template>
   <div class="center-div">
-    <div class="so-box ">
+    <div class="so-box" style="background-color: #ce2516">
         <ul class="type_li row" >
-          <li class="col-lg-2 col-md-2 col-sm-2 col-xs-2"><a href="#">商品分类</a></li>
+          <li class="col-lg-2 col-md-2 col-sm-2 col-xs-2" @click="showTwoTitle"><a href="#">商品分类</a></li>
           <li class="col-lg-2 col-md-2 col-sm-2 col-xs-2"><a href="#">首页</a></li>
           <li class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
             <router-link tag="a" to="/orapdownload">orsp下载</router-link>
@@ -20,11 +20,14 @@ export default {
   name: 'CenterNav',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      twoTitle:false
     }
   },
   methods:{
-
+    showTwoTitle:function () {
+      this.twoTitle=!this.twoTitle
+      this.$emit("show-title",this.twoTitle)
+    }
   }
 }
 </script>
@@ -48,6 +51,12 @@ export default {
   }
   ul, ol { list-style: none; }
 
+  ul>li{
+    border-right: 1px solid #eeeeee;
+    height: 20px;
+    line-height: 20px;
+    margin-top: 6px;
+  }
   /** 重置文本格式元素 **/
   a { text-decoration: none;}
   .so-box {
@@ -59,6 +68,12 @@ export default {
     /*top: 0px;*/
     z-index: 10;
   }
+  .so-box ul>li>a{
+    color: #eeeeee;
+  }
+  .so-box ul>li>a:hover{
+    color: #8a8a8a;
+  }
 
   .so-box-content {
     width: 850px;
@@ -67,7 +82,7 @@ export default {
   }
   .type_li{
     width: 804px;
-    margin-left: 141px;
+    margin-left: 171px;
   }
   .type_li a:hover{
     color: red;
@@ -97,16 +112,34 @@ export default {
     }
     .type_li{
       width: 804px!important;
-      margin-left: 141px;
+      margin-left: 171px;
     }
   }
   @media only screen and (min-width: 1200px) {
     .type_li>li{
       margin-left: 0!important;
     }
+    .type_li>li{
+      width: 140px;
+    }
+    .type_li>li:first-child{
+      width: 200px;
+      height: 32px;
+      line-height: 30px;
+      position: relative;
+      top: -6px;
+      background-color: #0d062d;
+      border-right: none;
+      cursor: pointer;
+    }
+
+    .type_li>li:last-child{
+      border-right: none;
+    }
     .type_li{
-      width: 804px!important;
-      margin-left: 141px;
+      width: 1200px!important;
+      margin-left: 180px;
+      height: 100%
     }
   }
 

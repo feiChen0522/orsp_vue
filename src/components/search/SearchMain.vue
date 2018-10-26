@@ -1,8 +1,8 @@
 <template>
   <div class="search-main">
     <search-div style="margin-top: 20px" :con="inputText"></search-div>
-    <classify-div style="margin-top: 20px"></classify-div>
-    <goods-div style="margin-top: 20px" v-bind:goods="currentGoods"></goods-div>
+    <classify-search style="margin-left: 10%"></classify-search>
+    <goods-div style="" v-bind:goods="currentGoods"></goods-div>
     <paging-div :currentIndex="1"  :count="currentCount" @indexclick="displayGoods"></paging-div>
     <footer-div></footer-div>
   </div>
