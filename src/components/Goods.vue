@@ -4,9 +4,9 @@
     <div class="container ">
       <div class="row goods">
         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 " v-for="(i,index) of goods">
-          <div><a @click="sendGoods" style="cursor: pointer;">
+          <div>
+            <a @click="sendGoods" style="cursor: pointer;">
             <img :src="i.img_href" alt="" class="imgs">
-
           </a>
           </div>
           <p href=""><a href="" v-text="i.price"></a> <a href="" v-text="i.sales_num"></a></p>

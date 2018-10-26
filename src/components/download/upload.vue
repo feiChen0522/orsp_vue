@@ -85,8 +85,6 @@
              </div>
     </div>
 
-
-
 </template>
 
 <script>
@@ -119,11 +117,6 @@ export default {
       this.file = e.target.files[0];
     },
     update (e) {  // 上传照片
-
-
-
-
-
       var self = this;
       let file = e.target.files[0];
       this.preview1(file);
@@ -133,8 +126,6 @@ export default {
       param.append('usericon', file, file.name) ;// 通过append向form对象添加数据
       param.append('chunk', '0'); // 添加form表单中其他数据
       this.file=param;
-
-
     },
     preview1(file){
       var img = new Image();
@@ -150,33 +141,25 @@ export default {
 
   //  上传文件
     uploadFile:function () {
-
       //同意ORSP协议之后才能上传文件
       //判断上传文件的信息是否填写完整
-
       if (!this.file) {
         this.uploadFlag=false
         this.fileTip="请选择一个文件"
-
       }
       if (!this.resourceType) {
         this.uploadFlag=false
         this.resourceTypeTip="请选择资源的类型"
-
       }
       if (!this.describe) {
         this.uploadFlag=false
         this.describeTip="请填写文件的描述"
-
       }
       if (!this.need_integral) {
         this.uploadFlag=false
         this.need_integralTip="请填写所需要的积分"
-
-
       }
       if (this.agreePro&&this.uploadFlag===true) {
-
         let config = {
           headers: {'Content-Type': 'multipart/form-data'}
         };
@@ -189,7 +172,7 @@ export default {
               "describe":this.describe,
               "need_integral":this.need_integral,
               "upload_user_id":sessionStorage.getItem('currentUserId')
-            }
+            };
             axios.post('http://127.0.0.1:8000/file/savefile/', fileMsg, config)
               .then(function (res) {
                 $('#uploada')[0].click();

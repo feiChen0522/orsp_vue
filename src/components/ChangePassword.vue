@@ -31,7 +31,7 @@
         </p>
       </ul>
       <div class="footer">
-        <div class="del" data-dismiss="modal">取消</div>
+        <div class="del" @click="cancel">取消</div>
         <div class="sub" @click="push">保存</div>
       </div>
 
@@ -97,9 +97,9 @@ export default {
                   // 255代表密码验证正确
                   if(vm.res.code=="211") {
                     alert("密码修改成功");
-                    // $('#change').modal('hide');
-                    $("#change").modal({show:true, backdrop:'static'});
-                    $("#change").remove()
+                    $('#change').modal('hide');
+                    // $("#change").modal({show:true, backdrop:'static'});
+                    // $("#change").remove()
                   }
                   else if(vm.res.code=="514"){
                     alert("密码错误")
@@ -121,6 +121,10 @@ export default {
         $(".mo-div ul .p1 .sp1")[0].style.display="inline-block" //密码为空时提示密码不能为空
       }
     },
+    cancel:function () {
+      $('#change').modal('hide');
+      window.location.reload()
+    }
   }
 }
 </script>

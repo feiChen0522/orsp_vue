@@ -221,6 +221,7 @@ export default new Router({
             }
           ]
         },
+
         {
           path: '/mycollect',
           name: 'MyCollect',
