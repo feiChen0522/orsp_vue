@@ -112,9 +112,10 @@
           data: {'index': index,'userid':userid,'id':id},
         })
           .then(function (rsp) {
-            location.replace(location)
-            alert('sssssss')
-            console.log(rsp.data)
+            if(rsp.data['code']=='215'){
+              window.location.reload()
+            }
+
           })
           .catch(function (err) {
             console.log('请求失败', err);
