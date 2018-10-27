@@ -57,6 +57,8 @@ export default {
           // }
         })
         .then(function (res) {
+          console.log("搜索");
+          console.log(res)
           //在sessionStorage暂时存储搜索到的数据
           sessionStorage.setItem('searchGoods',JSON.stringify(res.data))
 

@@ -58,6 +58,7 @@
     mounted: function () {
       this.buyerGood=this.$route.params;
       this.selectedGood=this.buyerGood[0]
+      this.selectedGood["_id"]=(Math.random()*10000000).toString(16).substr(0,4)+'-'+(new Date()).getTime()+'-'+Math.random().toString().substr(2,5);
       sessionStorage.setItem('buyerSelectGood',JSON.stringify(this.selectedGood))
     },
     methods: {

@@ -17,16 +17,24 @@
               </tr>
               </thead>
               <tbody>
-              <tr v-for="i in allOrder">
+              <tr v-for="i,index in allOrder">
                 <td class="li2">{{i.generateTime}}</td>
                 <td class="li2">{{i.sellerSelectGood.title}}</td>
                 <td class="li2">{{'请求交换'+'  '+i.buyerSelectGood.title}}</td>
-                <td>
-                   <a>同意请求</a>/<a>拒绝</a>
-                  <router-link to="/">
+                <td >
+                    <p v-if="i.sellerSelectGood.status==1">
+                      <a>已同意</a>
+                    </p>
+                  <p v-else-if="i.sellerSelectGood.status==-1">
+                    <a>已拒绝</a>
+                  </p>
+                  <p v-else><a @click="agreeRequest('1',$event,index)">同意请求</a>/<a @click="agreeRequest('-1',$event,index)">拒绝</a>
+                  </p>
+                  <router-link to="/" >
                     <p>查看对方商品详情</p>
                   </router-link>
                 </td>
+
               </tr>
               </tbody>
             </table>
@@ -57,6 +65,7 @@
         method:"post"
       })
         .then(function (res) {
+          console.log(res)
           vm.allOrder=res.data
 
         })
@@ -64,6 +73,40 @@
           console.log("请求失败：，",error)
 
         })
+    },
+    methods:{
+
+
+
+      agreeRequest:function (i,event,index) {
+        let ins_data={
+          "user_id":sessionStorage.getItem('currentUserId'),
+          "operation":i,
+          "_id":this.allOrder[index].sellerSelectGood._id
+        }
+        console.log(event.target)
+        axios({
+          url:"http://127.0.0.1:8000/resource/selleragree/",
+          method:"post",
+          data:ins_data
+        })
+          .then(function (res) {
+            if (res.data.code=="298") {
+              if (i=="1"){
+                event.target.parentNode.innerText="已同意"
+              } else {
+                event.target.parentNode.innerText="已拒绝"
+              }
+            }else {
+              console.log(res.data)
+            }
+
+          })
+          .catch(function (error) {
+            console.log("请求失败：",error)
+
+          })
+      }
     }
   }
 </script>

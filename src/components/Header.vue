@@ -127,6 +127,7 @@ export default {
           if (res.data.hasOwnProperty('user_name')){
             vm.LoginStatus="欢迎"+res.data.user_name
             vm.RegistStatus="退出"
+            sessionStorage.setItem('currentUserId',res.data.id)
             next();
           } else {
             alert("登录失败")
