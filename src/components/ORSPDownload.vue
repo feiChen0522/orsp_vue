@@ -36,22 +36,7 @@
                 </li>
               </ul>
               <div class="twofield" id="twofield1">
-                <a href="#">Android</a>
-                <a href="#">Android</a>
-                <a href="#">Android</a>
-                <a href="#">Android</a>
-                <a href="#">Android</a>
-                <a href="#">Android</a>
-                <a href="#">Android</a>
-                <a href="#">Android</a>
-                <a href="#">Android</a>
-                <a href="#">Android</a>
-                <a href="#">Android</a>
-                <a href="#">Android</a>
-                <a href="#">Android</a>
-                <a href="#">Android</a>
-                <a href="#">Android</a>
-                <a href="#">Android</a>
+                <li v-for="i of twoTechnicalField"><a href="#" v-text="i.name" :id="i.id"></a></li>
               </div>
               <ul @click="getTwoTechnicalField($event)" id="ul2">
                 <li v-for="i of technicalField.slice(9)">
@@ -59,22 +44,7 @@
                 </li>
               </ul>
               <div class="twofield" id="twofield2">
-                <a href="#">Android</a>
-                <a href="#">Android</a>
-                <a href="#">Android</a>
-                <a href="#">Android</a>
-                <a href="#">Android</a>
-                <a href="#">Android</a>
-                <a href="#">Android</a>
-                <a href="#">Android</a>
-                <a href="#">Android</a>
-                <a href="#">Android</a>
-                <a href="#">Android</a>
-                <a href="#">Android</a>
-                <a href="#">Android</a>
-                <a href="#">Android</a>
-                <a href="#">Android</a>
-                <a href="#">Android</a>
+                <li v-for="i of twoTechnicalField"><a href="#" v-text="i.name" :id="i.id"></a></li>
               </div>
             </dd>
           </dl>
@@ -155,6 +125,8 @@ export default {
 
       }],
       technicalField:'',
+      twoTechnicalFieldALL:'',
+      twoTechnicalField:'',
       resourceType:'',
     }
   },
@@ -176,16 +148,14 @@ export default {
         .then(function (res) {
           vm.technicalField=res.data;
           console.log(vm.technicalField);
-        })
+        });
+
     },
     //拿到二级技术领域标签
     getTwoTechnicalField:function(e){
       if(event.target.tagName=="A"){
         var id=event.target.id;
         console.log(id);
-        var int_id=parseInt(id);
-        console.log(88888,int_id);
-
         if(event.currentTarget.id=="ul1"){
           $('#twofield2').css({
             display:"none"
@@ -217,17 +187,16 @@ export default {
         if(event.target.id!="0"){
           list_div[id].style.opacity=1;
         }
+        let vm=this;
+        axios({
+          url:"http://127.0.0.1:8000/file/gettwotechnicalfield/?id="+id,
+          method:'get',
+        })
+          .then(function (res) {
+            vm.twoTechnicalField=res.data;
+            console.log(999,vm.twoTechnicalField);
+          })
 
-
-        // let vm=this;
-        // axios({
-        //   url:"http://127.0.0.1:8000/file/gettwotechnicalfield/"+id,
-        //   method:'get',
-        // })
-        //   .then(function (res) {
-        //     vm.technicalField=res.data;
-        //     console.log(vm.technicalField);
-        //   })
       }
     },
     //拿到所有资源类型
@@ -345,8 +314,14 @@ export default {
     margin-left: 15px;
     width: 650px;
     min-height: 50px;
+    line-height: 30px;
     text-align: left;
     display: none;
+  }
+  .download_l dd .twofield li{
+    list-style: none;
+    display: inline-block;
+    padding: 0;
   }
   .download_l dd .twofield a{
     margin-left: 20px;
