@@ -185,14 +185,10 @@ export default {
               }.bind(this))
               .catch(function (err) {
                 if (err.response) {
-
-
                   //控制台打印错误返回的内容
                 }
                 //bind(this)可以不用
               }.bind(this))
-
-
 
             //控制台打印请求成功时返回的数据
             //bind(this)可以不用

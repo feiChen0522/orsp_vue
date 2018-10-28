@@ -35,6 +35,7 @@ import Search from './components/test/Search'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 //导入购物车
 import Car1 from './components/Car1'
+import ORSPDownloadRight from './components/ORSPDownloadRight'
 
 Vue.config.productionTip = false;
 
@@ -74,6 +75,9 @@ Vue.component('comment-div',comment);
 Vue.component('Car1-div', Car1);
 Vue.component('notice', Notice);
 Vue.component('classify-search', Search);
+//ORSP下载页面
+Vue.component('orspdownload-right', ORSPDownloadRight);
+
 
 
 
