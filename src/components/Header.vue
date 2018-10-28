@@ -172,7 +172,7 @@ export default {
           name:'Center'
         });
       }else{
-        alert("请先登录！！！在查看个人中心！！！！   宝仕，这里要弹出登录模态框，我没弹出来，你来搞")
+        $("#myModal1").modal("show")
       }
     }
   }

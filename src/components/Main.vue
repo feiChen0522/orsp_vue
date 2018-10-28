@@ -29,10 +29,10 @@
 
           <li   v-show="index==current_index" >
             <div v-for="tt in t.category" style="margin-bottom: 25px;">
-              <b style="height:14px;font-weight: 1000;position: relative;font: 14px/1.5 arial,'\65b0\5b8b\4f53';font-family: Arial,'Microsoft Yahei';display: inline-block;border-right: 1px solid #ccacac;padding-right: 10px;line-height: 6px;" class="" v-text="tt.mn"></b>
+              <b style="height:14px;font-weight: 900;position: relative;font: 14px/1.5 arial,'\65b0\5b8b\4f53';font-family: Arial,'Microsoft Yahei';display: inline-block;border-right: 1px solid #ccacac;padding-right: 10px;line-height: 6px;" class="" v-text="tt.mn"></b>
 
-              <router-link tag="a" to='/search' v-for="ttt,index in tt.ch.tc.cl" v-text="ttt.t" :key="index" v-show="index<6" style="margin-left: 5px;">
-              </router-link>
+              <a @click="toSearch(ttt.t)" v-for="ttt,index in tt.ch.tc.cl" v-text="ttt.t" :key="index" v-show="index<6" style="cursor:pointer;margin-left: 5px;">
+              </a>
             </div>
           </li>
         </ul>
@@ -148,7 +148,15 @@
       displaySwing: function (event) {
         console.log(event.target.className);
         // this.detailTypeShow=!this.detailTypeShow
-
+      },
+      toSearch:function (con) {
+        sessionStorage.setItem('searchCondition',con)
+        this.$router.push({
+          name:"SearchMain",
+          params:{
+            "con":con
+          }
+        })
       }
     }
   }

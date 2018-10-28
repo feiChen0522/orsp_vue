@@ -35,7 +35,7 @@
               <a href="" class="delgoods" @click="goBack">放弃商品</a>
             </div>
             <div class="col-md-1">
-              <a   class="checkout" @click="generateOrder" style="cursor: pointer">结 算</a>
+              <a   class="checkout"  style="cursor: pointer" @click="settlement">结 算</a>
             </div>
           </div>
         </div>
@@ -57,9 +57,11 @@
     },
     mounted: function () {
       this.buyerGood=this.$route.params;
-      this.selectedGood=this.buyerGood[0]
-      this.selectedGood["_id"]=(Math.random()*10000000).toString(16).substr(0,4)+'-'+(new Date()).getTime()+'-'+Math.random().toString().substr(2,5);
-      sessionStorage.setItem('buyerSelectGood',JSON.stringify(this.selectedGood))
+      // this.selectedGood=this.buyerGood[0]
+      // this.selectedGood["_id"]=(Math.random()*10000000).toString(16).substr(0,4)+'-'+(new Date()).getTime()+'-'+Math.random().toString().substr(2,5);
+      this.selectedGood=JSON.parse(sessionStorage.getItem('buyerSelectGood'))
+      // sessionStorage.setItem('buyerSelectGood',JSON.stringify(this.selectedGood))
+      console.log(22222222222,this.selectedGood);
     },
     methods: {
       goBack: function () {
@@ -81,11 +83,17 @@
         console.log(event.target);
 
       },
+      settlement:function(){
+        this.generateOrder()
+        this.$router.push({
+          name:"Car2"
+        })
+      },
       generateOrder:function () {
-        let vm=this
+        let vm=this;
         let sellerSelectGood=sessionStorage.getItem('sellerSelectGood')
         let buyerSelectGood=sessionStorage.getItem('buyerSelectGood')
-        buyerSelectGood=JSON.parse(buyerSelectGood)
+        buyerSelectGood=JSON.parse(buyerSelectGood);
         buyerSelectGood["user_id"]=sessionStorage.getItem('currentUserId')
         axios({
           method:'post',
@@ -108,9 +116,7 @@
             console.log('请求失败',err);
           })
       },
-      selectGood:function (e) {
 
-      }
 
     },
 

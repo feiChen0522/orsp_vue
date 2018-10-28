@@ -26,7 +26,7 @@
             <td v-text="i.buyerSelectGood.selectAddressByUser.provice_id+'        '+i.buyerSelectGood.selectAddressByUser.city_id"></td>
             <td v-text="i.generateTime"></td>
             <td v-text="formatStatus(i.buyerSelectGood.guarantyStatus)"></td>
-            <td><a >查看</a>|<a >删除</a></td>
+            <td><a @click="deleteOrder(i.id)">删除</a></td>
           </tr>
           </tbody>
         </table>
@@ -84,6 +84,22 @@
 
        }
 
+     },
+     deleteOrder:function (id) {
+       axios({
+         method:'post',
+         url:'http://127.0.0.1:8000/resource/deletemyorder/',
+         data:{
+           "user_id":sessionStorage.getItem('currentUserId'),
+           "id":id
+         }
+       })
+         .then(function (rsp) {
+           window.location.reload()
+         })
+         .catch(function (err) {
+           console.log('请求失败',err);
+         })
      }
    }
 

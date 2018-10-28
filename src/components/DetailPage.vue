@@ -153,7 +153,8 @@
           'http://img1.imgtn.bdimg.com/it/u=2140439025,1380868768&fm=200&gp=0.jpg'
         ],
         imgIndex: 0,
-        isCollect:false
+        isCollect:false,
+
       }
     },
     created:function(){
