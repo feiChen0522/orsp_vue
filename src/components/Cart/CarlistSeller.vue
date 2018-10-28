@@ -69,8 +69,10 @@
       this.goods['address'] = sessionStorage.getItem('address')
       this.goods['img'] = sessionStorage.getItem('img')
       this.goods['Stock'] = sessionStorage.getItem('Stock')
-      this.goods['_id'] = sessionStorage.getItem('_id')
-      this.goods['belong_to'] = sessionStorage.getItem('belong_to')
+      let _id=sessionStorage.getItem('_id')
+      this.goods['_id'] =_id?_id:(Math.random()*10000000).toString(16).substr(0,4)+'-'+(new Date()).getTime()+'-'+Math.random().toString().substr(2,5);
+      console.log(_id)
+        this.goods['belong_to'] = sessionStorage.getItem('belong_to')
       this.goods['belong_name'] = sessionStorage.getItem('belong_name')
       this.goods['change'] = sessionStorage.getItem('change')
       this.goods['payNum'] = sessionStorage.getItem('payNum')

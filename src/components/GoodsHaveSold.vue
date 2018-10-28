@@ -21,21 +21,22 @@
         <div class="number">数量</div>
         <div class="current_status">状态</div>
       </div>
-      <div class="dongtai_goods">
+      <div class="dongtai_goods" v-for="i in all_order">
         <div class="info">
-          <span>订单号：<i>11003526</i></span>
-          <span>下单时间：<i>1990-01-01 00:00:00</i></span>
+          <span>订单号：<i>{{i.id}}</i></span>
+          <span>下单时间：<i>{{i.generateTime}}</i></span>
           <span>订单完成时间：<i>2018-10-19 22:22:22</i></span>
         </div>
         <div class="change_goods">
           <div class="good_img">
-            <div class="good_img_div"></div>
-            <!--<img src="images/cf/2018090400.png" alt="">-->
+            <div class="good_img_div">
+              <img :src="i.sellerSelectGood.img" alt="">
+            </div>
           </div>
           <div class="good_seller">卖家</div>
-          <div class="good_specification">新科(Shinco) DVP-311A型 DVD播放机</div>
-          <div class="good_price">300.00</div>
-          <div class="good_number">1</div>
+          <div class="good_specification">{{i.sellerSelectGood.title}}</div>
+          <div class="good_price">{{i.sellerSelectGood.price}}</div>
+          <div class="good_number">{{i.sellerSelectGood.pnum}}</div>
           <div class="good_current_status">交易成功</div>
         </div>
       </div>
@@ -48,8 +49,27 @@ export default {
   name: 'GoodsHaveSold',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      all_order:[]
     }
+  },
+  created:function () {
+    let vm=this
+    axios({
+      url:"http://127.0.0.1:8000/resource/showbuy/",
+      data:{
+        "user_id":sessionStorage.getItem('currentUserId')
+      },
+      method:"post"
+    })
+      .then(function (res) {
+        console.log(res.data)
+        vm.all_order=res.data
+
+      })
+      .catch(function (error) {
+        console.log(error)
+
+      })
   }
 }
 </script>
@@ -134,10 +154,14 @@ export default {
   .change_goods .good_img .good_img_div{
     width: 100px;
     height: 99px;
-    background-image: url("../assets/images/1538788453189.jpg");
     background-size: cover;
     position: relative;
     left: 35%;
+  }
+  .change_goods .good_img .good_img_div img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
   }
   .change_goods .good_current_status{
     color: #D30000;

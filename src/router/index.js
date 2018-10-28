@@ -6,7 +6,7 @@ import DetailPage from '@/components/DetailPage'
 import Detail from '@/components/Detail'
 import Order from '@/components/Order'
 import Address from '@/components/Address'
-import AddAddress from '@/components/AddAddress'
+import NewCar from '@/components/NewCar'
 
 import Release from '@/components/Release'
 import Agreement from '@/components/Agreement'
@@ -59,6 +59,11 @@ export default new Router({
       path: '/',
       name: 'Index',
       component: Index,
+    },
+    {
+      path: '/newcar',
+      name: 'NewCar',
+      component: NewCar,
     },
     {
       path: '/login',

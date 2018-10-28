@@ -94,7 +94,29 @@ export default {
       })
         .then(function (res) {
           localStorage.setItem('token',res.headers.token)
-          window.location.reload()
+          // console.log(localStorage.getItem('token'));
+          axios({
+            method:'post',
+            url:'http://127.0.0.1:8000/user/judgetoken/',
+            headers:{'token':localStorage.getItem('token')},
+          })
+            .then(function (rsp) {
+              console.log("++++++++++++++++login++++++++++")
+              console.log(rsp.data)
+              sessionStorage.setItem('currentUserId',rsp.data.id)
+              window.location.reload()
+
+              // setInterval(function () {
+              //   if(parseInt(vm.second)===1){
+              //     //  ?????????????????在这里放跳转主页
+              //     window.location.reload()
+              //   }
+              //   vm.second-=1
+              // },1000)
+            })
+            .catch(function (err) {
+              console.log('请求失败',err);
+            })
           //控制台打印请求成功时返回的数据
           //bind(this)可以不用
         }.bind(this))
