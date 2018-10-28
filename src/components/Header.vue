@@ -114,8 +114,8 @@ export default {
     });
 
     if (localStorage.getItem('token')!=null) {
-      var token=localStorage.getItem('token')
-      let vm=this
+      var token=localStorage.getItem('token');
+      let vm=this;
       axios({
         method:'post',
         url:'http://127.0.0.1:8000/user/judgetoken/',
@@ -125,21 +125,17 @@ export default {
       })
         .then(function (res) {
           if (res.data.hasOwnProperty('user_name')){
-            vm.LoginStatus="欢迎"+res.data.user_name
-            vm.RegistStatus="退出"
+            vm.LoginStatus="欢迎"+res.data.user_name;
+            vm.RegistStatus="退出";
             next();
           } else {
             alert("登录失败")
           }
           //控
-
         })
         .catch(function (err) {
 
         })
-
-
-
     }
   },
   methods:{

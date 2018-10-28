@@ -157,7 +157,6 @@
         vm.userinfo.name=vm.list.user_name;
         vm.userinfo.telephone=vm.list.telephone;
         vm.userinfo.password=vm.list.password;
-
         vm.userinfo.sex=vm.list.sex;
         vm.userinfo.integral=vm.list.integral;
         vm.userinfo.level=vm.list.level;
