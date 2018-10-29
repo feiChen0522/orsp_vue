@@ -27,6 +27,15 @@
                 <a href="" v-else v-text="password_tip"></a>
 
               </div>
+
+              <div class="col-lg-12 sms-verification">
+                <input type="text" v-model="sms_text">
+                <span @click="sendVerificationCode">获取短信验证码</span>
+              </div>
+              <div class="col-lg-12 check-txt" >
+                <a v-if="isVerification">请输入正确的验证码</a>
+
+              </div>
               <div class="col-lg-12 r-login-div">
                 <div class="btn btn-success" @click="regist">注册</div>
               </div>
@@ -78,7 +87,9 @@ export default {
       url:"http://127.0.0.1:8000/user/regist/",
       tel_flag:false,
       regist_success:false,
-      second:5
+      second:5,
+      sms_text:"",
+      isVerification:false
     }
   },
   created:function(){
@@ -150,49 +161,75 @@ export default {
             if (res.data.code=="208"){
               vm.telephone_tip="手机号已被注册,请直接登录";
             }else if (res.data.code=="408"){
-              axios.post(vm.url,
-                {'telephone': vm.telephone, 'password': vm.password,'user_name':vm.username
-                },{
-                  // headers: {
-                  //   'Content-Type': 'application/json',
-                  // }
+              axios.post('http://127.0.0.1:8000/user/yezheng/',
+                {'phone': vm.telephone,
+                  'yecode':vm.sms_text
                 })
                 .then(function (res) {
-                  let token=res.headers.token
-                  localStorage.setItem('token',token);
-                  vm.regist_success=true;
-                  console.log("++++++++++++++++++++++++++")
-                  axios({
-                    method:'post',
-                    url:'http://127.0.0.1:8000/user/judgetoken/',
-                    headers:{'token':token},
-                  })
-                    .then(function (rsp) {
-                      console.log("++++++++++++++++11111regist++++++++++")
-                      console.log(rsp.data)
-                      sessionStorage.setItem('currentUserId',rsp.data.id)
-                      setInterval(function () {
-                        if(parseInt(vm.second)===1){
-                          //  ?????????????????在这里放跳转主页
-                          window.location.reload()
-                        }
-                        vm.second-=1
-                      },1000)
-                    })
-                    .catch(function (err) {
-                      console.log('请求失败',err);
-                    })
+                  console.log(res);
+                  if (res.data.code=="200"){
+                    axios.post(vm.url,
+                      {'telephone': vm.telephone, 'password': vm.password,'user_name':vm.username
+                      },{
+                        // headers: {
+                        //   'Content-Type': 'application/json',
+                        // }
+                      })
+                      .then(function (res) {
+                        let token=res.headers.token
+                        localStorage.setItem('token',token);
+                        vm.regist_success=true;
+                        console.log("++++++++++++++++++++++++++")
+                        axios({
+                          method:'post',
+                          url:'http://127.0.0.1:8000/user/judgetoken/',
+                          headers:{'token':token},
+                        })
+                          .then(function (rsp) {
+                            console.log("++++++++++++++++11111regist++++++++++")
+                            console.log(rsp.data)
+                            sessionStorage.setItem('currentUserId',rsp.data.id)
+                            setInterval(function () {
+                              if(parseInt(vm.second)===1){
+                                //  ?????????????????在这里放跳转主页
+                                window.location.reload()
+                              }
+                              vm.second-=1
+                            },1000)
+                          })
+                          .catch(function (err) {
+                            console.log('请求失败',err);
+                          })
 
+                        //控制台打印请求成功时返回的数据
+                        //bind(this)可以不用
+                      }.bind(this))
+                      .catch(function (err) {
+                        if (err.response) {
+                          console.log(err.response)
+                          //控制台打印错误返回的内容
+                        }
+                        //bind(this)可以不用
+                      }.bind(this))
+                  } else {
+                    vm.isVerification=true
+                  }
+                  // console.log(res.headers);
+                  // sessionStorage.setItem('token',res.headers.token)
                   //控制台打印请求成功时返回的数据
                   //bind(this)可以不用
                 }.bind(this))
                 .catch(function (err) {
                   if (err.response) {
-                    console.log(err.response)
                     //控制台打印错误返回的内容
                   }
                   //bind(this)可以不用
                 }.bind(this))
+
+
+
+
+
             }
             // console.log(res.headers);
             // sessionStorage.setItem('token',res.headers.token)
@@ -207,6 +244,25 @@ export default {
           }.bind(this))
 
       }
+    },
+    sendVerificationCode:function () {
+      let vm=this
+      axios.post('http://127.0.0.1:8000/user/sendverificationcode/',
+        {'phone': vm.telephone
+        })
+        .then(function (res) {
+          console.log(res);
+          // console.log(res.headers);
+          // sessionStorage.setItem('token',res.headers.token)
+          //控制台打印请求成功时返回的数据
+          //bind(this)可以不用
+        }.bind(this))
+        .catch(function (err) {
+          if (err.response) {
+            //控制台打印错误返回的内容
+          }
+          //bind(this)可以不用
+        }.bind(this))
     }
   },
   computed:{
@@ -393,6 +449,22 @@ export default {
   .regist-success{
     height: 200px;
     line-height: 200px;
+  }
+  .sms-verification>input{
+    height: 42px;
+    width: 150px;
+    border: 1px solid #9d9d9d85;
+    margin-right: 30px;
+  }
+  .sms-verification>span{
+    width: 120px;
+    height: 42px;
+    background-color: #f7f7f7;
+    cursor: pointer;
+    display: inline-block;
+    line-height: 42px;
+    border: 1px solid #9d9d9d85;
+    color: #999999;
   }
 
 </style>
