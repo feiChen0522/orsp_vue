@@ -1,74 +1,118 @@
 <template>
-  <div class="shoppingcar">
-    <div class="shopcontent">
-      <div class="box" >
-        <!-- 购物车内容开始-->
-        <div class="box1">
-          <div class="carstyle">
-            <div class="cartitle">
-              <span class="name">商品信息</span>
-              <span class="operation">操作</span>
-              <span>上架日期</span>
-              <span class="num">数量</span>
-              <span class="pricel">单价</span>
-            </div>
-
-          </div>
-          <div class="cart-table" v-if="false">
-            <div class="cart-group divide pr">
-              <div class="cart-items clearfix">
-                <!--图片-->
-                <div class="items-thumb fl">
-                  <img><a></a>
-                </div>
-                <!--信息-->
-                <div class="name hide-row fl">
-                  <div class="name-table">
-                    <a><p>xiuxia</p></a>
-                  </div>
-                </div>
-                <!--价格-->
-                <div class="Cleft Cbtn" style="display: inline-block"><p>¥1</p></div>
-                <!--价格-->
-                <div class="Cbtn">
-                  <p>
-                    <input type="button" value="-" @click="numOperation(0)">
-                    <input type="text" readonly v-model="goodNum" style="width: 30px">
-                    <input type="button" value="+" @click="numOperation(1)">
-                  </p>
-                </div>
-                <div class="Cbtn"><p>2018-07-09</p></div>
-                <!--删除按钮-->
-                <div class="Cdel">
-                  <p class="items-delete-btn"></p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div style="padding:50px" v-if="true">
-            <div class="cart-e">
-            </div>
-            <p style="text-align: center;padding: 20px;color: #8d8d8d">你的购物车空空如也</p>
-            <div style="text-align: center">
-              <router-link to="/">
-                <button text="现在选购" style="width: 150px;height: 40px;line-height: 38px;color: #8d8d8d">马上选购</button>
-              </router-link>
-            </div>
-
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-10">
+        <div class="col-md-12">
+          <div class="col-md-2 b">
+            <a><img src="../assets/logo.png" alt="ORSP" class="c"></a></div>
+          <div class="col-md-8 hidden-xs hidden-sm img01 d">
+            <ul>
+              <li class="cur">1.我的购物车</li>
+              <li>2.填写核对订单信息</li>
+              <li>3.成功提交订单</li>
+            </ul>
           </div>
         </div>
+        <div class="col-md-12">
+          <div class="col-md-8 mycart hidden-xs hidden-sm"><h2 class="f1"><span>我的购物车</span></h2></div>
+          <div class="col-md-4"><h2><span></span></h2></div>
+          <div class="shoppingcar">
+            <div class="shopcontent">
+              <div class="box" >
+                <!-- 购物车内容开始-->
+                <div class="box1">
+                  <div class="carstyle">
+                    <div class="cartitle">
+                      <span class="name">商品信息</span>
+                      <span class="operation">操作</span>
+                      <span>上架日期</span>
+                      <span class="num">数量</span>
+                      <span class="pricel">单价</span>
+                    </div>
 
-        <div class="cart-bottom-bg fix-bottom" v-if="false">
-          <div class="shipping-box">
-            <div><h4 style="border-right: 1px solid  #e1e1e1;
+                  </div>
+                  <div class="cart-table" v-if="false">
+                    <div class="cart-group divide pr">
+                      <div class="cart-items clearfix">
+                        <!--图片-->
+                        <div class="items-thumb fl">
+                          <img><a></a>
+                        </div>
+                        <!--信息-->
+                        <div class="name hide-row fl">
+                          <div class="name-table">
+                            <a><p>xiuxia</p></a>
+                          </div>
+                        </div>
+                        <!--价格-->
+                        <div class="Cleft Cbtn" style="display: inline-block"><p>¥1</p></div>
+                        <!--价格-->
+                        <div class="Cbtn">
+                          <p>
+                            <input type="button" value="-" @click="numOperation(0)">
+                            <input type="text" readonly v-model="goodNum" style="width: 30px">
+                            <input type="button" value="+" @click="numOperation(1)">
+                          </p>
+                        </div>
+                        <div class="Cbtn"><p>2018-07-09</p></div>
+                        <!--删除按钮-->
+                        <div class="Cdel">
+                          <p class="items-delete-btn"></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="padding:50px" v-if="true">
+                    <div class="cart-e">
+                    </div>
+                    <p style="text-align: center;padding: 20px;color: #8d8d8d">你的购物车空空如也</p>
+                    <div style="text-align: center">
+                      <router-link to="/">
+                        <button text="现在选购" style="width: 150px;height: 40px;line-height: 38px;color: #8d8d8d">马上选购</button>
+                      </router-link>
+                    </div>
+
+                  </div>
+                </div>
+
+                <div class="cart-bottom-bg fix-bottom" v-if="false">
+                  <div class="shipping-box">
+                    <div><h4 style="border-right: 1px solid  #e1e1e1;
       padding: 0 20px;margin-right: 20px">已选择 <i>2</i> 件商品</h4></div>
-            <div><h4>总额：<span>￥2</span></h4></div>
+                    <div><h4>总额：<span>￥2</span></h4></div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="col-md-12 d01"><span class="glyphicon glyphicon-sort " aria-hidden="true"></span></div>
+          <div class="col-md-12 e">
+            <div class="col-md-3"><h4><span>请添加你将交换的物品:</span></h4></div>
+            <div class="col-md-5 order" >我提交的商品 <span style="position: relative;top: 2px;" :class="[{'glyphicon glyphicon-chevron-right':!isActiveDown},{'glyphicon glyphicon-arrow-down':isActiveDown}]" @click="isActiveDown=!isActiveDown"></span></div>
+
+            <ul class="col-md-3" style="position: absolute;left:300px;top: 30px;z-index: 2;" v-show="isActiveDown">
+              <li  style="background-color: #eeeeeefa" class="order mySelectGood" v-for="(item,index) in buyerGood" v-text="item.name" :data-id="index" @click="showGood(index,$event)"></li>
+            </ul>
+
+          </div>
+          <car-list :good="selectedGood"></car-list>
+          <div class="col-md-12 cart_btn">
+            <div class="col-md-8"></div>
+            <div class="col-md-3">
+              <a href="" class="delgoods" @click="goBack">放弃商品</a>
+            </div>
+            <div class="col-md-1">
+              <a   class="checkout" @click="generateOrder" style="cursor: pointer">结 算</a>
+            </div>
           </div>
         </div>
       </div>
-
     </div>
   </div>
+
 </template>
 
 <script>
@@ -87,9 +131,36 @@
         //库存
         cateNum: 10,
         totalPrice: 0.00,
+        id:18
 
       }
     },
+    created:function(){
+      let vm=this
+      let url="http://127.0.0.1:8000/user/getcart/"
+      axios({
+        method: 'post',
+        url: url,
+        data:{
+          "type":"2",
+          "id":sessionStorage.getItem('currentUserId')
+        }
+
+      })
+        .then(function (rsp) {
+          if (rsp.data==0){
+            alert("购物车为空")
+          }
+          else {
+            res=(rsp.data==0)
+          }
+        })
+        .catch(function (err) {
+          console.log('请求失败', err);
+        })
+
+    },
+
     mounted: function () {
       // this.goods=this.$route.params
       this.goods = JSON.parse(sessionStorage.getItem('buyerSelectGood'))

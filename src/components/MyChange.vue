@@ -1,5 +1,6 @@
 <template>
-  <div class="container-fluid">
+  <div>
+    <div class="container-fluid" v-if="!flag">
     <div class="row">
       <div class="col-md-1"></div>
       <div class="col-md-10">
@@ -43,6 +44,10 @@
       </div>
     </div>
   </div>
+    <div class="sty1" style="padding:50px" v-if="flag">
+      <p style="text-align: center;padding: 20px;color: #8d8d8d">你还没有任何请求交换商品的订单，请添加后查看</p>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -50,6 +55,7 @@
     name: "MyChange",
     data() {
       return {
+        flag:true  ,
         allOrder:[]
       }
 
@@ -66,7 +72,10 @@
       })
         .then(function (res) {
           console.log(res)
-          vm.allOrder=res.data
+          if ((res.data).length){
+            vm.allOrder=res.data
+            vm.flag=!this.flag
+          }
 
         })
         .catch(function (error) {
@@ -154,4 +163,12 @@
 a{
   cursor: pointer;
 }
+  .sty1 {
+    width: 1038px;
+    height: 200px;
+    border: 0.5px solid gray;
+    position: absolute;
+    top:100px;
+    left: 250px;
+  }
 </style>

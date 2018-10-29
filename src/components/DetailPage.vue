@@ -95,10 +95,6 @@
 
         <div class="col-md-12 f3"><span>查看卖家芝麻信用</span></div>
 
-        <div class="col-md-12 f4">
-          <div class="col-md-5"><span class="c1">|</span><a href="#" style="background-color: #3b49ff">我的发布</a></div>
-          <div class="col-md-7"><a href="#" class="c2">点击查看详细信息></a></div>
-        </div>
         <div class="col-md-12 f5" style="margin-bottom: 50px">
           <div class="col-md-6 f7">
             <ul>
@@ -120,13 +116,12 @@
         </div>
         <div class="h">
           <li style="font-size: 16px">
-            颜色:黑色 | 容量:256G | 购买渠道:其他版本
-            美版有锁苹果7 plus ，ID已注销
-            全原装 无任何问题
-            卡贴解锁移动联通4G
-            无需卡贴 插卡即用
+            宝贝全新无划痕，
+            买来本打算送人，
+            后来出了点事，
+            打消念头，
             一口价不仪价。
-            深圳可面交
+            本地可面交
           </li>
         </div>
         <div><img src="../assets/background_1.jpeg" class="img3"></div>
@@ -148,9 +143,9 @@
         goods: {},
         imgsrc: '',
         goodsImg: [
-          'http://img2.imgtn.bdimg.com/it/u=630421180,2082636382&fm=200&gp=0.jpg',
-          'http://img1.imgtn.bdimg.com/it/u=2140439025,1380868768&fm=200&gp=0.jpg',
-          'http://img1.imgtn.bdimg.com/it/u=2140439025,1380868768&fm=200&gp=0.jpg'
+          'https://img.alicdn.com/bao/uploaded/i1/397341302/O1CN011LUM9EBWyrsBiv2_!!0-item_pic.jpg',
+          'https://img.alicdn.com/bao/uploaded/i1/397341302/O1CN011LUM9EBXFefmV2E_!!0-item_pic.jpg',
+          'https://img.alicdn.com/bao/uploaded/i2/408107205/O1CN01235w7SjplyWdCh3_!!0-item_pic.jpg'
         ],
         imgIndex: 0,
         isCollect:false,
@@ -377,7 +372,7 @@
     border: 1px solid #2bd9a4;
     height: 38px;
     margin-top: 20px;
-    margin-left: 30px;
+    margin-left: 40px;
     background: url("../assets/images/zhima.png") no-repeat 7px 9px;
     background-color: #ecfffa;
     text-align: center;
