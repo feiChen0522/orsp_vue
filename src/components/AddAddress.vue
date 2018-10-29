@@ -137,12 +137,12 @@ export default {
         data:ins_data
       })
         .then(function (res) {
-          console.log(res)
+          console.log(res);
           if (res.data.code==="287"){
-            alert("添加地址成功")
+            alert("添加地址成功");
             window.location.reload()
           } else {
-            alert("添加地址失败")
+            alert("添加地址失败");
           }
         })
         .catch(function (error) {

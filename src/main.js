@@ -35,7 +35,11 @@ import Search from './components/test/Search'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 //导入购物车
 import Car1 from './components/Car1'
+import ORSPDownload from './components/ORSPDownload'
 import ORSPDownloadRight from './components/ORSPDownloadRight'
+import ORSPDownloadHeader from './components/ORSPDownloadHeader'
+import ORSPDownloadMain from './components/ORSPDownloadMain'
+import ORSPDownloadCenter from './components/ORSPDownloadCenter'
 
 Vue.config.productionTip = false;
 
@@ -76,10 +80,11 @@ Vue.component('Car1-div', Car1);
 Vue.component('notice', Notice);
 Vue.component('classify-search', Search);
 //ORSP下载页面
+Vue.component('orspdownload-main', ORSPDownloadMain);
+Vue.component('orspdownload-header', ORSPDownloadHeader);
+Vue.component('orspdownload', ORSPDownload);
+Vue.component('orspdownload-center', ORSPDownloadCenter);
 Vue.component('orspdownload-right', ORSPDownloadRight);
-
-
-
 
 
 new Vue({

@@ -32,7 +32,6 @@
             <div class="modal-body" >
               <upload-usericon :telephone="userinfo.telephone" @getFilename="getfilename"></upload-usericon>
             </div>
-
           </div>
       </div>
     </div>
@@ -51,7 +50,7 @@
             <p class="personal-name">亲耐的<span class="name" v-text="userinfo.name"></span>,上传一张头像吧</p>
             <div class="personal-logo">
               <!--src="../assets/images/avatar_89373029_1496285287409.jpg"-->
-              <img :src="userinfo.icon" alt="" class="image" data-toggle="modal" data-target="#usericon">
+              <img :src="icon" alt="" class="image" data-toggle="modal" data-target="#usericon">
               <input type="file" class="file" data-toggle="modal" data-target="#usericon" v-on:click.prevent="onClick">
             </div>
             <div class="txt_touxiang" @click="uploadUsericon" data-toggle="modal" data-target="#usericon">编辑头像</div>
@@ -129,6 +128,7 @@
       list:{},
       isDisplay:false,
       password:'******',
+      icon:'',
       userinfo:{
         name:'',
         telephone:'',
@@ -170,10 +170,11 @@
         }
         // vm.userinfo.icon=vm.list.icon;
         if(vm.list.icon){
-          vm.userinfo.icon="http://127.0.0.1:8000/media/pic/"+vm.list.icon;
+          vm.userinfo.icon=vm.list.icon;
+          vm.icon="http://127.0.0.1:8000/media/pic/"+vm.list.icon;
         }
         else{
-          vm.userinfo.icon=vm.defaulturl;
+          vm.icon=vm.defaulturl;
         }
       })
       .catch(function (err) {

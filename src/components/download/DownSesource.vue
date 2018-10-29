@@ -41,9 +41,8 @@
         axios.post('http://localhost:8000/file/checkdownloadfile', {'upuserid': this.upuserid, 'myid': this.myid})
           .then(function (response) {
             if (response.data['code'] == 214) {
-              alert('开始下载')
+              alert('开始下载');
               vm.download();
-
             } else {
               alert('积分不足')
             }
