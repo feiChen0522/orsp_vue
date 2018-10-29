@@ -213,10 +213,9 @@
       },
     //  判断是否登录
       isLogin(){
-        let that=this
+        let that=this;
         if (localStorage.getItem('token')!=null){
-          let token=localStorage.getItem('token')
-
+          let token=localStorage.getItem('token');
           axios({
             method:'post',
             url:'http://127.0.0.1:8000/user/judgetoken/',
@@ -246,9 +245,8 @@
             .catch(function (err) {
               console.log('请求失败',err);
             })
-
         } else {
-          Login.$emit('HaveLogin',"你还没有登录")
+          Login.$emit('HaveLogin',"你还没有登录");
         }
       },
       collect:function () {

@@ -1,118 +1,7 @@
 <template>
-  <div class="big">
-    <!--下载页面header-->
-    <nav class="navbar navbar-default" style="background-color: #EAEBEC;height: 30px">
-      <div class="container">
-        <ul class="nav navbar-nav">
-          <li class="active"></li>
-          <li><a href="#">下载首页 <span class="sr-only">(current)</span></a></li>
-          <li><a href="#">排行榜</a></li>
-          <li><a href="#">我的资源</a></li>
-          <li><a href="#">上传资源赚积分</a></li>
-          <li><a href="#">已下载</a></li>
-          <li><a href="#">我的收藏</a></li>
-        </ul>
-        <form class="navbar-form navbar-right">
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="请输入关键字">
-          </div>
-          <button type="submit" class="btn btn-default">搜索</button>
-        </form>
-      </div>
-    </nav>
-    <div class="container" style="padding: 0">
-      <div class="center">
-        <!--下载页面中间标签分类-->
-        <div class="download_l" >
-          <!--技术领域-->
-          <!--@click="getTwoTechnicalField"-->
-          <dl >
-            <dt>技术领域:</dt>
-            <dd>
-              <ul @click="getTwoTechnicalField($event)" id="ul1">
-                <li><a href="#" id="0">全部</a><div class="img"></div></li>
-                <li v-for="i of technicalField.slice(0,9)">
-                  <a href="#" v-text="i.name" :id="i.id" class="a"></a><div class="img"></div>
-                </li>
-              </ul>
-              <div class="twofield" id="twofield1">
-                <li v-for="i of twoTechnicalField"><a href="#" v-text="i.name" :id="i.id"></a></li>
-              </div>
-              <ul @click="getTwoTechnicalField($event)" id="ul2">
-                <li v-for="i of technicalField.slice(9)">
-                  <a href="#" v-text="i.name" :id="i.id" class="a"></a><div class="img"></div>
-                </li>
-              </ul>
-              <div class="twofield" id="twofield2">
-                <li v-for="i of twoTechnicalField"><a href="#" v-text="i.name" :id="i.id"></a></li>
-              </div>
-            </dd>
-          </dl>
-          <!--资源类型-->
-          <dl>
-            <dt class="border-div">资源类型:</dt>
-            <dd>
-              <ul>
-                <li><a href="#">全部</a></li>
-                <li v-for="i of resourceType"><a href="#" v-text="i.name" :id="i.id">全部</a></li>
-              </ul>
-            </dd>
-          </dl>
-        </div>
-        <!--资源显示层-->
-        <div class="con-2">
-          <!--代码资源、最新上传-->
-          <nav class="navbar navbar-default" style="border-radius: 0; margin-bottom: 0">
-            <div class="container" style="padding-left: 0;padding-right: 0; width: 850px;">
-              <ul class="nav navbar-nav">
-                <li class="active"><a href="#">代码资源 <span class="sr-only">(current)</span></a></li>
-                <li><a href="#">最新上传</a></li>
-              </ul>
-            </div>
-          </nav>
-          <!--动态的渲染出资源-->
-          <div class="res-father">
-            <!--循环开始-->
-            <!--1-->
-            <div class="res-model" v-for="i in files">
-              <div class="img-div">
-                <img src="../assets/download/xlsx.png" alt="">
-              </div>
-              <div class="describe">
-                <p v-text="i.describe"></p>
-                <p>
-                  <span class="sp1">上传者：</span><span v-text="i.upload_user"></span>
-                  <span class="sp1">上传时间：</span><span v-text="i.upload_time"></span>
-
-                  <span class="glyphicon glyphicon-download-alt" style="float: right;margin-right: -10px" :data-name="i.name" @click="download(i.name)"></span>
-
-                  <span class="sp1">积分/O币：</span><span v-text="i.need_integral"></span>
-                </p>
-              </div>
-            </div>
-            <!--2-->
-            <!--<div class="res-model">-->
-            <!--<div class="img-div">-->
-            <!--<img src="../assets/download/zip.png" alt="">-->
-            <!--</div>-->
-            <!--<div class="describe">-->
-            <!--<p>云资源物理机代码</p>-->
-            <!--<p>-->
-            <!--<span class="sp1">上传者：</span><span v-text="upload_user"></span>-->
-            <!--<span class="sp1">上传时间：</span><span v-text="upload_time"></span>-->
-            <!--<span class="sp1">积分/O币：</span><span v-text="need_integral"></span>-->
-            <!--</p>-->
-            <!--</div>-->
-            <!--</div>-->
-            <!--</div>-->
-          </div>
-        </div>
-      </div>
-      <div class="right">
-        <orspdownload-right></orspdownload-right>
-      </div>
-    </div>
-
+  <div class="container" style="padding: 0">
+    <orspdownload-center></orspdownload-center>
+    <orspdownload-right></orspdownload-right>
   </div>
 </template>
 
@@ -266,156 +155,151 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  dl,dd,dt,dl,li{
-    padding: 0;
-    margin: 0;
-  }
-  .big{
-    width: 100%;
-    min-height: 600px;
-    background-color: #F7F8F9;
-  }
-  .download_l{
-    width: 850px;
-    padding: 10px 0 0 0;
-    background-color: white;
-  }
-  .download_l dl{
-    overflow: hidden;
-    padding-bottom: 20px;
-  }
-  .download_l dl:nth-child(1){
-    border-bottom: dashed 1px #e6e6e6;
-  }
-  .download_l dl dt{
-    width: 78px;
-    display: block;
-    position: relative;
-    text-align: right;
-    top: 26px;
-    color: #999;
-    font-size: 14px;
-    font-weight: 400;
-  }
-  .download_l dl dd{
-    margin-left: 80px;
-    display: block;
-    width: 720px;
-  }
-  .download_l dd ul{
-    line-height: 1.5;
-    padding: 5px 10px;
-    min-height: 30px;
-    /*background-color: #3b49ff;*/
-  }
-  .download_l dd .twofield{
-    background-color: #F7F8F9;
-    padding: 10px 0;
-    margin-left: 15px;
-    width: 650px;
-    min-height: 50px;
-    line-height: 30px;
-    text-align: left;
-    display: none;
-  }
-  .download_l dd .twofield li{
-    list-style: none;
-    display: inline-block;
-    padding: 0;
-  }
-  .download_l dd .twofield a{
-    margin-left: 20px;
-  }
-  .download_l dd ul,.download_l dd ul li{
-    list-style: none;
-  }
-  .download_l dd ul li{
-    float: left;
-    margin: 0 8px 8px;
-  }
-  .download_l dd ul li a{
-    text-decoration: none;
-    cursor: pointer;
-    color: black;
-  }
-  .download_l dd ul li div{
-    background-image: url("../assets/images/triangle.jpg");
-    width: 10px;
-    height: 6px;
-    position: relative;
-    top: 9px;
-    opacity: 0;
-    left: 45%;
-  }
-  .container .con-2{
-    width: 850px;
-    margin-top:20px;
-  }
-  .container .con-2 .res-model{
-    width: 100%;
-    height: 65px;
-    padding: 8px 19px;
-    background-color: #ffffff;
-    border-bottom: dashed 1px #e6e6e6;
-  }
-  .container .con-2 .res-model .img-div{
-    width: 45px;
-    height: 48px;
-    cursor: pointer;
-    float: left;
-  }
-  .container .con-2 .res-model .img-div img{
-    width: 42px;
-    height: 48px;
-  }
-  .container .con-2 .res-model .describe{
-    width: 750px;
-    height: 100%;
-    float: left;
-    margin-left: 10px;
-    cursor: pointer;
-  }
-  .container .con-2 .res-model .describe p{
-    text-align: left;
-    margin: 0;
-  }
-  .container .con-2 .res-model .describe p:nth-child(1){
-    padding-bottom: 6px;
-    font-size: 16px;
-    color: #333;
-    font-weight: 700;
-    width: 100%;
-  }
-  .container .con-2 .res-model .describe p:nth-child(2){
-    position: relative;
-  }
-  .container .con-2 .res-model .describe p:nth-child(2) span.sp1{
-    color: #999;
-    margin-left: 10px;
-  }
-  .container .con-2 .res-model .describe p:nth-child(2) span:nth-child(1){
-    margin-left: 0;
-  }
-  .container .con-2 .res-model .describe p:nth-child(2) span:nth-last-child(1){
-    color: #ff9358;
-    font-size: 32px;
-    line-height: 32px;
-    display: inline-block;
-    position: absolute;
-    top: -10px;
-    left: 720px;
-  }
-  .container .con-2 .res-model .describe p:nth-child(2) span:nth-last-child(2){
-    position: absolute;
-    left: 640px;
-  }
-  .big .right{
-    width: 300px;
-    min-height: 500px;
-    float: right;
-  }
-  .big .container .center{
-    float: left;
-  }
+  /*dl,dd,dt,dl,li{*/
+    /*padding: 0;*/
+    /*margin: 0;*/
+  /*}*/
+  /*.download_l{*/
+    /*width: 850px;*/
+    /*padding: 10px 0 0 0;*/
+    /*background-color: white;*/
+  /*}*/
+  /*.download_l dl{*/
+    /*overflow: hidden;*/
+    /*padding-bottom: 20px;*/
+  /*}*/
+  /*.download_l dl:nth-child(1){*/
+    /*border-bottom: dashed 1px #e6e6e6;*/
+  /*}*/
+  /*.download_l dl dt{*/
+    /*width: 78px;*/
+    /*display: block;*/
+    /*position: relative;*/
+    /*text-align: right;*/
+    /*top: 26px;*/
+    /*color: #999;*/
+    /*font-size: 14px;*/
+    /*font-weight: 400;*/
+  /*}*/
+  /*.download_l dl dd{*/
+    /*margin-left: 80px;*/
+    /*display: block;*/
+    /*width: 720px;*/
+  /*}*/
+  /*.download_l dd ul{*/
+    /*line-height: 1.5;*/
+    /*padding: 5px 10px;*/
+    /*min-height: 30px;*/
+    /*!*background-color: #3b49ff;*!*/
+  /*}*/
+  /*.download_l dd .twofield{*/
+    /*background-color: #F7F8F9;*/
+    /*padding: 10px 0;*/
+    /*margin-left: 15px;*/
+    /*width: 650px;*/
+    /*min-height: 50px;*/
+    /*line-height: 30px;*/
+    /*text-align: left;*/
+    /*display: none;*/
+  /*}*/
+  /*.download_l dd .twofield li{*/
+    /*list-style: none;*/
+    /*display: inline-block;*/
+    /*padding: 0;*/
+  /*}*/
+  /*.download_l dd .twofield a{*/
+    /*margin-left: 20px;*/
+  /*}*/
+  /*.download_l dd ul,.download_l dd ul li{*/
+    /*list-style: none;*/
+  /*}*/
+  /*.download_l dd ul li{*/
+    /*float: left;*/
+    /*margin: 0 8px 8px;*/
+  /*}*/
+  /*.download_l dd ul li a{*/
+    /*text-decoration: none;*/
+    /*cursor: pointer;*/
+    /*color: black;*/
+  /*}*/
+  /*.download_l dd ul li div{*/
+    /*background-image: url("../assets/images/triangle.jpg");*/
+    /*width: 10px;*/
+    /*height: 6px;*/
+    /*position: relative;*/
+    /*top: 9px;*/
+    /*opacity: 0;*/
+    /*left: 45%;*/
+  /*}*/
+  /*.container .con-2{*/
+    /*width: 850px;*/
+    /*margin-top:20px;*/
+  /*}*/
+  /*.container .con-2 .res-model{*/
+    /*width: 100%;*/
+    /*height: 65px;*/
+    /*padding: 8px 19px;*/
+    /*background-color: #ffffff;*/
+    /*border-bottom: dashed 1px #e6e6e6;*/
+  /*}*/
+  /*.container .con-2 .res-model .img-div{*/
+    /*width: 45px;*/
+    /*height: 48px;*/
+    /*cursor: pointer;*/
+    /*float: left;*/
+  /*}*/
+  /*.container .con-2 .res-model .img-div img{*/
+    /*width: 42px;*/
+    /*height: 48px;*/
+  /*}*/
+  /*.container .con-2 .res-model .describe{*/
+    /*width: 750px;*/
+    /*height: 100%;*/
+    /*float: left;*/
+    /*margin-left: 10px;*/
+    /*cursor: pointer;*/
+  /*}*/
+  /*.container .con-2 .res-model .describe p{*/
+    /*text-align: left;*/
+    /*margin: 0;*/
+  /*}*/
+  /*.container .con-2 .res-model .describe p:nth-child(1){*/
+    /*padding-bottom: 6px;*/
+    /*font-size: 16px;*/
+    /*color: #333;*/
+    /*font-weight: 700;*/
+    /*width: 100%;*/
+  /*}*/
+  /*.container .con-2 .res-model .describe p:nth-child(2){*/
+    /*position: relative;*/
+  /*}*/
+  /*.container .con-2 .res-model .describe p:nth-child(2) span.sp1{*/
+    /*color: #999;*/
+    /*margin-left: 10px;*/
+  /*}*/
+  /*.container .con-2 .res-model .describe p:nth-child(2) span:nth-child(1){*/
+    /*margin-left: 0;*/
+  /*}*/
+  /*.container .con-2 .res-model .describe p:nth-child(2) span:nth-last-child(1){*/
+    /*color: #ff9358;*/
+    /*font-size: 32px;*/
+    /*line-height: 32px;*/
+    /*display: inline-block;*/
+    /*position: absolute;*/
+    /*top: -10px;*/
+    /*left: 720px;*/
+  /*}*/
+  /*.container .con-2 .res-model .describe p:nth-child(2) span:nth-last-child(2){*/
+    /*position: absolute;*/
+    /*left: 640px;*/
+  /*}*/
+  /*.right{*/
+    /*width: 300px;*/
+    /*min-height: 500px;*/
+    /*float: right;*/
+  /*}*/
+  /*.container .center{*/
+    /*float: left;*/
+  /*}*/
 
 </style>

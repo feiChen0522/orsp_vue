@@ -5,7 +5,7 @@
           <li class="col-lg-2 col-md-2 col-sm-2 col-xs-2" @click="showTwoTitle"><a href="#">商品分类</a></li>
           <li class="col-lg-2 col-md-2 col-sm-2 col-xs-2"><a href="#">首页</a></li>
           <li class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-            <router-link tag="a" to="/orapdownload">orsp下载</router-link>
+            <router-link tag="a" to="/orspdownloadmain">orsp下载</router-link>
           </li>
           <li class="col-lg-2 col-md-2 col-sm-2 col-xs-2"><a href="#">精品推荐</a></li>
           <li class="col-lg-2 col-md-2 col-sm-2 col-xs-2"><router-link to="/release">上传物品</router-link></li>

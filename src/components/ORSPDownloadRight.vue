@@ -1,58 +1,58 @@
 <template>
-  <div>
-    <div class="top-txt"></div>
-    <div class="user_login_info">
-      <div class="user_login_img">
-        <div class="logo_img">
-          <img :src="userinfo.icon" alt="" class="image" data-toggle="modal" data-target="#usericon">
-          <input type="file" class="file" data-toggle="modal" data-target="#usericon" v-on:click.prevent="onClick">
-        </div>
-        <span v-if="!islogin" style="cursor: pointer">您好，请登录</span>
-        <div class="info" v-if="islogin">
-          <div class="name">Hi，<i v-text="userinfo.name"></i></div>
-          <div class="level">
-            <span class="level-sp1">等级:</span>
-            <span class="level-sp2" v-text="userinfo.level"></span>
-            <i class="level-i2" v-text="userinfo.integral"></i>
-            <i class="level-i1">下载积分：</i>
+  <div class="right">
+      <div class="top-txt"></div>
+      <div class="user_login_info">
+        <div class="user_login_img">
+          <div class="logo_img">
+            <img :src="userinfo.icon" alt="" class="image" data-toggle="modal" data-target="#usericon">
+            <!--<input type="file" class="file" data-toggle="modal" data-target="#usericon" v-on:click.prevent="onClick">-->
+          </div>
+          <span v-if="!islogin" style="cursor: pointer">您好，请登录</span>
+          <div class="info" v-if="islogin">
+            <div class="name">Hi，<i v-text="userinfo.name"></i></div>
+            <div class="level">
+              <span class="level-sp1">等级:</span>
+              <span class="level-sp2" v-text="userinfo.level"></span>
+              <i class="level-i2" v-text="userinfo.integral"></i>
+              <i class="level-i1">下载积分：</i>
+            </div>
           </div>
         </div>
+        <div class="user-upload">上传资源</div>
       </div>
-      <div class="user-upload">上传资源</div>
+      <div class=""></div>
+      <div class="recommend">
+        <div class="recommend-top">
+          <span class="line"></span>
+          <span class="top-sp">OR<i style="color: #333; font-style: normal">今日分享</i>SP</span>
+        </div>
+        <!--今日分享的条数暂定为5-->
+        <div class="recommend-center">
+          <ul>
+            <li>
+              <p class="p1">机器学习极简入门课</p>
+              <p class="p2"><i>作者/分享人：</i><i>飞哥哥哥</i></p>
+            </li>
+            <li>
+              <p class="p1">机器学习极简入门课</p>
+              <p class="p2"><i>作者/分享人：</i><i>飞哥哥哥</i></p>
+            </li>
+            <li>
+              <p class="p1">机器学习极简入门课</p>
+              <p class="p2"><i>作者/分享人：</i><i>飞哥哥哥</i></p>
+            </li>
+            <li>
+              <p class="p1">机器学习极简入门课</p>
+              <p class="p2"><i>作者/分享人：</i><i>飞哥哥哥</i></p>
+            </li>
+            <li>
+              <p class="p1">机器学习极简入门课</p>
+              <p class="p2"><i>作者/分享人：</i><i>飞哥哥哥</i></p>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
-    <div class=""></div>
-    <div class="recommend">
-      <div class="recommend-top">
-        <span class="line"></span>
-        <span class="top-sp">OR<i style="color: #333; font-style: normal">今日分享</i>SP</span>
-      </div>
-      <!--今日分享的条数暂定为5-->
-      <div class="recommend-center">
-        <ul>
-          <li>
-            <p class="p1">机器学习极简入门课</p>
-            <p class="p2"><i>作者/分享人：</i><i>飞哥哥哥</i></p>
-          </li>
-          <li>
-            <p class="p1">机器学习极简入门课</p>
-            <p class="p2"><i>作者/分享人：</i><i>飞哥哥哥</i></p>
-          </li>
-          <li>
-            <p class="p1">机器学习极简入门课</p>
-            <p class="p2"><i>作者/分享人：</i><i>飞哥哥哥</i></p>
-          </li>
-          <li>
-            <p class="p1">机器学习极简入门课</p>
-            <p class="p2"><i>作者/分享人：</i><i>飞哥哥哥</i></p>
-          </li>
-          <li>
-            <p class="p1">机器学习极简入门课</p>
-            <p class="p2"><i>作者/分享人：</i><i>飞哥哥哥</i></p>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
 </template>
 
 <script>
@@ -108,6 +108,11 @@
 <style scoped>
   i{
     font-style: normal;
+  }
+  .right{
+    width: 300px;
+    min-height: 500px;
+    float: right;
   }
   .top-txt{
     width: 300px;

@@ -128,6 +128,7 @@ export default {
         }.bind(this))
     },
     jumpRegist:function () {
+      console.log(111111111111);
       this.$emit('jump-regist',1)
     }
   },

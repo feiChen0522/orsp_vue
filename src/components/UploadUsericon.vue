@@ -113,6 +113,7 @@ export default {
     },
     cancel:function () {
       $('#usericon').modal('hide');
+      // $('.modal-backdrop').remove();
       window.location.reload()
     },
 
