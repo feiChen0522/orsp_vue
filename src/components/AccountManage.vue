@@ -52,8 +52,6 @@ export default {
     height: 100%;
     border: 1px solid #d74132;
     padding: 20px 15px;
-    margin-left: 48px;
-
   }
   .account .top ul li{
     background-color: #d74132;

@@ -22,16 +22,21 @@ import Car2 from '@/components/Car2'
 import Car3 from '@/components/Car3'
 import MsgManage from '@/components/MsgManage'
 import Swing from '@/components/Swing'
-import SecurityCenter from '@/components/SecurityCenter'
+import SecurityCenter from '@//components/SecurityCenter'
 import ShoppingAddress from '@/components/ShoppingAddress'
 import MyReleaseGoods from '@/components/MyReleaseGoods'
 import GoodsHaveSold from '@/components/GoodsHaveSold'
 import ShowMyUpSesource from '@/components/download/ShowMyUpSesource'
 import DownSesource from '@/components/download/DownSesource'
-import ORSPDownload from '@/components/ORSPDownload'
+
 import comment from '@/components/comment/comment'
 import Board from '@/components/Board'
 import Search from '@/components/test/Search'
+
+import ORSPDownload from '@/components/ORSPDownload'
+import ORSPDownloadHeader from '@/components/ORSPDownloadHeader'
+import ORSPDownloadMain from '@/components/ORSPDownloadMain'
+import HadDownload from '@/components/HadDownload'
 
 // import Search from '@/components/Search'
 import SearchMain from '@/components/search/SearchMain'
@@ -129,9 +134,6 @@ export default new Router({
       name: 'Car3',
       component: Car3
     },
-
-
-
     //  个人中心左侧
     {
       path: '/personleft',
@@ -143,19 +145,11 @@ export default new Router({
       name: 'Search',
       component: Search
     },
-
     {
       path: '/paging',
       name: 'Paging',
       component: Paging
     },
-  //  下载首页
-    {
-      path: '/orapdownload',
-      name: 'ORSPDownload',
-      component: ORSPDownload
-    },
-
   //  个人中心
     {
       path:'/personcenter',
@@ -198,8 +192,6 @@ export default new Router({
           name: 'DownSesource',
           component: DownSesource
         },
-
-
         //个人信息
         {
           path: '/accountManage',
@@ -224,7 +216,6 @@ export default new Router({
             }
           ]
         },
-
         {
           path: '/mycollect',
           name: 'MyCollect',
@@ -233,6 +224,33 @@ export default new Router({
       ]
     },
 
+    // 下载头部
+    {
+      path: '/orspdownloadheader',
+      name: 'ORSPDownloadHeader',
+      component: ORSPDownloadHeader
+    },
+    // 下载中心
+    {
+      path: '/orspdownloadmain',
+      name: 'ORSPDownloadMain',
+      component: ORSPDownloadMain,
+      redirect:'/orspdownload',
+      children:[
+        //下载首页
+        {
+          path: '/orspdownload',
+          name: 'ORSPDownload',
+          component: ORSPDownload
+        },
+        {
+          path: '/haddownload',
+          name: 'HadDownload',
+          component: HadDownload
+        }
+
+      ]
+    },
 
   ]
 })

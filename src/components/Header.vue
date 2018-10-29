@@ -28,17 +28,13 @@
 
             <!--登录模态框开始-->
             <!-- Button trigger modal -->
-
-
             <!-- Modal -->
             <div class="modal fade in" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
               <div class="modal-dialog" role="document">
                 <div class="modal-content" style="width: 475px;">
-
                   <div class="modal-body" >
                     <Login-div @jump-regist="displayRegist"></Login-div>
                   </div>
-
                 </div>
               </div>
             </div>
@@ -48,11 +44,9 @@
             <div class="modal fade in" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
               <div class="modal-dialog" role="document">
                 <div class="modal-content" style="width: 475px;">
-
                   <div class="modal-body" >
                     <Regist-div></Regist-div>
                   </div>
-
                 </div>
               </div>
             </div>
@@ -68,7 +62,7 @@
 
             </li>
             <li @click='is_login'>
-              <!--<router-link to="/personcenter">-->
+              <!--<router-link to="/personcenter">我的天下-->
               <a @click.self.prevent><p class="p1">我的天下</p></a>
               <!--</router-link>-->
             </li>
@@ -125,10 +119,10 @@ export default {
       })
         .then(function (res) {
           if (res.data.hasOwnProperty('user_name')){
-            vm.LoginStatus="欢迎"+res.data.user_name
+            vm.LoginStatus="欢迎"+res.data.user_name;
             vm.RegistStatus="退出";
-            sessionStorage.setItem('currentUserId',res.data.id)
-            next();
+            sessionStorage.setItem('currentUserId',res.data.id);
+            // next();
           } else {
             alert("登录失败")
           }
@@ -151,28 +145,30 @@ export default {
     },
     cancelLogin:function () {
       if (this.RegistStatus!="注册") {
-        localStorage.removeItem('token')
+        localStorage.removeItem('token');
         window.location.reload()
       }else {
         $('#myModal2').modal('show');
       }
     },
-    displayRegist:function () {
-      $('myModal2').modal('hide')
-      $('myModal1').modal('show')
+    displayRegist:function (e) {
+
+      console.log(2222222222222);
+      $('#myModal1').modal('hide');
+      $('#myModal2').modal('show')
     },
     coll:function(){
       alert('点击CTRL+D 收藏网站')
     },
     is_login:function () {
-      var token=localStorage.getItem('token')
+      var token=localStorage.getItem('token');
       if(token){
-        console.log("前往个人中心")
+        console.log("前往个人中心");
         this.$router.push({
           name:'Center'
         });
       }else{
-        alert("请先登录！！！在查看个人中心！！！！   宝仕，这里要弹出登录模态框，我没弹出来，你来搞")
+        $("#myModal1").modal('show')
       }
     }
   }
