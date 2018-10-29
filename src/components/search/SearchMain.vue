@@ -25,15 +25,9 @@ export default {
   created:function () {
     if (this.$route.params.con!=null){
       //从首页点击过来
-
       this.inputText=this.$route.params.con;
       console.log("this.inputText",this.inputText)
-      axios.get('http://127.0.0.1:8000/resource/searchGoods/?good='+this.inputText+'&index='+0
-        ,{
-          // headers: {
-          //   'Content-Type': 'application/json',
-          // }
-        })
+      axios.get('http://127.0.0.1:8000/resource/searchGoods/?good='+this.inputText+'&index='+0)
         .then(function (res) {
           //在sessionStorage暂时存储搜索到的数据
           console.log(res)
@@ -56,6 +50,8 @@ export default {
     else {
       if (sessionStorage.getItem('searchGoods')!=null){
         this.goods=JSON.parse(sessionStorage.getItem('searchGoods'))
+        console.log("---------------1111111")
+
       }else {
         console.log(this.$route.params.good);
         this.goods=this.$route.params.good

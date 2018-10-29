@@ -226,6 +226,7 @@ import index from "../router";
       },
       submitOrder: function () {
         let vm = this
+        this._id = sessionStorage.getItem("_id")
         axios({
           method: 'post',
           url: 'http://127.0.0.1:8000/resource/paymentguaranty/',

@@ -11,19 +11,18 @@
            <li style="border: none">
              <div class="price" v-show="!flag" @mouseleave="leave" >
                <ul style="position: absolute;z-index: 500">
-                 <li>价格从低到高</li>
-                 <li>价格从高到低</li>
-                 <li>总价从低到高</li>
-                 <li>总价从高到低</li>
+                 <li @click="sort(1)">价格从低到高</li>
+                 <li @click="sort(0)">价格从高到低</li>
+
                </ul>
              </div>
            </li>
 
          </ul>
          <div class="price-search" @mouseenter="enter1" @mouseleave="leave1">
-           <input type="text" placeholder="￥"> -
-           <input type="text" placeholder="￥">
-           <button v-show="button_flag">确定</button>
+           <input type="text" placeholder="￥" v-model="min_price"> -
+           <input type="text" placeholder="￥" v-model="max_price">
+           <button v-show="button_flag" @click="searchByCon">确定</button>
          </div>
        </div>
         <div class="page">
@@ -86,6 +85,60 @@
             if(this.page>=this.allpage){
               this.page=this.allpage
             }
+          },
+          sort:function (p) {
+            let goods=JSON.parse(sessionStorage.getItem('searchGoods'))
+
+            if (p===1){
+              function sortId(a,b){
+                return a.price-b.price
+              }
+              goods.sort(sortId);
+              console.log(goods);
+              sessionStorage.setItem('searchGoods',JSON.stringify(goods))
+              window.location.reload()
+            } else {
+              function sortId(b,a){
+                return a.price-b.price
+              }
+              goods.sort(sortId);
+              console.log(goods);
+              sessionStorage.setItem('searchGoods',JSON.stringify(goods))
+              window.location.reload()
+            }
+
+          },
+          searchByCon:function () {
+            let vm=this
+            let inputText=sessionStorage.getItem('searchCondition')
+            axios.get('http://127.0.0.1:8000/resource/searchGoods/?good='+inputText+'&index='+0+'&min_price='+vm.min_price+'&max_price='+vm.max_price
+              ,{
+                // headers: {
+                //   'Content-Type': 'application/json',
+                // }
+              })
+              .then(function (res) {
+                console.log("搜索");
+                console.log(res)
+                //在sessionStorage暂时存储搜索到的数据
+                sessionStorage.setItem('searchGoods',JSON.stringify(res.data))
+
+                this.$router.push({
+                  name:"SearchMain",
+                  params:{
+                    good:res.data
+                  }
+                });
+                // window.location.reload();
+                //控制台打印请求成功时返回的数据
+                //bind(this)可以不用
+              }.bind(this))
+              .catch(function (err) {
+                if (err.response) {
+                  //控制台打印错误返回的内容
+                }
+                //bind(this)可以不用
+              }.bind(this))
           }
         },
         data:function () {
@@ -93,7 +146,9 @@
             flag:true,
             button_flag:false,
             page:1,
-            allpage:100
+            allpage:100,
+            min_price:'',
+            max_price:''
           }
         }
     }

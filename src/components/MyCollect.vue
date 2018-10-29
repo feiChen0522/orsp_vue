@@ -6,18 +6,17 @@
         <tr>
           <td>商品展示</td>
           <td>商品名称</td>
-          <td>价格</td>
-          <td>操作</td>
         </tr>
         <tr v-for="i in all_collect">
-          <td><div class="r-img-container"></div></td>
+          <td><div class="r-img-container">
+            <div style="width:70px;height: 70px ">
+              <img :src="i.img_src" alt="">
+
+            </div>
+          </div></td>
           <td>{{i.name}}</td>
-          <td><b>{{'$6'+i.price}}</b></td>
-          <td>
-            <a href="#">关注</a>
-            <a href="#">加入购物车</a>
-            <a href="#">删除</a>
-          </td>
+
+
         </tr>
 
       </table>
@@ -38,7 +37,8 @@
       axios({
         url:"http://127.0.0.1:8000/resource/seemycollect/",
         data:{
-          "user_id":sessionStorage.getItem('currentUserId')
+          "user_id":sessionStorage.getItem('currentUserId'),
+          "show":true
         },
         method:"post"
 
@@ -103,13 +103,12 @@
   .r-collect-container>table tr>td:first-child{
   }
   .r-collect-container>table tr>td>div{
-    background-image:url("../../static/images/logoko.png");
     background-repeat: no-repeat;
     background-size: contain;
     width: 70%;
     height: 70%;
     margin: 0 auto;
-    margin-top: 20px;
+    /*margin-top: 20px;*/
   }
   .r-collect-container>table tr>td>a{
     color: red!important;
@@ -117,6 +116,10 @@
     margin-right: 10px;
   }
 
-
+  .r-img-container>div img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
 
 </style>

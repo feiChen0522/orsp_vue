@@ -82,7 +82,6 @@
       this.imgsrc = this.goods['img']
       this.unitPrice=this.goods["price"]
       sessionStorage.setItem('sellerSelectGood',JSON.stringify(this.goods))
-
     },
     methods:{
       delall:function () {
@@ -103,7 +102,9 @@
 
         console.log(this.goodNum);
 
-      }
+      },
+
+
     }
   }
 

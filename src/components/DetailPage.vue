@@ -63,6 +63,11 @@
               <span class="col-md-6" v-text="goods.Stock"></span>
             </div>
           </div>
+          <div class="col-md-12">
+            <div class="col-md-8 btw">
+              <span :class="[{'glyphicon glyphicon-heart-empty':!isCollect},{'glyphicon glyphicon-heart':isCollect}]" style="margin-left: 12px;cursor: pointer;color: #ff3e31;font-size: 18px;" title="点击收藏该商品" @click="collect"></span>
+            </div>
+          </div>
           <div class="col-md-12 a">
               <button value="马上换购" class="btn1" @click="isLogin">马上换购</button>
           </div>
@@ -147,8 +152,34 @@
           'http://img1.imgtn.bdimg.com/it/u=2140439025,1380868768&fm=200&gp=0.jpg',
           'http://img1.imgtn.bdimg.com/it/u=2140439025,1380868768&fm=200&gp=0.jpg'
         ],
-        imgIndex: 0
+        imgIndex: 0,
+        isCollect:false,
+
       }
+    },
+    created:function(){
+
+      let _id=sessionStorage.getItem('_id');
+      let vm=this
+      axios({
+        url:"http://127.0.0.1:8000/resource/seemycollect/",
+        method:"post",
+        data:{
+          "user_id":sessionStorage.getItem('currentUserId')
+        }
+      })
+        .then(function (res) {
+          console.log(res.data)
+          for (let i of res.data) {
+            if (i.collect_resource_id==_id) {
+              vm.isCollect=true
+              break
+            }
+          }
+        })
+        .catch(function (error) {
+          console.log("请求失败:",error)
+        })
     },
     mounted: function () {
       // this.goods=this.$route.params
@@ -218,6 +249,31 @@
           Login.$emit('HaveLogin',"你还没有登录");
         }
       },
+      collect:function () {
+        this.isCollect=!this.isCollect
+        let user_id=sessionStorage.getItem('currentUserId')
+        let resource_id=sessionStorage.getItem('_id')
+        let ins_data={
+          "user_id":user_id,
+          "resource_id":resource_id,
+          "operation":0
+        }
+        if (this.isCollect) {
+          ins_data.operation=1
+        }
+
+        axios({
+          url:"http://127.0.0.1:8000/resource/addcollect/",
+          method:"post",
+          data:ins_data
+        })
+          .then(function (res) {
+            console.log(res)
+          })
+          .catch(function (error) {
+            console.log("请求失败:",error)
+          })
+      }
     }
   }
 

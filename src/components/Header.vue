@@ -168,7 +168,7 @@ export default {
           name:'Center'
         });
       }else{
-        $("#myModal1").modal('show')
+        $("#myModal1").modal("show")
       }
     }
   }
