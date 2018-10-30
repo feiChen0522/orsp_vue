@@ -3,7 +3,7 @@
     <div class="container sty" v-if="!flag">
       <div class="row">
         <div class="col-md-10 dblackcolor col-md-offset-1" v-for="(sg,index) of sesourcelist" :key="index">
-          <div class="col-md-12" style="text-align: right" @click="delData(index)">删除</div>
+          <div class="col-md-12 img1" style="text-align: right" @click="delData(index)">删除</div>
           <div class="col-md-2"><img src="../../assets/icon/ziplogo.jpg" alt=""></div>
           <div class="col-md-8" style="margin-top: 10px">
             <div class="col-md-12 title1">
@@ -25,9 +25,11 @@
     <div class="sty1" style="padding:50px" v-if="flag">
       <p style="text-align: center;padding: 20px;color: #8d8d8d">你还未上传任何文件，点击下列按钮立即上传</p>
       <div style="text-align: center">
-        <button text="马上发布" style="width: 150px;height: 40px;line-height: 38px;color: #8d8d8d">
-          <a data-toggle="modal" data-target="#myModal_upload">我要上传</a>
-        </button>
+
+        <a data-toggle="modal" data-target="#myModal_upload">
+          <button text="马上发布" style="width: 150px;height: 40px;line-height: 38px;color: #8d8d8d">我要上传</button>
+        </a>
+
       </div>
     </div>
   </div>
@@ -39,7 +41,7 @@
     name: "DownSesource",
     data() {
       return {
-        flag: true,
+        flag: '',
         sesourcelist: [],
         id: '1',
         list: {}
@@ -54,7 +56,16 @@
         this.id = sessionStorage.getItem('currentUserId')
         axios.get('http://localhost:8000/file/showmyupfile/?id=' + vm.id)
           .then(function (response) {
-            vm.sesourcelist = (response.data)
+            console.log((response.data).length)
+            if ((response.data).length) {
+              vm.sesourcelist = (response.data)
+              vm.flag = false
+
+            }
+            else {
+              vm.flag = true
+            }
+
             console.log(sesourcelist)
           })
           .catch(function (error) {
@@ -129,4 +140,17 @@
     top: 100px;
     left: 250px;
   }
+  .img1{
+    background-image: url("../../assets/icon/close.png");
+    background-repeat: no-repeat;
+    text-indent: 2em;
+    overflow: hidden;
+    width: 13px;
+    height: 13px;
+    float: right;
+    margin-top: 10px;
+    margin-left: 200px;
+    display: inline-block
+  }
+
 </style>

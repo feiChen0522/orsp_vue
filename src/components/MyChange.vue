@@ -55,7 +55,7 @@
     name: "MyChange",
     data() {
       return {
-        flag:true  ,
+        flag:'',
         allOrder:[]
       }
 
@@ -74,9 +74,12 @@
           console.log(res)
           if ((res.data).length){
             vm.allOrder=res.data
-            vm.flag=!this.flag
+            vm.flag=false
           }
+          else{
+            vm.flag=true
 
+          }
         })
         .catch(function (error) {
           console.log("请求失败：，",error)

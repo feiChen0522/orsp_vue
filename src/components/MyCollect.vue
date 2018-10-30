@@ -37,7 +37,7 @@
     name: "MyCollect",
     data() {
       return {
-        flag: true,
+        flag: '',
         all_collect: []
       }
     },
@@ -56,10 +56,10 @@
           console.log(res.data)
           if ((res.data).length) {
             vm.all_collect = res.data
-            vm.flag = !this.flag
+            vm.flag =false
           }
           else {
-            vm.flag = this.flag
+            vm.flag = true
           }
 
         })

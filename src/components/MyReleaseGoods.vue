@@ -68,7 +68,7 @@
     name: 'MyReleaseGoods',
     data() {
       return {
-        flag:true,
+        flag:'',
         goods: [{
           description: "",
           imgurl: "",
@@ -97,10 +97,10 @@
           console.log((res.data).length!=0)
           if ((res.data).length){
             this.goods = res.data
-            vm.flag=!this.flag
+            vm.flag=false
           }
           else {
-            vm.flag=this.flag
+            vm.flag=true
           }
 
 

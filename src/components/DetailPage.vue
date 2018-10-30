@@ -4,12 +4,12 @@
       <div class="col-lg-12 item-detail-show" style="margin: auto;margin-top: 40px">
         <div class="col-md-3 item-detail-left">
           <div class="item-detail-big-img">
-            <photo-loupe class :src="goodsImg[imgIndex]" :magnification="2"></photo-loupe>
+            <photo-loupe class :src="goodImg[imgIndex]" :magnification="2"></photo-loupe>
           </div>
           <div class="item-detail-img-row">
-            <div class="item-detail-img-small" v-for="(item, index) in goodsImg" :key="index"
+            <div class="item-detail-img-small" v-for="(item, index) in goodImg" :key="index"
                  @mouseover="showBigImg(index)">
-              <img :src="item" alt="">
+              <img :src="item" alt="" >
             </div>
           </div>
         </div>
@@ -48,7 +48,7 @@
           <div class="col-md-12">
             <div class="col-md-8 btw">
               <span class="col-md-5 c2">原价:</span>
-              <span class="col-md-6 e1">{{goods.price-10}}</span>
+              <span class="col-md-6 e1">{{goods.price*2.00}}</span>
             </div>
           </div>
           <div class="col-md-12">
@@ -74,9 +74,9 @@
         </div>
         <div class="col-md-3 item-detail-righe">
           <div class="col-md-12"><p class="b">------类似商品------</p></div>
-          <div class="col-md-12"><img src="../assets/background_1.jpeg" alt="" class="img2"></div>
-          <div class="col-md-12"><img src="../assets/background_1.jpeg" alt="" class="img2"></div>
-          <div class="col-md-12"><img src="../assets/background_1.jpeg" alt="" class="img2"></div>
+          <div class="col-md-12" style="margin-left: 20px"><img :src="goodsImg[random1]" alt="" class="img2"></div>
+          <div class="col-md-12"style="margin-left: 20px"><img :src="goodsImg[random2]" alt="" class="img2"></div>
+          <div class="col-md-12"style="margin-left: 20px"><img :src="goodsImg[random3]" alt="" class="img2"></div>
         </div>
       </div>
 
@@ -124,7 +124,7 @@
             本地可面交
           </li>
         </div>
-        <div><img src="../assets/background_1.jpeg" class="img3"></div>
+        <div><img :src= "goodsImg[3]" class="img3"></div>
       </div>
     </div>
   </div>
@@ -143,19 +143,44 @@
         goods: {},
         imgsrc: '',
         goodsImg: [
-          'https://img.alicdn.com/bao/uploaded/i1/397341302/O1CN011LUM9EBWyrsBiv2_!!0-item_pic.jpg',
-          'https://img.alicdn.com/bao/uploaded/i1/397341302/O1CN011LUM9EBXFefmV2E_!!0-item_pic.jpg',
-          'https://img.alicdn.com/bao/uploaded/i2/408107205/O1CN01235w7SjplyWdCh3_!!0-item_pic.jpg'
+          'https://pic11.secooimg.com/product/240/240/48/51/031c1a50783e4532817c0f2f49d7b879.jpg',
+          'http://pic11.secooimg.com/product/240/240/50/10/2d3c99844a404389b1c6179c70ef9ac3.jpg',
+          'http://pic11.secooimg.com/product/240/240/49/48/10438a64ce924ecbb101584a40a27b65.jpg',
+          'http://pic11.secooimg.com/product/240/240/97/10/af04ba41bb5f43cea0a0790eb79882bb.jpg',
+          'http://pic11.secooimg.com/product/240/240/97/10/af04ba41bb5f43cea0a0790eb79882bb.jpg',
+          'http://pic11.secooimg.com/product/240/240/51/98/3bc2d331adaf4a8f8db29f1aa778a8ca.jpg',
+          'http://pic11.secooimg.com/product/240/240/10/52/d46292de050d412cb01322c665646a18.jpg',
+          'http://pic11.secooimg.com/product/240/240/55/49/71e0843f076d459da630a9f578b2e92a.jpg',
+          'http://pic11.secooimg.com/product/240/240/49/97/1aa7ca64b48f40828c3ccd37f85360a2.jpg',
+          'http://pic11.secooimg.com/product/240/240/50/51/23cb33c3f0d3450b81f6fad4b2583839.jpg',
+          'http://pic11.secooimg.com/product/240/240/53/97/5aee496a6c6d4712aaa32fe1055a9728.jpg',
+          'http://pic11.secooimg.com/product/240/240/98/53/b560e4ea997241fcb759e1561c8f4c97.jpg',
+          'http://pic11.secooimg.com/product/240/240/98/53/b5ad55aa80f94447a820ff2431d81604.jpg',
+          'http://pic11.secooimg.com/product/240/240/98/56/b8334b0a429941f48c1faf5451afe759.jpg',
+          'http://pic11.secooimg.com/product/240/240/10/51/d3dafbcfb5ab44c08170ab295a9ef806.jpg',
+          'http://pic11.secooimg.com/product/240/240/49/50/1291e941f2b74796863fde7dba78b149.jpg',
+          'http://pic11.secooimg.com/product/240/240/99/55/c78c42af3f0340168eb71f7d68235162.jpg',
+          'http://pic11.secooimg.com/product/240/240/57/51/93983e63d0fc4a4d88b6c7f7823a75ce.jpg',
+          ''
         ],
         imgIndex: 0,
         isCollect:false,
-
+        goodImg:[],
+        random1:'',
+        random2:'',
+        random3:'',
+        random4:'',
       }
     },
     created:function(){
-
       let _id=sessionStorage.getItem('_id');
       let vm=this
+      vm.random1=Math.floor(Math.random()*17);
+      vm.random2=Math.floor(Math.random()*17);
+      vm.random3=Math.floor(Math.random()*17);
+      for (let i=0;i<3;i++){
+        vm.goodImg.push(vm.goodsImg[vm.random1+i])
+      }
       axios({
         url:"http://127.0.0.1:8000/resource/seemycollect/",
         method:"post",
@@ -190,7 +215,7 @@
       this.goods['store'] = sessionStorage.getItem('store')
       this.goods['user'] = sessionStorage.getItem('user')
       this.imgsrc = this.goods['img']
-      this.goodsImg.push(this.imgsrc)
+      this.goodImg.push(this.imgsrc)
 
       /*
       *   sessionStorage.setItem('belong_name',this.good_list['belong_name'])
@@ -345,7 +370,9 @@
     width: 120px;
     height: 120px;
     border-radius: 60px;
-    background: #ff6600;
+    background-image: url("../assets/images/headerlogo.png");
+    background-repeat: no-repeat;
+    background-size: cover;
     margin: auto;
     margin-top: 40px;
   }
@@ -438,8 +465,9 @@
   }
 
   .img3 {
-    width: 100%;
+    width: 50%;
     height: 400px;
+    margin-left: 200px;
   }
 
   .item-detail-show {
@@ -479,6 +507,7 @@
 
   .item-detail-img-small img {
     width: 100%;
+    height: 100%;
   }
 
   span {
@@ -522,4 +551,5 @@
     background-color: transparent;
     outline: none;
   }
+
 </style>

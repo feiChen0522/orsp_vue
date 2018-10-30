@@ -60,7 +60,7 @@ export default {
   name: 'GoodsHaveSold',
   data () {
     return {
-      flag:true,
+      flag:'',
       all_order:[]
     }
   },
@@ -77,10 +77,10 @@ export default {
         console.log((res.data).length!=0)
         if ((res.data).length){
           vm.all_order=res.data
-          vm.flag=!this.flag
+          vm.flag=false
         }
         else {
-          vm.flag=this.flag
+          vm.flag=true
         }
 
 
