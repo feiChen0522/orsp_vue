@@ -1,9 +1,9 @@
 <template>
   <nav class="navbar navbar-default navbar-inverse" style="border-radius: 0; min-height: 30px; margin-bottom: 0;">
-    <div class="container-fluid" style="width: 90%;height: 20px;">
+    <div class="container-fluid" >
       <!-- Brand and toggle get grouped fsor better mobile display -->
-      <div class="navbar-header" style="background-color: #f2f2f2;">
-        <button style="height: 30px" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+      <div class="navbar-header">
+        <button  type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
           <span class="sr-only">Toggle navigation</span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
@@ -86,6 +86,9 @@
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
   </nav>
+
+
+
 </template>
 
 <script>

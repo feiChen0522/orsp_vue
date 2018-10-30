@@ -35,7 +35,7 @@
               <div class="form-group a3">
                 <label>添加商品描述</label>
 
-                <textarea class="a4" v-model="description"></textarea>
+                <textarea rows="5"  maxlength="200" onchange="this.value=this.value.substring(0, 200)" onkeydown="this.value=this.value.substring(0, 200)" onkeyup="this.value=this.value.substring(0, 200)"  class="a4" v-model="description"></textarea>
 
                 <label>上传图片</label>
                 <div class="image-view">
@@ -56,6 +56,7 @@
                   <input type="checkbox"><router-link to="/agreement">同意ORSP服务协议</router-link>
                 </label>
               </div>
+              <!--<router-link to="/">-->
               <button type="submit" class="btn btn-default" @click="submitForm">提交</button>
             </form>
           </div>
@@ -153,7 +154,7 @@
               } else {
                 alert("上传失败")
               }
-            }.bind(this))
+            })
             .catch(function (err) {
               if (err.response) {
                 //控制台打印错误返回的内容
