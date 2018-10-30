@@ -1,26 +1,38 @@
 <template>
   <div class="container">
+    <!--提示模态框-->
+    <div class="modal fade" id="tishi" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div v-text="tishi_msg"></div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="top">
       <div class="top-left">
-        <div class="logo-img"></div>
-        <div class="name">指南针丶飞</div>
+        <div class="logo-img">
+          <img :src="userinfo.icon" alt="">
+        </div>
+        <div class="name" v-text="userinfo.name"></div>
         <div class="level">
           <span class="level-sp1">等级:</span>
-          <span class="level-sp2">1</span>
+          <span class="level-sp2"  v-text="userinfo.level"></span>
         </div>
       </div>
       <div class="top-right">
         <div class="d1">
           <span>积分</span>
-          <span>10240</span>
+          <span v-text="userinfo.integral">10240</span>
         </div>
         <div class="d1">
           <span>上传资源</span>
-          <span>2</span>
+          <span v-text="count.uploadcount">2</span>
         </div>
         <div class="d1">
           <span>下传资源</span>
-          <span>3</span>
+          <span v-text="count.downloadcount">3</span>
         </div>
       </div>
     </div>
@@ -30,12 +42,19 @@
       </div>
       <div class="re-center">
         <ul>
-          <li>
-            <p class="p1">机器学习极简入门课</p>
+          <li v-for="i,index in file" :id="i.id">
+            <div class="img-div">
+              <img src="../assets/download/xlsx.png" alt="">
+            </div>
+            <p class="p1">
+              <i v-text="i.describe"></i>
+              <i :class="i.collectcount?'glyphicon glyphicon-heart':'glyphicon glyphicon-heart-empty'" style="color: red;font-size: 18px" title="点我收藏" @click="change_xinxin($event.target,i.id,index)"></i>
+            </p>
             <p class="p2">
-              <i>作者/分享人：</i><i>飞哥哥哥</i>
-              <i>上传时间：</i><i>2018/10/28 18:50</i>
-              <i>积分/O币：</i><i>2</i>
+              <i>作者/分享人：</i><i v-text="i.upload_user_name"></i>
+              <i>上传时间：</i><i v-text="i.upload_time"></i>
+              <i>收藏人数：</i><i v-text="i.collectcount"></i>
+              <i>积分/O币：</i><i v-text="i.need_integral">2</i>
             </p>
           </li>
         </ul>
@@ -45,43 +64,190 @@
 </template>
 
 <script>
-  import Login from '../common/js/login'
 export default {
   name: 'HadDownload',
   data () {
     return {
+      tishi_msg:'',
+      defaulturl:"../assets/images/avatar_89373029_1496285287409.jpg",
       list:'',
+      file:'',
+      count:'',
+      fileinfo:{
+        id:'',
+        describe:'',
+        upload_time:'',
+        need_integral:'',
+        upload_user_name:'',
+        like_num:'',
+        share_num:'',
+      },
+      userinfo:{
+        name:'',
+        level:'',
+        icon:'',
+        integral:'',
+      },
+      uploadcount:'', //上传资源次数
+      downloadcount:'', //下载资源次数
+      collectcount:'', //收藏次数
     }
   },
   created:function () {
-    let token=localStorage.getItem("token");
-    if(token){
+
+    this.getUserInfo();
+    this.showDownloadFile();
+
+  },
+  methods:{
+    //更新收藏人数
+    collecctnumber:function(i,e,index){
+      console.log("重新刷新收藏人数");
       let vm=this;
       axios({
-        url:"http://127.0.0.1:8000/file/showdownloadfile",
+        url:"http://127.0.0.1:8000/file/collectnumber/",
         method:"post",
-        headers:{
-          "token":token
+        data:{
+          "id":i,
         }
       })
         .then(function (res) {
-          vm.list=res.data;
-          console.log(666,vm.list);
+          let cou=res.data;
+          console.log(cou);
+          vm.collectcount=cou;
+          console.log("哈哈哈哈",i);
+          vm.file[index]["collectcount"]=vm.collectcount
+        })
+        .catch(function (err) {
+          console.log(err);
+        })
+    },
+    //点击心心触发
+    change_xinxin:function(e,i,index){  //i为当前文件id
+      let userid=sessionStorage.getItem("currentUserId");
+      let vm=this;
+      //添加收藏
+      if(e.classList.contains("glyphicon-heart-empty")){
+        e.classList.remove("glyphicon-heart-empty");
+        e.classList.add("glyphicon-heart");
+        axios({
+          url:"http://127.0.0.1:8000/file/addcollect/",
+          method:"post",
+          data:{
+            "id":i,
+            "userid":userid
+          }
+        })
+          .then(function(res){
+            let ress=res.data;
+            if(ress.code=="209"){
+              vm.tishi_msg="收藏成功";
+              $('#tishi').modal("show");
+              vm.collecctnumber(i,e,index)
+            }
+          })
+          .catch(function(err){
+            console.log(err);
+          })
+      }
+      //取消收藏
+      else if(e.classList.contains("glyphicon-heart")){
+        e.classList.remove("glyphicon-heart");
+        e.classList.add("glyphicon-heart-empty");
+        axios({
+          url:"http://127.0.0.1:8000/file/cancelcollect/",
+          method:"post",
+          data:{
+            "id":i,
+            "userid":userid
+          }
+        })
+          .then(function(res){
+            let ress=res.data;
+            if(ress.code=="222"){
+              vm.tishi_msg="取消收藏成功";
+              $('#tishi').modal("show");
+              vm.collecctnumber(i,e,index)
+            }
+          })
+          .catch(function(err){
+            console.log(err);
+          })
+      }
+    },
+    getUserInfo:function () {
+      var vm =this;
+      var token=localStorage.getItem("token");
+      axios({
+        url:"http://127.0.0.1:8000/user/showuser/",
+        headers:{
+          "token":token
+        },
+        method:"get"
+      })
+        .then(function (response) {
+          vm.list=response.data;
+          console.log(response.data);
+          vm.userinfo.name=vm.list.user_name;
+          vm.userinfo.sex=vm.list.sex;
+          vm.userinfo.integral=vm.list.integral;
+          vm.userinfo.level=vm.list.level;
+          if(vm.list.icon){
+            vm.userinfo.icon="http://127.0.0.1:8000/media/pic/"+vm.list.icon;
+          }
+          else{
+            vm.userinfo.icon=vm.defaulturl;
+          }
+        })
+        .catch(function (err) {
+          console.log("error:",err)
+        })
+    },
+    showDownloadFile:function () {
+      var userid=sessionStorage.getItem("currentUserId");
+      let vm=this;
+      axios({
+        url:"http://127.0.0.1:8000/file/showdownloadfile/",
+        method:"post",
+        data:{
+          "userid":userid,
+        }
+      })
+        .then(function (res) {
+          vm.file=res.data;
+          vm.count=vm.file.pop();
+          console.log(1111,vm.count);
+          // console.log(vm.file);
+          // vm.fileinfo.describe=vm.file.describe;
+          // vm.fileinfo.upload_user_name=vm.file.upload_user_name;
+          // vm.fileinfo.upload_time=vm.file.upload_time;
+          // vm.fileinfo.need_integral=vm.file.need_integral;
+          // vm.fileinfo.like_num=vm.file.like_num;
+          // vm.fileinfo.share_num=vm.file.share_num;
+
         })
         .catch(function(err){
           console.log(err);
         })
     }
-    else{
-      Login.$emit('HaveLogin',"你还没有登录")
-    }
-
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+  #tishi{
+    font-size: 14px;
+    color: #333;
+    font-weight: 400;
+    /*position: absolute;*/
+    /*top: 50%;*/
+    /*left: 50%;*/
+    /*transform: translateX(-50%) translateY(-50%);*/
+  }
+  i{
+    font-style: normal;
+  }
   .container{
     padding: 0;
   }
@@ -110,11 +276,17 @@ export default {
     height: 100px;
     border: 1px solid #d5d8df;
     border-radius: 50%;
-    background-color: #ebedf2;
     cursor: pointer;
     position: relative;
     top: 20px;
     left: 30px;
+  }
+  .top .logo-img img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
   .top .name {
     float: left;
@@ -173,26 +345,51 @@ export default {
   .center .center-top{
     height: 40px;
     line-height: 40px;
-    background-color: #E7E7E7;
+    background-color: #f38007;
+    text-align: left;
+    text-indent: 20px;
   }
   .center .center-top .top-sp{
     font-weight: bold;
-    color: #d92b1a;
+    color: #ffffff;
     font-size: 16px;
 
   }
+  .re-center ul{
+    padding: 0 40px;
+  }
   .re-center ul li{
     list-style: none;
-    height: 60px;
+    height: 100px;
     border-bottom: 1px solid #ebedf2;
     text-align: left;
-    padding: 8px 5px;
+    padding: 0 5px;
+  }
+  .re-center ul li .img-div{
+    width: 45px;
+    height: 48px;
+    cursor: pointer;
+    float: left;
+    margin-top: 15px;
+    margin-bottom: 37px;
+    margin-right: 10px;
+
+  }
+  .re-center ul li .img-div img{
+    width: 42px;
+    height: 48px;
   }
   .re-center ul li .p1{
+    position: relative;
+    top: 20px;
     margin-bottom: 5px;
     font-weight: bold;
     font-size: 14px;
     color: #545454;
+  }
+  .re-center ul li .p1 i:nth-child(2){
+    display: inline-block;
+    float: right;
   }
   .re-center ul li .p1:hover{
     color: #cc0000;
@@ -200,25 +397,26 @@ export default {
   }
   .re-center ul li .p2{
     position: relative;
+    top: 25px;
     font-size: 12px;
     color: #888;
   }
   .re-center ul li .p2 i{
     font-style: normal;
   }
-  .re-center ul li .p2 i:nth-child(2){
+  .re-center ul li .p2 i:nth-child(2),.re-center ul li .p2 i:nth-child(4),.re-center ul li .p2 i:nth-child(6){
     margin-right: 20px;
+    color: #333;
   }
-  .re-center ul li .p2 i:nth-child(5){
-    margin-left: 360px;
-    font-size: 14px;
-  }
-  .re-center ul li .p2 i:nth-child(6){
+  /*.re-center ul li .p2 i:nth-last-child(1){*/
+    /*font-size: 14px;*/
+  /*}*/
+  .re-center ul li .p2 i:nth-last-child(1){
     display: inline-block;
     position: absolute;
-    top: -3px;
+    top: -7px;
     color: #ff9358;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 400;
   }
 </style>

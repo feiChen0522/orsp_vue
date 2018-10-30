@@ -9,9 +9,12 @@
         </li>
         <li><a href="#">排行榜</a></li>
         <li><a href="#">我的资源</a></li>
-        <li><a href="#">上传资源赚积分</a></li>
         <li>
-          <router-link to="/haddownload">已下载</router-link>
+          <router-link to="/orspupload" >上传资源赚积分</router-link>
+        </li>
+        <li @click="islogin">
+          <!--<a @click="islogin">已下载</a>-->
+          <router-link to="" @click.stop.prevent >已下载</router-link>
         </li>
         <li><a href="#">我的收藏</a></li>
       </ul>
@@ -26,11 +29,27 @@
 </template>
 
 <script>
-export default {
+  import Login from '../common/js/login'
+  export default {
   name: 'ORSPDownloadHeader',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+
+    }
+  },
+  methods:{
+    islogin:function () {
+      let token=localStorage.getItem("token");
+      if(token){
+        console.log(1);
+        this.$router.push({
+          name:"HadDownload"
+        })
+      }
+      else{
+        Login.$emit('HaveLogin',"你还没有登录")
+      }
+
     }
   }
 }

@@ -26,7 +26,7 @@ export default {
   }
   .big{
     width: 100%;
-    min-height: 600px;
+    min-height: 800px;
     background-color: #F7F8F9;
   }
 </style>

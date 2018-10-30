@@ -88,11 +88,9 @@
       }
     },
     created:function(){
-
       this.getTechnicalField();
       this.getResourceType();
       this.showAllFile();
-
     },
     methods:{
       //拿到一级技术领域标签
@@ -216,7 +214,6 @@
             console.log(error)
           })
       },
-
     }
   }
 </script>
