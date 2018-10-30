@@ -115,7 +115,7 @@ export default {
       let vm=this;
       axios({
         method:'post',
-        url:'http://127.0.0.1:8000/user/judgetoken/',
+        url:this.global.serverPath+'/user/judgetoken/',
         headers: {
           'token': token
         }

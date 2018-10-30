@@ -58,7 +58,7 @@
       let vm=this
       console.log(e)
       axios({
-        url:"http://127.0.0.1:8000/resource/seechange/",
+        url:this.global.serverPath+"/resource/seechange/",
         data:{
           "user_id":sessionStorage.getItem('currentUserId')
         },
@@ -86,7 +86,7 @@
         }
         console.log(event.target)
         axios({
-          url:"http://127.0.0.1:8000/resource/selleragree/",
+          url:this.global.serverPath+"/resource/selleragree/",
           method:"post",
           data:ins_data
         })

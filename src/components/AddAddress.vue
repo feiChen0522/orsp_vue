@@ -100,7 +100,7 @@ export default {
   created() {
     let vm=this
     axios({
-      url:"http://127.0.0.1:8000/user/getcityprovince/",
+      url:this.global.serverPath+"/user/getcityprovince/",
     })
       .then(function (res) {
         console.log(res.data)
@@ -132,7 +132,7 @@ export default {
       }
 
       axios({
-        url:"http://127.0.0.1:8000/user/addaddress/",
+        url:this.global.serverPath+"/user/addaddress/",
         method:"post",
         data:ins_data
       })

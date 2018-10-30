@@ -68,7 +68,7 @@
     },
     // mounted:function () {
     //   let vm=this;
-    //   axios.get('http://127.0.0.1:8000/resource/getgoodtypetwo/')
+    //   axios.get(this.global.serverPath+'/resource/getgoodtypetwo/')
     //     .then(function (res) {
     //       console.log(res.data);
     //       vm.type_data = res.data;
@@ -88,7 +88,7 @@
     created:function(){
       console.log("-----------")
       let vm=this
-      axios.get('http://127.0.0.1:8000/resource/getguomei/')
+      axios.get(this.global.serverPath+'/resource/getguomei/')
           .then(function (res) {
             console.log(res.data);
             vm.type_data = res.data;
@@ -124,7 +124,7 @@
           this.query_condition = this.query_condition.join(',')
           console.log(this.query_condition);
           if (e.getAttribute('data-flag') == "false" || vm.typeThree[this.current_index] == undefined) {
-            axios.get('http://127.0.0.1:8000/resource/getgoodtypethree/' + this.query_condition)
+            axios.get(this.global.serverPath+'/resource/getgoodtypethree/' + this.query_condition)
               .then(function (res) {
                 console.log(res.data);
                 vm.$set(vm.typeThree,this.current_index,res.data)

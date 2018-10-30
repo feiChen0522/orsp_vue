@@ -111,7 +111,7 @@
           searchByCon:function () {
             let vm=this
             let inputText=sessionStorage.getItem('searchCondition')
-            axios.get('http://127.0.0.1:8000/resource/searchGoods/?good='+inputText+'&index='+0+'&min_price='+vm.min_price+'&max_price='+vm.max_price
+            axios.get(this.global.serverPath+'/resource/searchGoods/?good='+inputText+'&index='+0+'&min_price='+vm.min_price+'&max_price='+vm.max_price
               ,{
                 // headers: {
                 //   'Content-Type': 'application/json',

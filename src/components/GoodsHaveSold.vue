@@ -55,7 +55,7 @@ export default {
   created:function () {
     let vm=this
     axios({
-      url:"http://127.0.0.1:8000/resource/showbuy/",
+      url:this.global.serverPath+"/resource/showbuy/",
       data:{
         "user_id":sessionStorage.getItem('currentUserId')
       },

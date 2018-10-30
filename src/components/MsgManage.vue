@@ -145,7 +145,7 @@
     var vm =this;
     var token=localStorage.getItem("token");
     axios({
-      url:"http://127.0.0.1:8000/user/showuser/",
+      url:this.global.serverPath+"/user/showuser/",
       headers:{
         "token":token
       },
@@ -171,7 +171,7 @@
         // vm.userinfo.icon=vm.list.icon;
         if(vm.list.icon){
           vm.userinfo.icon=vm.list.icon;
-          vm.icon="http://127.0.0.1:8000/media/pic/"+vm.list.icon;
+          vm.icon=vm.global.serverPath+"/media/pic/"+vm.list.icon;
         }
         else{
           vm.icon=vm.defaulturl;
@@ -191,7 +191,7 @@
       // console.log("保存>>>");
       axios({
         method:"post",
-        url:"http://127.0.0.1:8000/user/changemsg/",
+        url:this.global.serverPath+"/user/changemsg/",
         data:this.userinfo
       })
         .then(function (response) {

@@ -83,7 +83,7 @@ export default {
         if(this.new_password){
           if(this.new_password == this.new_password_verify){
               axios({
-                url:"http://127.0.0.1:8000/user/changepsd/",
+                url:this.global.serverPath+"/user/changepsd/",
                 method:"post",
                 data:{
                   "telephone":this.telephone,

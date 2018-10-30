@@ -51,7 +51,7 @@
         <div class="change_goods">
           <div class="good_img">
             <div class="good_img_div">
-              <img :src="'http://127.0.0.1:8000/media/pic/'+i.imgurl" alt="">
+              <img :src="this.global.serverPath+'/media/pic/'+i.imgurl" alt="">
 
             </div>
           </div>
@@ -94,7 +94,7 @@ export default {
     let id=sessionStorage.getItem('currentUserId')
   //  发送ajax获取我发布的商品
     axios({
-      url:"http://127.0.0.1:8000/resource/seegoodsbyid/",
+      url:this.global.serverPath+"/resource/seegoodsbyid/",
       method:"post",
       data:{
         "id":id

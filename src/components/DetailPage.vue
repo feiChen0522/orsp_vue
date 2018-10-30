@@ -162,7 +162,7 @@
       let _id=sessionStorage.getItem('_id');
       let vm=this
       axios({
-        url:"http://127.0.0.1:8000/resource/seemycollect/",
+        url:this.global.serverPath+"/resource/seemycollect/",
         method:"post",
         data:{
           "user_id":sessionStorage.getItem('currentUserId')
@@ -218,14 +218,14 @@
           let token=localStorage.getItem('token');
           axios({
             method:'post',
-            url:'http://127.0.0.1:8000/user/judgetoken/',
+            url:this.global.serverPath+'/user/judgetoken/',
             headers:{'token':token},
           })
             .then(function (rsp) {
               sessionStorage.setItem('currentUserId',rsp.data.id)
               axios({
                 method:'post',
-                url:'http://127.0.0.1:8000/resource/seegoodsbyid/',
+                url:this.global.serverPath+'/resource/seegoodsbyid/',
                 headers:{'token':token},
                 data:{
                   "id":sessionStorage.getItem('currentUserId')
@@ -263,7 +263,7 @@
         }
 
         axios({
-          url:"http://127.0.0.1:8000/resource/addcollect/",
+          url:this.global.serverPath+"/resource/addcollect/",
           method:"post",
           data:ins_data
         })

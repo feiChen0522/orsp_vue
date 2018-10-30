@@ -77,7 +77,7 @@
 
       axios({
         method: 'post',
-        url: 'http://127.0.0.1:8000/user/judgetoken/',
+        url: this.global.serverPath+'/user/judgetoken/',
         headers: {'token': token},
       })
         .then(function (rsp) {
@@ -85,7 +85,7 @@
 
           axios({
             method: 'post',
-            url: 'http://127.0.0.1:8000/user/getaddresbyid/',
+            url: this.global.serverPath+'/user/getaddresbyid/',
             data:{
               "id":that.useid
             }
@@ -108,7 +108,7 @@
         // let id =sessionStorage.getItem('currentUserId')
         axios({
           method: 'post',
-          url: 'http://127.0.0.1:8000/user/changeaddress/',
+          url: this.global.serverPath+'/user/changeaddress/',
           data: {'index': index,'userid':userid,'id':id},
         })
           .then(function (rsp) {

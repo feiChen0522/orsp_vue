@@ -50,7 +50,7 @@ export default {
   methods:{
     searchGoods:function (e) {
       sessionStorage.setItem('searchCondition',this.inputText)
-      axios.get('http://127.0.0.1:8000/resource/searchGoods/?good='+this.inputText+'&index='+0
+      axios.get(this.global.serverPath+'/resource/searchGoods/?good='+this.inputText+'&index='+0
         ,{
           // headers: {
           //   'Content-Type': 'application/json',

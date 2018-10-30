@@ -83,7 +83,7 @@ export default {
       if (this.file){
         var token=localStorage.getItem("token");
         axios({
-          url:"http://127.0.0.1:8000/user/uploadusericon/",
+          url:this.global.serverPath+"/user/uploadusericon/",
           method:"post",
           data:this.file,
           headers:{

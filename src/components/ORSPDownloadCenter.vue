@@ -99,7 +99,7 @@
       getTechnicalField:function(){
         let vm=this;
         axios({
-          url:"http://127.0.0.1:8000/file/gettechnicalfield/",
+          url:this.global.serverPath+"/file/gettechnicalfield/",
           method:'get',
         })
           .then(function (res) {
@@ -146,7 +146,7 @@
           }
           let vm=this;
           axios({
-            url:"http://127.0.0.1:8000/file/gettwotechnicalfield/?id="+id,
+            url:this.global.serverPath+"/file/gettwotechnicalfield/?id="+id,
             method:'get',
           })
             .then(function (res) {
@@ -160,7 +160,7 @@
       getResourceType:function(event){
         let vm=this;
         axios({
-          url:"http://127.0.0.1:8000/file/getresourcetype/",
+          url:this.global.serverPath+"/file/getresourcetype/",
           method:"get",
         })
           .then(function(res){
@@ -171,7 +171,7 @@
       //拿到所有已上传的文件
       showAllFile:function(){
         let vm=this;
-        let url="http://127.0.0.1:8000/file/showallfile/";
+        let url=this.global.serverPath+"/file/showallfile/";
         axios({
           method: 'get',
           url: url,

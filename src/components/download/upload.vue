@@ -163,7 +163,7 @@ export default {
         let config = {
           headers: {'Content-Type': 'multipart/form-data'}
         };
-        axios.post('http://127.0.0.1:8000/file/uploadfile/', this.file, config)
+        axios.post(this.global.serverPath+'/file/uploadfile/', this.file, config)
           .then(function (res) {
             //    发送文件信息到后台
             let fileMsg={
@@ -173,7 +173,7 @@ export default {
               "need_integral":this.need_integral,
               "upload_user_id":sessionStorage.getItem('currentUserId')
             };
-            axios.post('http://127.0.0.1:8000/file/savefile/', fileMsg, config)
+            axios.post(this.global.serverPath+'/file/savefile/', fileMsg, config)
               .then(function (res) {
                 $('#uploada')[0].click();
                 window.location.reload()

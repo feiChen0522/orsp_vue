@@ -58,7 +58,7 @@ export default {
     if(token){
       let vm=this;
       axios({
-        url:"http://127.0.0.1:8000/file/showdownloadfile",
+        url:this.global.serverPath+"/file/showdownloadfile",
         method:"post",
         headers:{
           "token":token

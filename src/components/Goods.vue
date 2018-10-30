@@ -108,7 +108,7 @@
 
     // mounted:function () {
     //   let vm=this;
-    //   axios.post('http://127.0.0.1:8000/resource/getgoods/',
+    //   axios.post(this.global.serverPath+'/resource/getgoods/',
     //     {
     //       // headers: {
     //       //   'Content-Type': 'application/json',

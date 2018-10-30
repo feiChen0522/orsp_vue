@@ -17,7 +17,7 @@
           <tr v-bind:id="goods.price" v-if=flag>
             <td class="col1">
               <router-link to="/detailpage">
-                <img :src="'http://127.0.0.1:8000/media/pic/'+good.imgurl" style="width: 110px; height: 80px;margin-left: 10px;border: none" class="col-md-8">
+                <img :src="this.global.serverPath+'/media/pic/'+good.imgurl" style="width: 110px; height: 80px;margin-left: 10px;border: none" class="col-md-8">
                 <p v-text="good.name" style="text-align: center"></p></router-link>
             </td>
             <td class="col2"><p v-text="good.description"></p></td>
