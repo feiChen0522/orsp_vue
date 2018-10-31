@@ -51,9 +51,9 @@
             <div class="personal-logo">
               <!--src="../assets/images/avatar_89373029_1496285287409.jpg"-->
               <img :src="icon" alt="" class="image" data-toggle="modal" data-target="#usericon">
-              <input type="file" class="file" data-toggle="modal" data-target="#usericon" v-on:click.prevent="onClick">
+              <input type="file" class="file" data-toggle="modal" data-target="#usericon" @click.prevent>
             </div>
-            <div class="txt_touxiang" @click="uploadUsericon" data-toggle="modal" data-target="#usericon">编辑头像</div>
+            <div class="txt_touxiang" data-toggle="modal" data-target="#usericon">编辑头像</div>
             <!--<input type="file" class="file2" @click="pushHeadPortrait">-->
             <div class="level">
               <span>等级：</span>
@@ -212,10 +212,7 @@
     getfilename:function(filename){
       this.userinfo.icon=filename;
     },
-    //上传头像
-    uploadUsericon:function(){
 
-    },
     modalChange:function (event) {
       if(event.currentTarget.id=='1'){
         this.modal_change=1;
@@ -312,6 +309,7 @@
     height: 100%;
     border-radius: 50%;
     background-size: cover;
+    background-color: #ff4f14;
   }
   /*头像*/
   .personal-info .info-left .personal-logo .file {

@@ -2,7 +2,7 @@
   <div>
     <div class="account" style="margin-left: 147px">
       <div class="top">
-        <ul class="nav nav-pills">
+        <ul class="nav nav-pills" style="height: 50px;">
           <li role="presentation">
             <router-link to="/msgManage">账号信息</router-link>
           </li>
