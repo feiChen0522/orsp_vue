@@ -161,7 +161,7 @@ export default {
             if (res.data.code=="208"){
               vm.telephone_tip="手机号已被注册,请直接登录";
             }else if (res.data.code=="408"){
-              axios.post(this.global.serverPath+'/user/yezheng/',
+              axios.post(vm.global.serverPath+'/user/yezheng/',
                 {'phone': vm.telephone,
                   'yecode':vm.sms_text
                 })

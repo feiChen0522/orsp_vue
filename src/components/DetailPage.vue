@@ -225,7 +225,7 @@
               sessionStorage.setItem('currentUserId',rsp.data.id)
               axios({
                 method:'post',
-                url:this.global.serverPath+'/resource/seegoodsbyid/',
+                url:that.global.serverPath+'/resource/seegoodsbyid/',
                 headers:{'token':token},
                 data:{
                   "id":sessionStorage.getItem('currentUserId')

@@ -58,7 +58,7 @@
             let id =sessionStorage.getItem('currentUserId')
             axios({
               method: 'post',
-              url: vm.global.serverPath+'/resource/seemyorder/',
+              url: that.global.serverPath+'/resource/seemyorder/',
               data:{
                 "id":id
               }

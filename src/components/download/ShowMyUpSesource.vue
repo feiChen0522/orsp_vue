@@ -43,7 +43,6 @@
         axios.get('http://localhost:8000/file/showmyupfile/?id=' + vm.id)
           .then(function (response) {
             vm.sesourcelist = (response.data)
-            console.log(sesourcelist)
           })
           .catch(function (error) {
             console.log(error)

@@ -85,7 +85,7 @@
 
           axios({
             method: 'post',
-            url: this.global.serverPath+'/user/getaddresbyid/',
+            url: that.global.serverPath+'/user/getaddresbyid/',
             data:{
               "id":that.useid
             }

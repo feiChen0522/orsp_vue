@@ -51,7 +51,7 @@
         <div class="change_goods">
           <div class="good_img">
             <div class="good_img_div">
-              <img :src="this.global.serverPath+'/media/pic/'+i.imgurl" alt="">
+              <img :src="global.serverPath+'/media/pic/'+i.imgurl" alt="">
 
             </div>
           </div>

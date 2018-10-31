@@ -99,7 +99,7 @@ export default {
           // console.log(localStorage.getItem('token'));
           axios({
             method:'post',
-            url:this.global.serverPath+'/user/judgetoken/',
+            url:vm.global.serverPath+'/user/judgetoken/',
             headers:{'token':localStorage.getItem('token')},
           })
             .then(function (rsp) {

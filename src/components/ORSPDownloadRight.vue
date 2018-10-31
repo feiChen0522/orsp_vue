@@ -90,7 +90,7 @@
           vm.userinfo.integral=vm.list.integral;
           vm.userinfo.level=vm.list.level;
           if(vm.list.icon){
-            vm.userinfo.icon=this.global.serverPath+"/media/pic/"+vm.list.icon;
+            vm.userinfo.icon=vm.global.serverPath+"/media/pic/"+vm.list.icon;
           }
           else{
             vm.userinfo.icon=vm.defaulturl;
