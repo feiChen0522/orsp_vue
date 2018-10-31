@@ -13,7 +13,6 @@
           <p class="title">
             <a :data-title="i.title" :data-price="i.price" :data-sales_num="i.sales_num" :data-shop="i.shop" :data-address="i.address"  :data-user="i.user" class="dataPlayLoad" v-text="i.title.substring(0,12)" style="color: black!important;cursor: pointer" @click="sendGoods" :data-change="i.change" :data-belong_name="i.belong_name" :data-belong_to="i.belong_to" :data-Stock="i.Stock" :data-_id="i._id"></a>
           </p>
-
         </div>
       </div>
 

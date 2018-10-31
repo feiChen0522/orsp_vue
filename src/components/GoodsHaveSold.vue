@@ -1,5 +1,6 @@
 <template>
-  <div class="con" style="margin-left:250px">
+  <div>
+    <div class="con" style="margin-left:250px" v-if="!flag">
     <div class="status">
       <span>全部订单(<i>0</i>)</span>
       <span>待收款(<i>0</i>)</span>
@@ -42,13 +43,24 @@
       </div>
     </div>
   </div>
+    <div class="sty1" style="padding:50px" v-if="flag">
+      <p style="text-align: center;padding: 20px;color: #8d8d8d">你还未购买任何商品，点击下列按钮立即购买</p>
+      <div style="text-align: center">
+        <router-link to="/search">
+          <button text="马上发布" style="width: 150px;height: 40px;line-height: 38px;color: #8d8d8d">前去购买</button>
+        </router-link>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
+
   name: 'GoodsHaveSold',
   data () {
     return {
+      flag:'',
       all_order:[]
     }
   },
@@ -62,8 +74,16 @@ export default {
       method:"post"
     })
       .then(function (res) {
-        console.log(res.data)
-        vm.all_order=res.data
+        console.log((res.data).length!=0)
+        if ((res.data).length){
+          vm.all_order=res.data
+          vm.flag=false
+        }
+        else {
+          vm.flag=true
+        }
+
+
 
       })
       .catch(function (error) {
@@ -199,5 +219,13 @@ export default {
   }
   .box-text .btn-search:focus,.box-text .btn-search:hover{
     cursor: pointer;
+  }
+  .sty1 {
+    width: 1038px;
+    height: 200px;
+    border: 0.5px solid gray;
+    position: absolute;
+    top:100px;
+    left: 250px;
   }
 </style>

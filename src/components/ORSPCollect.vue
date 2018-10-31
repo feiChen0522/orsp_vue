@@ -38,7 +38,7 @@
     </div>
     <div class="center">
       <div class="center-top">
-        <span class="top-sp">已下载</span>
+        <span class="top-sp">我的收藏</span>
       </div>
       <div class="re-center">
         <ul>
@@ -54,7 +54,7 @@
               <i>作者/分享人：</i><i v-text="i.upload_user_name"></i>
               <i>上传时间：</i><i v-text="i.upload_time"></i>
               <i>收藏人数：</i><i v-text="i.collectcount"></i>
-              <i>积分/O币：</i><i v-text="i.need_integral">2</i>
+              <i>积分/O币：</i><i v-text="i.need_integral"></i>
             </p>
           </li>
         </ul>
@@ -64,16 +64,14 @@
 </template>
 
 <script>
-  import Login from '../common/js/login'
 export default {
-  name: 'HadDownload',
+  name: 'ORSPCollect',
   data () {
     return {
       tishi_msg:'',
       defaulturl:"../assets/images/avatar_89373029_1496285287409.jpg",
       list:'',
       file:'',
-      count:'',
       fileinfo:{
         id:'',
         describe:'',
@@ -89,6 +87,7 @@ export default {
         icon:'',
         integral:'',
       },
+      count:'',
       uploadcount:'', //上传资源次数
       downloadcount:'', //下载资源次数
       collectcount:'', //收藏次数
@@ -97,7 +96,7 @@ export default {
   created:function () {
 
     this.getUserInfo();
-    this.showDownloadFile();
+    this.showCollectFile();
 
   },
   methods:{
@@ -106,7 +105,7 @@ export default {
       console.log("重新刷新收藏人数");
       let vm=this;
       axios({
-        url:this.global.serverPath+"/file/collectnumber/",
+        url:"http://127.0.0.1:8000/file/collectnumber/",
         method:"post",
         data:{
           "id":i,
@@ -180,7 +179,7 @@ export default {
       var vm =this;
       var token=localStorage.getItem("token");
       axios({
-        url:this.global.serverPath+"/user/showuser/",
+        url:"http://127.0.0.1:8000/user/showuser/",
         headers:{
           "token":token
         },
@@ -194,7 +193,7 @@ export default {
           vm.userinfo.integral=vm.list.integral;
           vm.userinfo.level=vm.list.level;
           if(vm.list.icon){
-            vm.userinfo.icon=this.global.serverPath+"/media/pic/"+vm.list.icon;
+            vm.userinfo.icon="http://127.0.0.1:8000/media/pic/"+vm.list.icon;
           }
           else{
             vm.userinfo.icon=vm.defaulturl;
@@ -204,28 +203,13 @@ export default {
           console.log("error:",err)
         })
     },
-    showDownloadFile:function () {
+    showCollectFile:function () {
       var userid=sessionStorage.getItem("currentUserId");
       let vm=this;
-      axios({
-        url:this.global.serverPath+"/file/showdownloadfile/",
-        method:"post",
-        data:{
-          "userid":userid,
-        }
-      })
+      axios.get("http://127.0.0.1:8000/file/showcollectfile/"+userid)
         .then(function (res) {
           vm.file=res.data;
           vm.count=vm.file.pop();
-          console.log(1111,vm.count);
-          // console.log(vm.file);
-          // vm.fileinfo.describe=vm.file.describe;
-          // vm.fileinfo.upload_user_name=vm.file.upload_user_name;
-          // vm.fileinfo.upload_time=vm.file.upload_time;
-          // vm.fileinfo.need_integral=vm.file.need_integral;
-          // vm.fileinfo.like_num=vm.file.like_num;
-          // vm.fileinfo.share_num=vm.file.share_num;
-
         })
         .catch(function(err){
           console.log(err);
@@ -351,7 +335,7 @@ export default {
     text-indent: 20px;
   }
   .center .center-top .top-sp{
-    font-weight: bold;
+    font-weight: 400;
     color: #ffffff;
     font-size: 16px;
 

@@ -82,12 +82,9 @@
         >
       <ul v-if="show[3]">
       <li><router-link to="/showmyupsesource">我的上传</router-link></li>
-      <li><router-link to="/downsesource">我的下载</router-link></li>
-
+      <li @click="jumpToHadDownload"><router-link to="">我的下载</router-link></li>
       <!--<li>个人信息</li>-->
       <li><a data-toggle="modal" data-target="#myModal_upload">我要上传</a></li>
-
-
         <!--协议书-->
       </ul>
         </transition>
@@ -122,6 +119,11 @@
       }
     },
     methods: {
+      jumpToHadDownload:function(){
+        this.$router.push({
+          name:"HadDownload"
+        })
+      },
       changeClass: function (e) {
         // this.isActiveRight[parseInt(e.target.dataset.id)]=!this.isActiveRight[parseInt(e.target.dataset.id)]
         let id=parseInt(e.target.dataset.id);

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="account" style="margin: 0 auto">
+    <div class="account" style="margin-left: 147px">
       <div class="top">
         <ul class="nav nav-pills">
           <li role="presentation">
@@ -24,49 +24,55 @@
 </template>
 
 <script>
-export default {
-  name: 'AccountManage',
-  data () {
-    return {
-
+  export default {
+    name: 'AccountManage',
+    data() {
+      return {}
     }
   }
-}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  .account{
+  .account {
     margin: 40px auto;
-    width: 70%;
+    width: 1038px;
     min-height: 500px;
   }
-  .account .top{
+
+  .account .top {
     width: 100%;
     height: 50px;
     border-bottom: none;
+    position: relative;
 
+    right: -16px;
   }
-  .account .center{
+
+  .account .center {
     width: 100%;
     height: 100%;
     border: 1px solid #d74132;
-    padding: 20px 15px;
+    padding: 20px 10px;
+    margin-left: 80px;
   }
-  .account .top ul li{
+
+  .account .top ul li {
     background-color: #d74132;
     margin-left: 0;
     border: 1px solid #d74132;
   }
-  .account ul li a{
+
+  .account ul li a {
     color: #fff;
     border-radius: 0;
     height: 50px;
     line-height: 30px;
   }
-  .account .top .nav>li>a:focus,.nav>li>a:hover{
+
+  .account .top .nav > li > a:focus, .nav > li > a:hover {
     background-color: #ffffff;
     color: #888888;
-   }
+  }
 
 </style>

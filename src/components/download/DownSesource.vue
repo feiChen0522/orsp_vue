@@ -1,6 +1,5 @@
 <template>
   <div class="my-download">
-    <button @click="checkdownload">下载文件</button>
     <table>
       <tr>
         <th>标题</th>

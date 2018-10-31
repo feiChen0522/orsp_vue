@@ -12,8 +12,13 @@ export default {
   name: 'ORSPDownloadMain',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      condition:{
+        txtcondition:'',
+      }
     }
+  },
+  methods:{
+
   }
 }
 </script>
@@ -26,7 +31,7 @@ export default {
   }
   .big{
     width: 100%;
-    min-height: 600px;
+    min-height: 800px;
     background-color: #F7F8F9;
   }
 </style>

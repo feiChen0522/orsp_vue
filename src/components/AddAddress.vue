@@ -15,7 +15,7 @@
               <div class="col-sm-9">
                 <div class="row">
                   <select  class="col-lg-3" v-model="selected"  v-if="provinceL" style="width: 100px;margin-right: 20px;margin-left: 16px;">
-                    <option disabled value="请选择城市">请选择省份</option>
+                    <option disabled value="请选择省份">请选择省份</option>
                     <option v-for="(item,index) in pcData" :value="item" @change="toSelectPro(index)">{{item.province_name}}</option>
                   </select>
                   <select class="col-lg-3" v-model="citySelected" v-if="cityL" style="width: 100px">
@@ -90,7 +90,7 @@ export default {
 
   watch: {
     selected: function () {
-      console.log(this.selected)
+      console.log(this.selected);
       // 清除区县
       // this.citySelected = {}
       // this.cityL = city.filter((item) => item.parentId === this.selected.code)

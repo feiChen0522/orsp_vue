@@ -9,16 +9,14 @@
             </button>
           </div>
         </div>
-        <div class="col-md-10">
+        <div class="col-md-10 " style="margin-bottom: 20px">
           <div class="col-md-12 a2"></div>
-
-
-          <div class="col-md-11 a" v-for="(i,index) in address">
+          <div class="col-md-11 a c1" v-for="(i,index) in address">
             <div class="col-md-2 c"><span v-if="!i.default">曾用地址</span><span
               v-if="i.default">默认地址</span></div>
             <div class="col-md-9"></div>
             <div class="col-md-1">
-              <a href="" class="del1">删除</a>
+              <a href="" class="del1" @click="del(i.user_id,i.id)">删除</a>
             </div>
             <div class="col-md-12 sp1">
               <span class="col-md-2">收货人:</span>
@@ -67,8 +65,8 @@
     name: 'Address',
     data() {
       return {
-        flag:true,
-        address:[]
+        flag: true,
+        address: []
       }
     },
     created: function () {
@@ -104,7 +102,7 @@
         })
     },
     methods: {
-      onchange: function (index,userid,id) {
+      onchange: function (index, userid, id) {
         // let id =sessionStorage.getItem('currentUserId')
         axios({
           method: 'post',
@@ -112,7 +110,23 @@
           data: {'index': index,'userid':userid,'id':id},
         })
           .then(function (rsp) {
-            if(rsp.data['code']=='215'){
+            if (rsp.data['code'] == '215') {
+              window.location.reload()
+            }
+
+          })
+          .catch(function (err) {
+            console.log('请求失败', err);
+          })
+      },
+      del:function (userid, id) {
+        axios({
+          method: 'post',
+          url: 'http://127.0.0.1:8000/user/deladdress/',
+          data: { 'userid': userid, 'id': id},
+        })
+          .then(function (rsp) {
+            if (rsp.data['code'] == '215') {
               window.location.reload()
             }
 
@@ -184,5 +198,11 @@
     line-height: 30px;
     text-align: center;
     margin-top: 5px;
+  }
+
+  .c1:hover {
+    -moz-box-shadow: 4px -2px 10px rgba(138, 138, 138, 0.62), -5px 8px 10px rgba(138, 138, 138, 0.62);
+    -webkit-box-shadow: 4px -2px 10px rgba(138, 138, 138, 0.62), -5px 8px 10px rgba(138, 138, 138, 0.62);
+    box-shadow: 4px -2px 10px rgba(138, 138, 138, 0.62), -5px 8px 10px rgba(138, 138, 138, 0.62)
   }
 </style>
