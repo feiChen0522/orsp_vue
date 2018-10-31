@@ -32,15 +32,15 @@
           <img src="../../../static/images/右.svg" alt="" class="right" @click="right">
         </div>
       </div>
-      <div class="chance">
-        <input type="checkbox" id="checkbox1"> <label for="checkbox1">包邮</label>
-        <input type="checkbox" id="checkbox2"> <label for="checkbox2">赠送退货运险费</label>
-        <input type="checkbox" id="checkbox3"> <label for="checkbox3">货到付款</label>
-        <input type="checkbox" id="checkbox4"> <label for="checkbox4">二手</label>
-        <input type="checkbox" id="checkbox5"> <label for="checkbox5">7+天内退款</label>
-        <input type="checkbox" id="checkbox6"> <label for="checkbox6">正品保障</label>
-        <input type="checkbox" id="checkbox7"> <label for="checkbox7">海外产品</label>
-      </div>
+      <!--<div class="chance">-->
+        <!--<input type="checkbox" id="checkbox1"> <label for="checkbox1">包邮</label>-->
+        <!--<input type="checkbox" id="checkbox2"> <label for="checkbox2">赠送退货运险费</label>-->
+        <!--<input type="checkbox" id="checkbox3"> <label for="checkbox3">货到付款</label>-->
+        <!--<input type="checkbox" id="checkbox4"> <label for="checkbox4">二手</label>-->
+        <!--<input type="checkbox" id="checkbox5"> <label for="checkbox5">7+天内退款</label>-->
+        <!--<input type="checkbox" id="checkbox6"> <label for="checkbox6">正品保障</label>-->
+        <!--<input type="checkbox" id="checkbox7"> <label for="checkbox7">海外产品</label>-->
+      <!--</div>-->
 
 
     </div>
@@ -205,7 +205,7 @@
   }
   .price>ul{
     width: 100%;
-    height: 100%;
+    height: 80px;
     position: absolute;
     left: 0;
   }

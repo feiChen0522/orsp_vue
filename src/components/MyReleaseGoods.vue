@@ -27,8 +27,8 @@
         <div class="dongtai_goods" v-for="i in goods">
           <div class="info">
             <span v-text="'上传时间：'+i.upload_time"></span>
-            <span>订单号：<i>待交易状态就不显示</i></span>
-            <span>订单生成时间：<i>待交易不显示</i></span>
+            <!--<span>订单号：<i>待交易状态就不显示</i></span>-->
+            <!--<span>订单生成时间：<i>待交易不显示</i></span>-->
           </div>
           <div class="change_goods">
             <div class="good_img">
@@ -45,7 +45,8 @@
             <div class="good_price">
               <div v-text="i.description" style="height: 100%;overflow: hidden;text-overflow: ellipsis;"></div>
             </div>
-            <div class="good_current_status">待交易</div>
+            <div class="good_current_status" v-text="parseInt(i.status)?'已交易':'待交易'"></div>
+            <!--<div class="good_current_status">已交易</div>-->
           </div>
         </div>
 

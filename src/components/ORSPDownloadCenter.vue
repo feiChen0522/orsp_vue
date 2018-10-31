@@ -57,7 +57,7 @@
             <img src="../assets/download/xlsx.png" alt="">
           </div>
           <div class="describe">
-            <p v-text="i.describe"></p>
+            <p v-text="i.title"></p>
             <p>
               <span class="sp1">上传者：</span><span v-text="i.upload_user"></span>
               <span class="sp1">上传时间：</span><span v-text="i.upload_time"></span>

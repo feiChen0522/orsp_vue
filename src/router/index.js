@@ -38,6 +38,8 @@ import ORSPDownloadHeader from '@/components/ORSPDownloadHeader'
 import ORSPDownloadMain from '@/components/ORSPDownloadMain'
 import HadDownload from '@/components/HadDownload'
 import ORSPUpload from '@/components/ORSPUpload'
+import ORSPCollect from '@/components/ORSPCollect'
+import ORSPMyFile from '@/components/ORSPMyFile'
 
 // import Search from '@/components/Search'
 import SearchMain from '@/components/search/SearchMain'
@@ -253,6 +255,16 @@ export default new Router({
           path: '/orspupload',
           name: 'ORSPUpload',
           component: ORSPUpload
+        },
+        {
+          path: '/orspcollect',
+          name: 'ORSPCollect',
+          component: ORSPCollect
+        },
+        {
+          path: '/orspmyfile',
+          name: 'ORSPMyFile',
+          component: ORSPMyFile
         }
 
       ]

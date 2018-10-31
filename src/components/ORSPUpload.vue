@@ -46,7 +46,7 @@
         <!--花费积分-->
         <div class="col-lg-12" style="margin-bottom: 20px">
           <label for="sel_primary">积分/O币：</label>
-          <input type="text" class="integral" v-model="need_integral">
+          <input type="text" class="integral" v-model="need_integral" maxlength="2">
           <a v-text="need_integralTip" class="col-lg-12" style="color: red!important;"></a>
         </div>
 
@@ -73,7 +73,7 @@
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-body">
-              <div v-text="tishi_msg"></div>
+              <div v-text="tishi_msg" style="text-align: center"></div>
             </div>
           </div>
         </div>
@@ -274,7 +274,6 @@ export default {
             }
             //bind(this)可以不用
           }.bind(this))
-
         /*
         * .then(function (res) {
         console.log(res)

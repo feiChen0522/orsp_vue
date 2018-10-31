@@ -12,8 +12,13 @@ export default {
   name: 'ORSPDownloadMain',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      condition:{
+        txtcondition:'',
+      }
     }
+  },
+  methods:{
+
   }
 }
 </script>

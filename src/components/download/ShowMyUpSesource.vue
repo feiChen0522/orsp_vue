@@ -7,7 +7,7 @@
           <div class="col-md-2"><img src="../../assets/icon/ziplogo.jpg" alt=""></div>
           <div class="col-md-8" style="margin-top: 10px">
             <div class="col-md-12 title1">
-              <router-link to="/" v-text="sg.name"></router-link>
+              <router-link to="/" v-text="sg.title"></router-link>
             </div>
             <div class="col-md-12" v-text="sg.describe">
             </div>
@@ -33,9 +33,7 @@
       </div>
     </div>
   </div>
-
 </template>
-
 <script>
   export default {
     name: "DownSesource",
@@ -53,19 +51,17 @@
     methods: {
       getData: function () {
         var vm = this;
-        this.id = sessionStorage.getItem('currentUserId')
+        this.id = sessionStorage.getItem('currentUserId');
         axios.get('http://localhost:8000/file/showmyupfile/?id=' + vm.id)
           .then(function (response) {
-            console.log((response.data).length)
+            console.log((response.data).length);
             if ((response.data).length) {
-              vm.sesourcelist = (response.data)
+              vm.sesourcelist = (response.data);
               vm.flag = false
-
             }
             else {
               vm.flag = true
             }
-
             console.log(sesourcelist)
           })
           .catch(function (error) {

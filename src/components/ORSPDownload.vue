@@ -31,13 +31,13 @@
           <dt>技术领域:</dt>
           <dd>
             <ul @click="getTwoTechnicalField($event)" id="ul1">
-              <li><a href="#" id="0">全部</a><div class="img"></div></li>
+              <li><a href="#" id="0" @click.stop.prevent="showAllFile">全部</a><div class="img"></div></li>
               <li v-for="i of technicalField.slice(0,9)">
-                <a href="#" v-text="i.name" :id="i.id" class="a"></a><div class="img"></div>
+                <a v-text="i.name" :id="i.id" class="a"></a><div class="img"></div>
               </li>
             </ul>
             <div class="twofield" id="twofield1">
-              <li v-for="i of twoTechnicalField"><a href="#" v-text="i.name" :id="i.id"></a></li>
+              <li v-for="i of twoTechnicalField"><a @click="getFileByCondition(i.id)" v-text="i.name" :id="i.id"></a></li>
             </div>
             <ul @click="getTwoTechnicalField($event)" id="ul2">
               <li v-for="i of technicalField.slice(9)">
@@ -45,7 +45,7 @@
               </li>
             </ul>
             <div class="twofield" id="twofield2">
-              <li v-for="i of twoTechnicalField"><a href="#" v-text="i.name" :id="i.id"></a></li>
+              <li v-for="i of twoTechnicalField"><a @click="getFileByCondition(i.id)" v-text="i.name" :id="i.id"></a></li>
             </div>
           </dd>
         </dl>
@@ -55,7 +55,7 @@
           <dd>
             <ul>
               <li><a href="#">全部</a></li>
-              <li v-for="i of resourceType"><a href="#" v-text="i.name" :id="i.id">全部</a></li>
+              <li v-for="i of resourceType"><a @click="getRescourseId(i.id)" v-text="i.name" :id="i.id">全部</a></li>
             </ul>
           </dd>
         </dl>
@@ -80,12 +80,15 @@
               <img src="../assets/download/xlsx.png" alt="">
             </div>
             <div class="describe">
-              <p v-text="i.describe"></p>
+              <p class="p1">
+                <i v-text="i.title"></i>
+                <i :class="i.collectcount?'glyphicon glyphicon-heart':'glyphicon glyphicon-heart-empty'" style="color: red;font-size: 18px;float: right;margin-right: 150px" title="点我收藏" @click="change_xinxin($event.target,i.id,index)"></i>
+              </p>
               <p>
                 <span class="sp1">上传者：</span><span v-text="i.upload_user"></span>
                 <span class="sp1">上传时间：</span><span v-text="i.upload_time"></span>
                 <span class="glyphicon glyphicon-download-alt" style="float: right;margin-right: -10px" :data-name="i.name" @click="download(i.name,i.need_integral)"></span>
-                <span class="sp1">积分/O币：</span><span v-text="i.need_integral"></span>
+                <span v-text="i.need_integral"></span><span class="sp1">积分/O币：</span>
               </p>
             </div>
           </div>
@@ -111,7 +114,7 @@
             </div>
           </div>
         </div>
-        <div class="user-upload">上传资源</div>
+        <div class="user-upload" @click="jumpToUpload">上传资源</div>
       </div>
       <div class=""></div>
       <div class="recommend">
@@ -150,7 +153,7 @@
 </template>
 
 <script>
-  import Login from '../common/js/login'
+  import sendTxtCon from '../common/js/login'
 export default {
   name: 'ORSPDownload',
   data () {
@@ -170,6 +173,11 @@ export default {
       files:[{
 
       }],
+      condition:{
+      //   "twofieldid":'',
+        "txtcondition":'',
+      //   "resoursetypeid":'',
+      },
       technicalField:'',
       twoTechnicalFieldALL:'',
       twoTechnicalField:'',
@@ -181,9 +189,69 @@ export default {
     this.getTechnicalField();
     this.getResourceType();
     this.showAllFile();
-    this.getUserInfo()
+    this.getUserInfo();
+    // this.getTxtCondition();
   },
   methods:{
+
+    jumpToUpload:function(){
+      this.$router.push({
+        name:"ORSPUpload"
+      })
+    },
+    //点击心心触发
+    change_xinxin:function(e,i,index){  //i为当前文件id
+      let userid=sessionStorage.getItem("currentUserId");
+      let vm=this;
+      //添加收藏
+      if(e.classList.contains("glyphicon-heart-empty")){
+        e.classList.remove("glyphicon-heart-empty");
+        e.classList.add("glyphicon-heart");
+        axios({
+          url:"http://127.0.0.1:8000/file/addcollect/",
+          method:"post",
+          data:{
+            "id":i,
+            "userid":userid
+          }
+        })
+          .then(function(res){
+            let ress=res.data;
+            if(ress.code=="209"){
+              vm.tishi_msg="收藏成功";
+              $('#tishi').modal("show");
+              vm.collecctnumber(i,e,index)
+            }
+          })
+          .catch(function(err){
+            console.log(err);
+          })
+      }
+      //取消收藏
+      else if(e.classList.contains("glyphicon-heart")){
+        e.classList.remove("glyphicon-heart");
+        e.classList.add("glyphicon-heart-empty");
+        axios({
+          url:"http://127.0.0.1:8000/file/cancelcollect/",
+          method:"post",
+          data:{
+            "id":i,
+            "userid":userid
+          }
+        })
+          .then(function(res){
+            let ress=res.data;
+            if(ress.code=="222"){
+              vm.tishi_msg="取消收藏成功";
+              $('#tishi').modal("show");
+              vm.collecctnumber(i,e,index)
+            }
+          })
+          .catch(function(err){
+            console.log(err);
+          })
+      }
+    },
     //拿到用户信息
     getUserInfo:function(){
       var vm= this;
@@ -277,7 +345,7 @@ export default {
       }
     },
     //拿到所有资源类型
-    getResourceType:function(event){
+    getResourceType:function(){
       let vm=this;
       axios({
         url:"http://127.0.0.1:8000/file/getresourcetype/",
@@ -304,10 +372,40 @@ export default {
           console.log('请求失败', err);
         })
     },
-    // chuancan:function(name,integral){
-    //   this.integral=integral;
-    //   this.name=name;
+    getTxtCondition:function(){
+      sendTxtCon.$on('txtcon',(target)=>{
+        this.condition.txtcondition=target;
+        console.log(this.condition.txtcondition);
+      });
+    },
+    // getTwoFieldId:function(id){
+    //   this.condition.twofieldid=id;
+    //   console.log(222,this.condition);
+    //   this.getFileByCondition(this.condition)
     // },
+    getRescourseId:function(id){
+      this.condition.resoursetypeid=id;
+      console.log(333,this.condition);
+      this.getFileByCondition(this.condition)
+    },
+    getFileByCondition:function(id){
+      let vm=this;
+      let url="http://127.0.0.1:8000/file/showfilebycondition/";
+      axios({
+        method: 'post',
+        url: url,
+        data:{
+          "twofieldid":id
+        }
+      })
+        .then(function(res){
+          console.log("拿到的文件",res.data);
+          vm.files=res.data
+        })
+        .catch(function(err){
+          console.log(err);
+        })
+    },
     download_res:function(){
       var that=this;
       axios({
@@ -475,6 +573,7 @@ export default {
   }
   .download_l dd .twofield a{
     margin-left: 20px;
+    cursor: pointer;
   }
   .download_l dd ul,.download_l dd ul li{
     list-style: none;
@@ -546,18 +645,24 @@ export default {
   .container .con-2 .res-model .describe p:nth-child(2) span:nth-child(1){
     margin-left: 0;
   }
-  .container .con-2 .res-model .describe p:nth-child(2) span:nth-last-child(1){
+  .container .con-2 .res-model .describe p:nth-child(2) span:nth-last-child(2){
     color: #ff9358;
     font-size: 32px;
     line-height: 32px;
-    display: inline-block;
-    position: absolute;
+    float: right;
+    margin-right: 10px;
+    position: relative;
     top: -10px;
-    left: 720px;
+    /*display: inline-block;*/
+    /*position: absolute;*/
+    /*top: -10px;*/
+    /*left: 720px;*/
   }
-  .container .con-2 .res-model .describe p:nth-child(2) span:nth-last-child(2){
-    position: absolute;
-    left: 640px;
+  .container .con-2 .res-model .describe p:nth-child(2) span:nth-last-child(1){
+    /*position: absolute;*/
+    /*left: 640px;*/
+    float: right;
+
   }
   i{
     font-style: normal;
@@ -665,6 +770,7 @@ export default {
     background: #e82a2a;
     border-radius: 5px;
     text-align: center;
+    cursor: pointer;
   }
   .recommend{
     padding: 0 19px;
