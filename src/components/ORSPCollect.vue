@@ -48,7 +48,7 @@
             </div>
             <p class="p1">
               <i v-text="i.title"></i>
-              <i :class="i.collectcount?'glyphicon glyphicon-heart':'glyphicon glyphicon-heart-empty'" style="color: red;font-size: 18px" title="点我收藏" @click="change_xinxin($event.target,i.id,index)"></i>
+              <i class="glyphicon glyphicon-heart" style="color: red;font-size: 18px" title="点我取消收藏" @click="change_xinxin($event.target,i.id,index)"></i>
             </p>
             <p class="p2">
               <i>作者/分享人：</i><i v-text="i.upload_user_name"></i>
@@ -66,157 +66,131 @@
 <script>
 export default {
   name: 'ORSPCollect',
-  data () {
+  data() {
     return {
-      tishi_msg:'',
-      defaulturl:"../assets/images/avatar_89373029_1496285287409.jpg",
-      list:'',
-      file:'',
-      fileinfo:{
-        id:'',
-        describe:'',
-        upload_time:'',
-        need_integral:'',
-        upload_user_name:'',
-        like_num:'',
-        share_num:'',
+      tishi_msg: '',
+      defaulturl: "../assets/images/avatar_89373029_1496285287409.jpg",
+      list: '',
+      file: '',
+      fileinfo: {
+        id: '',
+        describe: '',
+        upload_time: '',
+        need_integral: '',
+        upload_user_name: '',
+        like_num: '',
+        share_num: '',
       },
-      userinfo:{
-        name:'',
-        level:'',
-        icon:'',
-        integral:'',
+      userinfo: {
+        name: '',
+        level: '',
+        icon: '',
+        integral: '',
       },
-      count:'',
-      uploadcount:'', //上传资源次数
-      downloadcount:'', //下载资源次数
-      collectcount:'', //收藏次数
+      count: '',
+      uploadcount: '', //上传资源次数
+      downloadcount: '', //下载资源次数
+      collectcount: '', //收藏次数
     }
   },
-  created:function () {
+  created: function () {
 
     this.getUserInfo();
     this.showCollectFile();
 
   },
-  methods:{
+  methods: {
     //更新收藏人数
-    collecctnumber:function(i,e,index){
+    collecctnumber: function (i, e, index) {
       console.log("重新刷新收藏人数");
-      let vm=this;
+      let vm = this;
       axios({
-        url:this.global.serverPath+"/file/collectnumber/",
-        method:"post",
-        data:{
-          "id":i,
+        url: "http://127.0.0.1:8000/file/collectnumber/",
+        method: "post",
+        data: {
+          "id": i,
         }
       })
         .then(function (res) {
-          let cou=res.data;
+          let cou = res.data;
           console.log(cou);
-          vm.collectcount=cou;
-          console.log("哈哈哈哈",i);
-          vm.file[index]["collectcount"]=vm.collectcount
+          vm.collectcount = cou;
+          console.log("哈哈哈哈", i);
+          vm.file[index]["collectcount"] = vm.collectcount
         })
         .catch(function (err) {
           console.log(err);
         })
     },
     //点击心心触发
-    change_xinxin:function(e,i,index){  //i为当前文件id
-      let userid=sessionStorage.getItem("currentUserId");
-      let vm=this;
+    change_xinxin: function (e, i, index) {  //i为当前文件id
+      let userid = sessionStorage.getItem("currentUserId");
+      let vm = this;
       //添加收藏
-      if(e.classList.contains("glyphicon-heart-empty")){
-        e.classList.remove("glyphicon-heart-empty");
-        e.classList.add("glyphicon-heart");
-        axios({
-          url:this.global.serverPath+"/file/addcollect/",
-          method:"post",
-          data:{
-            "id":i,
-            "userid":userid
-          }
-        })
-          .then(function(res){
-            let ress=res.data;
-            if(ress.code=="209"){
-              vm.tishi_msg="收藏成功";
-              $('#tishi').modal("show");
-              vm.collecctnumber(i,e,index)
-            }
-          })
-          .catch(function(err){
-            console.log(err);
-          })
-      }
-      //取消收藏
-      else if(e.classList.contains("glyphicon-heart")){
-        e.classList.remove("glyphicon-heart");
-        e.classList.add("glyphicon-heart-empty");
-        axios({
-          url:this.global.serverPath+"/file/cancelcollect/",
-          method:"post",
-          data:{
-            "id":i,
-            "userid":userid
-          }
-        })
-          .then(function(res){
-            let ress=res.data;
-            if(ress.code=="222"){
-              vm.tishi_msg="取消收藏成功";
-              $('#tishi').modal("show");
-              vm.collecctnumber(i,e,index)
-            }
-          })
-          .catch(function(err){
-            console.log(err);
-          })
-      }
-    },
-    getUserInfo:function () {
-      var vm =this;
-      var token=localStorage.getItem("token");
       axios({
-        url:this.global.serverPath+"/user/showuser/",
-        headers:{
-          "token":token
-        },
-        method:"get"
+        url: "http://127.0.0.1:8000/file/cancelcollect/",
+        method: "post",
+        data: {
+          "id": i,
+          "userid": userid
+        }
       })
-        .then(function (response) {
-          vm.list=response.data;
-          console.log(response.data);
-          vm.userinfo.name=vm.list.user_name;
-          vm.userinfo.sex=vm.list.sex;
-          vm.userinfo.integral=vm.list.integral;
-          vm.userinfo.level=vm.list.level;
-          if(vm.list.icon){
-            vm.userinfo.icon=vm.global.serverPath+"/media/pic/"+vm.list.icon;
-          }
-          else{
-            vm.userinfo.icon=vm.defaulturl;
+        .then(function (res) {
+          let ress = res.data;
+          if (ress.code == "222") {
+            vm.tishi_msg = "取消收藏成功";
+            $('#tishi').modal("show");
+            vm.showCollectFile()
+            // vm.collecctnumber(i, e, index)
           }
         })
         .catch(function (err) {
-          console.log("error:",err)
-        })
-    },
-    showCollectFile:function () {
-      var userid=sessionStorage.getItem("currentUserId");
-      let vm=this;
-      axios.get(this.global.serverPath+"/file/showcollectfile/"+userid)
-        .then(function (res) {
-          vm.file=res.data;
-          vm.count=vm.file.pop();
-        })
-        .catch(function(err){
           console.log(err);
         })
-    }
+    },
+    getUserInfo: function () {
+      var vm = this;
+      var token = localStorage.getItem("token");
+      axios({
+        url: "http://127.0.0.1:8000/user/showuser/",
+        headers: {
+          "token": token
+        },
+        method: "get"
+      })
+        .then(function (response) {
+          vm.list = response.data;
+          console.log(response.data);
+          vm.userinfo.name = vm.list.user_name;
+          vm.userinfo.sex = vm.list.sex;
+          vm.userinfo.integral = vm.list.integral;
+          vm.userinfo.level = vm.list.level;
+          if (vm.list.icon) {
+            vm.userinfo.icon = "http://127.0.0.1:8000/media/pic/" + vm.list.icon;
+          }
+          else {
+            vm.userinfo.icon = vm.defaulturl;
+          }
+        })
+        .catch(function (err) {
+          console.log("error:", err)
+        })
+    },
+    showCollectFile: function () {
+      var userid = sessionStorage.getItem("currentUserId");
+      let vm = this;
+      axios.get("http://127.0.0.1:8000/file/showcollectfile/" + userid)
+        .then(function (res) {
+          vm.file = res.data;
+          vm.count = vm.file.pop();
+        })
+        .catch(function (err) {
+          console.log(err);
+        })
+    },
   }
-}
+  }
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
