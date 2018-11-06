@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid">
+  <div class="container-fluid" style="width: 90%">
     <div class="row">
       <div class="col-md-10 a1">
         <div class="col-md-12">
@@ -122,7 +122,7 @@
       del:function (userid, id) {
         axios({
           method: 'post',
-          url: 'http://127.0.0.1:8000/user/deladdress/',
+          url: this.global.serverPath+'/user/deladdress/',
           data: { 'userid': userid, 'id': id},
         })
           .then(function (rsp) {

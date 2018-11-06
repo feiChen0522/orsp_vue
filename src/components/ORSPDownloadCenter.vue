@@ -185,10 +185,10 @@
       //下载资源
       download: function (name) {
         var vm = this;
-        // axios.post('http://localhost:8000/file/downloadfile',url: 'api/user/', {'fname': this.fname})
+        // axios.post(this.global.serverPath+'/file/downloadfile',url: 'api/user/', {'fname': this.fname})
         axios({
           method: 'post',
-          url: 'http://localhost:8000/file/downloadfile/',
+          url: this.global.serverPath+'/file/downloadfile/',
           data: {
             fname: name
           },

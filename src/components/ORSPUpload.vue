@@ -119,7 +119,7 @@ export default {
     getAllTechnicalField:function(){
       let vm=this;
       axios({
-        url:'http://127.0.0.1:8000/file/getalltechnicalfield/',
+        url:vm.global.serverPath+'/file/getalltechnicalfield/',
         method:"post",
       })
         .then(function(res){
@@ -130,7 +130,7 @@ export default {
     getresourceType:function(){
       let vm=this;
       axios({
-        url:'http://127.0.0.1:8000/file/getresourcetype/',
+        url:vm.global.serverPath+'/file/getresourcetype/',
         method:"post",
       })
         .then(function(res){
@@ -240,7 +240,7 @@ export default {
           headers: {'Content-Type': 'multipart/form-data'}
         };
         let vm=this;
-        axios.post('http://127.0.0.1:8000/file/uploadfile/', this.file, config)
+        axios.post(vm.global.serverPath+'/file/uploadfile/', this.file, config)
           .then(function (res) {
             //    发送文件信息到后台
             let fileMsg={
@@ -252,7 +252,7 @@ export default {
               "need_integral":vm.need_integral,
               "upload_user_id":sessionStorage.getItem('currentUserId')
             };
-            axios.post('http://127.0.0.1:8000/file/savefile/', fileMsg, config)
+            axios.post(vm.global.serverPath+'/file/savefile/', fileMsg, config)
               .then(function (res) {
                 vm.tishi_msg=res.data;
                 $('#uploadsuccess').modal("show");

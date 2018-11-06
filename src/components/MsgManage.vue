@@ -51,9 +51,9 @@
             <div class="personal-logo">
               <!--src="../assets/images/avatar_89373029_1496285287409.jpg"-->
               <img :src="icon" alt="" class="image" data-toggle="modal" data-target="#usericon">
-              <input type="file" class="file" data-toggle="modal" data-target="#usericon" v-on:click.prevent="onClick">
+              <input type="file" class="file" data-toggle="modal" data-target="#usericon" @click.prevent>
             </div>
-            <div class="txt_touxiang" @click="uploadUsericon" data-toggle="modal" data-target="#usericon">编辑头像</div>
+            <div class="txt_touxiang" data-toggle="modal" data-target="#usericon">编辑头像</div>
             <!--<input type="file" class="file2" @click="pushHeadPortrait">-->
             <div class="level">
               <span>等级：</span>
@@ -321,8 +321,8 @@
     line-height: 100px;
     text-indent: 5px;
     position: relative;
-    top: -100px;
     z-index: 50;
+    top:-100px;
     border-radius: 50%;
   }
   .personal-info .info-left .txt_touxiang{

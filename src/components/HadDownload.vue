@@ -132,7 +132,7 @@ export default {
         e.classList.remove("glyphicon-heart-empty");
         e.classList.add("glyphicon-heart");
         axios({
-          url:"http://127.0.0.1:8000/file/addcollect/",
+          url:this.global.serverPath+"/file/addcollect/",
           method:"post",
           data:{
             "id":i,
@@ -156,7 +156,7 @@ export default {
         e.classList.remove("glyphicon-heart");
         e.classList.add("glyphicon-heart-empty");
         axios({
-          url:"http://127.0.0.1:8000/file/cancelcollect/",
+          url:this.global.serverPath+"/file/cancelcollect/",
           method:"post",
           data:{
             "id":i,
@@ -194,7 +194,7 @@ export default {
           vm.userinfo.integral=vm.list.integral;
           vm.userinfo.level=vm.list.level;
           if(vm.list.icon){
-            vm.userinfo.icon=this.global.serverPath+"/media/pic/"+vm.list.icon;
+            vm.userinfo.icon=vm.global.serverPath+"/media/pic/"+vm.list.icon;
           }
           else{
             vm.userinfo.icon=vm.defaulturl;

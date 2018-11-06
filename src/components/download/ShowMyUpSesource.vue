@@ -62,7 +62,6 @@
             else {
               vm.flag = true
             }
-            console.log(sesourcelist)
             vm.sesourcelist = (response.data)
           })
           .catch(function (error) {
@@ -72,7 +71,7 @@
       delData: function (index) {
         console.log(index)
         var vm = this;
-        axios.post('http://localhost:8000/file/delmyupfile/', {'qid': this.id, 'qindex': index})
+        axios.post(this.global.serverPath+'/file/delmyupfile/', {'qid': this.id, 'qindex': index})
           .then(function (response) {
             if (response.data['code'] == '213') {
               window.location.reload()

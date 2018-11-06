@@ -56,7 +56,9 @@
     padding: 20px 10px;
     margin-left: 80px;
   }
-
+  .account .top ul{
+    height: 40px;
+  }
   .account .top ul li {
     background-color: #d74132;
     margin-left: 0;
