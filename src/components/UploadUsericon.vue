@@ -95,7 +95,6 @@ export default {
             if(res.data.code=="218"){
               alert("头像上传成功");
               vm.filename=res.data.filename;
-              console.log("头像的filename:",vm.filename);
               vm.goMsg(vm.filename);
               vm.cancel();
             }
@@ -104,7 +103,6 @@ export default {
             }
           })
           .catch(function(err){
-            console.log(err);
           })
       }
     },

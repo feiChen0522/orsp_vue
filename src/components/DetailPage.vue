@@ -189,7 +189,6 @@
         }
       })
         .then(function (res) {
-          console.log(res.data)
           for (let i of res.data) {
             if (i.collect_resource_id==_id) {
               vm.isCollect=true
@@ -198,7 +197,6 @@
           }
         })
         .catch(function (error) {
-          console.log("请求失败:",error)
         })
     },
     mounted: function () {
@@ -259,11 +257,9 @@
                   })
                 })
                 .catch(function (err) {
-                  console.log('请求失败',err);
                 })
             })
             .catch(function (err) {
-              console.log('请求失败',err);
             })
         } else {
           Login.$emit('HaveLogin',"你还没有登录");
@@ -288,10 +284,8 @@
           data:ins_data
         })
           .then(function (res) {
-            console.log(res)
           })
           .catch(function (error) {
-            console.log("请求失败:",error)
           })
       }
     }

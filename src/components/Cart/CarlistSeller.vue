@@ -71,7 +71,6 @@
       this.goods['Stock'] = sessionStorage.getItem('Stock')
       let _id=sessionStorage.getItem('_id')
       this.goods['_id'] =_id?_id:(Math.random()*10000000).toString(16).substr(0,4)+'-'+(new Date()).getTime()+'-'+Math.random().toString().substr(2,5);
-      console.log(_id)
         this.goods['belong_to'] = sessionStorage.getItem('belong_to')
       this.goods['belong_name'] = sessionStorage.getItem('belong_name')
       this.goods['change'] = sessionStorage.getItem('change')
@@ -100,7 +99,6 @@
         this.goods['pnum'] = this.goodNum
         sessionStorage.setItem('sellerSelectGood',JSON.stringify(this.goods))
 
-        console.log(this.goodNum);
 
       },
 

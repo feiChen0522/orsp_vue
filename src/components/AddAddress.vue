@@ -90,7 +90,6 @@ export default {
 
   watch: {
     selected: function () {
-      console.log(this.selected);
       // 清除区县
       // this.citySelected = {}
       // this.cityL = city.filter((item) => item.parentId === this.selected.code)
@@ -103,12 +102,10 @@ export default {
       url:this.global.serverPath+"/user/getcityprovince/",
     })
       .then(function (res) {
-        console.log(res.data)
         vm.pcData=res.data
 
       })
       .catch(function (error) {
-        console.log("请求失败",error)
       })
   },
   methods:{
@@ -137,7 +134,6 @@ export default {
         data:ins_data
       })
         .then(function (res) {
-          console.log(res);
           if (res.data.code==="287"){
             alert("添加地址成功");
             window.location.reload()
@@ -146,12 +142,10 @@ export default {
           }
         })
         .catch(function (error) {
-          console.log("请求失败：",error)
         })
 
     },
     toSelectPro:function (index) {
-      console.log("省",index)
     }
   }
 }

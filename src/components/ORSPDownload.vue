@@ -224,7 +224,6 @@ export default {
             }
           })
           .catch(function(err){
-            console.log(err);
           })
       }
       //取消收藏
@@ -248,7 +247,6 @@ export default {
             }
           })
           .catch(function(err){
-            console.log(err);
           })
       }
     },
@@ -267,7 +265,6 @@ export default {
         })
           .then(function(res){
             vm.list=res.data;
-            console.log(vm.list);
             vm.userinfo.name=vm.list.user_name;
             vm.userinfo.integral=vm.list.integral;
             vm.userinfo.level=vm.list.level;
@@ -279,7 +276,6 @@ export default {
             }
           })
           .catch(function (err) {
-            console.log("error:",err)
           })
       }
     },
@@ -292,7 +288,6 @@ export default {
       })
         .then(function (res) {
           vm.technicalField=res.data;
-          console.log(vm.technicalField);
         });
 
     },
@@ -300,7 +295,6 @@ export default {
     getTwoTechnicalField:function(e){
       if(event.target.tagName=="A"){
         var id=event.target.id;
-        console.log(id);
         if(event.currentTarget.id=="ul1"){
           $('#twofield2').css({
             display:"none"
@@ -339,7 +333,6 @@ export default {
         })
           .then(function (res) {
             vm.twoTechnicalField=res.data;
-            console.log(999,vm.twoTechnicalField);
           })
 
       }
@@ -353,7 +346,6 @@ export default {
       })
         .then(function(res){
           vm.resourceType=res.data;
-          console.log(vm.resourceType);
         })
     },
     //拿到所有已上传的文件
@@ -365,17 +357,14 @@ export default {
         url: url,
       })
         .then(function (rsp) {
-          console.log("拿到的文件",rsp.data);
           vm.files=rsp.data
         })
         .catch(function (err) {
-          console.log('请求失败', err);
         })
     },
     getTxtCondition:function(){
       sendTxtCon.$on('txtcon',(target)=>{
         this.condition.txtcondition=target;
-        console.log(this.condition.txtcondition);
       });
     },
     // getTwoFieldId:function(id){
@@ -385,7 +374,6 @@ export default {
     // },
     getRescourseId:function(id){
       this.condition.resoursetypeid=id;
-      console.log(333,this.condition);
       this.getFileByCondition(this.condition)
     },
     getFileByCondition:function(id){
@@ -399,11 +387,9 @@ export default {
         }
       })
         .then(function(res){
-          console.log("拿到的文件",res.data);
           vm.files=res.data
         })
         .catch(function(err){
-          console.log(err);
         })
     },
     download_res:function(){
@@ -432,7 +418,6 @@ export default {
         }
       })
         .catch(function (error) {
-          console.log(error)
         })
     },
   //下载资源
@@ -440,7 +425,6 @@ export default {
       let token=localStorage.getItem("token");
       var vm = this;
       let userid=sessionStorage.getItem("currentUserId");
-      console.log(userid);
       vm.mes={
         "fname": name,
         "userid":userid
@@ -460,7 +444,6 @@ export default {
             }
             else{
               //没有下载过
-              console.log(integral,1111111111111111111111);
               if(parseInt(vm.userinfo.integral)>=parseInt(integral)){
                 vm.download_modal_msg="确定花费积分下载这个文件吗？";
                 $("#download_modal").modal("show");
@@ -473,7 +456,6 @@ export default {
             }
           })
           .catch(function (err) {
-            console.log(err);
           });
       }
       else{

@@ -77,7 +77,6 @@ export default {
       $(".mo-div ul p span").css("display","none")
     },
     push:function () {
-      console.log("保存>>>>>");
       var vm=this;
       if(this.current_password){
         if(this.new_password){
@@ -106,7 +105,6 @@ export default {
                   }
                 })
                 .catch(function (error) {
-                  console.log(error);
                 })
           }
           else{

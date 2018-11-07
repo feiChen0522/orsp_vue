@@ -84,7 +84,6 @@ export default {
     },
   //  发送ajax请求登录
     login:function () {
-      console.log("this.global",this.global.serverPath)
       let vm = this;
       // axios.defaults.headers['Content-Type'] = 'application/json;charset=UTF-8';
       axios.post(vm.url,
@@ -103,8 +102,6 @@ export default {
             headers:{'token':localStorage.getItem('token')},
           })
             .then(function (rsp) {
-              console.log("++++++++++++++++login++++++++++")
-              console.log(rsp.data)
               sessionStorage.setItem('currentUserId',rsp.data.id)
               window.location.reload()
 
@@ -117,7 +114,6 @@ export default {
               // },1000)
             })
             .catch(function (err) {
-              console.log('请求失败',err);
             })
           //控制台打印请求成功时返回的数据
           //bind(this)可以不用
@@ -130,7 +126,6 @@ export default {
         }.bind(this))
     },
     jumpRegist:function () {
-      console.log(111111111111);
       this.$emit('jump-regist',1)
     }
   },

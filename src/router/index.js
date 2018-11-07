@@ -7,7 +7,7 @@ import Detail from '@/components/Detail'
 import Order from '@/components/Order'
 import Address from '@/components/Address'
 import NewCar from '@/components/NewCar'
-
+import AboutUs from '@/components/AboutUs'
 import Release from '@/components/Release'
 import Agreement from '@/components/Agreement'
 import Index from '@/components/Index'
@@ -83,6 +83,12 @@ export default new Router({
       name: 'Regist',
       component: Regist
     },
+    {
+      path: '/aboutus',
+      name: 'AboutUs',
+      component: AboutUs
+    },
+
 
     {
       path: '/detailpage',

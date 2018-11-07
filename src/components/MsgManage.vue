@@ -153,7 +153,6 @@
     })
       .then(function (response) {
         vm.list=response.data;
-        console.log(response.data);
         vm.userinfo.name=vm.list.user_name;
         vm.userinfo.telephone=vm.list.telephone;
         vm.userinfo.password=vm.list.password;
@@ -178,7 +177,6 @@
         }
       })
       .catch(function (err) {
-        console.log("error:",err)
       })
   },
   mounted:function(){
@@ -200,7 +198,6 @@
           alert(vm.res.code)
         })
         .catch(function (err) {
-          console.log(err);
         })
     },
     //难道修改的性别
@@ -231,14 +228,10 @@
       }
     },
     getNewName:function (new_name) {
-      console.log("new_name",new_name);
       this.userinfo.name=new_name;
-      console.log(this.userinfo.name)
     },
     getNewTelephone:function (new_telephone) {
-      console.log("new_telephone",new_telephone);
       this.userinfo.telephone=new_telephone;
-      console.log(this.userinfo.telephone);
     }
   }
 }

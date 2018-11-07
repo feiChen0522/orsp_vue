@@ -26,11 +26,9 @@ export default {
     if (this.$route.params.con!=null){
       //从首页点击过来
       this.inputText=this.$route.params.con;
-      console.log("this.inputText",this.inputText)
       axios.get(this.global.serverPath+'/resource/searchGoods/?good='+this.inputText+'&index='+0)
         .then(function (res) {
           //在sessionStorage暂时存储搜索到的数据
-          console.log(res)
           sessionStorage.setItem('searchGoods',JSON.stringify(res.data))
           this.goods=res.data
           this.currentCount=parseInt(this.goods.length/this.pageCount)+1
@@ -41,7 +39,6 @@ export default {
         }.bind(this))
         .catch(function (err) {
           if (err.response) {
-            console.log(err.response)
             //控制台打印错误返回的内容
           }
           //bind(this)可以不用
@@ -50,10 +47,8 @@ export default {
     else {
       if (sessionStorage.getItem('searchGoods')!=null){
         this.goods=JSON.parse(sessionStorage.getItem('searchGoods'))
-        console.log("---------------1111111")
 
       }else {
-        console.log(this.$route.params.good);
         this.goods=this.$route.params.good
 
       }
@@ -67,7 +62,6 @@ export default {
   },
   methods:{
     displayGoods:function (e) {
-      console.log();
       //
       this.currentGoods=this.goods.slice((e-1)*this.pageCount,e*this.pageCount)
 

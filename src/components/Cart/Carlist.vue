@@ -64,7 +64,6 @@
     mounted: function () {
       // this.goods=this.$route.params
       this.goods=JSON.parse(sessionStorage.getItem('buyerSelectGood'))
-      console.log(111111111,this.good)
       this.goodNum=parseInt(this.goods.pnum)
       this.cateNum=parseInt(this.goods.category)
       this.unitPrice=parseFloat(this.goods.price)

@@ -175,7 +175,6 @@ import index from "../router";
           vm.address = rsp.data;
         })
         .catch(function (err) {
-          console.log('请求失败', err);
         })
     },
     mounted:function(){
@@ -193,7 +192,6 @@ import index from "../router";
 
       },
       selectAddress: function (i,event) {
-        console.log("选中了地址", i)
         this.selectAddressByUser = this.address[i]
         // console.log(event.target.nodeName);
         // if (event.target.nodeName=="P"){
@@ -212,7 +210,6 @@ import index from "../router";
         let haveAddress=document.querySelectorAll('#have>p')
         defaultAddress.style.backgroundColor="gainsboro"
         for (let p of haveAddress){
-          console.log(p)
           p.style.backgroundColor="gainsboro"
         }
         if (event.target.nodeName=="P"){
@@ -244,7 +241,6 @@ import index from "../router";
             }
           })
           .catch(function (err) {
-            console.log('请求失败', err);
           })
       }
     }

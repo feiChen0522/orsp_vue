@@ -86,11 +86,9 @@
     // },
 
     created:function(){
-      console.log("-----------")
       let vm=this
       axios.get(this.global.serverPath+'/resource/getguomei/')
           .then(function (res) {
-            console.log(res.data);
             vm.type_data = res.data;
 
             //控制台打印请求成功时返回的数据
@@ -98,7 +96,6 @@
           }.bind(this))
           .catch(function (err) {
             if (err.response) {
-              console.log(err.response)
               //控制台打印错误返回的内容
             }
             //bind(this)可以不用
@@ -112,28 +109,23 @@
         if (e.nodeName == "LI") {
           this.query_condition = [];
           this.current_index = parseInt(e.getAttribute('index'));
-          console.log("this.current_index", this.current_index);
           // console.log(e.children);
           for (let ele of e.children) {
             // console.log(ele);
             if (ele.nodeName == "A") {
-              console.log(ele.getAttribute('data-id'));
               this.query_condition.push(ele.getAttribute('data-id'))
             }
           }
           this.query_condition = this.query_condition.join(',')
-          console.log(this.query_condition);
           if (e.getAttribute('data-flag') == "false" || vm.typeThree[this.current_index] == undefined) {
             axios.get(this.global.serverPath+'/resource/getgoodtypethree/' + this.query_condition)
               .then(function (res) {
-                console.log(res.data);
                 vm.$set(vm.typeThree,this.current_index,res.data)
                 //控制台打印请求成功时返回的数据
                 //bind(this)可以不用
               }.bind(this))
               .catch(function (err) {
                 if (err.response) {
-                  console.log(err.response)
                   //控制台打印错误返回的内容
                 }
                 //bind(this)可以不用
@@ -141,12 +133,10 @@
           }
 
           e.setAttribute('data-flag', "true");
-          console.log(1)
 
         }
       },
       displaySwing: function (event) {
-        console.log(event.target.className);
         // this.detailTypeShow=!this.detailTypeShow
       },
       toSearch:function (con) {

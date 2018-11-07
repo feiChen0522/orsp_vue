@@ -166,7 +166,6 @@ export default {
                   'yecode':vm.sms_text
                 })
                 .then(function (res) {
-                  console.log(res);
                   if (res.data.code=="200"){
                     axios.post(vm.url,
                       {'telephone': vm.telephone, 'password': vm.password,'user_name':vm.username
@@ -179,15 +178,12 @@ export default {
                         let token=res.headers.token
                         localStorage.setItem('token',token);
                         vm.regist_success=true;
-                        console.log("++++++++++++++++++++++++++")
                         axios({
                           method:'post',
                           url:this.global.serverPath+'/user/judgetoken/',
                           headers:{'token':token},
                         })
                           .then(function (rsp) {
-                            console.log("++++++++++++++++11111regist++++++++++")
-                            console.log(rsp.data)
                             sessionStorage.setItem('currentUserId',rsp.data.id)
                             setInterval(function () {
                               if(parseInt(vm.second)===1){
@@ -198,7 +194,6 @@ export default {
                             },1000)
                           })
                           .catch(function (err) {
-                            console.log('请求失败',err);
                           })
 
                         //控制台打印请求成功时返回的数据
@@ -206,7 +201,6 @@ export default {
                       }.bind(this))
                       .catch(function (err) {
                         if (err.response) {
-                          console.log(err.response)
                           //控制台打印错误返回的内容
                         }
                         //bind(this)可以不用
@@ -251,7 +245,6 @@ export default {
         {'phone': vm.telephone
         })
         .then(function (res) {
-          console.log(res);
           // console.log(res.headers);
           // sessionStorage.setItem('token',res.headers.token)
           //控制台打印请求成功时返回的数据
@@ -272,11 +265,9 @@ export default {
     },
   watch:{
     telephone:function (newtel) {
-      console.log("执行了getAnswer");
       this.debouncedvertifyTel();
       this.telephone_tip="";
       if(this.tel_flag){
-        console.log("执行了axios");
 
       }
     },

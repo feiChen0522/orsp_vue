@@ -41,9 +41,7 @@ export default {
   },
   mounted(){
 
-    console.log("con",this.con)
     if (this.con) this.inputText=this.con
-    console.log("con",this.inputText)
     sessionStorage.setItem('searchCondition',this.inputText)
 
   },
@@ -57,8 +55,6 @@ export default {
           // }
         })
         .then(function (res) {
-          console.log("搜索");
-          console.log(res)
           //在sessionStorage暂时存储搜索到的数据
           sessionStorage.setItem('searchGoods',JSON.stringify(res.data))
 

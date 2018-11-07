@@ -85,7 +85,6 @@
       })
         .then(function(res){
           vm.list=res.data;
-          console.log(vm.list);
           vm.userinfo.name=vm.list.user_name;
           vm.userinfo.integral=vm.list.integral;
           vm.userinfo.level=vm.list.level;
@@ -97,7 +96,6 @@
           }
         })
         .catch(function (err) {
-          console.log("error:",err)
         })
     }
   },

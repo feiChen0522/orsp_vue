@@ -26,11 +26,7 @@
 
         // this.isActiveDown[parseInt(id)]=!this.isActiveDown[parseInt(id)]
         // this.show[parseInt(id)]=!this.show[parseInt(id)]
-        console.log(this.isActiveRight);
-        console.log(this.isActiveDown);
-        console.log(this.show);
         let height=0
-        console.log('id',id==0)
         if (id==1){
           height=this.ulHeight[parseInt(id)]==64?0:64
         } else if (id==2) {
@@ -39,14 +35,10 @@
         }
         else if (id==3||id==0) {
           height=this.ulHeight[parseInt(id)]==96?0:96
-          console.log(2,height);
         }
-        console.log(1,height);
         this.$set( this.ulHeight, parseInt(id),height);
-        console.log(11111111,this.ulHeight);
         // height=this.ulHeight[parseInt(id)]==96?0:96
         // if (this.ulHeight=='96') this.ulHeight=0
-        console.log(e.target)
 
       },
     }
