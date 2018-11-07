@@ -46,7 +46,7 @@
     border-bottom: none;
     position: relative;
 
-    right: -16px;
+    right: -16px; 
   }
 
   .account .center {
