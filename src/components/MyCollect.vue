@@ -53,7 +53,7 @@
     mounted: function () {
       let vm = this;
       axios({
-        url: "http://127.0.0.1:8000/resource/seemycollect/",
+        url: this.global.serverPath+"/resource/seemycollect/",
         data: {
           "user_id": sessionStorage.getItem('currentUserId'),
           "show": true

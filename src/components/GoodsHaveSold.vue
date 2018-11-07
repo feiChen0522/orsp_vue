@@ -31,7 +31,7 @@
         <div class="change_goods">
           <div class="good_img">
             <div class="good_img_div">
-              <img :src="i.sellerSelectGood.img" alt="">
+              <img :src="global.serverPath+i.sellerSelectGood.img" alt="">
             </div>
           </div>
           <div class="good_seller">卖家</div>
@@ -67,7 +67,7 @@ export default {
   created:function () {
     let vm=this
     axios({
-      url:"http://127.0.0.1:8000/resource/showbuy/",
+      url:this.global.serverPath+"/resource/showbuy/",
       data:{
         "user_id":sessionStorage.getItem('currentUserId')
       },

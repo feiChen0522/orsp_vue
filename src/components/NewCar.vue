@@ -137,7 +137,7 @@
     },
     created:function(){
       let vm=this
-      let url="http://127.0.0.1:8000/user/getcart/"
+      let url=this.global.serverPath+"/user/getcart/"
       axios({
         method: 'post',
         url: url,

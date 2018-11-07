@@ -85,7 +85,8 @@ Vue.component('orspdownload-header', ORSPDownloadHeader);
 Vue.component('orspdownload', ORSPDownload);
 Vue.component('orspdownload-center', ORSPDownloadCenter);
 Vue.component('orspdownload-right', ORSPDownloadRight);
-
+import global from './Global'
+Vue.prototype.global=global
 
 new Vue({
   el: '#app',

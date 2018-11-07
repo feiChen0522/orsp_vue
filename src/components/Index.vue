@@ -3,7 +3,7 @@
 
     <search-div @searchData="getGoodData" style="margin-top: 20px" id="top"></search-div>
     <center-nav style="margin-top: 20px;" @show-title="showTwoTitle" :class="{'displayCen':isFixed}"></center-nav>
-    <main-nav class="div-center" :twoTitle="twoTitle"></main-nav>
+    <main-nav class="div-center" :twoTitle="twoTitle" ></main-nav>
     <!--每日推荐-->
     <my-recommend style="margin-top: 40px"></my-recommend>
     <!--猜你喜欢-->

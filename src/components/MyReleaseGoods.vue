@@ -33,7 +33,7 @@
           <div class="change_goods">
             <div class="good_img">
               <div class="good_img_div">
-                <img :src="'http://127.0.0.1:8000/media/pic/'+i.imgurl" alt="">
+                <img :src="global.serverPath+'/media/pic/'+i.imgurl" alt="">
 
               </div>
             </div>
@@ -54,13 +54,13 @@
 
     </div>
     <div class="sty1" style="padding:50px" v-if="flag">
-        <p style="text-align: center;padding: 20px;color: #8d8d8d">你还未发布任何商品，点击下列按钮立即</p>
-        <div style="text-align: center">
-          <router-link to="/release">
-            <button text="马上发布" style="width: 150px;height: 40px;line-height: 38px;color: #8d8d8d">立即发布</button>
-          </router-link>
-        </div>
+      <p style="text-align: center;padding: 20px;color: #8d8d8d">你还未发布任何商品，点击下列按钮立即</p>
+      <div style="text-align: center">
+        <router-link to="/release">
+          <button text="马上发布" style="width: 150px;height: 40px;line-height: 38px;color: #8d8d8d">立即发布</button>
+        </router-link>
       </div>
+    </div>
   </div>
 </template>
 
@@ -80,7 +80,6 @@
           upload_time: "",
           price: "",
         }]
-
       }
     },
     created: function () {
@@ -88,7 +87,7 @@
       let id = sessionStorage.getItem('currentUserId')
       //  发送ajax获取我发布的商品
       axios({
-        url: "http://127.0.0.1:8000/resource/seegoodsbyid/",
+        url: this.global.serverPath+"/resource/seegoodsbyid/",
         method: "post",
         data: {
           "id": id
@@ -103,8 +102,6 @@
           else {
             vm.flag=true
           }
-
-
         }.bind(this))
         .catch(function (err) {
           if (err.response) {
@@ -122,39 +119,32 @@
     width: 1038px;
     border: 1px solid #c5c5c5;
   }
-
   .gai {
-
     position: absolute;
     top: 70px;
     left: 260px;
   }
-
   .status {
     width: 100%;
     height: 50px;
     padding: 0 10px;
     background-color: white;
   }
-
   .status > span {
     display: inline-block;
     width: 120px;
     height: 50px;
     line-height: 50px;
   }
-
   .status span:hover {
     color: #d02210;
     cursor: pointer;
   }
-
   .change_message {
     font-size: 12px;
     /*min-height: 900px;*/
     color: #999;
   }
-
   .change_message_item {
     border-top: 1px solid #CCCCCC;
     height: 45px;
@@ -162,48 +152,39 @@
     text-align: center;
     background-color: #F5F5F5;
   }
-
   .change_message_item div, .change_goods div {
     float: left;
   }
-
   .change_message_item .goods_msg, .change_goods .good_img {
     width: 100px;
     height: 80%;
     /*background-color: #FF7E00;*/
   }
-
   .change_message_item .seller, .change_goods .good_seller {
     /*background-color: #eba85a;*/
     width: 12.5%;
   }
-
   .change_message_item .specification, .change_goods .good_specification {
     /*background-color: blue;*/
     width: 20%;
   }
-
   .change_message_item .price, .change_goods .good_price {
     /*background-color: yellow;*/
     width: 12.5%;
   }
-
   .change_message_item .number, .change_goods .good_number {
     /*background-color: blanchedalmond;*/
     width: 12.5%;
   }
-
   .change_message_item .current_status, .change_goods .good_current_status {
     /*background-color: chartreuse;*/
     width: 10.5%;
   }
-
   .dongtai_goods {
     color: #666;
     min-height: 125px;
     background-color: #FFF4E8;
   }
-
   .dongtai_goods .info {
     width: 100%;
     line-height: 25px;
@@ -211,46 +192,38 @@
     background-color: #e3e3e3;
     text-align: left;
   }
-
   .dongtai_goods .info span {
     margin: 0 10px;
     float: left;
   }
-
   .change_goods {
     text-align: center;
     height: 100px;
     /*line-height: 100px;*/
     border-top: 1px solid #CCCCCC;
   }
-
   .change_goods .good_img .good_img_div {
     width: 100px;
     height: 80px;
     background-size: cover;
     position: relative;
     margin-top: 10px;
-
   }
-
   .change_goods .good_img .good_img_div img {
     width: 100%;
     height: 100%;
     margin-bottom: 10px;
     object-fit: contain;
   }
-
   .change_goods .good_current_status {
     color: #D30000;
     height: 80px;
     line-height: 80px;
   }
-
   .change_amount .amount span {
     color: #D30000;
     font-weight: bold;
   }
-
   .box-text {
     float: right;
     width: 275px;
@@ -258,7 +231,6 @@
     border: 1px solid rgba(53, 37, 108, 0.19);
     margin: 6px auto;
   }
-
   .input-txt {
     text-indent: 5px;
     width: 228px;
@@ -267,7 +239,6 @@
     font-size: 12px;
     outline: none;
   }
-
   .box-text .btn-search {
     float: right;
     width: 40px;
@@ -280,11 +251,9 @@
     background-color: rgb(135, 233, 40);
     color: #ffffff;
   }
-
   .box-text .btn-search:focus, .box-text .btn-search:hover {
     cursor: pointer;
   }
-
   .sty1 {
     width: 1038px;
     height: 200px;

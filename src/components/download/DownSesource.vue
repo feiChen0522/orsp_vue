@@ -38,7 +38,7 @@
     methods: {
       checkdownload: function () {
         var vm = this;
-        axios.post('http://localhost:8000/file/checkdownloadfile', {'upuserid': this.upuserid, 'myid': this.myid})
+        axios.post(this.global.serverPath+'/file/checkdownloadfile', {'upuserid': this.upuserid, 'myid': this.myid})
           .then(function (response) {
             if (response.data['code'] == 214) {
               alert('开始下载');
@@ -53,10 +53,10 @@
       },
       download: function (e) {
         var vm = this;
-        // axios.post('http://localhost:8000/file/downloadfile',url: 'api/user/', {'fname': this.fname})
+        // axios.post(this.global.serverPath+'/file/downloadfile',url: 'api/user/', {'fname': this.fname})
         axios({
           method: 'post',
-          url: 'http://localhost:8000/file/downloadfile',
+          url: this.global.serverPath+'/file/downloadfile',
           data: {
             fname: this.fname
           },

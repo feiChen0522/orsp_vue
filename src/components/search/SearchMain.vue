@@ -27,7 +27,7 @@ export default {
       //从首页点击过来
       this.inputText=this.$route.params.con;
       console.log("this.inputText",this.inputText)
-      axios.get('http://127.0.0.1:8000/resource/searchGoods/?good='+this.inputText+'&index='+0)
+      axios.get(this.global.serverPath+'/resource/searchGoods/?good='+this.inputText+'&index='+0)
         .then(function (res) {
           //在sessionStorage暂时存储搜索到的数据
           console.log(res)

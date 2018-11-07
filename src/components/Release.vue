@@ -143,7 +143,8 @@
 
 
 
-          axios.post('http://127.0.0.1:8000/resource/uploadgoods/', formData, config)
+          // axios.post(this.global.serverPath+'/resource/uploadgoods/', formData, config)
+          axios.post(this.global.serverPath+'/resource/uploadgoods/', formData, config)
             .then(function (res) {
               console.log(res.data)
               //控制台打印请求成功时返回的数据

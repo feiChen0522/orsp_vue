@@ -95,9 +95,11 @@
         let buyerSelectGood=sessionStorage.getItem('buyerSelectGood')
         buyerSelectGood=JSON.parse(buyerSelectGood);
         buyerSelectGood["user_id"]=sessionStorage.getItem('currentUserId')
+
         axios({
           method:'post',
-          url:'http://127.0.0.1:8000/resource/generateorder/',
+
+          url:this.global.serverPath+'/resource/generateorder/',
           data:{
             "sellerSelectGood":sellerSelectGood,
             "buyerSelectGood":JSON.stringify(buyerSelectGood)

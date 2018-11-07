@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="container-fluid">
+  <div id="app" class="container-fluid" style="padding-left: 0;padding-right: 0;">
     <!--<router-view></router-view>-->
     <!--<Release></Release>-->
     <!--<keep-alive >-->

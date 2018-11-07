@@ -77,7 +77,7 @@
     if (token){
       vm.islogin=true;
       axios({
-        url:"http://127.0.0.1:8000/user/showuser/",
+        url:this.global.serverPath+"/user/showuser/",
         headers:{
           "token":token
         },
@@ -90,7 +90,7 @@
           vm.userinfo.integral=vm.list.integral;
           vm.userinfo.level=vm.list.level;
           if(vm.list.icon){
-            vm.userinfo.icon="http://127.0.0.1:8000/media/pic/"+vm.list.icon;
+            vm.userinfo.icon=vm.global.serverPath+"/media/pic/"+vm.list.icon;
           }
           else{
             vm.userinfo.icon=vm.defaulturl;

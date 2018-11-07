@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid">
+  <div class="container-fluid" style="width: 90%">
     <div class="row">
       <div class="col-md-10 a1">
         <div class="col-md-12">
@@ -75,7 +75,7 @@
 
       axios({
         method: 'post',
-        url: 'http://127.0.0.1:8000/user/judgetoken/',
+        url: this.global.serverPath+'/user/judgetoken/',
         headers: {'token': token},
       })
         .then(function (rsp) {
@@ -83,9 +83,9 @@
 
           axios({
             method: 'post',
-            url: 'http://127.0.0.1:8000/user/getaddresbyid/',
-            data: {
-              "id": that.useid
+            url: that.global.serverPath+'/user/getaddresbyid/',
+            data:{
+              "id":that.useid
             }
           })
             .then(function (rsp) {
@@ -106,8 +106,8 @@
         // let id =sessionStorage.getItem('currentUserId')
         axios({
           method: 'post',
-          url: 'http://127.0.0.1:8000/user/changeaddress/',
-          data: {'index': index, 'userid': userid, 'id': id},
+          url: this.global.serverPath+'/user/changeaddress/',
+          data: {'index': index,'userid':userid,'id':id},
         })
           .then(function (rsp) {
             if (rsp.data['code'] == '215') {
@@ -122,7 +122,7 @@
       del:function (userid, id) {
         axios({
           method: 'post',
-          url: 'http://127.0.0.1:8000/user/deladdress/',
+          url: this.global.serverPath+'/user/deladdress/',
           data: { 'userid': userid, 'id': id},
         })
           .then(function (rsp) {

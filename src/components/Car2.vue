@@ -166,7 +166,7 @@ import index from "../router";
       let id = sessionStorage.getItem('currentUserId')
       axios({
         method: 'post',
-        url: 'http://127.0.0.1:8000/user/getaddresbyid/',
+        url: this.global.serverPath+'/user/getaddresbyid/',
         data: {
           "id": id
         }
@@ -229,7 +229,7 @@ import index from "../router";
         this._id = sessionStorage.getItem("_id")
         axios({
           method: 'post',
-          url: 'http://127.0.0.1:8000/resource/paymentguaranty/',
+          url: this.global.serverPath+'/resource/paymentguaranty/',
           data: {
             "id": vm._id,
             "selectAddressByUser": vm.selectAddressByUser,

@@ -105,7 +105,7 @@ export default {
       console.log("重新刷新收藏人数");
       let vm = this;
       axios({
-        url: "http://127.0.0.1:8000/file/collectnumber/",
+        url: this.global.serverPath+"/file/collectnumber/",
         method: "post",
         data: {
           "id": i,
@@ -128,7 +128,7 @@ export default {
       let vm = this;
       //添加收藏
       axios({
-        url: "http://127.0.0.1:8000/file/cancelcollect/",
+        url: this.global.serverPath+"/file/cancelcollect/",
         method: "post",
         data: {
           "id": i,
@@ -152,7 +152,7 @@ export default {
       var vm = this;
       var token = localStorage.getItem("token");
       axios({
-        url: "http://127.0.0.1:8000/user/showuser/",
+        url: this.global.serverPath+"/user/showuser/",
         headers: {
           "token": token
         },
@@ -166,7 +166,7 @@ export default {
           vm.userinfo.integral = vm.list.integral;
           vm.userinfo.level = vm.list.level;
           if (vm.list.icon) {
-            vm.userinfo.icon = "http://127.0.0.1:8000/media/pic/" + vm.list.icon;
+            vm.userinfo.icon = vm.global.serverPath+"/media/pic/" + vm.list.icon;
           }
           else {
             vm.userinfo.icon = vm.defaulturl;
@@ -179,7 +179,7 @@ export default {
     showCollectFile: function () {
       var userid = sessionStorage.getItem("currentUserId");
       let vm = this;
-      axios.get("http://127.0.0.1:8000/file/showcollectfile/" + userid)
+      axios.get(this.global.serverPath+"/file/showcollectfile/" + userid)
         .then(function (res) {
           vm.file = res.data;
           vm.count = vm.file.pop();

@@ -53,7 +53,8 @@ export default {
       password:"1234561",
       tel_correct:false,
       psd_correct:false,
-      url:"http://127.0.0.1:8000/user/login/"
+      // url:this.global.serverPath+"/user/login/"
+      url:this.global.serverPath+"/user/login/"
     }
   },
   created:function(){
@@ -83,6 +84,7 @@ export default {
     },
   //  发送ajax请求登录
     login:function () {
+      console.log("this.global",this.global.serverPath)
       let vm = this;
       // axios.defaults.headers['Content-Type'] = 'application/json;charset=UTF-8';
       axios.post(vm.url,
@@ -97,7 +99,7 @@ export default {
           // console.log(localStorage.getItem('token'));
           axios({
             method:'post',
-            url:'http://127.0.0.1:8000/user/judgetoken/',
+            url:vm.global.serverPath+'/user/judgetoken/',
             headers:{'token':localStorage.getItem('token')},
           })
             .then(function (rsp) {

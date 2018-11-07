@@ -52,7 +52,7 @@
       getData: function () {
         var vm = this;
         this.id = sessionStorage.getItem('currentUserId');
-        axios.get('http://localhost:8000/file/showmyupfile/?id=' + vm.id)
+        axios.get(this.global.serverPath+'/file/showmyupfile/?id=' + vm.id)
           .then(function (response) {
             console.log((response.data).length);
             if ((response.data).length) {
@@ -62,7 +62,7 @@
             else {
               vm.flag = true
             }
-            console.log(sesourcelist)
+            vm.sesourcelist = (response.data)
           })
           .catch(function (error) {
             console.log(error)
@@ -71,7 +71,7 @@
       delData: function (index) {
         console.log(index)
         var vm = this;
-        axios.post('http://localhost:8000/file/delmyupfile/', {'qid': this.id, 'qindex': index})
+        axios.post(this.global.serverPath+'/file/delmyupfile/', {'qid': this.id, 'qindex': index})
           .then(function (response) {
             if (response.data['code'] == '213') {
               window.location.reload()

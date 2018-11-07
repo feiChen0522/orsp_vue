@@ -157,7 +157,6 @@
 </template>
 
 <script>
-  import Login from '../common/js/login'
   import sendTxtCon from '../common/js/login'
 export default {
   name: 'ORSPDownload',
@@ -215,7 +214,7 @@ export default {
           e.classList.remove("glyphicon-heart-empty");
           e.classList.add("glyphicon-heart");
           axios({
-            url:"http://127.0.0.1:8000/file/addcollect/",
+            url:this.global.serverPath+"/file/addcollect/",
             method:"post",
             data:{
               "id":i,
@@ -239,7 +238,7 @@ export default {
           e.classList.remove("glyphicon-heart");
           e.classList.add("glyphicon-heart-empty");
           axios({
-            url:"http://127.0.0.1:8000/file/cancelcollect/",
+            url:this.global.serverPath+"/file/cancelcollect/",
             method:"post",
             data:{
               "id":i,
@@ -270,7 +269,7 @@ export default {
       if (token){
         vm.islogin=true;
         axios({
-          url:"http://127.0.0.1:8000/user/showuser/",
+          url:this.global.serverPath+"/user/showuser/",
           headers:{
             "token":token
           },
@@ -283,7 +282,7 @@ export default {
             vm.userinfo.integral=vm.list.integral;
             vm.userinfo.level=vm.list.level;
             if(vm.list.icon){
-              vm.userinfo.icon="http://127.0.0.1:8000/media/pic/"+vm.list.icon;
+              vm.userinfo.icon=vm.global.serverPath+"/media/pic/"+vm.list.icon;
             }
             else{
               vm.userinfo.icon=vm.defaulturl;
@@ -298,7 +297,7 @@ export default {
     getTechnicalField:function(){
       let vm=this;
       axios({
-        url:"http://127.0.0.1:8000/file/gettechnicalfield/",
+        url:this.global.serverPath+"/file/gettechnicalfield/",
         method:'get',
       })
         .then(function (res) {
@@ -345,7 +344,7 @@ export default {
         }
         let vm=this;
         axios({
-          url:"http://127.0.0.1:8000/file/gettwotechnicalfield/?id="+id,
+          url:this.global.serverPath+"/file/gettwotechnicalfield/?id="+id,
           method:'get',
         })
           .then(function (res) {
@@ -359,7 +358,7 @@ export default {
     getResourceType:function(){
       let vm=this;
       axios({
-        url:"http://127.0.0.1:8000/file/getresourcetype/",
+        url:this.global.serverPath+"/file/getresourcetype/",
         method:"get",
       })
         .then(function(res){
@@ -370,7 +369,7 @@ export default {
     //拿到所有已上传的文件
     showAllFile:function(){
       let vm=this;
-      let url="http://127.0.0.1:8000/file/showallfile/";
+      let url=this.global.serverPath+"/file/showallfile/";
       axios({
         method: 'get',
         url: url,
@@ -401,7 +400,7 @@ export default {
     },
     getFileByCondition:function(id){
       let vm=this;
-      let url="http://127.0.0.1:8000/file/showfilebycondition/";
+      let url=this.global.serverPath+"/file/showfilebycondition/";
       axios({
         method: 'post',
         url: url,
@@ -421,7 +420,7 @@ export default {
       var that=this;
       axios({
         method: 'post',
-        url: 'http://localhost:8000/file/downloadfile/',
+        url: this.global.serverPath+'/file/downloadfile/',
         data: that.mes,
         responseType: 'blob'
       }).then(function (response) {
@@ -459,7 +458,7 @@ export default {
       if(token){
         axios({
           method: 'post',
-          url: 'http://localhost:8000/file/whetherdownload/',
+          url: this.global.serverPath+'/file/whetherdownload/',
           data: vm.mes
         })
           .then(function (res) {
@@ -494,6 +493,7 @@ export default {
     gologin:function () {
       Login.$emit('HaveLogin',"你还没有登录");
     }
+
   }
 }
 </script>

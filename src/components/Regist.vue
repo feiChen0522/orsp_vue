@@ -84,7 +84,7 @@ export default {
       username_tip:"",
       telephone_tip:"",
       password_tip:"",
-      url:"http://127.0.0.1:8000/user/regist/",
+      url:this.global.serverPath+"/user/regist/",
       tel_flag:false,
       regist_success:false,
       second:5,
@@ -150,7 +150,7 @@ export default {
       // axios.defaults.headers['Content-Type'] = 'application/json;charset=UTF-8';
       if(flag){
         //先验证手机号是否存在
-        axios.post('http://127.0.0.1:8000/user/isexist/',
+        axios.post(this.global.serverPath+'/user/isexist/',
           {'telephone': vm.telephone
           },{
             // headers: {
@@ -161,7 +161,7 @@ export default {
             if (res.data.code=="208"){
               vm.telephone_tip="手机号已被注册,请直接登录";
             }else if (res.data.code=="408"){
-              axios.post('http://127.0.0.1:8000/user/yezheng/',
+              axios.post(vm.global.serverPath+'/user/yezheng/',
                 {'phone': vm.telephone,
                   'yecode':vm.sms_text
                 })
@@ -182,7 +182,7 @@ export default {
                         console.log("++++++++++++++++++++++++++")
                         axios({
                           method:'post',
-                          url:'http://127.0.0.1:8000/user/judgetoken/',
+                          url:this.global.serverPath+'/user/judgetoken/',
                           headers:{'token':token},
                         })
                           .then(function (rsp) {
@@ -247,7 +247,7 @@ export default {
     },
     sendVerificationCode:function () {
       let vm=this
-      axios.post('http://127.0.0.1:8000/user/sendverificationcode/',
+      axios.post(this.global.serverPath+'/user/sendverificationcode/',
         {'phone': vm.telephone
         })
         .then(function (res) {

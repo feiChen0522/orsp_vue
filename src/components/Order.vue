@@ -57,14 +57,14 @@
         let token = localStorage.getItem('token')
         axios({
           method: 'post',
-          url: 'http://127.0.0.1:8000/user/judgetoken/',
+          url: this.global.serverPath+'/user/judgetoken/',
           headers: {'token': token},
         })
           .then(function (rsp) {
             let id =sessionStorage.getItem('currentUserId')
             axios({
               method: 'post',
-              url: 'http://127.0.0.1:8000/resource/seemyorder/',
+              url: that.global.serverPath+'/resource/seemyorder/',
               data:{
                 "id":id
               }
@@ -102,7 +102,7 @@
      deleteOrder:function (id) {
        axios({
          method:'post',
-         url:'http://127.0.0.1:8000/resource/deletemyorder/',
+         url:this.global.serverPath+'/resource/deletemyorder/',
          data:{
            "user_id":sessionStorage.getItem('currentUserId'),
            "id":id
