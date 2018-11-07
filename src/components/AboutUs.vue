@@ -8,7 +8,7 @@
         <p>在线资源共享平台的研发及其生态由下面四位成员组成</p>
         <div class="vuer">
           <!--饶宝仕-->
-          <div class="avatar"><img src="https://github.com/hootlex.png" alt="Alex Kyriakidis" width="80" height="80">
+          <div class="avatar"><img src="../assets/icon/person/raobaoshi.jpg" alt="Alex Kyriakidis" width="80" height="100">
           </div>
           <div class="profile">
             <h3 data-official-title="Vueducator Extraordinaire">
@@ -35,7 +35,7 @@
             </i></p>
           </div>
           <!--王宇薪-->
-          <div class="avatar"><img src="https://github.com/hootlex.png" alt="Alex Kyriakidis" width="80" height="80">
+          <div class="avatar"><img src="../assets/icon/person/wangyuxin.jpg" alt="Alex Kyriakidis" width="80" height="100">
           </div>
           <div class="profile">
             <h3 data-official-title="Vueducator Extraordinaire">
@@ -64,7 +64,7 @@
             </i></p>
           </div>
           <!--陈飞-->
-          <div class="avatar"><img src="https://github.com/hootlex.png" alt="Alex Kyriakidis" width="80" height="80">
+          <div class="avatar"><img src="../assets/icon/person/chenfei.jpg" alt="Alex Kyriakidis" width="80" height="100">
           </div>
           <div class="profile">
             <h3 data-official-title="Vueducator Extraordinaire">
@@ -92,7 +92,7 @@
             </i></p>
           </div>
           <!--常志鑫-->
-          <div class="avatar"><img src="https://github.com/hootlex.png" alt="Alex Kyriakidis" width="80" height="80">
+          <div class="avatar"><img src="../assets/icon/person/changzhixin.jpg" alt="Alex Kyriakidis" width="80" height="100">
           </div>
           <div class="profile">
             <h3 data-official-title="Vueducator Extraordinaire">
