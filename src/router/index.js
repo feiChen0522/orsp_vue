@@ -51,7 +51,7 @@ Vue.use(Router)
 
 
 export default new Router({
-  // mode: 'history',
+  mode: 'history',
   redirect:'/',
   scrollBehavior(to, from, savedPosition) {
 
