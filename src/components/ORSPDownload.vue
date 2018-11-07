@@ -31,7 +31,7 @@
           <dt>技术领域:</dt>
           <dd>
             <ul @click="getTwoTechnicalField($event)" id="ul1">
-              <li><a href="#" id="0" @click.stop.prevent="showAllFile">全部</a><div class="img"></div></li>
+              <li><a href="#" id="0" @click.prevent="showAllFile">全部</a><div class="img"></div></li>
               <li v-for="i of technicalField.slice(0,9)">
                 <a v-text="i.name" :id="i.id" class="a"></a><div class="img"></div>
               </li>
@@ -127,23 +127,27 @@
           <ul>
             <li>
               <p class="p1">机器学习极简入门课</p>
-              <p class="p2"><i>作者/分享人：</i><i>飞哥哥哥</i></p>
+              <p class="p2"><i>作者/分享人：</i><i>指南针丶飞</i></p>
             </li>
             <li>
-              <p class="p1">机器学习极简入门课</p>
-              <p class="p2"><i>作者/分享人：</i><i>飞哥哥哥</i></p>
+              <p class="p1">Linux高级</p>
+              <p class="p2"><i>作者/分享人：</i><i>Starry宝石</i></p>
             </li>
             <li>
-              <p class="p1">机器学习极简入门课</p>
-              <p class="p2"><i>作者/分享人：</i><i>飞哥哥哥</i></p>
+              <p class="p1">json转化工具类</p>
+              <p class="p2"><i>作者/分享人：</i><i>诺拉</i></p>
             </li>
             <li>
-              <p class="p1">机器学习极简入门课</p>
-              <p class="p2"><i>作者/分享人：</i><i>飞哥哥哥</i></p>
+              <p class="p1">kubernetes</p>
+              <p class="p2"><i>作者/分享人：</i><i>阿妹</i></p>
             </li>
             <li>
-              <p class="p1">机器学习极简入门课</p>
-              <p class="p2"><i>作者/分享人：</i><i>飞哥哥哥</i></p>
+              <p class="p1">模块多对多端口握手设计</p>
+              <p class="p2"><i>作者/分享人：</i><i>新语惘</i></p>
+            </li>
+            <li>
+              <p class="p1">微处理器实验</p>
+              <p class="p2"><i>作者/分享人：</i><i>信纸长</i></p>
             </li>
           </ul>
         </div>
@@ -153,6 +157,7 @@
 </template>
 
 <script>
+  import Login from '../common/js/login'
   import sendTxtCon from '../common/js/login'
 export default {
   name: 'ORSPDownload',
@@ -201,55 +206,61 @@ export default {
     },
     //点击心心触发
     change_xinxin:function(e,i,index){  //i为当前文件id
-      let userid=sessionStorage.getItem("currentUserId");
-      let vm=this;
-      //添加收藏
-      if(e.classList.contains("glyphicon-heart-empty")){
-        e.classList.remove("glyphicon-heart-empty");
-        e.classList.add("glyphicon-heart");
-        axios({
-          url:"http://127.0.0.1:8000/file/addcollect/",
-          method:"post",
-          data:{
-            "id":i,
-            "userid":userid
-          }
-        })
-          .then(function(res){
-            let ress=res.data;
-            if(ress.code=="209"){
-              vm.tishi_msg="收藏成功";
-              $('#tishi').modal("show");
-              vm.collecctnumber(i,e,index)
+      let token=localStorage.getItem("token");
+      if(token){
+        let userid=sessionStorage.getItem("currentUserId");
+        let vm=this;
+        //添加收藏
+        if(e.classList.contains("glyphicon-heart-empty")){
+          e.classList.remove("glyphicon-heart-empty");
+          e.classList.add("glyphicon-heart");
+          axios({
+            url:"http://127.0.0.1:8000/file/addcollect/",
+            method:"post",
+            data:{
+              "id":i,
+              "userid":userid
             }
           })
-          .catch(function(err){
-            console.log(err);
+            .then(function(res){
+              let ress=res.data;
+              if(ress.code=="209"){
+                vm.tishi_msg="收藏成功";
+                $('#tishi').modal("show");
+                vm.collecctnumber(i,e,index)
+              }
+            })
+            .catch(function(err){
+              console.log(err);
+            })
+        }
+        //取消收藏
+        else if(e.classList.contains("glyphicon-heart")){
+          e.classList.remove("glyphicon-heart");
+          e.classList.add("glyphicon-heart-empty");
+          axios({
+            url:"http://127.0.0.1:8000/file/cancelcollect/",
+            method:"post",
+            data:{
+              "id":i,
+              "userid":userid
+            }
           })
+            .then(function(res){
+              let ress=res.data;
+              if(ress.code=="222"){
+                vm.tishi_msg="取消收藏成功";
+                $('#tishi').modal("show");
+                vm.collecctnumber(i,e,index)
+              }
+            })
+            .catch(function(err){
+              console.log(err);
+            })
+        }
       }
-      //取消收藏
-      else if(e.classList.contains("glyphicon-heart")){
-        e.classList.remove("glyphicon-heart");
-        e.classList.add("glyphicon-heart-empty");
-        axios({
-          url:"http://127.0.0.1:8000/file/cancelcollect/",
-          method:"post",
-          data:{
-            "id":i,
-            "userid":userid
-          }
-        })
-          .then(function(res){
-            let ress=res.data;
-            if(ress.code=="222"){
-              vm.tishi_msg="取消收藏成功";
-              $('#tishi').modal("show");
-              vm.collecctnumber(i,e,index)
-            }
-          })
-          .catch(function(err){
-            console.log(err);
-          })
+      else{
+        Login.$emit("HaveLogin","你还没有登录");
       }
     },
     //拿到用户信息
@@ -365,7 +376,7 @@ export default {
         url: url,
       })
         .then(function (rsp) {
-          console.log("拿到的文件",rsp.data);
+          console.log("showALLFile：",rsp.data);
           vm.files=rsp.data
         })
         .catch(function (err) {
@@ -483,7 +494,6 @@ export default {
     gologin:function () {
       Login.$emit('HaveLogin',"你还没有登录");
     }
-
   }
 }
 </script>

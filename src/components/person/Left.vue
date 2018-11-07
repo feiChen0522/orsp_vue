@@ -81,10 +81,11 @@
                     leave-active-class="animated zoomOut"
         >
       <ul v-if="show[3]">
-      <li><router-link to="/showmyupsesource">我的上传</router-link></li>
-      <li @click="jumpToHadDownload"><router-link to="">我的下载</router-link></li>
-      <!--<li>个人信息</li>-->
-      <li><a data-toggle="modal" data-target="#myModal_upload">我要上传</a></li>
+        <li><router-link to="/showmyupsesource">我的上传</router-link></li>
+        <li @click="jumpToHadDownload"><router-link to="">我的下载</router-link></li>
+        <!--<li>个人信息</li>-->
+        <!--<li><a data-toggle="modal" data-target="#myModal_upload">我要上传</a></li>-->
+        <li @click="jumpToUpload"><router-link to="">我要上传</router-link></li>
         <!--协议书-->
       </ul>
         </transition>
@@ -122,6 +123,11 @@
       jumpToHadDownload:function(){
         this.$router.push({
           name:"HadDownload"
+        })
+      },
+      jumpToUpload:function(){
+        this.$router.push({
+          name:"ORSPUpload"
         })
       },
       changeClass: function (e) {

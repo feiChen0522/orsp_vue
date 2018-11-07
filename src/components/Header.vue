@@ -73,7 +73,15 @@
             </li>
             <li>
               <router-link to="/">
-                <p class="p1">我的收藏</p>
+                <p class="p1" @click="showTwoCollect">我的收藏</p>
+                <ul class="ul-col" @mouseover="show2" @mouseout="show3">
+                  <li>
+                    <router-link to="/orspcollect">文件收藏</router-link>
+                  </li>
+                  <li>
+                    <router-link to="/mycollect">商品收藏</router-link>
+                  </li>
+                </ul>
               </router-link>
             </li>
             <li>
@@ -86,8 +94,6 @@
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
   </nav>
-
-
 
 </template>
 
@@ -109,7 +115,6 @@ export default {
     Login.$on('HaveLogin',target=>{
       $('#myModal1').modal('show')
     });
-
     if (localStorage.getItem('token')!=null) {
       var token=localStorage.getItem('token');
       let vm=this;
@@ -137,6 +142,21 @@ export default {
     }
   },
   methods:{
+    show2:function(){
+      $('.ul-col').css({
+        display:"block"
+      })
+    },
+    show3:function(){
+      $('.ul-col').css({
+        display:"none"
+      })
+    },
+    showTwoCollect:function(){
+      $('.ul-col').css({
+        display:"block"
+      })
+    },
     goPersonCenter:function () {
       if (this.LoginStatus!="您好，请登录") {
         this.$router.push({
@@ -190,10 +210,9 @@ export default {
     padding-top: 5px;
     padding-bottom: 5px;
     font-size: 12px;
-    color: #6c6c6c;
+    color: #464646;
   }
   .navbar-nav>li>a:hover{
-
     color: red;
   }
   .navbar-text {
@@ -217,5 +236,14 @@ export default {
   .p2:hover{
     color: white;
     cursor: pointer;
+  }
+  .ul-col{
+    display: none;
+    position: absolute;
+  }
+  .ul-col,.ul-col li{
+    list-style: none;
+    padding: 0;
+    margin: 0;
   }
 </style>

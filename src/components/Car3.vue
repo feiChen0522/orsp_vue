@@ -19,8 +19,12 @@
         </div>
         <div class="success_bd">
           <p><span></span>订单提交成功，我们将及时为您处理</p>
-          <p class="message"><strong>完成支付后，你可以</strong> <a class="a01" style="cursor: pointer" @click="showOrder">查看订单状态</a>
-            <router-link to="/" class="a01" >继续购物</router-link> <a href="" a01>问题反馈</a></p>
+          <p class="message">
+            <strong>完成支付后，你可以</strong>
+            <a class="a01" style="cursor: pointer" @click="showOrder">查看订单状态</a>
+            <router-link to="/" class="a01" >继续购物</router-link>
+            <router-link to="/board" class="a01" >问题反馈</router-link>
+          </p>
         </div>
       </div>
     </div>

@@ -2,27 +2,36 @@
   <div>
     <div class="container-fluid" v-if="!flag">
       <div class="r-collect-container">
-        <div class="r-collect-title">我的收藏</div>
-        <table>
-          <tr>
-            <td>商品展示</td>
-            <td>商品名称</td>
-          </tr>
-          <tr v-for="i in all_collect">
-            <td>
-              <div class="r-img-container">
-                <div style="width:70px;height: 70px ">
-                  <img :src="i.img_src" alt="">
+        <!--<div class="r-collect-title">我的收藏</div>-->
+        <!--<table>-->
+          <!--<tr>-->
+            <!--<td>商品展示</td>-->
+            <!--<td>商品名称</td>-->
+          <!--</tr>-->
+          <!--<tr v-for="i in all_collect">-->
+            <!--<td>-->
+              <!--<div class="r-img-container">-->
+                <!--<div style="width:70px;height: 70px ">-->
+                  <!--<img :src="i.img_src" alt="">-->
+                <!--</div>-->
+              <!--</div>-->
+            <!--</td>-->
+            <!--<td>{{i.name}}</td>-->
+          <!--</tr>-->
+        <!--</table>-->
+        <div class="cf-collect">
+          <div class="title">我的收藏</div>
 
-                </div>
+          <div class="cen">
+            <div class="col-dongdong" v-for="i in all_collect">
+              <div class="img-div">
+                <img :src="i.img_src" alt="">
               </div>
-            </td>
-            <td>{{i.name}}</td>
+              <div v-text="i.name" class="p"></div>
+            </div>
+          </div>
 
-
-          </tr>
-
-        </table>
+        </div>
       </div>
     </div>
     <div class="sty1" style="padding:50px" v-if="flag">
@@ -42,7 +51,7 @@
       }
     },
     mounted: function () {
-      let vm = this
+      let vm = this;
       axios({
         url: "http://127.0.0.1:8000/resource/seemycollect/",
         data: {
@@ -72,6 +81,50 @@
 
 <style scoped>
   @import '../../static/css/clear.css';
+
+  .cf-collect{
+    width: 70%;
+    margin: 0 auto;
+  }
+  .cf-collect .title{
+    width: 100%;
+    /*height: 40px;*/
+    line-height: 40px;
+    background-color: #c94118;
+    color: #FFFFFF;
+    font-size: 18px;
+    font-weight: 400;
+    text-align: left;
+    text-indent: 10px;
+  }
+  .cf-collect .cen{
+    padding: 10px;
+    /*min-height: 400px;*/
+    float: left;
+    border: 1px solid #c94118;
+    margin-bottom: 10px;
+  }
+  .cf-collect .col-dongdong{
+    width: 160px;
+    height: 220px;
+    float: left;
+    border: 1px solid #c4c4c4;
+    margin: 0 10px 15px 10px;
+
+  }
+  .cf-collect .col-dongdong .img-div{
+    width: 159px;
+    height: 160px;
+  }
+  .cf-collect .col-dongdong .img-div img{
+    width: 159px;
+    height: 160px;
+    object-fit: cover;
+  }
+  .cf-collect .col-dongdong .p{
+    font-size: 12px;
+    height: 60px;
+  }
 
   .r-collect-container {
     display: block;

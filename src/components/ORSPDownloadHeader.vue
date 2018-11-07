@@ -3,7 +3,6 @@
   <nav class="navbar navbar-default" style="background-color: #EAEBEC;height: 30px">
     <div class="container">
       <ul class="nav navbar-nav">
-        <li class="active"></li>
         <li>
           <router-link to="/orspdownload">下载首页<span class="sr-only">(current)</span></router-link>
         </li>
@@ -34,6 +33,7 @@
 
 <script>
   import sendTxtCon from '../common/js/login'
+  import Login from '../common/js/login'
   export default {
   name: 'ORSPDownloadHeader',
   data () {
@@ -84,5 +84,8 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+  .fontcolor1{
+    color: #cf4110;
+    background-color: #FFFFFF;
+  }
 </style>
