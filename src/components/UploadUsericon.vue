@@ -1,5 +1,15 @@
 <template>
   <div class="mo-div">
+    <!--提示模态框-->
+    <div class="modal fade" id="tishi" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div v-text="tishi_msg"></div>
+          </div>
+        </div>
+      </div>
+    </div>
     <!--头-->
     <div class="aa">
       <div class="txt-file">上传文件</div>
@@ -29,6 +39,7 @@ export default {
   props:["telephone"],
   data () {
     return {
+      tishi_msg:'',
       file:"",
       filename:"",
     }
@@ -93,13 +104,15 @@ export default {
         })
           .then(function(res){
             if(res.data.code=="218"){
-              alert("头像上传成功");
+              vm.tishi_msg='头像上传成功';
+              $('#tishi').modal("show");
               vm.filename=res.data.filename;
               vm.goMsg(vm.filename);
               vm.cancel();
             }
             if(res.data.code=="418"){
-              alert("头像上传失败")
+              vm.tishi_msg='头像上传失败';
+              $('#tishi').modal("show");
             }
           })
           .catch(function(err){
@@ -110,7 +123,7 @@ export default {
       this.$emit("getFilename",filename)
     },
     cancel:function () {
-      $('#usericon').modal('hide');
+      // $('#usericon').modal('hide');
       // $('.modal-backdrop').remove();
       window.location.reload()
     },
@@ -121,6 +134,15 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+  #tishi{
+    font-size: 14px;
+    color: #333;
+    font-weight: 400;
+    /*position: absolute;*/
+    /*top: 50%;*/
+    /*left: 50%;*/
+    /*transform: translateX(-50%) translateY(-50%);*/
+  }
   .mo-div .aa{
    /*background-color: #3b49ff;*/
     text-align: left;

@@ -1,5 +1,14 @@
 <template>
   <div class="container-fluid">
+    <div class="modal fade" id="tishi" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div>购物车为空</div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="row">
       <div class="col-md-1"></div>
       <div class="col-md-10">
@@ -149,7 +158,7 @@
       })
         .then(function (rsp) {
           if (rsp.data==0){
-            alert("购物车为空")
+            $('#tishi').modal('show');
           }
           else {
             res=(rsp.data==0)

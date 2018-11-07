@@ -1,5 +1,15 @@
 <template>
   <div class="container">
+    <!--提示模态框-->
+    <div class="modal fade" id="tishi" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div v-text="tishi_msg" style="text-align: center"></div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="row">
       <div class="col-md-1"></div>
       <div class="col-md-10">
@@ -73,6 +83,7 @@
     name: 'Release',
     data() {
       return {
+        tishi_msg:'',
         selected: {
           code: 110000,
           name: '北京市',
@@ -137,20 +148,20 @@
             headers: {
               'Content-Type': 'multipart/form-data'
             }
-          }
-
-
-
+          };
+          var vm=this;
           // axios.post(this.global.serverPath+'/resource/uploadgoods/', formData, config)
           axios.post(this.global.serverPath+'/resource/uploadgoods/', formData, config)
             .then(function (res) {
               //控制台打印请求成功时返回的数据
               //bind(this)可以不用
               if (res.data.code=="299"){
-                alert("恭喜你上传成功")
+                vm.tishi_msg='恭喜上传成功';
+                $('#tishi').modal("show");
 
               } else {
-                alert("上传失败")
+                vm.tishi_msg='上传失败';
+                $('#tishi').modal("show");
               }
             })
             .catch(function (err) {
@@ -178,6 +189,15 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+  #tishi{
+    font-size: 14px;
+    color: #333;
+    font-weight: 400;
+    /*position: absolute;*/
+    /*top: 50%;*/
+    /*left: 50%;*/
+    /*transform: translateX(-50%) translateY(-50%);*/
+  }
   .i1{
 
     font-size: 20px;

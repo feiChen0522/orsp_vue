@@ -72,7 +72,6 @@
           .then(function (response) {
             if (response.data['code'] == '213') {
               window.location.reload()
-              alert('删除成功')
             }
 
 

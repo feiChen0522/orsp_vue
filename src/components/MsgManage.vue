@@ -195,7 +195,6 @@
         .then(function (response) {
           vm.res=response.data;
           // console.log("-------------------",vm.res);
-          alert(vm.res.code)
         })
         .catch(function (err) {
         })

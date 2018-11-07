@@ -1,5 +1,15 @@
 <template>
   <div class="mo-div">
+    <!--提示模态框-->
+    <div class="modal fade" id="tishi" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div v-text="tishi_msg"></div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="center">
       <ul>
         <li>
@@ -45,6 +55,7 @@ export default {
   props:["telephone"],
   data () {
     return {
+      tishi_msg:'',
       res:"",
       current_password:'',
       new_password:'',
@@ -95,13 +106,17 @@ export default {
                   vm.res=response.data;
                   // 255代表密码验证正确
                   if(vm.res.code=="211") {
-                    alert("密码修改成功");
-                    $('#change').modal('hide');
+                    vm.tishi_msg='密码修改成功';
+                    $('#tishi').modal("show");
+                    // $('#change').modal('hide');
                     // $("#change").modal({show:true, backdrop:'static'});
                     // $("#change").remove()
+                    window.location.reload()
                   }
                   else if(vm.res.code=="514"){
-                    alert("密码错误")
+                    vm.tishi_msg='密码修改成功';
+                    $('#tishi').modal("show");
+                    window.location.reload();
                   }
                 })
                 .catch(function (error) {
@@ -129,6 +144,15 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+  #tishi{
+    font-size: 14px;
+    color: #333;
+    font-weight: 400;
+    /*position: absolute;*/
+    /*top: 50%;*/
+    /*left: 50%;*/
+    /*transform: translateX(-50%) translateY(-50%);*/
+  }
   .mo-div{
     height: 180px;
   }
