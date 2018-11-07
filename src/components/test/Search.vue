@@ -94,7 +94,6 @@
                 return a.price-b.price
               }
               goods.sort(sortId);
-              console.log(goods);
               sessionStorage.setItem('searchGoods',JSON.stringify(goods))
               window.location.reload()
             } else {
@@ -102,7 +101,6 @@
                 return a.price-b.price
               }
               goods.sort(sortId);
-              console.log(goods);
               sessionStorage.setItem('searchGoods',JSON.stringify(goods))
               window.location.reload()
             }
@@ -118,8 +116,6 @@
                 // }
               })
               .then(function (res) {
-                console.log("搜索");
-                console.log(res)
                 //在sessionStorage暂时存储搜索到的数据
                 sessionStorage.setItem('searchGoods',JSON.stringify(res.data))
 

@@ -48,7 +48,6 @@
             }
           })
           .catch(function (error) {
-            console.log(error)
           })
       },
       download: function (e) {
@@ -79,7 +78,6 @@
           }
         })
           .catch(function (error) {
-            console.log(error)
           })
       },
     }

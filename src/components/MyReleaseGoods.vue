@@ -94,7 +94,6 @@
         }
       })
         .then(function (res) {
-          console.log((res.data).length!=0)
           if ((res.data).length){
             this.goods = res.data
             vm.flag=false

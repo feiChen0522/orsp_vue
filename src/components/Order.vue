@@ -70,7 +70,6 @@
               }
             })
               .then(function (rsp) {
-                console.log((rsp.data).length)
                 if ((rsp.data).length){
                   that.myOrder=rsp.data;
                   that.flag=false
@@ -81,11 +80,9 @@
 
               })
               .catch(function (err) {
-                console.log('请求失败', err);
               })
           })
           .catch(function (err) {
-            console.log('请求失败', err);
           })
       }
     },
@@ -112,7 +109,6 @@
            window.location.reload()
          })
          .catch(function (err) {
-           console.log('请求失败',err);
          })
      }
    }

@@ -84,7 +84,6 @@ export default {
     this.showPage(this.pageCurrent, null, true)
   },
   created:function(){
-    console.log("count",this.count)
 
     if (this.count===1||this.count===0){
       this.pageShow="none"
@@ -99,12 +98,10 @@ export default {
       // console.log(pageIndex)
       // console.log(this.count)
       if (pageIndex>this.count){
-        console.log("pageIndex",pageIndex);
       } else if (pageIndex<=0){
       } else {
         this.pageCurrent = pageIndex
         if (event)       {
-          console.log("$('.btn')",$('.btn'));
           for (let e of $('.btn')) {
             e.style.backgroundColor="white"
             if (pageIndex==parseInt(e.innerText)){

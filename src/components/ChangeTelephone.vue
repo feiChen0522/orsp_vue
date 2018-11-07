@@ -23,7 +23,6 @@ export default {
     }
   },
   mounted:function () {
-    console.log("old_telephone",this.old_telephone);
   },
   methods:{
     submit:function (new_telephone) {

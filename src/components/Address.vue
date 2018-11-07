@@ -90,15 +90,12 @@
           })
             .then(function (rsp) {
               that.address = (rsp.data)
-              console.log(that.address)
             })
             .catch(function (err) {
-              console.log('请求失败', err);
             })
 
         })
         .catch(function (err) {
-          console.log('请求失败', err);
         })
     },
     methods: {
@@ -116,7 +113,6 @@
 
           })
           .catch(function (err) {
-            console.log('请求失败', err);
           })
       },
       del:function (userid, id) {
@@ -132,7 +128,6 @@
 
           })
           .catch(function (err) {
-            console.log('请求失败', err);
           })
       }
     }

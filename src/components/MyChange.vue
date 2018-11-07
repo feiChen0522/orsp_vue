@@ -62,7 +62,6 @@
   },
     mounted:function (e) {
       let vm=this
-      console.log(e)
       axios({
         url:this.global.serverPath+"/resource/seechange/",
         data:{
@@ -71,7 +70,6 @@
         method:"post"
       })
         .then(function (res) {
-          console.log(res)
           if ((res.data).length){
             vm.allOrder=res.data
             vm.flag=false
@@ -82,7 +80,6 @@
           }
         })
         .catch(function (error) {
-          console.log("请求失败：，",error)
 
         })
     },
@@ -96,7 +93,6 @@
           "operation":i,
           "_id":this.allOrder[index].sellerSelectGood._id
         }
-        console.log(event.target)
         axios({
           url:this.global.serverPath+"/resource/selleragree/",
           method:"post",
@@ -110,12 +106,10 @@
                 event.target.parentNode.innerText="已拒绝"
               }
             }else {
-              console.log(res.data)
             }
 
           })
           .catch(function (error) {
-            console.log("请求失败：",error)
 
           })
       }

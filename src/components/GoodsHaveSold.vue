@@ -74,7 +74,6 @@ export default {
       method:"post"
     })
       .then(function (res) {
-        console.log((res.data).length!=0)
         if ((res.data).length){
           vm.all_order=res.data
           vm.flag=false
@@ -87,7 +86,6 @@ export default {
 
       })
       .catch(function (error) {
-        console.log(error)
 
       })
   }

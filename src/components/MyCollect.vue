@@ -62,7 +62,6 @@
 
       })
         .then(function (res) {
-          console.log(res.data)
           if ((res.data).length) {
             vm.all_collect = res.data
             vm.flag =false
@@ -73,7 +72,6 @@
 
         })
         .catch(function (error) {
-          console.log("请求失败：" + error)
         })
     }
   }

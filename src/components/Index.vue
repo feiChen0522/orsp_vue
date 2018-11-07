@@ -43,11 +43,9 @@
       window.onscroll = function () {
         let top = $(this).scrollTop()
         if (top >= 700 && top <= 800) {
-          console.log("bbbbbbbbbbbbbbbb")
 
           self.isFixed = true
         } else if (top > 800) {
-          console.log("aaaaaaaaaaaaaaaaaaaa")
           self.isBack = true
         }
         else {
@@ -59,11 +57,8 @@
     },
     methods: {
       getGoodData: function (t) {
-        console.log(t);
       },
       showTwoTitle: function (tag) {
-        console.log("------------------")
-        console.log(tag)
         this.twoTitle = tag
         //返回顶部
 

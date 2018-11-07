@@ -54,7 +54,6 @@
         this.id = sessionStorage.getItem('currentUserId');
         axios.get(this.global.serverPath+'/file/showmyupfile/?id=' + vm.id)
           .then(function (response) {
-            console.log((response.data).length);
             if ((response.data).length) {
               vm.sesourcelist = (response.data);
               vm.flag = false
@@ -65,11 +64,9 @@
             vm.sesourcelist = (response.data)
           })
           .catch(function (error) {
-            console.log(error)
           })
       },
       delData: function (index) {
-        console.log(index)
         var vm = this;
         axios.post(this.global.serverPath+'/file/delmyupfile/', {'qid': this.id, 'qindex': index})
           .then(function (response) {
@@ -81,7 +78,6 @@
 
           })
           .catch(function (error) {
-            console.log(error)
           })
       }
     }

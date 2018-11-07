@@ -156,7 +156,6 @@
           }
         })
         .catch(function (err) {
-          console.log('请求失败', err);
         })
 
     },

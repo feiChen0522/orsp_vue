@@ -61,7 +61,6 @@
       // this.selectedGood["_id"]=(Math.random()*10000000).toString(16).substr(0,4)+'-'+(new Date()).getTime()+'-'+Math.random().toString().substr(2,5);
       this.selectedGood=JSON.parse(sessionStorage.getItem('buyerSelectGood'))
       // sessionStorage.setItem('buyerSelectGood',JSON.stringify(this.selectedGood))
-      console.log(22222222222,this.selectedGood);
     },
     methods: {
       goBack: function () {
@@ -73,14 +72,11 @@
       },
       showGood:function (index,event) {
         this.selectedGood=this.buyerGood[index]
-        console.log()
         let all_li=event.target.parentNode.childNodes
         for (let li of all_li){
           li.style.backgroundColor="#eeeeeefa"
         }
-        console.log(event.target);
         event.target.style.backgroundColor="#00ff57";
-        console.log(event.target);
 
       },
       settlement:function(){
@@ -115,7 +111,6 @@
             })
           })
           .catch(function (err) {
-            console.log('请求失败',err);
           })
       },
 

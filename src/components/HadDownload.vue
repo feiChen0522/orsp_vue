@@ -103,7 +103,6 @@ export default {
   methods:{
     //更新收藏人数
     collecctnumber:function(i,e,index){
-      console.log("重新刷新收藏人数");
       let vm=this;
       axios({
         url:this.global.serverPath+"/file/collectnumber/",
@@ -114,13 +113,10 @@ export default {
       })
         .then(function (res) {
           let cou=res.data;
-          console.log(cou);
           vm.collectcount=cou;
-          console.log("哈哈哈哈",i);
           vm.file[index]["collectcount"]=vm.collectcount
         })
         .catch(function (err) {
-          console.log(err);
         })
     },
     //点击心心触发
@@ -148,7 +144,6 @@ export default {
             }
           })
           .catch(function(err){
-            console.log(err);
           })
       }
       //取消收藏
@@ -172,7 +167,6 @@ export default {
             }
           })
           .catch(function(err){
-            console.log(err);
           })
       }
     },
@@ -188,7 +182,6 @@ export default {
       })
         .then(function (response) {
           vm.list=response.data;
-          console.log(response.data);
           vm.userinfo.name=vm.list.user_name;
           vm.userinfo.sex=vm.list.sex;
           vm.userinfo.integral=vm.list.integral;
@@ -201,7 +194,6 @@ export default {
           }
         })
         .catch(function (err) {
-          console.log("error:",err)
         })
     },
     showDownloadFile:function () {
@@ -217,7 +209,6 @@ export default {
         .then(function (res) {
           vm.file=res.data;
           vm.count=vm.file.pop();
-          console.log(1111,vm.count);
           // console.log(vm.file);
           // vm.fileinfo.describe=vm.file.describe;
           // vm.fileinfo.upload_user_name=vm.file.upload_user_name;
@@ -228,7 +219,6 @@ export default {
 
         })
         .catch(function(err){
-          console.log(err);
         })
     }
   }

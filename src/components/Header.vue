@@ -84,9 +84,14 @@
                 </ul>
               </router-link>
             </li>
+            <!--<li>-->
+              <!--<router-link to="/board">-->
+                <!--<p class="p1">关于我们</p>-->
+              <!--</router-link>-->
+            <!--</li>-->
             <li>
-              <router-link to="/board">
-                <p class="p1">联系我们</p>
+              <router-link to="/aboutus">
+                <p class="p1">关于我们</p>
               </router-link>
             </li>
 
@@ -176,7 +181,6 @@ export default {
     },
     displayRegist:function (e) {
 
-      console.log(2222222222222);
       $('#myModal1').modal('hide');
       $('#myModal2').modal('show')
     },
@@ -186,7 +190,6 @@ export default {
     is_login:function () {
       var token=localStorage.getItem('token');
       if(token){
-        console.log("前往个人中心");
         this.$router.push({
           name:'Center'
         });

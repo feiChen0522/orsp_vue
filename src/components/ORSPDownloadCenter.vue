@@ -102,7 +102,6 @@
         })
           .then(function (res) {
             vm.technicalField=res.data;
-            console.log(vm.technicalField);
           });
 
       },
@@ -110,7 +109,6 @@
       getTwoTechnicalField:function(e){
         if(event.target.tagName=="A"){
           var id=event.target.id;
-          console.log(id);
           if(event.currentTarget.id=="ul1"){
             $('#twofield2').css({
               display:"none"
@@ -149,7 +147,6 @@
           })
             .then(function (res) {
               vm.twoTechnicalField=res.data;
-              console.log(999,vm.twoTechnicalField);
             })
 
         }
@@ -163,7 +160,6 @@
         })
           .then(function(res){
             vm.resourceType=res.data;
-            console.log(vm.resourceType);
           })
       },
       //拿到所有已上传的文件
@@ -175,11 +171,9 @@
           url: url,
         })
           .then(function (rsp) {
-            console.log("拿到的文件",rsp.data);
             vm.files=rsp.data
           })
           .catch(function (err) {
-            console.log('请求失败', err);
           })
       },
       //下载资源
@@ -211,7 +205,6 @@
           }
         })
           .catch(function (error) {
-            console.log(error)
           })
       },
     }

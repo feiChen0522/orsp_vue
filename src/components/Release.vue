@@ -109,7 +109,6 @@
         reader.readAsDataURL(file);
 
         this.file = file
-        console.log(this.file);
       },
       //删除图片
       delImg(index) {
@@ -118,7 +117,6 @@
     //  上传商品
         submitForm(event) {
         let user_id=sessionStorage.getItem('currentUserId')
-          console.log(user_id,1111111)
           event.preventDefault();
           let formData = new FormData();
           formData.append('name', this.name);
@@ -146,7 +144,6 @@
           // axios.post(this.global.serverPath+'/resource/uploadgoods/', formData, config)
           axios.post(this.global.serverPath+'/resource/uploadgoods/', formData, config)
             .then(function (res) {
-              console.log(res.data)
               //控制台打印请求成功时返回的数据
               //bind(this)可以不用
               if (res.data.code=="299"){
